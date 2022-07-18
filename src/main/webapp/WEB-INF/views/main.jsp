@@ -7,6 +7,7 @@
 <html>
 
 <h1>기본 main</h1>
+<img src="https://contents.lotteon.com/ec/public/P10CDBFDA6BE389C6E400AE282B42544B293EADFD2D7213344FD0FCB3C1989112/file" alt="사진 없음">
 ${dto.toString()}
 <%= dto.toString() %>
 <script type="text/javascript">
