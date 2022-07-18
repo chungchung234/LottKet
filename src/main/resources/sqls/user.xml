@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="User">
+    <select id="user" resultType="lotte.com.lottket.dto.UserDto">
+        select product_id,
+               product_title,
+               category,
+               product_price,
+               product_stock,
+               product_regdate
+        from user
+        WHERE product_id = 1
+    </select>
+</mapper>

@@ -1,79 +1,62 @@
 package lotte.com.lottket.dto;
 
+import java.time.LocalDateTime;
+
 public class ProductDto {
     private int productId;
     private String productTitle;
-    private String productCategory;
+    private String category;
     private int productPrice;
     private int productStock;
-    private String productRegDate;
+    private LocalDateTime productRegdate;
+    private double productTotal;
 
-    @Override
-    public String toString() {
-        return "ProductDto{" +
-                "productId=" + productId +
-                ", productTitle='" + productTitle + '\'' +
-                ", productCategory='" + productCategory + '\'' +
-                ", productPrice=" + productPrice +
-                ", productStock=" + productStock +
-                ", productRegDate='" + productRegDate + '\'' +
-                '}';
+
+
+    public ProductDto(String productTitle, String category, int productPrice, int productStock, LocalDateTime productRegdate, double productTotal) {
+        this.productTitle = productTitle;
+        this.category = category;
+        this.productPrice = productPrice;
+        this.productStock = productStock;
+        this.productRegdate = productRegdate;
+        this.productTotal = productTotal;
+    }
+
+    public ProductDto(int productId, String productTitle, String category, int productPrice, int productStock, LocalDateTime productRegdate, double productTotal) {
+        this.productId = productId;
+        this.productTitle = productTitle;
+        this.category = category;
+        this.productPrice = productPrice;
+        this.productStock = productStock;
+        this.productRegdate = productRegdate;
+        this.productTotal = productTotal;
     }
 
     public int getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
-
     public String getProductTitle() {
         return productTitle;
     }
 
-    public void setProductTitle(String productTitle) {
-        this.productTitle = productTitle;
-    }
-
-    public String getProductCategory() {
-        return productCategory;
-    }
-
-    public void setProductCategory(String productCategory) {
-        this.productCategory = productCategory;
+    public String getCategory() {
+        return category;
     }
 
     public int getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(int productPrice) {
-        this.productPrice = productPrice;
-    }
-
     public int getProductStock() {
         return productStock;
     }
 
-    public void setProductStock(int productStock) {
-        this.productStock = productStock;
+    public LocalDateTime getProductRegdate() {
+        return productRegdate;
     }
 
-    public String getProductRegDate() {
-        return productRegDate;
-    }
-
-    public void setProductRegDate(String productRegDate) {
-        this.productRegDate = productRegDate;
-    }
-
-    public ProductDto(int productId, String productTitle, String productCategory, int productPrice, int productStock, String productRegDate) {
-        this.productId = productId;
-        this.productTitle = productTitle;
-        this.productCategory = productCategory;
-        this.productPrice = productPrice;
-        this.productStock = productStock;
-        this.productRegDate = productRegDate;
+    public double getProductTotal() {
+        return productTotal;
     }
 }
