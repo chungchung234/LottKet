@@ -1,9 +1,11 @@
 package lotte.com.lottket.dto;
 
+import java.time.LocalDateTime;
+
 public class ProductDto {
     private int productId;
     private String productTitle;
-    private String productCategory;
+    private String category;
     private int productPrice;
     private int productStock;
     private String productRegDate;
@@ -32,53 +34,50 @@ public class ProductDto {
                 '}';
     }
 
-    public int getProductId() {
-        return productId;
+
+    public ProductDto(String productTitle, String category, int productPrice, int productStock, LocalDateTime productRegdate, double productTotal) {
+        this.productTitle = productTitle;
+        this.category = category;
+        this.productPrice = productPrice;
+        this.productStock = productStock;
+        this.productRegdate = productRegdate;
+        this.productTotal = productTotal;
     }
 
-    public void setProductId(int productId) {
+    public ProductDto(int productId, String productTitle, String category, int productPrice, int productStock, LocalDateTime productRegdate, double productTotal) {
         this.productId = productId;
+        this.productTitle = productTitle;
+        this.category = category;
+        this.productPrice = productPrice;
+        this.productStock = productStock;
+        this.productRegdate = productRegdate;
+        this.productTotal = productTotal;
+    }
+
+    public int getProductId() {
+        return productId;
     }
 
     public String getProductTitle() {
         return productTitle;
     }
 
-    public void setProductTitle(String productTitle) {
-        this.productTitle = productTitle;
-    }
-
-    public String getProductCategory() {
-        return productCategory;
-    }
-
-    public void setProductCategory(String productCategory) {
-        this.productCategory = productCategory;
+    public String getCategory() {
+        return category;
     }
 
     public int getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(int productPrice) {
-        this.productPrice = productPrice;
-    }
-
     public int getProductStock() {
         return productStock;
     }
 
-    public void setProductStock(int productStock) {
-        this.productStock = productStock;
+    public LocalDateTime getProductRegdate() {
+        return productRegdate;
     }
 
-    public String getProductRegDate() {
-        return productRegDate;
-    }
-
-    public void setProductRegDate(String productRegDate) {
-        this.productRegDate = productRegDate;
-    }
 
     public int getProductTotalRate() {
         return productTotalRate;
