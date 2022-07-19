@@ -9,19 +9,69 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
-    $.ready(
+    $(document).ready(function () {
+        init();
+    });
 
-    )
+    function init() {
+        selectDateTotal();
+        selectPopulalityProduct();
+        selectGenderStastistics();
+        selectGenderStastistics();
+    }
 
-    $.ajax({
-        type: "GET",
-        url: "admin/init",
-        data: {
-            start_date : ${start_date},
-            end_date : ${end_date},
-            category : ${category}
-        },
-        success: success,
-        dataType: dataType
-    })
+    function selectAgeStastistics() {
+        $.ajax({
+            type: "GET",
+            url: "admin/selectAgeStastistics",
+            data: {
+                start_date: ${start_date},
+                end_date: ${end_date},
+                category: ${category}
+            },
+            success: success,
+        })
+    }
+
+    function selectDateTotal() {
+        $.ajax({
+            type: "GET",
+            url: "admin/selectDateTotal",
+            data: {
+                start_date: ${start_date},
+                end_date: ${end_date},
+                category: ${category}
+            },
+            success: success,
+        })
+    }
+
+    function selectGenderStastistics() {
+        $.ajax({
+            type: "GET",
+            url: "admin/selectGenderStastistics",
+            data: {
+                start_date: ${start_date},
+                end_date: ${end_date},
+                category: ${category}
+            },
+            success: success,
+        })
+    }
+
+
+    function selectPopulalityProduct() {
+        $.ajax({
+            type: "GET",
+            url: "admin/selectPopulalityProduct",
+            data: {
+                start_date: ${start_date},
+                end_date: ${end_date},
+                category: ${category}
+            },
+            success: success,
+        })
+    }
+
+
 </script>
