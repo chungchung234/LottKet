@@ -7,9 +7,11 @@ import java.util.Map;
 
 public interface CategoryService {
 
-    List<ProductDto> findByCategoryOrderByProductPrice(Map<String,Object> param);
+    List<ProductDto> findByCategory(String productCategory);
 
-    List<ProductDto> findByCategoryOrderByProductRegDate(Map<String,Object> param);
+    List<ProductDto> findByCategoryOrderByProductPrice(String search, String productCategory);
 
-    List<ProductDto> findByCategoryOrderByProductTotalRate(Map<String,Object> param);
+    List<ProductDto> findByCategoryOrderByProductRegDate(String search, String productCategory);
+
+    List<ProductDto> findByCategoryOrderByProductTotalRate(String search, String productCategory);
 }

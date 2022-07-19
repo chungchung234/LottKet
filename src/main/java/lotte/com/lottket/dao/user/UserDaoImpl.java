@@ -28,4 +28,9 @@ public class UserDaoImpl implements UserDao{
         return session.selectOne(ns + "getMember");
     }
 
+    @Override
+    public UserDto findByUserId(long userId) {
+        return session.selectOne(ns+"findByUserId",userId);
+    }
+
 }

@@ -14,4 +14,10 @@
         from user
         WHERE product_id = 1
     </select>
+
+    <select id="findByUserId" parameterType="long" resultType="lotte.com.lottket.dto.UserDto">
+        select *
+        from user
+        where user_id = #{userId}
+    </select>
 </mapper>

@@ -8,6 +8,7 @@ import java.util.Map;
 
 public interface CategoryDao {
 
+    List<ProductDto> findByCategory(String productCategory);
     List<ProductDto> findByCategoryOrderByProductPrice(Map<String,Object> param);
 
     List<ProductDto> findByCategoryOrderByProductRegDate(Map<String,Object> param);

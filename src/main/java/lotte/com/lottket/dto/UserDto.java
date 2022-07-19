@@ -1,8 +1,8 @@
 package lotte.com.lottket.dto;
 
 public class UserDto {
-    private int userId;
-    private String userNickname;
+    private long userId;
+    private String userName;
     private String userProfileImage;
     private String userAddress;
     private String userDetailAddress;
@@ -11,24 +11,13 @@ public class UserDto {
     private String userGender;
     private String userAge;
     private String userBirthday;
+    private String userEmail;
 
+    private String userPhoneNumber;
 
-
-    public UserDto(String userNickname, String userProfileImage, String userAddress, String userDetailAddress, String userGrade, String userRole, String userGender, String userAge, String userBirthday) {
-        this.userNickname = userNickname;
-        this.userProfileImage = userProfileImage;
-        this.userAddress = userAddress;
-        this.userDetailAddress = userDetailAddress;
-        this.userGrade = userGrade;
-        this.userRole = userRole;
-        this.userGender = userGender;
-        this.userAge = userAge;
-        this.userBirthday = userBirthday;
-    }
-
-    public UserDto(int userId, String userNickname, String userProfileImage, String userAddress, String userDetailAddress, String userGrade, String userRole, String userGender, String userAge, String userBirthday) {
+    public UserDto(long userId, String userName, String userProfileImage, String userAddress, String userDetailAddress, String userGrade, String userRole, String userGender, String userAge, String userBirthday, String userEmail) {
         this.userId = userId;
-        this.userNickname = userNickname;
+        this.userName = userName;
         this.userProfileImage = userProfileImage;
         this.userAddress = userAddress;
         this.userDetailAddress = userDetailAddress;
@@ -37,14 +26,19 @@ public class UserDto {
         this.userGender = userGender;
         this.userAge = userAge;
         this.userBirthday = userBirthday;
+        this.userEmail = userEmail;
     }
 
-    public int getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public String getUserNickname() {
-        return userNickname;
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
     }
 
     public String getUserProfileImage() {
@@ -77,5 +71,9 @@ public class UserDto {
 
     public String getUserBirthday() {
         return userBirthday;
+    }
+
+    public String getUserPhoneNumber() {
+        return userPhoneNumber;
     }
 }

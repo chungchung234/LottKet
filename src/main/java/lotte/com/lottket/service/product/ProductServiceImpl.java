@@ -1,8 +1,15 @@
 package lotte.com.lottket.service.product;
 
+import lotte.com.lottket.dao.product.ProductDao;
 import lotte.com.lottket.dto.ProductDto;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ProductServiceImpl implements ProductService {
+
+    @Autowired
+    ProductDao productDao;
     @Override
     public void insertProduct(ProductDto dto) {
 
@@ -31,5 +38,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void selectProductFind(String productTitle) {
 
+    }
+
+    @Override
+    public ProductDto findByProductId(long productId) {
+        return productDao.findByProductId(productId);
     }
 }

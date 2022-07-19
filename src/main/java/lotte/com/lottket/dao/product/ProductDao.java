@@ -9,4 +9,6 @@ public interface ProductDao {
     void selectProduct(ProductDto dto);
     void selectProductAll();
     void selectProductFind(String productTitle);
+
+    ProductDto findByProductId(long productId);
 }
