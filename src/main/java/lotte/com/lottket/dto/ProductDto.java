@@ -3,15 +3,15 @@ package lotte.com.lottket.dto;
 import java.time.LocalDateTime;
 
 public class ProductDto {
-    private int productId;
+    private Long productId;
     private String productTitle;
-    private String category;
+    private String productCategory;
     private int productPrice;
     private int productStock;
     private String productRegDate;
-    private int productTotalRate;
+    private String productTotalRate;
 
-    public ProductDto(int productId, String productTitle, String productCategory, int productPrice, int productStock, String productRegDate, int productTotalRate) {
+    public ProductDto(Long productId, String productTitle, String productCategory, int productPrice, int productStock, String productRegDate, String productTotalRate) {
         this.productId = productId;
         this.productTitle = productTitle;
         this.productCategory = productCategory;
@@ -35,35 +35,33 @@ public class ProductDto {
     }
 
 
-    public ProductDto(String productTitle, String category, int productPrice, int productStock, LocalDateTime productRegdate, double productTotal) {
+    public ProductDto(String productTitle, String category, int productPrice, int productStock, String productRegdate, String productTotal) {
         this.productTitle = productTitle;
-        this.category = category;
+        this.productCategory = category;
         this.productPrice = productPrice;
         this.productStock = productStock;
-        this.productRegdate = productRegdate;
-        this.productTotal = productTotal;
+        this.productRegDate = productRegDate;
+        this.productTotalRate = productTotalRate;
     }
 
-    public ProductDto(int productId, String productTitle, String category, int productPrice, int productStock, LocalDateTime productRegdate, double productTotal) {
+    public String getProductCategory() {
+        return productCategory;
+    }
+
+    public String getProductRegDate() {
+        return productRegDate;
+    }
+
+    public void setProductId(Long productId) {
         this.productId = productId;
-        this.productTitle = productTitle;
-        this.category = category;
-        this.productPrice = productPrice;
-        this.productStock = productStock;
-        this.productRegdate = productRegdate;
-        this.productTotal = productTotal;
     }
 
-    public int getProductId() {
+    public Long getProductId() {
         return productId;
     }
 
     public String getProductTitle() {
         return productTitle;
-    }
-
-    public String getCategory() {
-        return category;
     }
 
     public int getProductPrice() {
@@ -74,16 +72,8 @@ public class ProductDto {
         return productStock;
     }
 
-    public LocalDateTime getProductRegdate() {
-        return productRegdate;
-    }
-
-
-    public int getProductTotalRate() {
+    public String getProductTotalRate() {
         return productTotalRate;
     }
 
-    public void setProductTotalRate(int productTotalRate) {
-        this.productTotalRate = productTotalRate;
-    }
 }

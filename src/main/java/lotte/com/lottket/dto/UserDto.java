@@ -1,7 +1,8 @@
 package lotte.com.lottket.dto;
 
+
 public class UserDto {
-    private int userId;
+    private Long userId;
     private String userNickname;
     private String userProfileImage;
     private String userAddress;
@@ -12,7 +13,9 @@ public class UserDto {
     private String userAge;
     private String userBirthday;
 
-
+    public UserDto(Long userId) {
+        this.userId = userId;
+    }
 
     public UserDto(String userNickname, String userProfileImage, String userAddress, String userDetailAddress, String userGrade, String userRole, String userGender, String userAge, String userBirthday) {
         this.userNickname = userNickname;
@@ -26,7 +29,7 @@ public class UserDto {
         this.userBirthday = userBirthday;
     }
 
-    public UserDto(int userId, String userNickname, String userProfileImage, String userAddress, String userDetailAddress, String userGrade, String userRole, String userGender, String userAge, String userBirthday) {
+    public UserDto(Long userId, String userNickname, String userProfileImage, String userAddress, String userDetailAddress, String userGrade, String userRole, String userGender, String userAge, String userBirthday) {
         this.userId = userId;
         this.userNickname = userNickname;
         this.userProfileImage = userProfileImage;
@@ -39,7 +42,7 @@ public class UserDto {
         this.userBirthday = userBirthday;
     }
 
-    public int getUserId() {
+    public Long getUserId() {
         return userId;
     }
 

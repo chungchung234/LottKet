@@ -17,7 +17,7 @@ public class UserController {
     @Autowired
     UserSevice service;
 
-    @RequestMapping(value="signin.do", method = RequestMethod.GET)
+    @RequestMapping(value="signIn.do", method = RequestMethod.GET)
     @ResponseBody
     public String signIn(UserDto dto) {
         int count = service.signIn(dto);
@@ -25,7 +25,7 @@ public class UserController {
         return count>0?"YES":"NO";
     }
 
-    @RequestMapping(value="signup.do", method = RequestMethod.POST)
+    @RequestMapping(value="signUp.do", method = RequestMethod.POST)
     @ResponseBody
     public int signUp(UserDto dto) {
         return service.signUp(dto);
