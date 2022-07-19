@@ -17,7 +17,7 @@ public class ProductDetailController {
 
     @Autowired
     ProductDetailService productDetailService;
-    Logger logger = LoggerFactory.getLogger(MainController.class);
+    //Logger logger = LoggerFactory.getLogger(MainController.class);
 
     @RequestMapping(value = "getProductById.do")
     public String getProductById(Model model){

@@ -36,6 +36,7 @@ public class ProductDto {
     }
 
 
+
     public ProductDto(String productTitle, String category, int productPrice, int productStock, String productRegDate, double productTotalRate) {
         this.productTitle = productTitle;
         this.productCategory = category;
@@ -58,11 +59,6 @@ public class ProductDto {
         return productTitle;
     }
 
-
-    public String getProductCategory() {
-        return productCategory;
-    }
-
     public int getProductPrice() {
         return productPrice;
     }
@@ -75,4 +71,7 @@ public class ProductDto {
         return productTotalRate;
     }
 
+    public void setProductId(Long id) {
+        this.productId = id;
+    }
 }

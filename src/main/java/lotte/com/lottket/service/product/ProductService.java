@@ -1,10 +1,12 @@
 package lotte.com.lottket.service.product;
 
 import lotte.com.lottket.dto.ProductDto;
+import lotte.com.lottket.dto.ProductImageDto;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 
-@Service
+
 public interface ProductService {
     ProductDto findByProductId(long productId);
     int insertProduct(ProductDto dto);
@@ -16,6 +18,6 @@ public interface ProductService {
     Long getId(ProductDto dto);
     List<ProductImageDto> selectBestProduct();
     List<ProductImageDto> selectWeeklyBestProduct();
-    List<ProductDto> selectNewProduct();
+    List<ProductImageDto> selectNewProduct();
 
 }
