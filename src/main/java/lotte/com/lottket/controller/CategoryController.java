@@ -22,7 +22,7 @@ public class CategoryController {
     @Autowired
     CategoryService categoryService;
 
-    @RequestMapping(value = "category", method = RequestMethod.GET)
+    @RequestMapping(value = "category/default.do", method = RequestMethod.GET)
     public String findByCategory(Model model, String productCategory){
         logger.info("CategoryController findByCategory");
 
