@@ -3,7 +3,7 @@ package lotte.com.lottket.dto;
 import java.time.LocalDateTime;
 
 public class ProductDto {
-    private Long productId;
+    private long productId;
     private String productTitle;
     private String productCategory;
     private int productPrice;
@@ -36,7 +36,7 @@ public class ProductDto {
     }
 
 
-    public ProductDto(String productTitle, String category, int productPrice, int productStock, String productRegdate, String productTotalRate) {
+    public ProductDto(String productTitle, String category, int productPrice, int productStock, String productRegdate, double productTotalRate) {
         this.productTitle = productTitle;
         this.productCategory = category;
         this.productPrice = productPrice;
@@ -61,11 +61,6 @@ public class ProductDto {
         return productTitle;
     }
 
-
-    public String getProductCategory() {
-        return productCategory;
-    }
-
     public int getProductPrice() {
         return productPrice;
     }
@@ -74,14 +69,11 @@ public class ProductDto {
         return productStock;
     }
 
-    public String getProductRegDate() {
-        return productRegDate;
-    }
-
     public double getProductTotalRate() {
         return productTotalRate;
     }
 
-
+    public void setProductId(Long id) {
+        this.productId = id;
     }
 }

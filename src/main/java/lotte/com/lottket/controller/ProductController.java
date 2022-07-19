@@ -1,6 +1,8 @@
 package lotte.com.lottket.controller;
 
+import com.google.gson.Gson;
 import lotte.com.lottket.dto.ProductDto;
+import lotte.com.lottket.dto.ProductImageDto;
 import lotte.com.lottket.service.product.ProductService;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.json.JSONObject;
@@ -44,11 +46,6 @@ public class ProductController {
         return count>0?"YES":"NO";
     }
 
-    /***
-     *
-     * @param dto
-     * @return
-     */
     @RequestMapping(value="selectProduct.do", method = RequestMethod.GET)
     @ResponseBody
     //json
@@ -82,17 +79,27 @@ public class ProductController {
         //model.addAttribute(service.selectBestProduct());
         //service.selectBestProduct();
         //return "selectBestProduct.do";
-        return service.selectBestProduct().toString();
+        List<ProductImageDto> dto = service.selectBestProduct();
+        Gson gson = new Gson();
+        String result = gson.toJson(dto);
+        model.addAttribute(result);
+        return "selectBestProduct";
     }
 
     @RequestMapping(value="selectWeeklyBestProduct.do", method = RequestMethod.GET)
-    public List<ProductImageDto> selectWeeklyBestProduct() {
-        return service.selectWeeklyBestProduct();
+    public String selectWeeklyBestProduct() {
+        List<ProductImageDto> dto = service.selectWeeklyBestProduct();
+        Gson gson = new Gson();
+        String result = gson.toJson(dto);
+        return result;
     }
 
     @RequestMapping(value="selectNewProduct.do", method = RequestMethod.GET)
-    public List<ProductDto> selectNewProduct() {
-        return service.selectNewProduct();
+    public String selectNewProduct() {
+        List<ProductImageDto> dto = service.selectNewProduct();
+        Gson gson = new Gson();
+        String result = gson.toJson(dto);
+        return result;
     }
 
 }

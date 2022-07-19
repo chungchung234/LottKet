@@ -1,6 +1,7 @@
 package lotte.com.lottket.dao.product;
 
 import lotte.com.lottket.dto.ProductDto;
+import lotte.com.lottket.dto.ProductImageDto;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -36,11 +37,6 @@ public class ProductDaoImpl implements ProductDao{
         return session.selectOne(ns + "selectProduct", Long.toString(dto.getProductId()));
     }
 
-    @Autowired
-    SqlSession session;
-
-    final String ns = "Product.";
-
     @Override
     public List<ProductDto> selectProductAll() {
         return session.selectList(ns + "selectProductAll");
@@ -67,7 +63,7 @@ public class ProductDaoImpl implements ProductDao{
     }
 
     @Override
-    public List<ProductDto> selectNewProduct() {
+    public List<ProductImageDto> selectNewProduct() {
         return session.selectList(ns + "selectBestProduct");
     }
 
