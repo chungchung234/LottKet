@@ -7,11 +7,11 @@
     <select id="user" resultType="lotte.com.lottket.dto.UserDto">
         select product_id,
                product_title,
-               category,
+               product_category,
                product_price,
                product_stock,
                product_regdate
         from user
-        WHERE product_id = 1
+        WHERE product_id = 2
     </select>
 </mapper>

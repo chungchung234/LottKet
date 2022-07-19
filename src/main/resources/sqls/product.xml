@@ -4,14 +4,36 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Product">
-    <select id="product" resultType="lotte.com.lottket.dto.ProductDto">
+
+    <!-- 수정 전입니다 -->
+    <insert id="createDB" parameterType="java.util.HashMap">
+        <if test="goodsList.size != 0">
+            INSERT INTO EVENT_GOODS_MNG
+            (
+            EVENT_GOODS_MNG_IDX
+            , GOODS_IDX
+            )
+            VALUES
+            <foreach collection="goodsList" item="item" separator=",">
+                (
+                #{eventIdx}
+                , #{item.goodsIdx}
+                )
+            </foreach>
+        </if>
+    </insert>
+
+
+    <select id="findOneProduct" resultType="lotte.com.lottket.dto.ProductDto">
         select product_id,
                product_title,
-               category,
+               product_category,
                product_price,
                product_stock,
                product_regdate
         from product
-        WHERE product_id = 1
+        WHERE product_id = 2
     </select>
+
+
 </mapper>
