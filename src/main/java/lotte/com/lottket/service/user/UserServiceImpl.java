@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserServiceImpl implements UserSevice{
+public class UserServiceImpl implements UserService{
     @Autowired
     UserDao dao;
 
@@ -23,5 +23,10 @@ public class UserServiceImpl implements UserSevice{
     @Override
     public UserDto getUser(UserDto dto) {
         return dao.getUser(dto);
+    }
+
+    @Override
+    public UserDto findByUserId(long userId) {
+        return dao.findByUserId(userId);
     }
 }

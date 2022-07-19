@@ -3,15 +3,16 @@ package lotte.com.lottket.dto;
 import java.time.LocalDateTime;
 
 public class ProductDto {
-    private Long productId;
+    private long productId;
     private String productTitle;
     private String productCategory;
     private int productPrice;
     private int productStock;
     private String productRegDate;
-    private Double productTotalRate;
 
-    public ProductDto(Long productId, String productTitle, String productCategory, int productPrice, int productStock, String productRegDate, Double productTotalRate) {
+    private double productTotalRate;
+
+    public ProductDto(int productId, String productTitle, String productCategory, int productPrice, int productStock, String productRegDate, double productTotalRate) {
         this.productId = productId;
         this.productTitle = productTitle;
         this.productCategory = productCategory;
@@ -35,7 +36,7 @@ public class ProductDto {
     }
 
 
-    public ProductDto(String productTitle, String category, int productPrice, int productStock, String productRegdate, String productTotalRate) {
+    public ProductDto(String productTitle, String category, int productPrice, int productStock, String productRegdate, double productTotalRate) {
         this.productTitle = productTitle;
         this.productCategory = category;
         this.productPrice = productPrice;
@@ -50,10 +51,6 @@ public class ProductDto {
 
     public String getProductRegDate() {
         return productRegDate;
-    }
-
-    public void setProductId(Long productId) {
-        this.productId = productId;
     }
 
     public Long getProductId() {
@@ -72,11 +69,11 @@ public class ProductDto {
         return productStock;
     }
 
-    public Double getProductTotalRate() {
+    public double getProductTotalRate() {
         return productTotalRate;
     }
 
-    public void setProductTotalRate(Double productTotalRate) {
-        this.productTotalRate = productTotalRate;
+    public void setProductId(Long id) {
+        this.productId = id;
     }
 }

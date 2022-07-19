@@ -2,65 +2,69 @@ package lotte.com.lottket.service.product;
 
 import lotte.com.lottket.dao.product.ProductDao;
 import lotte.com.lottket.dto.ProductDto;
+import lotte.com.lottket.dto.ProductImageDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
-    ProductDao dao;
-
+    ProductDao productDao;
+    
     @Override
     public int insertProduct(ProductDto dto) {
-        return dao.insertProduct(dto);
+        return productDao.insertProduct(dto);
     }
 
     @Override
     public int updateProduct(ProductDto dto) {
-        return dao.updateProduct(dto);
+        return productDao.updateProduct(dto);
     }
 
     @Override
     public int deleteProduct(ProductDto dto) {
-        return dao.deleteProduct(dto);
+        return productDao.deleteProduct(dto);
     }
 
     @Override
     public ProductDto selectProduct(ProductDto dto) {
-        return dao.selectProduct(dto);
+        return productDao.selectProduct(dto);
     }
 
     @Override
     public List<ProductDto> selectProductAll() {
-        return dao.selectProductAll();
+        return productDao.selectProductAll();
     }
 
     @Override
     public List<ProductDto> selectProductFind(String productTitle) {
-        return dao.selectProductFind(productTitle);
+        return productDao.selectProductFind(productTitle);
     }
 
     @Override
     public Long getId(ProductDto dto) {
-        return dao.getId(dto);
+        return productDao.getId(dto);
     }
 
     @Override
     public List<ProductImageDto> selectBestProduct() {
-        return dao.selectBestProduct();
+        return productDao.selectBestProduct();
     }
 
     @Override
     public List<ProductImageDto> selectWeeklyBestProduct() {
-        return dao.selectWeeklyBestProduct();
+        return productDao.selectWeeklyBestProduct();
     }
 
     @Override
-    public List<ProductDto> selectNewProduct() {
-        return dao.selectNewProduct();
+    public List<ProductImageDto> selectNewProduct() {
+        return productDao.selectNewProduct();
     }
 
+    @Override
+    public ProductDto findByProductId(long productId) {
+        return productDao.findByProductId(productId);
+    }
 }

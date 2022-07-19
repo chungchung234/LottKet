@@ -17,31 +17,17 @@ public class AdminController {
     @Autowired
     AdminService adminService;
 
-    Logger logger = LoggerFactory.getLogger(AdminController.class);
+    Logger logger = LoggerFactory.getLogger(MainController.class);
 
-    @RequestMapping(value="admin/selectPopulalityProduct", method = RequestMethod.GET)
+    @RequestMapping(value="admin/init", method = RequestMethod.GET)
     @ResponseBody
-    public List<HashMap> selectPopulalityProduct(Model model) {
-        return adminService.selectPopulalityProduct((HashMap) model.getAttribute("populalityProduct"));
-    }
-
-    @RequestMapping(value="admin/selectDateTotal", method = RequestMethod.GET)
-    @ResponseBody
-    public List<HashMap> selectDateTotal(Model model) {
-        return adminService.selectDateTotal((HashMap) model.getAttribute("dateTotal"));
-    }
-
-    @RequestMapping(value="admin/selectAgeStastistics", method = RequestMethod.GET)
-    @ResponseBody
-    public List<HashMap> selectAgeStastistics(Model model) {
-        return adminService.selectAgeStastistics((HashMap) model.getAttribute("ageTotal"));
-    }
-
-    @RequestMapping(value="admin/selectGenderStastistics", method = RequestMethod.GET)
-    @ResponseBody
-    public List<HashMap>  selectGenderStastistics(Model model) {
-
-        return adminService.selectGenderStastistics((HashMap) model.getAttribute("genderTotal"));
+    public List<List<HashMap>> init(Model model) {
+        List<List<HashMap>> data = new ArrayList<List<HashMap>>();
+        data.add(adminService.selectDateTotal((HashMap) model.getAttribute("dateTotal")));
+        data.add(adminService.selectPopulalityProduct((HashMap) model.getAttribute("populalityProduct")));
+        data.add(adminService.selectAgeStastistics((HashMap) model.getAttribute("ageTotal")));
+        data.add(adminService.selectGenderStastistics((HashMap) model.getAttribute("genderTotal")));
+        return data;
     }
 
     @RequestMapping(value = "admin.do")
@@ -50,7 +36,15 @@ public class AdminController {
         return "admin";
     }
 
-    @RequestMapping(value = "admin/orders")
+
+    @RequestMapping(value="/category", method = RequestMethod.GET)
+    @ResponseBody
+    public String selectDateTotal(Model model) {
+        List<HashMap> selectDateTotal = adminService.selectDateTotal((HashMap) model);
+        return "";
+    }
+
+    @RequestMapping(value = "/orders")
     public List<HashMap> selectOrder(Model model){
         return adminService.selectTotalOrders((HashMap) model.getAttribute("totalOrders"));
     }

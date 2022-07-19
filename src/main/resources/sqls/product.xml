@@ -50,6 +50,12 @@
         WHERE product_title=#{productTitle} AND product_regdate=#{productRegdate}
     </select>
 
+    <select id="findByProductId" parameterType="long" resultType="lotte.com.lottket.dto.ProductDto">
+        select *
+        from product
+        where product_id=#{productId}
+    </select>
+    
     <!-- 베스트 조회 -->
     <select id="selectBestProduct">
         SELECT DISTINCT product_image_url, a.product_id
@@ -73,6 +79,5 @@
         LIMIT 20;
     </select>
 
-    <!-- id로 image갖고오기 -->
 
 </mapper>

@@ -10,6 +10,12 @@
         WHERE user_id = #{userId}
     </select>
 
+    <select id="findByUserId" parameterType="long" resultType="lotte.com.lottket.dto.UserDto">
+        select *
+        from user
+        where user_id = #{userId}
+    </select>
+    
     <select id="signIn" parameterType="lotte.com.lottket.dto.UserDto">
         SELECT * FROM user
         WHERE user_id=#{userId}
@@ -19,6 +25,5 @@
         INSERT INTO user(user_id, user_name, user_profile_image, user_address, user_detail_address, user_grade, user_role, user_gender, user_age, user_birthday, user_email)
         VALUES(#{userId}, #{userName}, #{user_profileImage}, #{userAddress}, #{userDetailAddress}, #{userGrade}, #{userRole}, #{userGender}, #{userAge}, #{userBirthday}, #{userEmail})
     </insert>
-
 
 </mapper>

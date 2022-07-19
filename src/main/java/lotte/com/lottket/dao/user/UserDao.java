@@ -8,4 +8,6 @@ public interface UserDao {
     int signUp(UserDto dto);
 
     UserDto getUser(UserDto dto);
+
+    UserDto findByUserId(long userId);
 }
