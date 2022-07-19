@@ -17,8 +17,6 @@ public class AdminController {
     @Autowired
     AdminService adminService;
 
-    Logger logger = LoggerFactory.getLogger(MainController.class);
-
     @RequestMapping(value="admin/init", method = RequestMethod.GET)
     @ResponseBody
     public List<List<HashMap>> init(Model model) {
