@@ -8,6 +8,8 @@ public class ProductDto {
     private int productStock;
     private String productRegDate;
 
+    private Double productTotalRate;
+
     @Override
     public String toString() {
         return "ProductDto{" +
@@ -17,6 +19,7 @@ public class ProductDto {
                 ", productPrice=" + productPrice +
                 ", productStock=" + productStock +
                 ", productRegDate='" + productRegDate + '\'' +
+                ", productTotalRate='" + productTotalRate + '\'' +
                 '}';
     }
 
@@ -68,12 +71,21 @@ public class ProductDto {
         this.productRegDate = productRegDate;
     }
 
-    public ProductDto(int productId, String productTitle, String productCategory, int productPrice, int productStock, String productRegDate) {
+    public Double getProductTotalRate() {
+        return productTotalRate;
+    }
+
+    public void setProductTotalRate(Double productTotalRate) {
+        this.productTotalRate = productTotalRate;
+    }
+
+    public ProductDto(int productId, String productTitle, String productCategory, int productPrice, int productStock, String productRegDate, double productTotalRate) {
         this.productId = productId;
         this.productTitle = productTitle;
         this.productCategory = productCategory;
         this.productPrice = productPrice;
         this.productStock = productStock;
         this.productRegDate = productRegDate;
+        this.productTotalRate = productTotalRate;
     }
 }
