@@ -5,6 +5,7 @@ import lotte.com.lottket.dto.ProductDto;
 import java.util.List;
 
 public interface ProductDao {
+    ProductDto findByProductId(long productId);
     int insertProduct(ProductDto dto);
     int updateProduct(ProductDto dto);
     int deleteProduct(ProductDto dto);
@@ -15,4 +16,5 @@ public interface ProductDao {
     List<ProductImageDto> selectBestProduct();
     List<ProductImageDto> selectWeeklyBestProduct();
     List<ProductDto> selectNewProduct();
+
 }

@@ -2,21 +2,35 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="Category">
-
-<select id="findByCategoryOrderByProductPrice" parameterType="String" resultType="lotte.com.lottket.dto.ProductDto">
+<select id="findByCategory" parameterType="String" resultType="lotte.com.lottket.dto.ProductDto">
     select *
     from product
-    where product_category=#{productCategory}
+    where  product_category = #{productCategory}
     order by product_price desc
 </select>
 
-<select id="findByCategoryOrderByProductRegDate" parameterType="String" resultType="lotte.com.lottket.dto.ProductDto">
+<select id="findByCategoryOrderByProductPrice" parameterType="map" resultType="lotte.com.lottket.dto.ProductDto">
     select *
     from product
-    where product_category = #{productCategory}
+    where product_title like #{search} and product_category = #{productCategory}
+    order by product_price desc
+</select>
+
+<select id="findByCategoryOrderByProductRegDate" parameterType="map" resultType="lotte.com.lottket.dto.ProductDto">
+    select *
+    from product
+    where product_title like #{search} and product_category = #{productCategory}
     order by product_regdate desc
 </select>
+    
+<select id="findByCategoryOrderByProductTotalRate" parameterType="map" resultType="lotte.com.lottket.dto.ProductDto">
+    select *
+    from product
+    where product_title like #{search} and product_category = #{productCategory}
+    order by product_total_rate desc
+</select>
+
+
 
 </mapper>

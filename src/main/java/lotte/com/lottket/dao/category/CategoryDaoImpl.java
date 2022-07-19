@@ -1,11 +1,13 @@
 package lotte.com.lottket.dao.category;
 
 import lotte.com.lottket.dto.ProductDto;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class CategoryDaoImpl implements CategoryDao{
@@ -16,13 +18,24 @@ public class CategoryDaoImpl implements CategoryDao{
     String ns="Category.";
 
     @Override
-    public List<ProductDto> findByCategoryOrderByProductPrice(String productCategory) {
-
-        return session.selectList(ns+"findByCategoryOrderByProductPrice");
+    public List<ProductDto> findByCategory(String productCategory) {
+        return session.selectList(ns+"findByCategory",productCategory);
     }
 
     @Override
-    public List<ProductDto> findByCategoryOrderByProductRegDate(String productCategory) {
-        return session.selectList(ns+"findByCategoryOrderByProductRegDate");
+    public List<ProductDto> findByCategoryOrderByProductPrice(Map<String,Object> param) {
+        return session.selectList(ns+"findByCategoryOrderByProductPrice", param);
     }
+
+    @Override
+    public List<ProductDto> findByCategoryOrderByProductRegDate(Map<String,Object> param) {
+        return session.selectList(ns+"findByCategoryOrderByProductRegDate",param);
+    }
+
+    @Override
+    public List<ProductDto> findByCategoryOrderByProductTotalRate(Map<String, Object> param) {
+        return session.selectList(ns+"findByCategoryOrderByProductTotalRate",param);
+    }
+
+
 }

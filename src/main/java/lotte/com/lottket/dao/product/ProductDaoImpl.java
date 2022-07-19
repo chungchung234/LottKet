@@ -3,11 +3,13 @@ package lotte.com.lottket.dao.product;
 import lotte.com.lottket.dto.ProductDto;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 
-@Service
+@Repository
 public class ProductDaoImpl implements ProductDao{
     @Autowired
     SqlSession session;
@@ -33,6 +35,11 @@ public class ProductDaoImpl implements ProductDao{
     public ProductDto selectProduct(ProductDto dto) {
         return session.selectOne(ns + "selectProduct", Long.toString(dto.getProductId()));
     }
+
+    @Autowired
+    SqlSession session;
+
+    final String ns = "Product.";
 
     @Override
     public List<ProductDto> selectProductAll() {
@@ -62,5 +69,10 @@ public class ProductDaoImpl implements ProductDao{
     @Override
     public List<ProductDto> selectNewProduct() {
         return session.selectList(ns + "selectBestProduct");
+    }
+
+    @Override
+    public ProductDto findByProductId(long productId) {
+        return session.selectOne(ns+"findByProductId",productId);
     }
 }

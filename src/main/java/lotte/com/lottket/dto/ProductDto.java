@@ -9,9 +9,10 @@ public class ProductDto {
     private int productPrice;
     private int productStock;
     private String productRegDate;
-    private Double productTotalRate;
 
-    public ProductDto(Long productId, String productTitle, String productCategory, int productPrice, int productStock, String productRegDate, Double productTotalRate) {
+    private double productTotalRate;
+
+    public ProductDto(int productId, String productTitle, String productCategory, int productPrice, int productStock, String productRegDate, double productTotalRate) {
         this.productId = productId;
         this.productTitle = productTitle;
         this.productCategory = productCategory;
@@ -52,16 +53,17 @@ public class ProductDto {
         return productRegDate;
     }
 
-    public void setProductId(Long productId) {
-        this.productId = productId;
-    }
-
     public Long getProductId() {
         return productId;
     }
 
     public String getProductTitle() {
         return productTitle;
+    }
+
+
+    public String getProductCategory() {
+        return productCategory;
     }
 
     public int getProductPrice() {
@@ -72,11 +74,14 @@ public class ProductDto {
         return productStock;
     }
 
-    public Double getProductTotalRate() {
+    public String getProductRegDate() {
+        return productRegDate;
+    }
+
+    public double getProductTotalRate() {
         return productTotalRate;
     }
 
-    public void setProductTotalRate(Double productTotalRate) {
-        this.productTotalRate = productTotalRate;
+
     }
 }
