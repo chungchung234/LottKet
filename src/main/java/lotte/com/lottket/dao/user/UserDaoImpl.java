@@ -13,19 +13,34 @@ public class UserDaoImpl implements UserDao{
 
     String ns = "User.";
 
+    /***
+     *
+     * @param dto
+     * @return
+     */
     @Override
     public int signIn(UserDto dto) {
         return session.selectOne(ns + "signIn");
     }
 
+    /***
+     *
+     * @param dto
+     * @return
+     */
     @Override
     public int signUp(UserDto dto) {
         return session.insert(ns + "signUp");
     }
 
+    /***
+     *
+     * @param dto
+     * @return
+     */
     @Override
     public UserDto getUser(UserDto dto) {
-        return session.selectOne(ns + "getMember");
+        return session.selectOne(ns + "getUser");
     }
 
     @Override

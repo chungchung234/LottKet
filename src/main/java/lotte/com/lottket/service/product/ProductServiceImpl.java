@@ -4,40 +4,62 @@ import lotte.com.lottket.dao.product.ProductDao;
 import lotte.com.lottket.dto.ProductDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
     ProductDao productDao;
+    
     @Override
-    public void insertProduct(ProductDto dto) {
-
+    public int insertProduct(ProductDto dto) {
+        return dao.insertProduct(dto);
     }
 
     @Override
-    public void updateProduct(ProductDto dto) {
-
+    public int updateProduct(ProductDto dto) {
+        return dao.updateProduct(dto);
     }
 
     @Override
-    public void deleteProduct(ProductDto dto) {
-
+    public int deleteProduct(ProductDto dto) {
+        return dao.deleteProduct(dto);
     }
 
     @Override
-    public void selectProduct(ProductDto dto) {
-
+    public ProductDto selectProduct(ProductDto dto) {
+        return dao.selectProduct(dto);
     }
 
     @Override
-    public void selectProductAll() {
-
+    public List<ProductDto> selectProductAll() {
+        return dao.selectProductAll();
     }
 
     @Override
-    public void selectProductFind(String productTitle) {
+    public List<ProductDto> selectProductFind(String productTitle) {
+        return dao.selectProductFind(productTitle);
+    }
 
+    @Override
+    public Long getId(ProductDto dto) {
+        return dao.getId(dto);
+    }
+
+    @Override
+    public List<ProductImageDto> selectBestProduct() {
+        return dao.selectBestProduct();
+    }
+
+    @Override
+    public List<ProductImageDto> selectWeeklyBestProduct() {
+        return dao.selectWeeklyBestProduct();
+    }
+
+    @Override
+    public List<ProductDto> selectNewProduct() {
+        return dao.selectNewProduct();
     }
 
     @Override

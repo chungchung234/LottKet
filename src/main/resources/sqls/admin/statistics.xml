@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="statistics">
+
+    <select id="sales_day_total" resultType="java.util.HashMap">
+        select day_sales_total.day_total,
+               day_sales_total.price_total
+        FROM (select DATE(o.order_date)                    as day_total,
+                     SUM(o.order_amount) * p.product_price as price_total
+              from orders o,
+                   product p
+              where o.product_id = p.product_id
+                and o.order_date between #{start_date} and #{end_date}
+                and if(
+                      #{product_category}
+                  ,
+                      p.product_category = #{product_category}
+                  , 1 = 1
+                  )
+              GROUP BY day_total) day_sales_total
+
+
+    </select>
+    <select id="sales_week_total" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+        select week_sales_total.week_total,
+               week_sales_total.price_total
+        from (SELECT concat(year(order_date), '년 ', month(order_date), '월 ', weekofyear(order_date) -
+                                                                             weekofyear(LAST_DAY(order_date - interval 1 month) + interval 1 DAY) +
+                                                                             1, '주차') as week_total,
+                     SUM(o.order_amount) * p.product_price                            as price_total
+              FROM orders o,
+                   product p
+              where o.product_id = p.product_id
+                and o.order_date between #{start_date} and #{end_date}
+
+                and if(
+                      #{product_category}
+                  ,
+                      p.product_category = #{product_category}
+                  , 1 = 1
+                  )
+              GROUP BY week_total) week_sales_total
+
+    </select>
+    <select id="sales_month_total" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+
+        select month_sales_total.month_total,
+               month_sales_total.price_total
+        from (SELECT CONCAT(YEAR(order_date), CONCAT('년 ', MONTH(order_date), '월')) as month_total,
+                     SUM(o.order_amount) * p.product_price                          as price_total
+              from orders o,
+                   product p
+              where o.product_id = p.product_id
+                and o.order_date between #{start_date} and #{end_date}
+                and if(
+                      #{product_category}
+                  ,
+                      p.product_category = #{product_category}
+                  , 1 = 1
+                  )
+              GROUP BY month_total) month_sales_total
+    </select>
+    <select id="populality_product" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+        select p.product_category  as product_category,
+               sum(o.order_amount) as order_amount
+        from orders o,
+             product p
+        where o.product_id = p.product_id
+          and o.order_date between #{start_date} and #{end_date}
+        group by p.product_category
+    </select>
+
+
+    <select id="total_orders" resultType="lotte.com.lottket.dto.OrderDto">
+        select o.order_id,
+               o.user_id,
+               u.user_email,
+               o.product_id,
+               o.order_amount,
+               o.order_date,
+               o.order_address,
+               o.order_detail_address,
+               o.order_total_price,
+               o.payment,
+               o.valid,
+               o.delivery_requirement
+        from orders o,
+             user u
+        where o.user_id = u.user_id
+          and o.order_date between #{start_date} and #{end_date}
+          and if(#{user_id}, o.user_id = #{user_id}, 1 = 1)
+          and if(#{product_id}, product_id = #{product_id}, 1 = 1)
+    </select>
+    <select id="gender_statistics" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+
+        select case when u.user_gender = 'male' then count(u.user_gender) end   as male,
+               case when u.user_gender = 'female' then count(u.user_gender) end as female
+        from orders o,
+             user u
+        where o.user_id = u.user_id
+          and o.order_date between #{start_date}
+            and #{end_date}
+        group by u.user_gender
+
+    </select>
+    <select id="age_statistics" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+
+        select case when u.user_age = '10~19' then count(u.user_age) end as 10대,
+               case when u.user_age = '20~29' then count(u.user_age) end as 20대,
+               case when u.user_age = '30~39' then count(u.user_age) end as 30대,
+               case when u.user_age = '40~49' then count(u.user_age) end as 40대,
+               case when u.user_age = '50~59' then count(u.user_age) end as 50대,
+               case when u.user_age = '60~69' then count(u.user_age) end as 60대
+        from orders o,
+             user u
+        where o.user_id = u.user_id
+          and o.order_date between #{start_date} and #{end_date}
+        group by u.user_age
+    </select>
+
+</mapper>
+
+

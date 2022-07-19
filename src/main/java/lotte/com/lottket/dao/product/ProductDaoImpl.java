@@ -6,10 +6,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+
+import java.util.List;
+
 @Repository
 public class ProductDaoImpl implements ProductDao{
     @Autowired
-    ProductDao dao;
+    SqlSession session;
+
+    String ns = "Product.";
+
+    @Override
+    public int insertProduct(ProductDto dto) {
+        return session.insert(ns + "insertProduct", dto);
+    }
+
+    @Override
+    public int updateProduct(ProductDto dto) {
+        return session.update(ns + "updateProduct", dto);
+    }
+
+    @Override
+    public int deleteProduct(ProductDto dto) {
+        return session.delete(ns + "deleteProduct", dto);
+    }
+
+    @Override
+    public ProductDto selectProduct(ProductDto dto) {
+        return session.selectOne(ns + "selectProduct", Long.toString(dto.getProductId()));
+    }
 
     @Autowired
     SqlSession session;
@@ -17,33 +42,33 @@ public class ProductDaoImpl implements ProductDao{
     final String ns = "Product.";
 
     @Override
-    public void insertProduct(ProductDto dto) {
-        dao.insertProduct(dto);
+    public List<ProductDto> selectProductAll() {
+        return session.selectList(ns + "selectProductAll");
     }
 
     @Override
-    public void updateProduct(ProductDto dto) {
-        dao.updateProduct(dto);
+    public List<ProductDto> selectProductFind(String productTitle) {
+        return session.selectList(ns + "selectProductFind", productTitle);
     }
 
     @Override
-    public void deleteProduct(ProductDto dto) {
-        dao.deleteProduct(dto);
+    public Long getId(ProductDto dto) {
+        return session.selectOne(ns + "getId", dto);
     }
 
     @Override
-    public void selectProduct(ProductDto dto) {
-        dao.selectProduct(dto);
+    public List<ProductImageDto> selectBestProduct() {
+        return session.selectList(ns + "selectBestProduct");
     }
 
     @Override
-    public void selectProductAll() {
-        dao.selectProductAll();
+    public List<ProductImageDto> selectWeeklyBestProduct() {
+        return session.selectList(ns + "selectBestProduct");
     }
 
     @Override
-    public void selectProductFind(String productTitle) {
-        dao.selectProductFind(productTitle);
+    public List<ProductDto> selectNewProduct() {
+        return session.selectList(ns + "selectBestProduct");
     }
 
     @Override
