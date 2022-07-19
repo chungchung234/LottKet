@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Product">
+    <!-- productDto로 insert하기 -->
+    <insert id="insertProduct" parameterType="lotte.com.lottket.dto.ProductDto" >
+        INSERT INTO product
+            (product_title, product_category, product_price, product_stock, product_regdate, product_total_rate)
+        VALUES
+            (#{productTitle}, #{productCategory}, #{productPrice}, #{productStock}, NOW(), #{productTotalRate});
+    </insert>
+
+    <!-- product update하기 -->
+    <update id="updateProduct" parameterType="lotte.com.lottket.dto.ProductDto">
+        UPDATE product
+        SET product_title=#{productTitle}, product_category=#{productCategory}, product_price=#{productPrice}, product_stock=#{productStock},
+            product_regdate=#{productRegdate}, product_total_rate=#{productTotalRate}
+        WHERE product_id=#{productId}
+    </update>
+
+    <!-- id로 product 삭제하기 -->
+    <delete id="deleteProduct" parameterType="int">
+        DELETE FROM product
+        WHERE product_id=#{productId}
+    </delete>
+
+    <!-- id로 product 갖고오기 -->
+    <select id="selectProduct" resultType="lotte.com.lottket.dto.ProductDto">
+        select *
+        from product
+        WHERE product_id=#{product_id}
+    </select>
+
+    <!-- 모두 갖고오기 -->
+    <select id="selectProductAll">
+        SELECT * FROM product
+    </select>
+
+    <!-- title으로 id 갖고오기 -->
+    <select id="selectProductFind">
+        SELECT product_id FROM product
+        WHERE product_title=#{productTitle}
+    </select>
+
+    <!--id 갖고오기-->
+    <select id="getId" parameterType="lotte.com.lottket.dto.ProductDto">
+        SELECT product_id FROM product
+        WHERE product_title=#{productTitle} AND product_regdate=#{productRegdate}
+    </select>
+
+    <!-- 베스트 조회 -->
+    <select id="selectBestProduct">
+        SELECT DISTINCT product_image_url, a.product_id
+        FROM product_image a, (SELECT DISTINCT product_id, SUM(order_amount) as amount FROM orders
+                               GROUP BY product_id ORDER BY amount desc) b
+        WHERE product_image_idx = 1 LIMIT 20;
+    </select>
+
+    <!-- 주간 베스트 조회 -->
+    <select id="selectWeeklyBestProduct">
+        SELECT DISTINCT product_image_url, a.product_id, b.amount
+        FROM product_image a, (SELECT DISTINCT product_id, SUM(order_amount) as amount, order_date FROM orders
+                               WHERE order_date BETWEEN DATE_SUB(NOW(), INTERVAL 7 DAY) AND NOW() GROUP BY product_id ORDER BY amount desc) b
+        WHERE product_image_idx = 1 AND a.product_id = b.product_id LIMIT 20;
+    </select>
+
+    <!-- 신상품 조회 -->
+    <select id="selectNewProduct">
+        SELECT * FROM product
+        ORDER BY product_regdate DESC
+        LIMIT 20;
+    </select>
+
+    <!-- id로 image갖고오기 -->
+
+</mapper>
