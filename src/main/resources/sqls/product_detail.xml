@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ProductDetail">
+
+<select id="productById" parameterType = "Integer" resultType="lotte.com.lottket.dto.ProductDto">
+	select product_id, product_title, product_category, product_price, product_stock, product_regdate, product_total_rate
+	from product
+	where product_id=#{id}
+</select>
+
+
+<select id="productImageById" parameterType = "Integer" resultType="lotte.com.lottket.dto.ProductImageDto">
+	select product_image_idx, product_id, product_image_url
+	from product_image
+	where product_id=#{id}
+</select>
+
+
+<!--
+	<select id="productImageById" resultType="lotte.com.lottket.dto.ProductImageDto">
+		select productImageIdx, productI
+
+		    d, productImageUrl
+		from productimage
+	</select>
+-->
+</mapper>
+
+

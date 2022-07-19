@@ -8,12 +8,13 @@
 <select id="main" resultType="lotte.com.lottket.dto.ProductDto">
 	select product_id,
 		product_title,
-		category,
+		product_category,
 		product_price,
 		product_stock,
-		product_regdate
+		product_regdate,
+		product_total_rate
 	from product
-	WHERE product_id = 1
+	WHERE product_id = 2
 </select>
 
 

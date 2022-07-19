@@ -9,9 +9,9 @@ public class ProductDto {
     private int productPrice;
     private int productStock;
     private String productRegDate;
-    private String productTotalRate;
+    private Double productTotalRate;
 
-    public ProductDto(Long productId, String productTitle, String productCategory, int productPrice, int productStock, String productRegDate, String productTotalRate) {
+    public ProductDto(Long productId, String productTitle, String productCategory, int productPrice, int productStock, String productRegDate, Double productTotalRate) {
         this.productId = productId;
         this.productTitle = productTitle;
         this.productCategory = productCategory;
@@ -35,7 +35,7 @@ public class ProductDto {
     }
 
 
-    public ProductDto(String productTitle, String category, int productPrice, int productStock, String productRegdate, String productTotal) {
+    public ProductDto(String productTitle, String category, int productPrice, int productStock, String productRegdate, String productTotalRate) {
         this.productTitle = productTitle;
         this.productCategory = category;
         this.productPrice = productPrice;
@@ -72,8 +72,11 @@ public class ProductDto {
         return productStock;
     }
 
-    public String getProductTotalRate() {
+    public Double getProductTotalRate() {
         return productTotalRate;
     }
 
+    public void setProductTotalRate(Double productTotalRate) {
+        this.productTotalRate = productTotalRate;
+    }
 }

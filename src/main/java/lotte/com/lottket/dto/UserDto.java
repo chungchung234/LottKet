@@ -2,6 +2,7 @@ package lotte.com.lottket.dto;
 
 
 public class UserDto {
+
     private Long userId;
     private String userNickname;
     private String userProfileImage;
