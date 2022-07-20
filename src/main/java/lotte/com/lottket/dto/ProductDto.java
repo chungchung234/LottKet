@@ -9,7 +9,6 @@ public class ProductDto {
     private int productPrice;
     private int productStock;
     private String productRegDate;
-
     private double productTotalRate;
 
     public ProductDto(int productId, String productTitle, String productCategory, int productPrice, int productStock, String productRegDate, double productTotalRate) {

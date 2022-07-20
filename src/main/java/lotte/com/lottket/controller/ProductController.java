@@ -11,10 +11,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
 
@@ -25,23 +27,34 @@ public class ProductController {
     @Autowired
     ProductService service;
 
-    @RequestMapping(value="insertProduct.do", method = RequestMethod.GET)
+    @RequestMapping(value="main.do", method = RequestMethod.GET)
+    public String main(Model model) {
+        List<ProductImageDto> bestProduct = selectBestProduct();
+        List<ProductImageDto> weeklyBestProduct = selectWeeklyBestProduct();
+        List<ProductImageDto> newProduct = selectNewProduct();
+        model.addAttribute("bestProduct", bestProduct);
+        model.addAttribute("weeklyBestProduct", weeklyBestProduct);
+        model.addAttribute("newProduct", newProduct);
+        return "main";
+    }
+
+    @RequestMapping(value="insertProduct.do", method = RequestMethod.POST)
     @ResponseBody
-    public String insertProduct(ProductDto dto) {
+    public String insertProduct(@RequestBody ProductDto dto) {
         int count = service.insertProduct(dto);
         return count>0?"YES":"NO";
     }
 
-    @RequestMapping(value="updateProduct.do", method = RequestMethod.GET)
+    @RequestMapping(value="updateProduct.do", method = RequestMethod.POST)
     @ResponseBody
-    public String updateProduct(ProductDto dto) {
+    public String updateProduct(@RequestBody ProductDto dto) {
         int count = service.updateProduct(dto);
         return count>0?"YES":"NO";
     }
 
-    @RequestMapping(value="deleteProduct.do", method = RequestMethod.GET)
+    @RequestMapping(value="deleteProduct.do", method = RequestMethod.POST)
     @ResponseBody
-    public String deleteProduct(ProductDto dto) {
+    public String deleteProduct(@RequestBody ProductDto dto) {
         int count = service.deleteProduct(dto);
         return count>0?"YES":"NO";
     }
@@ -61,7 +74,7 @@ public class ProductController {
         return resultJson;
     }
 
-    @RequestMapping(value="selectProductAll.do", method = RequestMethod.GET)
+    @RequestMapping(value="selectProductAll.do", method = RequestMethod.POST)
     //@ResponseBody
     public List<ProductDto> selectProductAll() {
         return service.selectProductAll();
@@ -73,33 +86,32 @@ public class ProductController {
         return service.selectProductFind(productTitle);
     }
 
+
     @RequestMapping(value="selectBestProduct.do", method = RequestMethod.GET)
     @ResponseBody
-    public String selectBestProduct(Model model) { //List<ProductDto>
-        //model.addAttribute(service.selectBestProduct());
-        //service.selectBestProduct();
-        //return "selectBestProduct.do";
+    public List<ProductImageDto> selectBestProduct() {
         List<ProductImageDto> dto = service.selectBestProduct();
-        Gson gson = new Gson();
-        String result = gson.toJson(dto);
-        model.addAttribute(result);
-        return "selectBestProduct";
+//        Gson gson = new Gson();
+//        String result = gson.toJson(dto);
+        return dto;
     }
 
     @RequestMapping(value="selectWeeklyBestProduct.do", method = RequestMethod.GET)
-    public String selectWeeklyBestProduct() {
+    @ResponseBody
+    public List<ProductImageDto> selectWeeklyBestProduct() {
         List<ProductImageDto> dto = service.selectWeeklyBestProduct();
-        Gson gson = new Gson();
-        String result = gson.toJson(dto);
-        return result;
+//        Gson gson = new Gson();
+//        String result = gson.toJson(dto);
+        return dto;
     }
 
     @RequestMapping(value="selectNewProduct.do", method = RequestMethod.GET)
-    public String selectNewProduct() {
+    @ResponseBody
+    public List<ProductImageDto> selectNewProduct() {
         List<ProductImageDto> dto = service.selectNewProduct();
-        Gson gson = new Gson();
-        String result = gson.toJson(dto);
-        return result;
-    }
+//        Gson gson = new Gson();
+//        String result = gson.toJson(dto);
 
+        return dto;
+    }
 }
