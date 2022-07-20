@@ -66,9 +66,9 @@ public class AdminController {
     }
 
     /***
-     *
+     *어드민 페이지 이동
      * @param model
-     * @return
+     * @return admin
      */
     @RequestMapping(value = "admin.do")
     public String adminInit(Model model) {
@@ -76,6 +76,11 @@ public class AdminController {
         return "admin";
     }
 
+    /***
+     * 주문 페이지 이동
+     * @param model
+     * @return HashMap
+     */
     @RequestMapping(value = "orders.do")
     public List<HashMap> selectOrder(Model model){
         logger.info("selectOrder hello" + new Date());
@@ -83,15 +88,10 @@ public class AdminController {
         return adminService.selectTotalOrders((HashMap) model.getAttribute("totalOrders"));
     }
 
-    @RequestMapping(value = "orders.do")
-    public String orders(Model model) {
-        return "orders";
-    }
-
     /***
-     *
+     *전체 주문 내역 조회
      * @param map
-     * @return
+     * @return HashMap
      */
     @RequestMapping(value="selectTotalOrders.do", method = RequestMethod.POST)
     @ResponseBody
