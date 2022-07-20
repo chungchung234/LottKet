@@ -15,7 +15,6 @@ public class ProductDetailDto {
         this.productDetailImageUrl = productDetailImageUrl;
     }
 
-
     public int getProductDetailId() {
         return productDetailId;
     }

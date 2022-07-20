@@ -12,13 +12,11 @@
 		productprice,
 		productstock,
 		productregdate,
-		   producttotalrate
+		producttotalrate
 	from product
 	WHERE productid = 2
+
 </select>
-
-
-
 
 </mapper>
 
