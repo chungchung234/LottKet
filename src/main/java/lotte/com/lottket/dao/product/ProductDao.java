@@ -4,6 +4,7 @@ import lotte.com.lottket.dto.ProductDto;
 import lotte.com.lottket.dto.ProductImageDto;
 import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
 public interface ProductDao {
 
@@ -22,5 +23,8 @@ public interface ProductDao {
     List<ProductImageDto> selectBestProduct();
     List<ProductImageDto> selectWeeklyBestProduct();
     List<ProductImageDto> selectNewProduct();
+    int findProductStock(long productId);
+
+    void updateProductStock(Map<String,Object> param);
 
 }

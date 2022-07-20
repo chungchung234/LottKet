@@ -24,6 +24,7 @@ public class CategoryDaoImpl implements CategoryDao{
 
     @Override
     public List<ProductDto> findByCategoryOrderByProductPrice(Map<String,Object> param) {
+        System.out.println("CategoryDaoImpl.findByCategoryOrderByProductPrice");
         return session.selectList(ns+"findByCategoryOrderByProductPrice", param);
     }
 
