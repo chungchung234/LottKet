@@ -16,6 +16,7 @@ public class UserDto {
     private String userEmail;
     private String userPhoneNumber;
 
+    public UserDto(){}
     
     public UserDto(Long userId) {
         this.userId = userId;

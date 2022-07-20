@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import java.util.Date;
 import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ProductDaoImpl implements ProductDao{
@@ -87,6 +88,16 @@ public class ProductDaoImpl implements ProductDao{
     @Override
     public List<ProductImageDto> selectNewProduct() {
         return session.selectList(ns + "selectNewProduct");
+    }
+
+    @Override
+    public int findProductStock(long productId) {
+        return session.selectOne(ns+"findProductStock",productId);
+    }
+
+    @Override
+    public void updateProductStock(Map<String, Object> param) {
+        session.update(ns+"updateProductStock",param);
     }
 
     @Override

@@ -22,16 +22,25 @@ public class CategoryController {
     @Autowired
     CategoryService categoryService;
 
-    @RequestMapping(value = "category/default.do", method = RequestMethod.GET)
+    /**
+     * category로 조회
+     * GET category.do
+     * @param model
+     * @param productCategory
+     * @return "category"
+     */
+    @RequestMapping(value = "category.do", method = RequestMethod.GET)
     public String findByCategory(Model model, String productCategory){
-        logger.info("CategoryController findByCategory");
+        logger.info("CategoryController findByCategory()");
 
         model.addAttribute("productList",categoryService.findByCategory(productCategory));
+        model.addAttribute("category", productCategory);
+
 
         return "category";
     }
 
-    /***
+    /**
      * 낮은 가격 순 조회
      * GET category/productPrice.do
      * @param productCategory
@@ -40,16 +49,14 @@ public class CategoryController {
      */
     @ResponseBody
     @RequestMapping(value="category/productPrice.do", method = RequestMethod.GET)
-    public List<ProductDto> findByCategoryOrderByProductPrice(String productCategory, String search){
+    public List<ProductDto> findByCategoryOrderByProductPrice(String productCategory, String search) {
         logger.info("CategoryController findByCategoryOrderByProductPrice() ");
-        List<ProductDto> list=categoryService.findByCategoryOrderByProductPrice(search,productCategory);
-        System.out.println(list.size());
+        List<ProductDto> list= categoryService.findByCategoryOrderByProductPrice(search, productCategory);
 
         return list;
-
     }
 
-    /***
+    /**
      * Product 등록 최신순으로 조회
      * GET category/regDate.do
      * @param productCategory
@@ -65,7 +72,7 @@ public class CategoryController {
 
     }
 
-    /***
+    /**
      * 높은 평점 순으로 조회
      * GET category/totalRate.do
      * @param productCategory

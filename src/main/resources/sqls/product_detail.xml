@@ -6,27 +6,45 @@
 <mapper namespace="ProductDetail">
 
 <select id="productById" parameterType = "Integer" resultType="lotte.com.lottket.dto.ProductDto">
-	select product_id, product_title, product_category, product_price, product_stock, product_regdate, product_total_rate
+	select productid, producttitle, productcategory, productprice, productstock, productregdate, producttotalrate
 	from product
-	where product_id=#{id}
+	where productid=#{id}
 </select>
 
 
 <select id="productImageById" parameterType = "Integer" resultType="lotte.com.lottket.dto.ProductImageDto">
-	select product_image_idx, product_id, product_image_url
-	from product_image
-	where product_id=#{id}
+	select productimageidx, productid, productimageurl
+	from productimage
+	where productid=#{id}
 </select>
 
+<select id="productDetailById" parameterType = "Integer" resultType="lotte.com.lottket.dto.ProductDetailDto">
+	select productdetailid, productid, productdetailimageurl
+	from productdetail
+	where productid = #{id}
+</select>
 
-<!--
-	<select id="productImageById" resultType="lotte.com.lottket.dto.ProductImageDto">
-		select productImageIdx, productI
+<select id="reviewById" parameterType="Integer" resultType="lotte.com.lottket.dto.ReviewJoinUser">
+	select r.reviewid, r.userid, r.productid, r.content, r.reviewdate, r.rating, u.username, u.userprofileimage, u.usergrade
+	from review r, user u
+	where r.userid =  u.userid and r.productid = #{id}
+</select>
 
-		    d, productImageUrl
-		from productimage
-	</select>
--->
+<select id="replyById" parameterType="Integer" resultType="lotte.com.lottket.dto.ReviewJoinReply">
+	select rev.reviewid, rep.replyid, rep.content, rep.replydate
+	from review rev, reply rep
+	where rev.reviewid = rep.reviewid and productid = #{id}
+</select>
+
+	<insert id="insertReview" parameterType="java.util.HashMap">
+		insert into review (userid, productid, content, reviewdate, rating)
+		values (#{userId},#{productId},#{content},now(),#{rating})
+	</insert>
+
+	<insert id="insertReply" parameterType="java.util.HashMap">
+		insert into reply (reviewid, content, replydate)
+		values (#{replyId},#{content},now())
+	</insert>
 </mapper>
 
 

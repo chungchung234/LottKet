@@ -3,8 +3,14 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+<<<<<<< HEAD
+### IntelliJ IDEA ###
+.idea/encodings.xml
+.idea/misc.xml
+=======
 ### IntelliJ IDEA ###]
 .idea/
+>>>>>>> 94a46c96812a15bf93337f3e2e5b37a5870330bc
 .idea/modules.xml
 .idea/jarRepositories.xml
 .idea/compiler.xml

@@ -98,4 +98,16 @@
         ORDER BY productregdate DESC
         LIMIT 20;
     </select>
+
+    <update id="updateProductStock" parameterType="map">
+        UPDATE product
+        SET productstock=#{updateStock} where productid=#{productId}
+    </update>
+
+    <select id="findProductStock" parameterType="long" resultType="int">
+        select productstock
+        from product
+        where productid=#{productId}
+
+    </select>
 </mapper>

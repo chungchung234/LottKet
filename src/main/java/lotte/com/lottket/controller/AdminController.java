@@ -15,6 +15,7 @@ public class AdminController {
     @Autowired
     AdminService adminService;
 
+
     Logger logger = LoggerFactory.getLogger(AdminController.class);
 
     /***
@@ -88,17 +89,11 @@ public class AdminController {
         return adminService.selectTotalOrders((HashMap) model.getAttribute("totalOrders"));
     }
 
-    /***
-     *전체 주문 내역 조회
-     * @param map
-     * @return HashMap
-     */
-    @RequestMapping(value="selectTotalOrders.do", method = RequestMethod.POST)
+    @RequestMapping(value="admin/selectTotalOrders", method = RequestMethod.GET)
     @ResponseBody
-    public List<HashMap>  selectTotalOrders(@RequestBody Map<String, Object> map) {
-        logger.info("selectTotalOrders hello" + new Date());
+    public List<HashMap>  selectTotalOrders(Model model) {
 
-        return adminService.selectTotalOrders((HashMap) map);
+        return adminService.selectTotalOrders((HashMap) model.getAttribute("selectTotalOrders"));
     }
 
 
