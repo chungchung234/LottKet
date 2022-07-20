@@ -13,7 +13,6 @@ public class MainServiceImpl implements MainService {
 
     @Override
     public ProductDto selectAll() {
-
         return maindao.selectAll();
     }
 }

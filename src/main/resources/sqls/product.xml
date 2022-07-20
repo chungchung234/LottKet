@@ -5,35 +5,22 @@
 
 <mapper namespace="Product">
 
-    <!-- 수정 전입니다 -->
-    <insert id="createDB" parameterType="java.util.HashMap">
-        <if test="goodsList.size != 0">
-            INSERT INTO EVENT_GOODS_MNG
-            (
-            EVENT_GOODS_MNG_IDX
-            , GOODS_IDX
-            )
-            VALUES
-            <foreach collection="goodsList" item="item" separator=",">
-                (
-                #{eventIdx}
-                , #{item.goodsIdx}
-                )
-            </foreach>
-        </if>
+    <select id="checkIfEmptyDB" resultType="java.lang.Integer">
+        select count(*)
+        from product
+    </select>
+
+    <insert id="insertOneProduct" parameterType="lotte.com.lottket.dto.ProductDto">
+        INSERT INTO product (producttitle, productcategory, productprice,
+                             productstock, productregdate, producttotalrate)
+        VALUES (#{productTitle}, #{productCategory}, #{productPrice},
+                #{productStock}, #{productRegDate}, #{productTotalRate})
     </insert>
 
-
-    <select id="findOneProduct" resultType="lotte.com.lottket.dto.ProductDto">
-        select product_id,
-               product_title,
-               product_category,
-               product_price,
-               product_stock,
-               product_regdate
-        from product
-        WHERE product_id = 2
-    </select>
+    <insert id="insertOneImage" parameterType="lotte.com.lottket.dto.ProductImageDto">
+        INSERT INTO productimage (productid, productimageidx, productimageurl)
+        VALUES (#{productId}, #{productImageIdx}, #{productImageUrl})
+    </insert>
 
 
 </mapper>

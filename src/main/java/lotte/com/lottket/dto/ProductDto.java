@@ -3,8 +3,7 @@ package lotte.com.lottket.dto;
 import java.time.LocalDateTime;
 
 public class ProductDto {
-    private int productIdx;     // auto_increment PK
-    private String productId;
+    private int productId;
     private String productTitle;
     private String productCategory;
     private int productPrice;
@@ -12,8 +11,7 @@ public class ProductDto {
     private String productRegDate;
     private double productTotalRate;
 
-    public ProductDto(int productIdx, String productId, String productTitle, String productCategory, int productPrice, int productStock, String productRegDate, double productTotalRate) {
-        this.productIdx = productIdx;
+    public ProductDto(int productId, String productTitle, String productCategory, int productPrice, int productStock, String productRegDate, double productTotalRate) {
         this.productId = productId;
         this.productTitle = productTitle;
         this.productCategory = productCategory;
@@ -22,9 +20,17 @@ public class ProductDto {
         this.productRegDate = productRegDate;
         this.productTotalRate = productTotalRate;
     }
-    public int getProductIdx(){ return productIdx;}
 
-    public String getProductId() {
+    public ProductDto(String productTitle, String productCategory, int productPrice, int productStock, String productRegDate, double productTotalRate) {
+        this.productTitle = productTitle;
+        this.productCategory = productCategory;
+        this.productPrice = productPrice;
+        this.productStock = productStock;
+        this.productRegDate = productRegDate;
+        this.productTotalRate = productTotalRate;
+    }
+
+    public int getProductId() {
         return productId;
     }
 
@@ -55,7 +61,6 @@ public class ProductDto {
     @Override
     public String toString() {
         return "ProductDto{" +
-                "productIdx=" + productIdx +
                 ", productId='" + productId + '\'' +
                 ", productTitle='" + productTitle + '\'' +
                 ", productCategory='" + productCategory + '\'' +

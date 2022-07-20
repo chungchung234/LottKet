@@ -2,9 +2,12 @@ package lotte.com.lottket.service.product;
 
 import lotte.com.lottket.dao.product.ProductDao;
 import lotte.com.lottket.dto.ProductDto;
+import lotte.com.lottket.dto.ProductImageDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -13,45 +16,16 @@ public class ProductServiceImpl implements ProductService {
     ProductDao dao;
 
     @Override
-    public String createDB(Map<String, Object> paramMap) {
-        return dao.createDB(paramMap);
-    }
-
-//    @Override
-//    public void insertEventGoodsMng(Map<String, Object> dbParams) {
-//        // dbParams={eventIdx=113, cate=24, ...}
-//        List<Map<String, Object>> goodsList = boardMapper.selectGoodsList(dbParams);
-//        dbParams.put("goodsList", goodsList);
-//        eventMapper.insertEventGoodsMng(dbParams);
-//    }
-
-    @Override
-    public void insertProduct(ProductDto dto) {
-
+    public void insertOneProduct(ProductDto dto) {
+        dao.insertOneProduct(dto);
     }
 
     @Override
-    public void updateProduct(ProductDto dto) {
-
+    public void insertOneImage(ProductImageDto dto) {
+        dao.insertOneImage(dto);
     }
 
-    @Override
-    public void deleteProduct(ProductDto dto) {
-
-    }
-
-    @Override
-    public void selectProduct(ProductDto dto) {
-
-    }
-
-    @Override
-    public void selectProductAll() {
-
-    }
-
-    @Override
-    public void selectProductFind(String productTitle) {
-
+    public boolean checkIfEmptyDB() {
+        return dao.checkIfEmptyDB();
     }
 }

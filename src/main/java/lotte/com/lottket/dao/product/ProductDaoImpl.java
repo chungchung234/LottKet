@@ -1,6 +1,7 @@
 package lotte.com.lottket.dao.product;
 
 import lotte.com.lottket.dto.ProductDto;
+import lotte.com.lottket.dto.ProductImageDto;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,37 +16,21 @@ public class ProductDaoImpl implements ProductDao{
     String ns = "Product.";
 
     @Override
-    public String createDB(Map<String, Object> paramMap) {
-        return null;
+    public void insertOneProduct(ProductDto dto) {
+        session.insert(ns + "insertOneProduct", dto);
     }
 
     @Override
-    public void insertProduct(ProductDto dto) {
-
+    public void insertOneImage(ProductImageDto dto) {
+        session.insert(ns + "insertOneImage", dto);
     }
 
     @Override
-    public void updateProduct(ProductDto dto) {
-
+    public boolean checkIfEmptyDB() {
+        if( session.selectList(ns + "checkIfEmptyDB").size()  > 0)
+            return false;   // not empty
+        else
+            return true;    // is empty
     }
 
-    @Override
-    public void deleteProduct(ProductDto dto) {
-
-    }
-
-    @Override
-    public void selectProduct(ProductDto dto) {
-
-    }
-
-    @Override
-    public void selectProductAll() {
-
-    }
-
-    @Override
-    public void selectProductFind(String productTitle) {
-
-    }
 }

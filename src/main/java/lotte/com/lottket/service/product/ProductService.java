@@ -1,15 +1,18 @@
 package lotte.com.lottket.service.product;
 
 import lotte.com.lottket.dto.ProductDto;
+import lotte.com.lottket.dto.ProductImageDto;
+import org.springframework.ui.Model;
 
+import java.util.List;
 import java.util.Map;
 
 public interface ProductService {
-    String createDB(Map<String, Object> paramMap);
-    void insertProduct(ProductDto dto);
-    void updateProduct(ProductDto dto);
-    void deleteProduct(ProductDto dto);
-    void selectProduct(ProductDto dto);
-    void selectProductAll();
-    void selectProductFind(String productTitle);
+
+    void insertOneProduct(ProductDto dto);
+    void insertOneImage(ProductImageDto dto);
+
+    boolean checkIfEmptyDB();
+
+
 }
