@@ -9,9 +9,9 @@ public class ProductImageDto {
 
     }
 
-    public ProductImageDto(int productImageIdx, int productId, String productImageUrl) {
-        this.productImageIdx = productImageIdx;
+    public ProductImageDto(int productId, int productImageIdx, String productImageUrl) {
         this.productId = productId;
+        this.productImageIdx = productImageIdx;
         this.productImageUrl = productImageUrl;
     }
 
