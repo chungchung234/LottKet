@@ -2,11 +2,12 @@ package lotte.com.lottket.dto;
 
 import java.util.Date;
 
-public class OrderDto {
+public class OrderDto
+{
 
     private long orderId;
     private int orderAmount;
-    private Date orderDate;
+    private String orderDate;
     private String orderAddress;
     private String orderDetailAddress;
     private int orderTotalPrice;
@@ -23,7 +24,10 @@ public class OrderDto {
     private String productTitle;
     private int productPrice;
 
-    public OrderDto( int orderAmount, String orderAddress, String orderDetailAddress, int orderTotalPrice, long userId, String userName, String userPhoneNumber, long productId, String productTitle, int productPrice) {
+    public OrderDto() {
+    }
+
+    public OrderDto(int orderAmount, String orderAddress, String orderDetailAddress, int orderTotalPrice, long userId, String userName, String userPhoneNumber, long productId, String productTitle, int productPrice) {
         this.orderAmount = orderAmount;
         this.orderAddress = orderAddress;
         this.orderDetailAddress = orderDetailAddress;
@@ -36,9 +40,22 @@ public class OrderDto {
         this.productPrice = productPrice;
     }
 
+    public OrderDto( int orderAmount, String orderAddress, String orderDetailAddress, int orderTotalPrice, long userId, String userName, String userPhoneNumber, long productId, String productTitle, int productPrice,String orderDate, String payment) {
+        this.orderAmount = orderAmount;
+        this.orderAddress = orderAddress;
+        this.orderDetailAddress = orderDetailAddress;
+        this.orderTotalPrice = orderTotalPrice;
+        this.userId = userId;
+        this.userName = userName;
+        this.userPhoneNumber = userPhoneNumber;
+        this.productId = productId;
+        this.productTitle = productTitle;
+        this.productPrice = productPrice;
+        this.payment=payment;
+        this.orderDate=orderDate;
+    }
 
-
-    public OrderDto(long orderId, int orderAmount, Date orderDate, String orderAddress, String orderDetailAddress, int orderTotalPrice, String payment, String deliveryRequirement, long userId, String userName, String userAddress, String userDetailAddress, String userPhoneNumber, long productId, String productTitle, int productPrice) {
+    public OrderDto(long orderId, int orderAmount, String orderDate, String orderAddress, String orderDetailAddress, int orderTotalPrice, String payment, String deliveryRequirement, long userId, String userName, String userPhoneNumber, long productId, String productTitle, int productPrice) {
         this.orderId = orderId;
         this.orderAmount = orderAmount;
         this.orderDate = orderDate;
@@ -63,7 +80,7 @@ public class OrderDto {
         return orderAmount;
     }
 
-    public Date getOrderDate() {
+    public String getOrderDate() {
         return orderDate;
     }
 
@@ -111,7 +128,61 @@ public class OrderDto {
         return productPrice;
     }
 
+    public void setOrderId(long orderId) {
+        this.orderId = orderId;
+    }
 
+    public void setOrderAmount(int orderAmount) {
+        this.orderAmount = orderAmount;
+    }
+
+    public void setOrderDate(String orderDate) {
+        this.orderDate = orderDate;
+    }
+
+    public void setOrderAddress(String orderAddress) {
+        this.orderAddress = orderAddress;
+    }
+
+    public void setOrderDetailAddress(String orderDetailAddress) {
+        this.orderDetailAddress = orderDetailAddress;
+    }
+
+    public void setOrderTotalPrice(int orderTotalPrice) {
+        this.orderTotalPrice = orderTotalPrice;
+    }
+
+    public void setPayment(String payment) {
+        this.payment = payment;
+    }
+
+    public void setDeliveryRequirement(String deliveryRequirement) {
+        this.deliveryRequirement = deliveryRequirement;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setUserPhoneNumber(String userPhoneNumber) {
+        this.userPhoneNumber = userPhoneNumber;
+    }
+
+    public void setProductId(long productId) {
+        this.productId = productId;
+    }
+
+    public void setProductTitle(String productTitle) {
+        this.productTitle = productTitle;
+    }
+
+    public void setProductPrice(int productPrice) {
+        this.productPrice = productPrice;
+    }
 
     @Override
     public String toString() {

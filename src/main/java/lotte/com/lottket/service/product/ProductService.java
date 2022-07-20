@@ -2,12 +2,17 @@ package lotte.com.lottket.service.product;
 
 import lotte.com.lottket.dto.ProductDto;
 import lotte.com.lottket.dto.ProductImageDto;
-import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import java.util.List;
-
-
+import java.util.Map;
 public interface ProductService {
+
+    void insertOneProduct(ProductDto dto);
+    void insertOneImage(ProductImageDto dto);
+
+    boolean checkIfEmptyDB();
+
     ProductDto findByProductId(long productId);
     int insertProduct(ProductDto dto);
     int updateProduct(ProductDto dto);
@@ -19,5 +24,8 @@ public interface ProductService {
     List<ProductImageDto> selectBestProduct();
     List<ProductImageDto> selectWeeklyBestProduct();
     List<ProductImageDto> selectNewProduct();
+
+    int findProductStock(long productId);
+    void updateProductStock(Map<String,Object> param);
 
 }

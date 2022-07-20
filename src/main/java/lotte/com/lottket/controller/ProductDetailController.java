@@ -44,7 +44,7 @@ public class ProductDetailController {
         ProductDto productDto = productDetailService.productById(id);
         model.addAttribute("productDto",productDto);
 
-        return "detail";
+        return "/detail.jsp";
     }
 
     @RequestMapping(value = "getProductImageById.do")
@@ -54,7 +54,7 @@ public class ProductDetailController {
         List<ProductImageDto> productImageDto = productDetailService.productImageById(id);
         model.addAttribute("productImageDto",productImageDto);
 
-        return "detail";
+        return "/detail.jsp";
     }
 
     @RequestMapping(value = "getProductDetailById.do")

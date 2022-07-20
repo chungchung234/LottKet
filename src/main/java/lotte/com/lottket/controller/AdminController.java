@@ -8,56 +8,85 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class AdminController {
     @Autowired
     AdminService adminService;
 
+
     Logger logger = LoggerFactory.getLogger(AdminController.class);
 
-    @RequestMapping(value="admin/selectPopulalityProduct", method = RequestMethod.GET)
+    /***
+     * 인기 상품 통계
+     * @param map
+     * @return List<HashMap>
+     */
+    @RequestMapping(value="selectPopulalityProduct.do", method = RequestMethod.POST)
     @ResponseBody
-    public List<HashMap> selectPopulalityProduct(Model model) {
-        return adminService.selectPopulalityProduct((HashMap) model.getAttribute("populalityProduct"));
+    public List<HashMap> selectPopulalityProduct(@RequestBody Map<String, String> map) {
+        logger.info("selectPopulalityProduct hello" + new Date());
+        return adminService.selectPopulalityProduct((HashMap) map);
     }
 
-    @RequestMapping(value="admin/selectDateTotal", method = RequestMethod.GET)
+    /***
+     * 날짜별 매출 통계
+     * @param map
+     * @return List<HashMap>
+     */
+    @RequestMapping(value="selectDateTotal.do", method = RequestMethod.POST)
     @ResponseBody
-    public List<HashMap> selectDateTotal(Model model) {
-        return adminService.selectDateTotal((HashMap) model.getAttribute("dateTotal"));
+    public List<HashMap> selectDateTotal(@RequestBody Map<String, Object> map) {
+        logger.info("selectDateTotal hello" + new Date());
+        return adminService.selectDateTotal((HashMap) map);
     }
 
-    @RequestMapping(value="admin/selectAgeStastistics", method = RequestMethod.GET)
+    /***
+     * 연령별 주문 통계
+     * @param map
+     * @return HashMap
+     */
+    @RequestMapping(value="selectAgeStatistics.do", method = RequestMethod.POST)
     @ResponseBody
-    public List<HashMap> selectAgeStastistics(Model model) {
-        return adminService.selectAgeStastistics((HashMap) model.getAttribute("ageTotal"));
+    public HashMap<String, Object> selectAgeStastistics(@RequestBody Map<String, Object> map) {
+        logger.info("selectAgeStatistics hello" + new Date());
+        return adminService.selectAgeStatistics((HashMap) map);
     }
 
-    @RequestMapping(value="admin/selectGenderStastistics", method = RequestMethod.GET)
+    /***
+     * 성별 주문 통계
+     * @param map
+     * @return HashMap
+     */
+    @RequestMapping(value="selectGenderStatistics.do", method = RequestMethod.POST)
     @ResponseBody
-    public List<HashMap>  selectGenderStastistics(Model model) {
-
-        return adminService.selectGenderStastistics((HashMap) model.getAttribute("genderTotal"));
+    public HashMap<String, Object>  selectGenderStastistics(@RequestBody Map<String, Object> map) {
+        logger.info("selectGenderStatistics hello" + new Date());
+        return adminService.selectGenderStatistics((HashMap) map);
     }
 
+    /***
+     *어드민 페이지 이동
+     * @param model
+     * @return admin
+     */
     @RequestMapping(value = "admin.do")
     public String adminInit(Model model) {
-
+        logger.info("adminInit hello" + new Date());
         return "admin";
     }
 
-    @RequestMapping(value = "admin/orders")
-    public List<HashMap> selectOrder(Model model){
-        return adminService.selectTotalOrders((HashMap) model.getAttribute("totalOrders"));
-    }
-
+    /***
+     * 주문 페이지 이동
+     * @param model
+     * @return HashMap
+     */
     @RequestMapping(value = "orders.do")
-    public String orders(Model model) {
-        return "orders";
+    public List<HashMap> selectOrder(Model model){
+        logger.info("selectOrder hello" + new Date());
+
+        return adminService.selectTotalOrders((HashMap) model.getAttribute("totalOrders"));
     }
 
     @RequestMapping(value="admin/selectTotalOrders", method = RequestMethod.GET)

@@ -13,31 +13,27 @@ public class UserDaoImpl implements UserDao{
 
     String ns = "User.";
 
-    /***
-     *
-     * @param dto
-     * @return
-     */
     @Override
     public int signIn(UserDto dto) {
-        return session.selectOne(ns + "signIn");
+        Long id = session.selectOne(ns + "signIn", dto);
+        if(id != null) {
+            System.out.println(id);
+            return 1;
+        }else {
+            int result = session.insert(ns + "signUp", dto);
+            if(result>0) {
+                return 2;
+            }else {
+                return 0;
+            }
+        }
     }
 
-    /***
-     *
-     * @param dto
-     * @return
-     */
     @Override
     public int signUp(UserDto dto) {
         return session.insert(ns + "signUp");
     }
 
-    /***
-     *
-     * @param dto
-     * @return
-     */
     @Override
     public UserDto getUser(UserDto dto) {
         return session.selectOne(ns + "getUser");
@@ -47,5 +43,11 @@ public class UserDaoImpl implements UserDao{
     public UserDto findByUserId(long userId) {
         return session.selectOne(ns+"findByUserId",userId);
     }
+
+    @Override
+    public int updateAddress(UserDto dto) {
+        return session.update(ns + "updateAddress", dto);
+    }
+
 
 }

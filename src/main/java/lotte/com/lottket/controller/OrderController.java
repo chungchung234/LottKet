@@ -1,25 +1,32 @@
 package lotte.com.lottket.controller;
 
+import org.springframework.stereotype.Controller;
 import lotte.com.lottket.dto.OrderDto;
 import lotte.com.lottket.dto.ProductDto;
 import lotte.com.lottket.dto.UserDto;
+import lotte.com.lottket.service.order.OrderService;
 import lotte.com.lottket.service.product.ProductService;
 import lotte.com.lottket.service.user.UserService;
-import lotte.com.lottket.service.user.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
 @Controller
 public class OrderController {
 
     @Autowired
     UserService userService;
-
     @Autowired
     ProductService productService;
+    @Autowired
+    OrderService orderService;
 
     /**
      * Order 전 Order 정보를 보여주는 orderSheet
@@ -38,10 +45,43 @@ public class OrderController {
 
         OrderDto order= new OrderDto(orderAmount, user.getUserAddress(), user.getUserDetailAddress(),
                 product.getProductPrice()*orderAmount,user.getUserId(), user.getUserName(), user.getUserPhoneNumber(), product.getProductId(),product.getProductTitle(),product.getProductPrice());
-
+        System.out.println(order.toString());
         model.addAttribute("order",order);
 
         return "orderSheet";
+
+    }
+
+    /**
+     * 주문하기
+     * POST order/makeOrder.do
+     * @param model
+     * @param orderDto
+     * @return "myPage"
+     * model userId
+     * data :{ key : value , key: value}
+     */
+    @RequestMapping(value = "order/makeOrder.do" , method = RequestMethod.POST)
+    public String saveOrder(Model model,OrderDto orderDto){
+
+        Date nowDate=new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        orderDto.setOrderDate(simpleDateFormat.format(nowDate));
+        orderService.saveOrder(orderDto);
+
+        model.addAttribute("userId",orderDto.getUserId());
+
+        int curStock=productService.findProductStock(orderDto.getProductId());
+        int updateStock=curStock-orderDto.getOrderAmount();
+
+        Map<String,Object> param=new HashMap<>();
+        param.put("updateStock",updateStock);
+        param.put("productId",orderDto.getProductId());
+
+        productService.updateProductStock(param);
+
+        return "myPage";
 
     }
 }
