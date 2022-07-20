@@ -91,8 +91,6 @@ public class ProductController {
     @ResponseBody
     public List<ProductImageDto> selectBestProduct() {
         List<ProductImageDto> dto = service.selectBestProduct();
-//        Gson gson = new Gson();
-//        String result = gson.toJson(dto);
         return dto;
     }
 
@@ -100,8 +98,6 @@ public class ProductController {
     @ResponseBody
     public List<ProductImageDto> selectWeeklyBestProduct() {
         List<ProductImageDto> dto = service.selectWeeklyBestProduct();
-//        Gson gson = new Gson();
-//        String result = gson.toJson(dto);
         return dto;
     }
 
@@ -109,9 +105,6 @@ public class ProductController {
     @ResponseBody
     public List<ProductImageDto> selectNewProduct() {
         List<ProductImageDto> dto = service.selectNewProduct();
-//        Gson gson = new Gson();
-//        String result = gson.toJson(dto);
-
         return dto;
     }
 }

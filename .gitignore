@@ -38,4 +38,5 @@ build/
 ### Mac OS ###
 .DS_Store
 # Project exclude paths
-/out/
+/out/### Example user template template
+### Example user template
