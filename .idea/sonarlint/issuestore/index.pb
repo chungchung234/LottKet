@@ -19,3 +19,7 @@ V
 &src/main/webapp/WEB-INF/views/main.jsp,f/0/f0ebffd056149bea284e829c2a69d5275a18074f
 n
 >src/main/java/lotte/com/lottket/controller/UserController.java,d/4/d499ab6532e9922c793f5ace4c3f864473e4f034
+S
+#.idea/sonarlint/issuestore/index.pb,9/f/9fe84ebb15faf917b7def6236dba604453cc61e0
+k
+;src/main/java/lotte/com/lottket/dao/product/ProductDao.java,9/a/9a3112cedc566198c56315d681beb1f742b2e32a

@@ -57,8 +57,14 @@ public class AdminController {
 
     @RequestMapping(value = "orders.do")
     public String orders(Model model) {
-        selectOrder(model);
         return "orders";
+    }
+
+    @RequestMapping(value="admin/selectTotalOrders", method = RequestMethod.GET)
+    @ResponseBody
+    public List<HashMap>  selectTotalOrders(Model model) {
+
+        return adminService.selectTotalOrders((HashMap) model.getAttribute("selectTotalOrders"));
     }
 
 
