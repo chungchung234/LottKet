@@ -2,7 +2,8 @@ package lotte.com.lottket.dto;
 
 import java.util.Date;
 
-public class OrderDto {
+public class OrderDto
+{
 
     private long orderId;
     private int orderAmount;
@@ -35,8 +36,6 @@ public class OrderDto {
         this.productTitle = productTitle;
         this.productPrice = productPrice;
     }
-
-
 
     public OrderDto(long orderId, int orderAmount, Date orderDate, String orderAddress, String orderDetailAddress, int orderTotalPrice, String payment, String deliveryRequirement, long userId, String userName, String userAddress, String userDetailAddress, String userPhoneNumber, long productId, String productTitle, int productPrice) {
         this.orderId = orderId;
@@ -110,8 +109,6 @@ public class OrderDto {
     public int getProductPrice() {
         return productPrice;
     }
-
-
 
     @Override
     public String toString() {

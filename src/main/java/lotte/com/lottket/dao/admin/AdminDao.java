@@ -12,6 +12,6 @@ public interface AdminDao {
 
     List<HashMap> selectPopulalityProduct(HashMap map);
 
-    List<HashMap> selectAgeStastistics(HashMap map);
-    List<HashMap> selectGenderStastistics(HashMap map);
+    HashMap<String, Object> selectAgeStatistics(HashMap map);
+    HashMap<String, Object> selectGenderStatistics(HashMap map);
 }

@@ -4,6 +4,24 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Product">
+
+    <select id="checkIfEmptyDB" resultType="java.lang.Integer">
+        select count(*)
+        from product
+    </select>
+
+    <insert id="insertOneProduct" parameterType="lotte.com.lottket.dto.ProductDto">
+        INSERT INTO product (producttitle, productcategory, productprice,
+                             productstock, productregdate, producttotalrate)
+        VALUES (#{productTitle}, #{productCategory}, #{productPrice},
+                #{productStock}, #{productRegDate}, #{productTotalRate})
+    </insert>
+
+    <insert id="insertOneImage" parameterType="lotte.com.lottket.dto.ProductImageDto">
+        INSERT INTO productimage (productid, productimageidx, productimageurl)
+        VALUES (#{productId}, #{productImageIdx}, #{productImageUrl})
+    </insert>
+
     <!-- productDto로 insert하기 -->
     <insert id="insertProduct" parameterType="lotte.com.lottket.dto.ProductDto" >
         INSERT INTO product

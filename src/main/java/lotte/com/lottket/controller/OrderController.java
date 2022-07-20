@@ -1,5 +1,6 @@
 package lotte.com.lottket.controller;
 
+import org.springframework.stereotype.Controller;
 import lotte.com.lottket.dto.OrderDto;
 import lotte.com.lottket.dto.ProductDto;
 import lotte.com.lottket.dto.UserDto;

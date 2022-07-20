@@ -6,19 +6,17 @@
 <mapper namespace="Main">
 
 <select id="main" resultType="lotte.com.lottket.dto.ProductDto">
-	select product_id,
-		product_title,
-		product_category,
-		product_price,
-		product_stock,
-		product_regdate,
-		product_total_rate
+	select productid,
+		producttitle,
+		productcategory,
+		productprice,
+		productstock,
+		productregdate,
+		producttotalrate
 	from product
-	WHERE product_id = 2
+	WHERE productid = 2
+
 </select>
-
-
-
 
 </mapper>
 

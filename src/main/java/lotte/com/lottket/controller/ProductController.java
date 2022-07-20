@@ -1,5 +1,7 @@
 package lotte.com.lottket.controller;
-
+import lotte.com.lottket.service.category.CategoryService;
+import lotte.com.lottket.service.product.DBInitialize;
+import lotte.com.lottket.service.product.ProductService;
 import com.google.gson.Gson;
 import lotte.com.lottket.dto.ProductDto;
 import lotte.com.lottket.dto.ProductImageDto;
@@ -19,10 +21,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class ProductController {
-    Logger logger = LoggerFactory.getLogger(UserController.class);
+
+    Logger logger = LoggerFactory.getLogger(ProductController.class);
 
     @Autowired
     ProductService service;
@@ -38,7 +46,51 @@ public class ProductController {
         return "main";
     }
 
-    @RequestMapping(value="insertProduct.do", method = RequestMethod.POST)
+    /**
+     * 도메인 productlist.do 로 가야만 db값 insert하는거 이상하니 추후 수정할게요 insert xml도 이후에
+     */
+    @RequestMapping(value="productlist.do", method = RequestMethod.GET)
+    public String insertAllProducts(Model model){
+
+        String ret = "";
+        logger.info("ProductController insertAllProducts() ");
+
+        Map<String, Object> paramMap = new HashMap<>();
+        List<ProductDto> productList = new ArrayList<>();
+        List<ProductImageDto> productImageList = new ArrayList<>();
+
+        if(service.checkIfEmptyDB()) {
+            try {
+                paramMap = DBInitialize.run();
+                productList = (List<ProductDto>) paramMap.get("productList");
+                productImageList = (List<ProductImageDto>) paramMap.get("productImageList");
+
+                /**
+                 * product table 값 insert
+                 */
+                for (int i = 0; i < productList.size(); i++) {
+                    service.insertOneProduct(productList.get(i));
+                    System.out.println(i+" : "+productList.get(i).toString());
+                }
+                /**
+                 * productimage table 값 insert
+                 */
+                for (int i = 0; i < productImageList.size(); i++) {
+                    service.insertOneImage(productImageList.get(i));
+                    System.out.println(i+" : "+productImageList.get(i).toString());
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        model.addAttribute("productList", productList);
+        return "main";
+    }
+
+
+    @RequestMapping(value="insertProduct.do", method = RequestMethod.GET)
     @ResponseBody
     public String insertProduct(@RequestBody ProductDto dto) {
         int count = service.insertProduct(dto);

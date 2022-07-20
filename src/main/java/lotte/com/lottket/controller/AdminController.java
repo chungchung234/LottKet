@@ -8,51 +8,97 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class AdminController {
     @Autowired
     AdminService adminService;
 
-    //Logger logger = LoggerFactory.getLogger(MainController.class);
+    Logger logger = LoggerFactory.getLogger(AdminController.class);
 
-    @RequestMapping(value="admin/init", method = RequestMethod.GET)
+    /***
+     * 인기 상품 통계
+     * @param map
+     * @return List<HashMap>
+     */
+    @RequestMapping(value="selectPopulalityProduct.do", method = RequestMethod.POST)
     @ResponseBody
-    public List<List<HashMap>> init(Model model) {
-        List<List<HashMap>> data = new ArrayList<List<HashMap>>();
-        data.add(adminService.selectDateTotal((HashMap) model.getAttribute("dateTotal")));
-        data.add(adminService.selectPopulalityProduct((HashMap) model.getAttribute("populalityProduct")));
-        data.add(adminService.selectAgeStastistics((HashMap) model.getAttribute("ageTotal")));
-        data.add(adminService.selectGenderStastistics((HashMap) model.getAttribute("genderTotal")));
-        return data;
+    public List<HashMap> selectPopulalityProduct(@RequestBody Map<String, String> map) {
+        logger.info("selectPopulalityProduct hello" + new Date());
+        return adminService.selectPopulalityProduct((HashMap) map);
     }
 
+    /***
+     * 날짜별 매출 통계
+     * @param map
+     * @return List<HashMap>
+     */
+    @RequestMapping(value="selectDateTotal.do", method = RequestMethod.POST)
+    @ResponseBody
+    public List<HashMap> selectDateTotal(@RequestBody Map<String, Object> map) {
+        logger.info("selectDateTotal hello" + new Date());
+        return adminService.selectDateTotal((HashMap) map);
+    }
+
+    /***
+     * 연령별 주문 통계
+     * @param map
+     * @return HashMap
+     */
+    @RequestMapping(value="selectAgeStatistics.do", method = RequestMethod.POST)
+    @ResponseBody
+    public HashMap<String, Object> selectAgeStastistics(@RequestBody Map<String, Object> map) {
+        logger.info("selectAgeStatistics hello" + new Date());
+        return adminService.selectAgeStatistics((HashMap) map);
+    }
+
+    /***
+     * 성별 주문 통계
+     * @param map
+     * @return HashMap
+     */
+    @RequestMapping(value="selectGenderStatistics.do", method = RequestMethod.POST)
+    @ResponseBody
+    public HashMap<String, Object>  selectGenderStastistics(@RequestBody Map<String, Object> map) {
+        logger.info("selectGenderStatistics hello" + new Date());
+        return adminService.selectGenderStatistics((HashMap) map);
+    }
+
+    /***
+     *어드민 페이지 이동
+     * @param model
+     * @return admin
+     */
     @RequestMapping(value = "admin.do")
     public String adminInit(Model model) {
-
+        logger.info("adminInit hello" + new Date());
         return "admin";
     }
 
-
-    @RequestMapping(value="/category", method = RequestMethod.GET)
-    @ResponseBody
-    public String selectDateTotal(Model model) {
-        List<HashMap> selectDateTotal = adminService.selectDateTotal((HashMap) model);
-        return "";
-    }
-
-    @RequestMapping(value = "/orders")
+    /***
+     * 주문 페이지 이동
+     * @param model
+     * @return HashMap
+     */
+    @RequestMapping(value = "orders.do")
     public List<HashMap> selectOrder(Model model){
+        logger.info("selectOrder hello" + new Date());
+
         return adminService.selectTotalOrders((HashMap) model.getAttribute("totalOrders"));
     }
 
-    @RequestMapping(value = "orders.do")
-    public String orders(Model model) {
-        selectOrder(model);
-        return "orders";
+    /***
+     *전체 주문 내역 조회
+     * @param map
+     * @return HashMap
+     */
+    @RequestMapping(value="selectTotalOrders.do", method = RequestMethod.POST)
+    @ResponseBody
+    public List<HashMap>  selectTotalOrders(@RequestBody Map<String, Object> map) {
+        logger.info("selectTotalOrders hello" + new Date());
+
+        return adminService.selectTotalOrders((HashMap) map);
     }
 
 
