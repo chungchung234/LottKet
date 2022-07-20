@@ -2,7 +2,8 @@ package lotte.com.lottket.dto;
 
 import java.util.Date;
 
-public class OrderDto {
+public class OrderDto
+{
 
     private long orderId;
     private int orderAmount;

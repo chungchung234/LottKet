@@ -20,6 +20,16 @@ public class UserDto {
     
     public UserDto(Long userId) {
         this.userId = userId;
+        String userProfileImage = "";
+        String userAddress = "";
+        String userDetailAddress = "";
+        String userGrade = "";
+        String userRole = "";
+        String userGender = "";
+        String userAge = "";
+        String userBirthday = "";
+        String userEmail = "";
+        String userPhoneNumber = "";
     }
 
    public UserDto(long userId, String userName, String userProfileImage, String userAddress, String userDetailAddress, String userGrade, String userRole, String userGender, String userAge, String userBirthday, String userEmail) {

@@ -25,7 +25,6 @@
     on p.productid = i.productid
     where p.productcategory=#{productCategory} and p.producttitle like #{search}  and productimageidx=1
     order by p.productregdate desc
-
 </select>
     
 <select id="findByCategoryOrderByProductTotalRate" parameterType="map" resultType="lotte.com.lottket.dto.ProductDto">

@@ -34,16 +34,16 @@ headerContents +=
         </div>
       </div>
     </div>
-<div class="nav_category">
-      <a href="category.do?productCategory=과일">과일</a>
-      <a href="category.do?productCategory=채소">채소</a>
-      <a href="category.do?productCategory=잡곡">잡곡</a>
-      <a href="category.do?productCategory=견과">견과</a>
-      <a href="category.do?productCategory=정육">정육</a>
-      <a href="category.do?productCategory=수산">수산</a>
-      <a href="category.do?productCategory=냉동">냉동</a>
-      <hr>
-    </div>
+    <div class="nav_category">
+          <a href="category.do?productCategory=과일">과일</a>
+          <a href="category.do?productCategory=채소">채소</a>
+          <a href="category.do?productCategory=잡곡">잡곡</a>
+          <a href="category.do?productCategory=견과">견과</a>
+          <a href="category.do?productCategory=정육">정육<a/>
+          <a href="category.do?productCategory=수산">수산<a/>
+          <a href="category.do?productCategory=냉동">냉동<a/>
+          <hr>
+        </div>
 `
 document.getElementById('header').innerHTML = headerContents;
 if (sessionStorage.getItem("sessionId") != null) {

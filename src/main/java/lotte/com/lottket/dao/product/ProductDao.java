@@ -2,11 +2,16 @@ package lotte.com.lottket.dao.product;
 
 import lotte.com.lottket.dto.ProductDto;
 import lotte.com.lottket.dto.ProductImageDto;
-
+import java.util.Map;
 import java.util.List;
 import java.util.Map;
 
 public interface ProductDao {
+
+    void insertOneProduct(ProductDto dto);
+    void insertOneImage(ProductImageDto dto);
+    boolean checkIfEmptyDB();
+
     ProductDto findByProductId(long productId);
     int insertProduct(ProductDto dto);
     int updateProduct(ProductDto dto);

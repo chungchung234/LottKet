@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="statistics">
+    <!--
+    날짜별 매출 통계
+    -->
+    <select id="salesdaytotal" resultType="java.util.HashMap">
+        select daysalestotal.daytotal   as date,
+               daysalestotal.pricetotal as total
+        FROM (select DATE(o.orderdate)                   as daytotal,
+                     SUM(o.orderamount) * p.productprice as pricetotal
+              from orders o,
+                   product p
+              where o.productid = p.productid
+                and o.orderdate between #{startdate} and #{enddate}
+                and if(
+                      #{productcategory} IS NOT NULL
+                  ,
+                      p.productcategory = #{productcategory}
+                  , 1 = 1
+                  )
+              GROUP BY daytotal) daysalestotal
+
+
+    </select>
+
+    <!--
+주차별 매출 통계
+-->
+    <select id="salesweektotal" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+        select weeksalestotal.weektotal  as week,
+               weeksalestotal.pricetotal as total
+        from (SELECT concat(year(orderdate), '년 ', month(orderdate), '월 ', weekofyear(orderdate) -
+                                                                           weekofyear(LAST_DAY(orderdate - interval 1 month) + interval 1 DAY) +
+                                                                           1, '주차') as weektotal,
+                     SUM(o.orderamount) * p.productprice                            as pricetotal
+              FROM orders o,
+                   product p
+              where o.productid = p.productid
+                and o.orderdate between #{startdate} and #{enddate}
+
+                and if(
+                      #{productcategory} IS NOT NULL
+                  ,
+                      p.productcategory = #{productcategory}
+                  , 1 = 1
+                  )
+              GROUP BY weektotal) weeksalestotal
+
+    </select>
+
+    <!--
+월별 매출 통계
+-->
+    <select id="salesmonthtotal" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+
+        select monthsalestotal.monthtotal as month,
+               monthsalestotal.pricetotal as total
+        from (SELECT CONCAT(YEAR(orderdate), CONCAT('년 ', MONTH(orderdate), '월')) as monthtotal,
+                     SUM(o.orderamount) * p.productprice                          as pricetotal
+              from orders o,
+                   product p
+              where o.productid = p.productid
+                and o.orderdate between #{startdate} and #{enddate}
+                and if(
+                      #{productcategory} IS NOT NULL
+                  ,
+                      p.productcategory = #{productcategory}
+                  , 1 = 1
+                  )
+              GROUP BY monthtotal) monthsalestotal
+    </select>
+
+    <!--
+인기 상품 품목 통계
+-->
+    <select id="populalityproduct" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+        SELECT if(#{productcategory} IS NOT NULL, p.producttitle, p.productcategory) as title,
+               sum(o.orderamount)                                             as orderamount
+        from orders o,
+             product p
+        where o.productid = p.productid
+          and o.orderdate between #{startdate} and #{enddate}
+          and if(#{productcategory} IS NOT NULL, p.productcategory = #{productcategory}, 1 = 1)
+        group by if(#{productcategory} IS NOT NULL, o.productid, p.productcategory)
+        order by orderamount
+    </select>
+
+
+    <!--
+    전체 주문 목록
+    -->
+    <select id="genderstatistics" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+
+        select case when u.usergender = 'male' then count(u.usergender) end   as male,
+               case when u.usergender = 'female' then count(u.usergender) end as female
+        from orders o,
+             user u,
+             product p
+        where o.userid = u.userid
+          and o.productid = p.productid
+          and o.orderdate between #{startdate}
+            and #{enddate}
+          and if(#{productcategory} IS NOT NULL, p.productcategory = #{productcategory}, 1 = 1)
+        group by u.usergender
+
+    </select>
+    <!--
+전체 주문 목록
+-->
+    <select id="agestatistics" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+
+        select case when u.userage = '10~19' then count(u.userage) end as 10대,
+               case when u.userage = '20~29' then count(u.userage) end as 20대,
+               case when u.userage = '30~39' then count(u.userage) end as 30대,
+               case when u.userage = '40~49' then count(u.userage) end as 40대,
+               case when u.userage = '50~59' then count(u.userage) end as 50대,
+               case when u.userage = '60~69' then count(u.userage) end as 60대
+        from orders o,
+             user u,
+             product p
+        where o.userid = u.userid
+          and o.productid = p.productid
+          and o.orderdate between #{startdate} and #{enddate}
+          and if(#{productcategory} IS NOT NULL, p.productcategory = #{productcategory}, 1 = 1)
+
+        group by u.userage
+    </select>
+
+<!--
+전체 주문 목록
+-->
+    <select id="totalorders" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select o.orderid,
+               o.userid,
+               u.useremail,
+               o.productid,
+               o.orderamount,
+               o.orderdate,
+               o.orderaddress,
+               o.orderdetailaddress,
+               o.ordertotalprice,
+               o.payment,
+               o.valid,
+               o.deliveryrequirement
+        from orders o,
+             user u
+        where o.userid = u.userid
+          and o.orderdate between #{startdate} and #{enddate}
+          and if(#{userid} IS NOT NULL, o.userid = #{userid}, 1 = 1)
+          and if(#{productid} IS NOT NULL, o.productid = #{productid}, 1 = 1)
+    </select>
+</mapper>
+
+
