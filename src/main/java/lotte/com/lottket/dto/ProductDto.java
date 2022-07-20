@@ -9,10 +9,9 @@ public class ProductDto {
     private int productPrice;
     private int productStock;
     private String productRegDate;
-
     private double productTotalRate;
 
-    public ProductDto(int productId, String productTitle, String productCategory, int productPrice, int productStock, String productRegDate, double productTotalRate) {
+    public ProductDto(long productId, String productTitle, String productCategory, int productPrice, int productStock, String productRegDate, double productTotalRate) {
         this.productId = productId;
         this.productTitle = productTitle;
         this.productCategory = productCategory;
@@ -21,20 +20,6 @@ public class ProductDto {
         this.productRegDate = productRegDate;
         this.productTotalRate = productTotalRate;
     }
-
-    @Override
-    public String toString() {
-        return "ProductDto{" +
-                "productId=" + productId +
-                ", productTitle='" + productTitle + '\'' +
-                ", productCategory='" + productCategory + '\'' +
-                ", productPrice=" + productPrice +
-                ", productStock=" + productStock +
-                ", productRegDate='" + productRegDate + '\'' +
-                ", productTotalRate=" + productTotalRate +
-                '}';
-    }
-
 
     public ProductDto(String productTitle, String category, int productPrice, int productStock, String productRegdate, double productTotalRate) {
         this.productTitle = productTitle;
@@ -71,6 +56,19 @@ public class ProductDto {
 
     public double getProductTotalRate() {
         return productTotalRate;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductDto{" +
+                ", productId='" + productId + '\'' +
+                ", productTitle='" + productTitle + '\'' +
+                ", productCategory='" + productCategory + '\'' +
+                ", productPrice=" + productPrice +
+                ", productStock=" + productStock +
+                ", productRegDate='" + productRegDate + '\'' +
+                ", productTotalRate=" + productTotalRate +
+                '}';
     }
 
     public void setProductId(Long id) {

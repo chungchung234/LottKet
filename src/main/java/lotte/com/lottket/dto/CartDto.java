@@ -1,6 +1,7 @@
 package lotte.com.lottket.dto;
 
 public class CartDto {
+
     private int cartId;
     private int userId;
     private int productId;
@@ -8,6 +9,12 @@ public class CartDto {
 
     public CartDto() {
 
+    }
+
+    public CartDto(int userId, int productId, int amount) {
+        this.userId = userId;
+        this.productId = productId;
+        this.amount = amount;
     }
 
     public CartDto(int cartId, int userId, int productId, int amount) {
@@ -25,7 +32,11 @@ public class CartDto {
         return userId;
     }
 
-    public int productId() {
+    public int getProductId() {
+        return productId;}
+
+    public int productId()
+    {
         return productId;
     }
 
