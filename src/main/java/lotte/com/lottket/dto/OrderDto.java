@@ -4,106 +4,129 @@ import java.util.Date;
 
 public class OrderDto
 {
-    private int orderId;
-    private int userid;
-    private int productid;
-    private int orderamount;
-    private Date orderdate;
-    private String orderaddress;
-    private String orderdetailaddress;
-    private int ordertotalprice;
+
+    private long orderId;
+    private int orderAmount;
+    private Date orderDate;
+    private String orderAddress;
+    private String orderDetailAddress;
+    private int orderTotalPrice;
     private String payment;
-    private boolean valid;
-    private String deliveryrequirement;
+    private String deliveryRequirement;
 
-    public OrderDto() {
+    // User
+    private long userId;
+    private String userName;
+    private String userPhoneNumber;
+
+    // Product
+    private long productId;
+    private String productTitle;
+    private int productPrice;
+
+    public OrderDto( int orderAmount, String orderAddress, String orderDetailAddress, int orderTotalPrice, long userId, String userName, String userPhoneNumber, long productId, String productTitle, int productPrice) {
+        this.orderAmount = orderAmount;
+        this.orderAddress = orderAddress;
+        this.orderDetailAddress = orderDetailAddress;
+        this.orderTotalPrice = orderTotalPrice;
+        this.userId = userId;
+        this.userName = userName;
+        this.userPhoneNumber = userPhoneNumber;
+        this.productId = productId;
+        this.productTitle = productTitle;
+        this.productPrice = productPrice;
     }
 
-    public OrderDto(int userid, int productid, int orderamount, Date orderdate, String orderaddress, String orderdetailaddress, int ordertotalprice, String payment, boolean valid, String deliveryrequirement) {
-        this.userid = userid;
-        this.productid = productid;
-        this.orderamount = orderamount;
-        this.orderdate = orderdate;
-        this.orderaddress = orderaddress;
-        this.orderdetailaddress = orderdetailaddress;
-        this.ordertotalprice = ordertotalprice;
-        this.payment = payment;
-        this.valid = valid;
-        this.deliveryrequirement = deliveryrequirement;
-    }
-
-    public OrderDto(int orderId, int userid, int productid, int orderamount, Date orderdate, String orderaddress, String orderdetailaddress, int ordertotalprice, String payment, boolean valid, String deliveryrequirement) {
+    public OrderDto(long orderId, int orderAmount, Date orderDate, String orderAddress, String orderDetailAddress, int orderTotalPrice, String payment, String deliveryRequirement, long userId, String userName, String userAddress, String userDetailAddress, String userPhoneNumber, long productId, String productTitle, int productPrice) {
         this.orderId = orderId;
-        this.userid = userid;
-        this.productid = productid;
-        this.orderamount = orderamount;
-        this.orderdate = orderdate;
-        this.orderaddress = orderaddress;
-        this.orderdetailaddress = orderdetailaddress;
-        this.ordertotalprice = ordertotalprice;
+        this.orderAmount = orderAmount;
+        this.orderDate = orderDate;
+        this.orderAddress = orderAddress;
+        this.orderDetailAddress = orderDetailAddress;
+        this.orderTotalPrice = orderTotalPrice;
         this.payment = payment;
-        this.valid = valid;
-        this.deliveryrequirement = deliveryrequirement;
+        this.deliveryRequirement = deliveryRequirement;
+        this.userId = userId;
+        this.userName = userName;
+        this.userPhoneNumber = userPhoneNumber;
+        this.productId = productId;
+        this.productTitle = productTitle;
+        this.productPrice = productPrice;
     }
 
-    public int getOrderId() {
+    public long getOrderId() {
         return orderId;
     }
 
-    public int getUserid() {
-        return userid;
+    public int getOrderAmount() {
+        return orderAmount;
     }
 
-    public int getProductid() {
-        return productid;
+    public Date getOrderDate() {
+        return orderDate;
     }
 
-    public int getOrderamount() {
-        return orderamount;
+    public String getOrderAddress() {
+        return orderAddress;
     }
 
-    public Date getOrderdate() {
-        return orderdate;
+    public String getOrderDetailAddress() {
+        return orderDetailAddress;
     }
 
-    public String getOrderaddress() {
-        return orderaddress;
-    }
-
-    public String getOrderdetailaddress() {
-        return orderdetailaddress;
-    }
-
-    public int getOrdertotalprice() {
-        return ordertotalprice;
+    public int getOrderTotalPrice() {
+        return orderTotalPrice;
     }
 
     public String getPayment() {
         return payment;
     }
 
-    public boolean isValid() {
-        return valid;
+    public String getDeliveryRequirement() {
+        return deliveryRequirement;
     }
 
-    public String getDeliveryrequirement() {
-        return deliveryrequirement;
+    public long getUserId() {
+        return userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getUserPhoneNumber() {
+        return userPhoneNumber;
+    }
+
+    public long getProductId() {
+        return productId;
+    }
+
+    public String getProductTitle() {
+        return productTitle;
+    }
+
+    public int getProductPrice() {
+        return productPrice;
     }
 
     @Override
     public String toString() {
         return "OrderDto{" +
                 "orderId=" + orderId +
-                ", userid=" + userid +
-                ", productid=" + productid +
-                ", orderamount=" + orderamount +
-                ", orderdate=" + orderdate +
-                ", orderaddress='" + orderaddress + '\'' +
-                ", orderdetailaddress='" + orderdetailaddress + '\'' +
-                ", ordertotalprice=" + ordertotalprice +
-                ", payment='" + payment + '\'' +
-                ", valid=" + valid +
-                ", deliveryrequirement='" + deliveryrequirement + '\'' +
+                ", orderAmount=" + orderAmount +
+                ", orderDate=" + orderDate +
+                ", orderAddress='" + orderAddress + '\'' +
+                ", orderDetailAddress='" + orderDetailAddress + '\'' +
+                ", orderTotalPrice=" + orderTotalPrice +
+                ", payment=" + payment +
+                ", deliveryRequirement='" + deliveryRequirement + '\'' +
+                ", userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", userPhoneNumber='" + userPhoneNumber + '\'' +
+                ", productId=" + productId +
+                ", productTitle='" + productTitle + '\'' +
+                ", productPrice=" + productPrice +
                 '}';
     }
 }

@@ -33,6 +33,10 @@ public class CartDto {
     }
 
     public int getProductId() {
+        return productId;}
+
+    public int productId()
+    {
         return productId;
     }
 

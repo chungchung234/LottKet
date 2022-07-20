@@ -1,7 +1,7 @@
 package lotte.com.lottket.controller;
 
 import lotte.com.lottket.dto.UserDto;
-import lotte.com.lottket.service.user.UserSevice;
+import lotte.com.lottket.service.user.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +15,9 @@ public class UserController {
     Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
-    UserSevice service;
+    UserService service;
 
-    @RequestMapping(value="signin.do", method = RequestMethod.GET)
+    @RequestMapping(value="signIn.do", method = RequestMethod.GET)
     @ResponseBody
     public String signIn(UserDto dto) {
         int count = service.signIn(dto);
@@ -25,7 +25,7 @@ public class UserController {
         return count>0?"YES":"NO";
     }
 
-    @RequestMapping(value="signup.do", method = RequestMethod.POST)
+    @RequestMapping(value="signUp.do", method = RequestMethod.POST)
     @ResponseBody
     public int signUp(UserDto dto) {
         return service.signUp(dto);
