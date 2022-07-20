@@ -22,6 +22,7 @@ public class CategoryServiceImpl implements CategoryService{
 
     @Override
     public List<ProductDto> findByCategoryOrderByProductPrice(String search, String productCategory) {
+        System.out.println("CategoryServiceImpl.findByCategoryOrderByProductPrice");
         // 검색어 null인 경우
         if(search==null) search="";
         search="%"+search+"%";

@@ -80,6 +80,16 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public int findProductStock(long productId) {
+        return dao.findProductStock(productId);
+    }
+
+    @Override
+    public void updateProductStock(Map<String, Object> param) {
+        dao.updateProductStock(param);
+    }
+
+    @Override
     public ProductDto findByProductId(long productId) {
         return dao.findByProductId(productId);
     }
