@@ -18,33 +18,150 @@
 <input type="text" id="enddate" value="2022-07-22">
 <input type="text" id="productcategory" value="과일">
 <button type="button" id="btn">btn</button>
-<div id="curve_chart" style="width: 900px; height: 500px"></div>
-
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<div id="chart_main"></div>
+<div id="category" style="width: 900px; height: 500px;"></div>
+<div id="chart_age"></div>
+<div id="chart_gender"></div>
 
 </html>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', {packages: ['corechart', 'line']});
+    google.charts.setOnLoadCallback(drawLogScales);
+
+    function drawLogScales() {
+        var d=[[1,2],[2,3],[3,0],[4,1],[5,6]];
+        var data = new google.visualization.DataTable();
+        data.addColumn('number', 'Time');
+        data.addColumn('number', 'Price');
+
+        d.forEach(element => data.addRow(element));
+
+
+        var options = {
+            animation : {
+                startup : true,
+                duration : 1000,
+                easing : 'out'
+            },
+            hAxis: {
+                title: 'Time',
+                logScale: true
+            },
+            vAxis: {
+                title: 'Popularity',
+                logScale: false
+            },
+            colors: ['#a52714']
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_main'));
+        chart.draw(data, options);
+    }
+</script>
 <script type="text/javascript">
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
 
     function drawChart() {
+
         var data = google.visualization.arrayToDataTable([
-            ['Year', 'Sales', 'Expenses'],
-            ['2004',  1000,      400],
-            ['2005',  1170,      460],
-            ['2006',  660,       1120],
-            ['2007',  1030,      540]
+            ['Task', 'Hours per Day'],
+            ['Work',     11],
+            ['Eat',      2],
+            ['Commute',  2],
+            ['Watch TV', 2],
+            ['Sleep',    7]
         ]);
 
         var options = {
-            title: 'Company Performance',
-            curveType: 'function',
-            legend: { position: 'bottom' }
+            title: 'category',
+            pieSliceText: 'label',
         };
 
-        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+        var chart = new google.visualization.PieChart(document.getElementById('category'));
 
         chart.draw(data, options);
+    }
+</script>
+<script>
+    google.charts.load('current', {packages: ['corechart', 'bar']});
+    google.charts.setOnLoadCallback(drawBasic);
+
+    function drawBasic() {
+
+        var data = google.visualization.arrayToDataTable([
+            ['10대', '판매량',],
+            ['20대', 8175000],
+            ['30대', 3792000],
+            ['40대', 2695000],
+            ['50대', 2099000],
+            ['60대', 1526000]
+        ]);
+
+        var options = {
+            title: '연령대별 판매량',
+            chartArea: {width: '50%'},
+            animation : {
+                startup: true,
+                duration: 1000,
+                easing: 'out'
+            },
+            hAxis: {
+                title: '판매량',
+                minValue: 0
+            },
+            vAxis: {
+                title: '연령대'
+            }
+        };
+
+        var chart = new google.visualization.BarChart(document.getElementById('chart_age'));
+
+        chart.draw(data, options);
+    }
+</script>
+<script>
+    google.charts.load('current', {packages: ['corechart', 'bar']});
+    google.charts.setOnLoadCallback(drawTopX);
+
+    function drawTopX() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', '성별');
+        data.addColumn('number', '판매량');
+
+        data.addRows([
+            ['남자', 110],
+            ['여자', 100]
+        ]);
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+            {
+                sourceColumn: 1,
+                type: "string",
+                role: "annotation" }]);
+
+        var options = {
+
+            chart: {
+                title: '성별 판매량'
+            },
+            axes: {
+                x: {
+                    0: {side: 'top'}
+                }
+            },
+            hAxis: {
+                title: '성별',
+            },
+            vAxis: {
+                title: '판매량'
+            },
+            colors: ['#0000ff','#ff0000']
+        };
+
+        var materialChart = new google.charts.Bar(document.getElementById('chart_gender'));
+        materialChart.draw(view, options);
     }
 </script>
 </head>
@@ -56,7 +173,6 @@
     $(document).ready(function () {
         init();
     });
-
 
 
     function getJson() {
@@ -149,7 +265,6 @@
             }
         })
     }
-
 
 
     function selectTotalOrders() {
