@@ -9,7 +9,7 @@ public interface AdminService {
 
     List<HashMap> selectPopulalityProduct(HashMap map);
 
-    List<HashMap> selectGenderStastistics(HashMap map);
+    HashMap<String, Object> selectGenderStatistics(HashMap map);
 
-    List<HashMap> selectAgeStastistics(HashMap map);
+    HashMap<String, Object> selectAgeStatistics(HashMap map);
 }
