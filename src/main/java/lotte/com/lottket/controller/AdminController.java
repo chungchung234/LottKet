@@ -41,6 +41,11 @@ public class AdminController {
         return adminService.selectDateTotal((HashMap) map);
     }
 
+    /***
+     * 연령별 주문 통계
+     * @param map
+     * @return HashMap
+     */
     @RequestMapping(value="selectAgeStatistics.do", method = RequestMethod.POST)
     @ResponseBody
     public HashMap<String, Object> selectAgeStastistics(@RequestBody Map<String, Object> map) {
@@ -48,6 +53,11 @@ public class AdminController {
         return adminService.selectAgeStatistics((HashMap) map);
     }
 
+    /***
+     * 성별 주문 통계
+     * @param map
+     * @return HashMap
+     */
     @RequestMapping(value="selectGenderStatistics.do", method = RequestMethod.POST)
     @ResponseBody
     public HashMap<String, Object>  selectGenderStastistics(@RequestBody Map<String, Object> map) {
@@ -55,6 +65,11 @@ public class AdminController {
         return adminService.selectGenderStatistics((HashMap) map);
     }
 
+    /***
+     *
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "admin.do")
     public String adminInit(Model model) {
         logger.info("adminInit hello" + new Date());
