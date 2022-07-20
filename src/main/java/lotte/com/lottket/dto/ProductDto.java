@@ -9,10 +9,14 @@ public class ProductDto {
     private int productPrice;
     private int productStock;
     private String productRegDate;
-
     private double productTotalRate;
 
-    public ProductDto(long productId, String productTitle, String productCategory, int productPrice, int productStock, String productRegDate, double productTotalRate) {
+    private String productImageUrl;
+
+    public ProductDto() {
+    }
+
+    public ProductDto(long productId, String productTitle, String productCategory, int productPrice, int productStock, String productRegDate, double productTotalRate, String productImageUrl) {
         this.productId = productId;
         this.productTitle = productTitle;
         this.productCategory = productCategory;
@@ -20,6 +24,7 @@ public class ProductDto {
         this.productStock = productStock;
         this.productRegDate = productRegDate;
         this.productTotalRate = productTotalRate;
+        this.productImageUrl = productImageUrl;
     }
 
     @Override
@@ -32,10 +37,9 @@ public class ProductDto {
                 ", productStock=" + productStock +
                 ", productRegDate='" + productRegDate + '\'' +
                 ", productTotalRate=" + productTotalRate +
+                ", productImageUrl='" + productImageUrl + '\'' +
                 '}';
     }
-
-
 
     public ProductDto(String productTitle, String category, int productPrice, int productStock, String productRegDate, double productTotalRate) {
         this.productTitle = productTitle;
@@ -73,5 +77,13 @@ public class ProductDto {
 
     public void setProductId(Long id) {
         this.productId = id;
+    }
+
+    public String getProductCategory() {
+        return productCategory;
+    }
+
+    public String getProductImageUrl() {
+        return productImageUrl;
     }
 }

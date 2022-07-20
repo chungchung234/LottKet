@@ -6,6 +6,7 @@ import lotte.com.lottket.dto.ProductImageDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -61,6 +62,16 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductImageDto> selectNewProduct() {
         return productDao.selectNewProduct();
+    }
+
+    @Override
+    public int findProductStock(long productId) {
+        return productDao.findProductStock(productId);
+    }
+
+    @Override
+    public void updateProductStock(Map<String, Object> param) {
+        productDao.updateProductStock(param);
     }
 
     @Override

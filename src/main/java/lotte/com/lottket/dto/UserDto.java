@@ -16,6 +16,7 @@ public class UserDto {
     private String userEmail;
     private String userPhoneNumber;
 
+    public UserDto(){}
     
     public UserDto(Long userId) {
         this.userId = userId;
@@ -35,6 +36,20 @@ public class UserDto {
         this.userEmail = userEmail;
     }
 
+    public UserDto(long userId, String userName, String userProfileImage, String userAddress, String userDetailAddress, String userGrade, String userRole, String userGender, String userAge, String userBirthday, String userEmail, String userPhoneNumber) {
+        this.userId = userId;
+        this.userName = userName;
+        this.userProfileImage = userProfileImage;
+        this.userAddress = userAddress;
+        this.userDetailAddress = userDetailAddress;
+        this.userGrade = userGrade;
+        this.userRole = userRole;
+        this.userGender = userGender;
+        this.userAge = userAge;
+        this.userBirthday = userBirthday;
+        this.userEmail = userEmail;
+        this.userPhoneNumber = userPhoneNumber;
+    }
 
     public long getUserId() {
         return userId;

@@ -5,6 +5,7 @@ import lotte.com.lottket.dto.ProductImageDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 
 public interface ProductService {
@@ -19,5 +20,8 @@ public interface ProductService {
     List<ProductImageDto> selectBestProduct();
     List<ProductImageDto> selectWeeklyBestProduct();
     List<ProductImageDto> selectNewProduct();
+
+    int findProductStock(long productId);
+    void updateProductStock(Map<String,Object> param);
 
 }

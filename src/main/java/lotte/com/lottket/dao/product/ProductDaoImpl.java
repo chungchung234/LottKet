@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class ProductDaoImpl implements ProductDao{
@@ -65,6 +66,16 @@ public class ProductDaoImpl implements ProductDao{
     @Override
     public List<ProductImageDto> selectNewProduct() {
         return session.selectList(ns + "selectBestProduct");
+    }
+
+    @Override
+    public int findProductStock(long productId) {
+        return session.selectOne(ns+"findProductStock",productId);
+    }
+
+    @Override
+    public void updateProductStock(Map<String, Object> param) {
+        session.update(ns+"updateProductStock",param);
     }
 
     @Override
