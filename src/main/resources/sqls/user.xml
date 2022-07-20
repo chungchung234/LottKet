@@ -5,25 +5,30 @@
 
 <mapper namespace="User">
     <select id="getUser" resultType="lotte.com.lottket.dto.UserDto">
-        select user_id, user_name, user_profile_image, user_address, user_detail_address, user_grade, user_role, user_gender, user_age, user_birthday, user_email
+        select userid, username, userprofileimage, useraddress, userdetailaddress, usergrade, userrole, usergender, userage, userbirthday, useremail
         from user
-        WHERE user_id = #{userId}
+        WHERE userid = #{userId}
     </select>
 
     <select id="findByUserId" parameterType="long" resultType="lotte.com.lottket.dto.UserDto">
         select *
         from user
-        where user_id = #{userId}
+        where userid = #{userId}
     </select>
     
-    <select id="signIn" parameterType="lotte.com.lottket.dto.UserDto">
-        SELECT * FROM user
-        WHERE user_id=#{userId}
+    <select id="signIn" parameterType="lotte.com.lottket.dto.UserDto" resultType="Long">
+        SELECT userid FROM user
+        WHERE userid=#{userId}
     </select>
 
     <insert id="signUp" parameterType="lotte.com.lottket.dto.UserDto">
-        INSERT INTO user(user_id, user_name, user_profile_image, user_address, user_detail_address, user_grade, user_role, user_gender, user_age, user_birthday, user_email)
-        VALUES(#{userId}, #{userName}, #{user_profileImage}, #{userAddress}, #{userDetailAddress}, #{userGrade}, #{userRole}, #{userGender}, #{userAge}, #{userBirthday}, #{userEmail})
+        INSERT INTO user(userid, username, userprofileimage, useraddress, userdetailaddress, usergrade, userrole, usergender, userage, userbirthday, useremail)
+        VALUES(#{userId}, #{userName}, #{userProfileImage}, #{userAddress}, #{userDetailAddress}, #{userGrade}, #{userRole}, #{userGender}, #{userAge}, #{userBirthday}, #{userEmail})
     </insert>
+
+    <update id="updateAddress" parameterType="lotte.com.lottket.dto.UserDto">
+        UPDATE user SET useraddress=#{useraddress}, userdetailaddress=#{userdetailaddress}
+        WHERE userid=#{userid}
+    </update>
 
 </mapper>

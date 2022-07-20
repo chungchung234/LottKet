@@ -10,4 +10,6 @@ public interface UserDao {
     UserDto getUser(UserDto dto);
 
     UserDto findByUserId(long userId);
+
+    int updateAddress(UserDto dto);
 }

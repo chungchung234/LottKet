@@ -29,4 +29,9 @@ public class UserServiceImpl implements UserService{
     public UserDto findByUserId(long userId) {
         return dao.findByUserId(userId);
     }
+
+    @Override
+    public int updateAddress(UserDto dto) {
+        return dao.updateAddress(dto);
+    }
 }

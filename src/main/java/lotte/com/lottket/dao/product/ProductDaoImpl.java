@@ -6,6 +6,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import java.util.Date;
 import java.util.Map;
 import java.util.List;
 
@@ -15,6 +18,8 @@ public class ProductDaoImpl implements ProductDao{
     SqlSession session;
 
     String ns = "Product.";
+
+    Logger logger = LoggerFactory.getLogger(ProductDaoImpl.class);
 
     @Override
     public void insertOneProduct(ProductDto dto) {
@@ -76,12 +81,12 @@ public class ProductDaoImpl implements ProductDao{
 
     @Override
     public List<ProductImageDto> selectWeeklyBestProduct() {
-        return session.selectList(ns + "selectBestProduct");
+        return session.selectList(ns + "selectWeeklyBestProduct");
     }
 
     @Override
     public List<ProductImageDto> selectNewProduct() {
-        return session.selectList(ns + "selectBestProduct");
+        return session.selectList(ns + "selectNewProduct");
     }
 
     @Override
