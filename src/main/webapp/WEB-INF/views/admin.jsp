@@ -130,6 +130,7 @@
         data.addColumn('string', '성별');
         data.addColumn('number', '판매량');
 
+
         data.addRows([
             ['남자', 110],
             ['여자', 100]
