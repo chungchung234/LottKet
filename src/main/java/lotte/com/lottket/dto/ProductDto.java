@@ -17,7 +17,25 @@ public class ProductDto {
     public ProductDto() {
     }
 
+    public ProductDto(String productTitle, String productCategory, int productPrice, int productStock, String productRegDate, double productTotalRate) {
+        this.productTitle = productTitle;
+        this.productCategory = productCategory;
+        this.productPrice = productPrice;
+        this.productStock = productStock;
+        this.productRegDate = productRegDate;
+        this.productTotalRate = productTotalRate;
+    }
 
+    public ProductDto(long productId, String productTitle, String productCategory, int productPrice, int productStock, String productRegDate, double productTotalRate, String productImageUrl) {
+        this.productId = productId;
+        this.productTitle = productTitle;
+        this.productCategory = productCategory;
+        this.productPrice = productPrice;
+        this.productStock = productStock;
+        this.productRegDate = productRegDate;
+        this.productTotalRate = productTotalRate;
+        this.productImageUrl = productImageUrl;
+    }
 
     public ProductDto(long productId, String productSitm, String productTitle, String productCategory, int productPrice, int productStock, String productRegDate, double productTotalRate) {
         this.productId = productId;

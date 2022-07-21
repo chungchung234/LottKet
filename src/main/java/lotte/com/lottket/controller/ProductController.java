@@ -128,25 +128,24 @@ public class ProductController {
 
     @RequestMapping(value="updateProduct.do", method = RequestMethod.POST)
     @ResponseBody
-    public String updateProduct(@RequestBody JsonObject json) {
-//        String productId = json.get("productId");
-//        String productTitle = json.get("productTitle");
-//        String productCategory = json.get("productCategory");
-//        String productPrice = json.get("productPrice");
-//        String productStock = json.get("productStock");
-//        ProductDto dto = new ProductDto(Integer.parseInt(productId), productTitle, productCategory, Integer.parseInt(productPrice), Integer.parseInt(productStock), "now()", 0.0, null);
-//        int count = service.updateProduct(dto);
-//        return count>0?"YES":"NO";
-        return "";
+    public String updateProduct(@RequestBody String json) {
+        JSONObject jsonObject = new JSONObject(json);
+        String productId = jsonObject.getString("productId");
+        String productTitle = jsonObject.getString("productTitle");
+        String productCategory = jsonObject.getString("productCategory");
+        String productPrice = jsonObject.getString("productPrice");
+        String productStock = jsonObject.getString("productStock");
+        ProductDto dto = new ProductDto(Integer.parseInt(productId), productTitle, productCategory, Integer.parseInt(productPrice), Integer.parseInt(productStock), "now()", 0.0, null);
+        int count = service.updateProduct(dto);
+        return count>0?"YES":"NO";
     }
 
     @RequestMapping(value="deleteProduct.do", method = RequestMethod.POST)
     @ResponseBody
     public String deleteProduct(@RequestBody String productTitle, @RequestBody String productCategory, @RequestBody String productPrice, @RequestBody String productStock) {
         ProductDto dto = new ProductDto(productTitle, productCategory, Integer.parseInt(productPrice), Integer.parseInt(productStock), "now()", 0.0);
-//        int count = service.deleteProduct(dto);
-//        return count>0?"YES":"NO";
-        return "";
+        int count = service.deleteProduct(dto);
+        return count>0?"YES":"NO";
     }
 
     @RequestMapping(value="selectProduct.do", method = RequestMethod.GET)

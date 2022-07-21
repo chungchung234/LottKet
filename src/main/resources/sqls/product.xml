@@ -94,7 +94,7 @@
     <select id="selectWeeklyBestProduct" resultType="lotte.com.lottket.dto.ProductImageDto">
         SELECT DISTINCT a.productid, productimageurl
         FROM productimage a, (SELECT DISTINCT productid, SUM(orderamount) as amount, orderdate FROM orders
-        WHERE orderdate BETWEEN DATE_SUB(NOW(), INTERVAL 7 DAY) AND NOW() GROUP BY productid ORDER BY amount desc) b
+        WHERE orderdate BETWEEN DATE_SUB(NOW(), INTERVAL 100 DAY) AND NOW() GROUP BY productid ORDER BY amount desc) b
         WHERE productimageidx = 1 AND a.productid = b.productid LIMIT 20;
     </select>
 
