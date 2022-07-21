@@ -1,4 +1,5 @@
 package lotte.com.lottket.controller;
+import com.google.gson.JsonParser;
 import lotte.com.lottket.dto.UserDto;
 import lotte.com.lottket.service.product.DBInitialize;
 import lotte.com.lottket.service.product.ProductService;
@@ -13,10 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -115,7 +113,12 @@ public class ProductController {
 
     @RequestMapping(value="updateProduct.do", method = RequestMethod.POST)
     @ResponseBody
-    public String updateProduct(@RequestBody String productId, @RequestBody String productTitle, @RequestBody String productCategory, @RequestBody String productPrice, @RequestBody String productStock) {
+    public String updateProduct(@RequestBody Map<String, String> json) {
+        String productId = json.get("productId");
+        String productTitle = json.get("productTitle");
+        String productCategory = json.get("productCategory");
+        String productPrice = json.get("productPrice");
+        String productStock = json.get("productStock");
         ProductDto dto = new ProductDto(Integer.parseInt(productId), productTitle, productCategory, Integer.parseInt(productPrice), Integer.parseInt(productStock), "now()", 0.0, null);
         int count = service.updateProduct(dto);
         return count>0?"YES":"NO";
@@ -179,7 +182,9 @@ public class ProductController {
     }
 
     @RequestMapping(value="moveadmin.do", method = RequestMethod.GET)
-    public String moveadmin() {
+    public String moveadmin(Model model) {
+        List<ProductDto> list = selectProductAll();
+        model.addAttribute("list", list);
         return "admin_product_crud";
     }
 }

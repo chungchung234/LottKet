@@ -57,8 +57,7 @@
           url: '/v2/user/me',
           success: function (result) {
             sendRequest(result);
-
-            //const sessionData = response;
+            console.log(result);
             const sessionData = result.kakao_account.email;
             const id = result.id;
             const name = result.kakao_account.profile.nickname;
