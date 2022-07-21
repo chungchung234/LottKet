@@ -17,6 +17,8 @@ public class ProductDto {
     public ProductDto() {
     }
 
+
+
     public ProductDto(long productId, String productSitm, String productTitle, String productCategory, int productPrice, int productStock, String productRegDate, double productTotalRate) {
         this.productId = productId;
         this.productSitm = productSitm;

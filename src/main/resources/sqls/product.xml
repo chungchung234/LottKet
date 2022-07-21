@@ -85,7 +85,9 @@
         SELECT DISTINCT productimageurl, a.productid
         FROM productimage a, (SELECT DISTINCT productid, SUM(orderamount) as amount FROM orders
                                GROUP BY productid ORDER BY amount desc) b
-        WHERE productimageidx = 1 LIMIT 20;
+        WHERE productimageidx = 1
+        AND a.productid = b.productid
+        LIMIT 20;
     </select>
 
     <!-- 주간 베스트 조회 -->

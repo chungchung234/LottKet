@@ -1,4 +1,5 @@
 package lotte.com.lottket.controller;
+import com.google.gson.JsonObject;
 import lotte.com.lottket.dto.ProductDetailDto;
 import lotte.com.lottket.service.category.CategoryService;
 import com.google.gson.JsonParser;
@@ -127,23 +128,25 @@ public class ProductController {
 
     @RequestMapping(value="updateProduct.do", method = RequestMethod.POST)
     @ResponseBody
-    public String updateProduct(@RequestBody Map<String, String> json) {
-        String productId = json.get("productId");
-        String productTitle = json.get("productTitle");
-        String productCategory = json.get("productCategory");
-        String productPrice = json.get("productPrice");
-        String productStock = json.get("productStock");
-        ProductDto dto = new ProductDto(Integer.parseInt(productId), productTitle, productCategory, Integer.parseInt(productPrice), Integer.parseInt(productStock), "now()", 0.0, null);
-        int count = service.updateProduct(dto);
-        return count>0?"YES":"NO";
+    public String updateProduct(@RequestBody JsonObject json) {
+//        String productId = json.get("productId");
+//        String productTitle = json.get("productTitle");
+//        String productCategory = json.get("productCategory");
+//        String productPrice = json.get("productPrice");
+//        String productStock = json.get("productStock");
+//        ProductDto dto = new ProductDto(Integer.parseInt(productId), productTitle, productCategory, Integer.parseInt(productPrice), Integer.parseInt(productStock), "now()", 0.0, null);
+//        int count = service.updateProduct(dto);
+//        return count>0?"YES":"NO";
+        return "";
     }
 
     @RequestMapping(value="deleteProduct.do", method = RequestMethod.POST)
     @ResponseBody
     public String deleteProduct(@RequestBody String productTitle, @RequestBody String productCategory, @RequestBody String productPrice, @RequestBody String productStock) {
         ProductDto dto = new ProductDto(productTitle, productCategory, Integer.parseInt(productPrice), Integer.parseInt(productStock), "now()", 0.0);
-        int count = service.deleteProduct(dto);
-        return count>0?"YES":"NO";
+//        int count = service.deleteProduct(dto);
+//        return count>0?"YES":"NO";
+        return "";
     }
 
     @RequestMapping(value="selectProduct.do", method = RequestMethod.GET)
