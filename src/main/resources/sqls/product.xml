@@ -22,6 +22,11 @@
         VALUES (#{productId}, #{productImageIdx}, #{productImageUrl})
     </insert>
 
+    <insert id="insertOneDetailImage" parameterType="lotte.com.lottket.dto.ProductDetailDto">
+        INSERT INTO productdetail (productid, productdetailimageurl)
+        VALUES (#{productId}, #{productDetailImageUrl})
+    </insert>
+
     <!-- productDto로 insert하기 -->
     <insert id="insertProduct" parameterType="lotte.com.lottket.dto.ProductDto" >
         INSERT INTO product
