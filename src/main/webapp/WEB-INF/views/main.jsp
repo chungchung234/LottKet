@@ -149,6 +149,7 @@
 
     <div class="div_best" style="height:270px; overflow: hidden;">
         <h2 style="margin-left: 43%;">베스트</h2>
+        <button type="button" onclick="moveadmin()">moveadmin</button>
         <ul>
             <%
                 for(ProductImageDto productImageDto : bestProduct) {
@@ -201,7 +202,7 @@
         </ul>
     </div>
 </div>
-<button type="button" onclick="moveadmin()"></button>
+
 <script>
     function moveadmin() {
         location.href = "<%=request.getContextPath() %>/moveadmin.do";
@@ -213,7 +214,7 @@
 
 <script>
     function moveDetail(id) {
-        location.href = "<%=request.getContextPath() %>/detail?productid=" + id;
+        location.href = "<%=request.getContextPath() %>/detail.do?productid=" + id;
     }
 </script>
 </body>
