@@ -62,6 +62,7 @@
             const sessionData = result.kakao_account.email;
             const id = result.id;
             const name = result.kakao_account.profile.nickname;
+
             sessionStorage.setItem("id", id ); // 저장
             sessionStorage.setItem("name", name ); // 저장
             sessionStorage.setItem("email", sessionData ); // 저장
