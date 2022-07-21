@@ -1,4 +1,4 @@
-@charset 'utf-8';
+@CHARSET "UTF-8";
 
 * {
   margin: 0px;
@@ -192,7 +192,7 @@ header .inner #gnb li a:hover {
 }
 
 .detail_product_img3 h2 span{
-   margin-left: 50px;
+	margin-left: 50px;
   }
 
 .detail_review li {
@@ -224,7 +224,7 @@ header .inner #gnb li a:hover {
 }
 
 .detail_review_ul ul{
-   margin-bottom: 30px;
+	margin-bottom: 30px;
 }
 
 /* footer */
