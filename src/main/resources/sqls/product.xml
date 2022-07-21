@@ -70,8 +70,9 @@
 
     <select id="findByProductId" parameterType="long" resultType="lotte.com.lottket.dto.ProductDto">
         select *
-        from product
-        where productid=#{productId}
+        from product p join productimage i
+        on p.productid = i.productid
+        where p.productid=#{productId} and i.productimageidx=1
     </select>
 
     <!-- 베스트 조회 -->
