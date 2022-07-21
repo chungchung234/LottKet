@@ -200,15 +200,16 @@ header .inner #gnb li a:hover {
 }
 
 .button_count button {
-  width: 70px;
+  width: 50px;
   border: none;
   font-size: large;
   font-weight: bold;
-  height: 70px;
+  height: 50px;
   color: white;
   border-radius: 1em;
-  background-color: #9e9b9b;
+  background-color: red;
   cursor: pointer;
+  margin-right: 20px;
 }
 
 .button_order button{

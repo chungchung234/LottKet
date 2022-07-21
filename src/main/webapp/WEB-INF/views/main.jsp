@@ -148,7 +148,7 @@
 
 <div style="height:600px;margin-top: 50px; margin-left:3%">
 
-    <div class="div_best" style="height:170px; overflow: hidden;">
+<%--    <div class="div_best" style="height:170px; overflow: hidden;">
         <h2 style="margin-left: 43%;">베스트</h2>
         <ul>
             <%
@@ -191,7 +191,7 @@
                 }
             %>
         </ul>
-    </div>
+    </div>--%>
 </div>
 <footer id="footer">
     <script src="js/footer.js"></script>

@@ -1,5 +1,6 @@
 package lotte.com.lottket.dao.product;
 
+import lotte.com.lottket.dto.ProductDetailDto;
 import lotte.com.lottket.dto.ProductDto;
 import lotte.com.lottket.dto.ProductImageDto;
 import org.apache.ibatis.session.SqlSession;
@@ -30,6 +31,11 @@ public class ProductDaoImpl implements ProductDao{
     @Override
     public void insertOneImage(ProductImageDto dto) {
         session.insert(ns + "insertOneImage", dto);
+    }
+
+    @Override
+    public void insertOneDetailImage(ProductDetailDto dto) {
+        session.insert(ns + "insertOneDetailImage", dto);
     }
 
     @Override

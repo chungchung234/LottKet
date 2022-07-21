@@ -1,4 +1,5 @@
 package lotte.com.lottket.controller;
+import lotte.com.lottket.dto.ProductDetailDto;
 import lotte.com.lottket.service.category.CategoryService;
 import lotte.com.lottket.service.product.DBInitialize;
 import lotte.com.lottket.service.product.ProductService;
@@ -50,45 +51,57 @@ public class ProductController {
      * 도메인 productlist.do 로 가야만 db값 insert하는거 이상하니 추후 수정할게요 insert xml도 이후에
      */
     @RequestMapping(value="productlist.do", method = RequestMethod.GET)
-    public String insertAllProducts(Model model){
-
-        String ret = "";
+    public String insertAllProducts(){
+//        String ret = "";
         logger.info("ProductController insertAllProducts() ");
 
         Map<String, Object> paramMap = new HashMap<>();
         List<ProductDto> productList = new ArrayList<>();
         List<ProductImageDto> productImageList = new ArrayList<>();
+        List<ProductDetailDto> productDetailList = new ArrayList<>();
+
 
         if(service.checkIfEmptyDB()) {
+
             try {
                 paramMap = DBInitialize.run();
                 productList = (List<ProductDto>) paramMap.get("productList");
                 productImageList = (List<ProductImageDto>) paramMap.get("productImageList");
+                productDetailList = (List<ProductDetailDto>) paramMap.get("productDetailList");
 
-                /**
-                 * product table 값 insert
-                 */
-                for (int i = 0; i < productList.size(); i++) {
-                    service.insertOneProduct(productList.get(i));
-                    System.out.println(i+" : "+productList.get(i).toString());
-                }
-                /**
-                 * productimage table 값 insert
-                 */
-                for (int i = 0; i < productImageList.size(); i++) {
-                    service.insertOneImage(productImageList.get(i));
-                    System.out.println(i+" : "+productImageList.get(i).toString());
-                }
+
+                System.out.println(" =============== HEREHERE ================");
+                System.out.println("PRODUCT TABLE IS NULL");
+
+                System.out.println(productList.size());
+                System.out.println(productImageList.size());
+                System.out.println(productDetailList.size());
+
+//                /** product table insert data */
+//                for (int i = 0; i < productList.size(); i++) {
+//                    service.insertOneProduct(productList.get(i));
+//                    System.out.println(i+" : "+productList.get(i).toString());
+//                }
+//                /** productImage table insert data */
+//                for (int i = 0; i < productImageList.size(); i++) {
+//                    service.insertOneImage(productImageList.get(i));
+//                    System.out.println(i+" : "+productImageList.get(i).toString());
+//                }
+//                /** productDetail table insert data */
+//                for (int i = 0; i < productDetailList.size(); i++) {
+//                    service.insertOneDetailImage(productDetailList.get(i));
+//                    System.out.println(i+" : "+productDetailList.get(i).toString());
+//                }
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
 
-        model.addAttribute("productList", productList);
-        return "main";
-    }
+//        model.addAttribute("productList", productList);
+            return "main";
 
+    }
 
     @RequestMapping(value="insertProduct.do", method = RequestMethod.GET)
     @ResponseBody

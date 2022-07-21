@@ -23,8 +23,8 @@ headerContents +=
 
           <div>
             <ul id="gnb">
-              <li><a href="mypage.html">My Page</a></li>
-              <li><a href="#">장바구니</a></li>
+              <li><a href="mypage.do">My Page</a></li>
+              <li><a href="cart.do">장바구니</a></li>
             </ul>
           </div>
 
@@ -37,11 +37,11 @@ headerContents +=
     <div class="nav_category">
           <a href="category.do?productCategory=과일">과일</a>
           <a href="category.do?productCategory=채소">채소</a>
-          <a href="category.do?productCategory=잡곡">잡곡</a>
-          <a href="category.do?productCategory=견과">견과</a>
-          <a href="category.do?productCategory=정육">정육<a/>
-          <a href="category.do?productCategory=수산">수산<a/>
-          <a href="category.do?productCategory=냉동">냉동<a/>
+          <a href="category.do?productCategory=잡곡견과">잡곡견과</a>
+          <a href="category.do?productCategory=수산">수산</a>
+          <a href="category.do?productCategory=정육계란">정육계란<a/>
+          <a href="category.do?productCategory=유제품">유제품<a/>
+          <a href="category.do?productCategory=냉동냉장">냉동냉장<a/>
           <hr>
         </div>
 `
