@@ -65,16 +65,17 @@
         let productPrice = document.getElementById("productPrice" + index).value;
         let productStock = document.getElementById("productStock" + index).value;
         console.log(productId + " " + productTitle + " " + productCategory + " " + productPrice + " " + productStock);
+        let datas = {
+            "productId":productId,
+            "productTitle":productTitle,
+            "productCategory":productCategory,
+            "productPrice":productPrice,
+            "productStock":productStock
+        };
         $.ajax({
             url:"updateProduct.do",
             type:"post",
-            data: {
-                "productId":productId,
-                "productTitle":productTitle,
-                "productCategory":productCategory,
-                "productPrice":productPrice,
-                "productStock":productStock
-            },
+            data: JSON.stringify(datas),
             dataType:"json",
             success: function(result) {
                 console.log(result);

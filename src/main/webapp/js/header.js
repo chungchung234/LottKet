@@ -26,7 +26,7 @@ headerContents +=
               <li><a href="mypage.html">My Page</a></li>
               <li><a href="#">장바구니</a></li>
             </ul>
-          </div>
+          </div>    
 
           <div class="searchArea on IMG">
             <i class="fa-solid fa-magnifying-glass"></i>
