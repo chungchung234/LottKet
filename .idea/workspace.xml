@@ -10,45 +10,54 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e7953f72-afe1-49a9-8a4f-b6447de66e8d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/LottKet_war.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/LottKet_war_exploded.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dao/mypage/MypageDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dao/mypage/MypageDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/service/mypage/MypageServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/sqls/mypage.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/cart.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/controller/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/controller/CartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/controller/MypageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/controller/MypageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin_product_crud.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/detail.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/order.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/reviewhtml.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/category.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/category/title.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/detail.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/order.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/freeDel.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/category.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/controller/CategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/controller/OrderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dao/cart/CartDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dao/cart/CartDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dao/cart/CartDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dao/cart/CartDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dao/product/ProductDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dao/product/ProductDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/controller/ProductDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/controller/ProductDetailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dao/admin/AdminDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dao/admin/AdminDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dao/admin/AdminDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dao/admin/AdminDaoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dao/product/ProductDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dao/product/ProductDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dto/CartDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dto/CartDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dao/productdetail/ProductDetailDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dao/productdetail/ProductDetailDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dao/productdetail/ProductDetailDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dao/productdetail/ProductDetailDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dao/user/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dao/user/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dao/user/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dao/user/UserDaoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dto/OrderDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dto/OrderDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dto/ProductDetailDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dto/ProductDetailDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dto/ProductDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dto/ProductDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dto/ProductImageDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dto/ProductImageDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/service/cart/CartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/service/cart/CartService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/service/cart/CartServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/service/cart/CartServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/service/mypage/MypageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/service/mypage/MypageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/service/product/DBInitialize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/service/product/DBInitialize.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/service/product/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/service/product/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/service/product/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/service/product/ProductServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/sqls/cart.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sqls/cart.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/dto/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/service/admin/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/service/admin/AdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/service/admin/AdminServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/service/admin/AdminServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/service/productdetail/ProductDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/service/productdetail/ProductDetailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/service/productdetail/ProductDetailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/service/productdetail/ProductDetailServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/service/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/service/user/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/service/user/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lotte/com/lottket/service/user/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/properties/jdbc.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/properties/jdbc.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/sqls/product.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sqls/product.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sqls/product_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sqls/product_detail.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sqls/statistics.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sqls/statistics.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sqls/user.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sqls/user.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/category.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/category.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/logout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/logout.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/mycart.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/mypage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/mypage.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/detail.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/js/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/order.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/order.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -312,7 +321,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1658320399181</updated>
-      <workItem from="1658320402420" duration="48004000" />
+      <workItem from="1658320402420" duration="48549000" />
     </task>
     <servers />
   </component>

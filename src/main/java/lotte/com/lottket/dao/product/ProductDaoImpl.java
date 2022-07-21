@@ -53,11 +53,15 @@ public class ProductDaoImpl implements ProductDao{
 
     @Override
     public int updateProduct(ProductDto dto) {
+        Long id = getId(dto);
+        dto.setProductId(id);
         return session.update(ns + "updateProduct", dto);
     }
 
     @Override
     public int deleteProduct(ProductDto dto) {
+        Long id = getId(dto);
+        dto.setProductId(id);
         return session.delete(ns + "deleteProduct", dto);
     }
 
@@ -83,17 +87,32 @@ public class ProductDaoImpl implements ProductDao{
 
     @Override
     public List<ProductImageDto> selectBestProduct() {
-        return session.selectList(ns + "selectBestProduct");
+        List<ProductImageDto> list = session.selectList(ns + "selectBestProduct") ;
+        list.stream()
+                .forEach(i-> {
+                    i.setProductTitle(session.selectOne(ns + "getTitle", i.getProductId()));
+                });
+        return list;
     }
 
     @Override
     public List<ProductImageDto> selectWeeklyBestProduct() {
-        return session.selectList(ns + "selectWeeklyBestProduct");
+        List<ProductImageDto> list =  session.selectList(ns + "selectWeeklyBestProduct");
+        list.stream()
+                .forEach(i-> {
+                    i.setProductTitle(session.selectOne(ns + "getTitle", i.getProductId()));
+                });
+        return list;
     }
 
     @Override
     public List<ProductImageDto> selectNewProduct() {
-        return session.selectList(ns + "selectNewProduct");
+        List<ProductImageDto> list =  session.selectList(ns + "selectNewProduct");
+        list.stream()
+                .forEach(i-> {
+                    i.setProductTitle(session.selectOne(ns + "getTitle", i.getProductId()));
+                });
+        return list;
     }
 
     @Override
