@@ -67,7 +67,7 @@
             sessionStorage.setItem("email", sessionData ); // 저장
 
             if (sessionStorage.getItem("id") != null) {
-              location.href = "main.do";
+              location.href = "main.do?id=" + sessionStorage.getItem("id");
             }
 
           },

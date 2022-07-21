@@ -34,6 +34,9 @@ public class ProductController {
     @Autowired
     ProductService service;
 
+    @Autowired
+    UserService userService;
+
     @RequestMapping(value="main.do", method = RequestMethod.GET)
     public String main(Model model) {
         List<ProductImageDto> bestProduct = selectBestProduct();
@@ -42,6 +45,7 @@ public class ProductController {
         model.addAttribute("bestProduct", bestProduct);
         model.addAttribute("weeklyBestProduct", weeklyBestProduct);
         model.addAttribute("newProduct", newProduct);
+
         return "main";
     }
 

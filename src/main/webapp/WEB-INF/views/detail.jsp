@@ -297,10 +297,14 @@
   }
 
   function purchase(){
-    let quantity = parseInt($("#quantity").text().toString());
-    let productid = <%=productDto.getProductId()%>;
-    console.log(quantity, productid,sessionStorage.getItem("id"));
-    location.href="order/orderSheet.do?productId="+productid+"&userId="+sessionStorage.getItem("id")+"&orderAmount="+quantity;
+    if(sessionStorage.getItem("id") != null) {
+      let quantity = parseInt($("#quantity").text().toString());
+      let productid = <%=productDto.getProductId()%>;
+      console.log(quantity, productid,sessionStorage.getItem("id"));
+      location.href="order/orderSheet.do?productId="+productid+"&userId="+sessionStorage.getItem("id")+"&orderAmount="+quantity;
+    }else {
+      alert('로그인이 필요합니다.');
+    }
   }
 </script>
 

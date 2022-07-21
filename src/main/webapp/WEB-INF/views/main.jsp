@@ -9,11 +9,24 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    UserDto dto;
+    //dto는 다음 화면부터 넘어가게 하겠음
+    //HttpServletRequest req, .do메소드에 넣고
+    //req.getSession().getAttribute("key"); 이렇게 갖고와서
+    //new Dto만들고
+    //model.addAttribute("dto", dto); 로 넣어서
+    //만든 화면가서 UserDto dto = (UserDto)request.getAttribute("dto");
     List<ProductImageDto> bestProduct = (List<ProductImageDto>)request.getAttribute("bestProduct");
     List<ProductImageDto> weeklyBestProduct = (List<ProductImageDto>)request.getAttribute("weeklyBestProduct");
     List<ProductImageDto> newProduct = (List<ProductImageDto>)request.getAttribute("newProduct");
+    }
 %>
+<script>
+    console.log(sessionStorage.getItem("id"));
+    console.log(sessionStorage.getItem("name"));
+    console.log(sessionStorage.getItem("email"));
+    console.log(sessionStorage.getItem("grade"));
+    console.log(sessionStorage.getItem("role"));
+</script>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -100,6 +113,11 @@
             width:70%;
         }
     </style>
+    <script>
+        function getUserDto() {
+
+        }
+    </script>
 </head>
 
 <body>
