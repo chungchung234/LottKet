@@ -1,6 +1,6 @@
 let headerContents = '';
-headerContents += 
-`
+headerContents +=
+    `
     <div class="inner" style="background:#eee">
       <div class="headerWrapper">
         <div class="util innerContent">
@@ -45,32 +45,30 @@ headerContents +=
         </div>
 `
 document.getElementById('header').innerHTML = headerContents;
-if (sessionStorage.getItem("sessionId") != null) {
+if (sessionStorage.getItem("id") != null) {
   document.getElementById("logout_li").style.display = "";
   document.getElementById("login_li").style.display = "none";
 }
 
-if (sessionStorage.getItem("sessionId") == null) {
+if (sessionStorage.getItem("id") == null) {
   document.getElementById("logout_li").style.display = "none";
   document.getElementById("login_li").style.display = "";
 }
 
-console.log(sessionStorage.getItem("sessionId"));
 
-
-function kakaoLogout() {
-  sessionStorage.clear();
-  if (Kakao.Auth.getAccessToken()) {
-    Kakao.API.request({
-      url: '/v1/user/unlink',
-      success: function (response) {
-        console.log(response)
-      },
-      fail: function (error) {
-        console.log(error)
-      },
-    })
-    Kakao.Auth.setAccessToken(undefined)
-  }
-  window.location = "main.do";
-}
+// function kakaoLogout() {
+//   sessionStorage.clear();
+//   if (Kakao.Auth.getAccessToken()) {
+//     Kakao.API.request({
+//       url: '/v1/user/unlink',
+//       success: function (response) {
+//         console.log(response)
+//       },
+//       fail: function (error) {
+//         console.log(error)
+//       },
+//     })
+//     Kakao.Auth.setAccessToken(undefined)
+//   }
+//   window.location = "main.do";
+// }
