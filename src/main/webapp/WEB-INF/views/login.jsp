@@ -53,25 +53,27 @@
   function kakaoLogin() {
     Kakao.Auth.login({
       success: function (response) {
-        console.log(response)
         Kakao.API.request({
           url: '/v2/user/me',
           success: function (result) {
-            console.log(result);
             sendRequest(result);
 
-            const sessionData = response;
-            // const sessionData = response.kakao_account.email;
+            //const sessionData = response;
+            const sessionData = result.kakao_account.email;
+            const id = result.id;
+            const name = result.kakao_account.profile.nickname;
+            sessionStorage.setItem("id", id ); // 저장
+            sessionStorage.setItem("name", name ); // 저장
+            sessionStorage.setItem("email", sessionData ); // 저장
 
-            sessionStorage.setItem("sessionId", sessionData ); // 저장
-
-            if (sessionStorage.getItem("sessionId") != null) {
-              window.location = "main.do"
+            if (sessionStorage.getItem("id") != null) {
+              location.href = "main.do";
             }
 
           },
           fail: function (error) {
             console.log(error)
+            console.log("여가");
           },
         })
       },
@@ -130,9 +132,6 @@
 </body>
 <script>
   function sendRequest(response) {
-    console.log("hello");
-    console.log(response);
-
     $.ajax({
       url: "<%=request.getContextPath()%>/signIn.do",
       type: "post",
@@ -140,16 +139,11 @@
       dataType:'text',
       contentType:"application/json;charset=UTF-8",
       success: function (result) {
-        <%--if(result == "signIn") {--%>
-        <%--  alert("로그인 완료");--%>
-        <%--}else if (result == "signUp") {--%>
-        <%--  alert("회원가입 완료");--%>
-        <%--}else if(result == "fail") {--%>
-        <%--  alert("로그인 실패");--%>
-        <%--}else if(result == "error") {--%>
-        <%--  alert("에러");--%>
-        <%--}--%>
-        <%--location.href="<%=request.getContextPath()%>/main.do";--%>
+        let obj = JSON.parse(result);
+        const grade = obj.grade;
+        const role = obj.role;
+        sessionStorage.setItem("grade", grade ); // 저장
+        sessionStorage.setItem("role", role ); // 저장
       }
     });
   }
