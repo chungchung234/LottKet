@@ -1,6 +1,7 @@
 package lotte.com.lottket.controller;
 
 import com.google.gson.Gson;
+import lotte.com.lottket.dao.user.UserDao;
 import lotte.com.lottket.dto.UserDto;
 import lotte.com.lottket.service.user.UserService;
 import org.json.JSONObject;
@@ -65,12 +66,19 @@ public class UserController {
             userProfileImage = profile.getString("thumbnail_image_url");
         }
         //address, detailAddress는 따로 받아 온다고 생각.
-        String userAddress="";
-        String userDetailAddress="";
-        UserDto dto = new UserDto(userId, userName, userProfileImage, userAddress, userDetailAddress, "5", "user", userGender, userAge, userBirthday, userEmail);
-        int count = service.signIn(dto);
+        UserDto dto = service.getUser(userId);
+        String result = "";
+        if(dto != null) {
+            result = "{\"grade\":\"" + dto.getUserGrade() + "\", \"role\":\"" + dto.getUserRole() + "\"}";
+        }else {
+            String userAddress="";
+            String userDetailAddress="";
+            dto = new UserDto(userId, userName, userProfileImage, userAddress,
+                userDetailAddress, null, null,
+                userGender, userAge, userBirthday, userEmail);
+            service.signIn(dto);
+        }
 
-        String result = "{\"grade\":\"" + dto.getUserGrade() + "\", \"role\":\"" + dto.getUserRole() + "\"}";
 
         return result;
     }

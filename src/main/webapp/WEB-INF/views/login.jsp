@@ -132,6 +132,8 @@
 </body>
 <script>
   function sendRequest(response) {
+    console.log(JSON.stringify(response))
+    console.log("!!!!!")
     $.ajax({
       url: "<%=request.getContextPath()%>/signIn.do",
       type: "post",
@@ -139,6 +141,7 @@
       dataType:'text',
       contentType:"application/json;charset=UTF-8",
       success: function (result) {
+        console.log(result);
         let obj = JSON.parse(result);
         const grade = obj.grade;
         const role = obj.role;
