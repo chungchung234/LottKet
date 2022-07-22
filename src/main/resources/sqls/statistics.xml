@@ -8,8 +8,8 @@
     날짜별 매출 통계
     -->
     <select id="salesdaytotal" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-        select DATE_FORMAT(daysalestotal.daytotal, '%y-%m-%d')  as date,
-               daysalestotal.pricetotal as total
+        select DATE_FORMAT(daysalestotal.daytotal, '%y-%m-%d') as date,
+               daysalestotal.pricetotal                        as total
         FROM (select DATE(o.orderdate)                   as daytotal,
                      SUM(o.orderamount) * p.productprice as pricetotal
               from orders o,
@@ -98,17 +98,18 @@
     -->
     <select id="genderstatistics" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 
-        select case when u.usergender = 'male' then count(u.usergender) end   as male,
-               case when u.usergender = 'female' then count(u.usergender) end as female
-        from orders o,
-             user u,
-             product p
-        where o.userid = u.userid
-          and o.productid = p.productid
-          and o.orderdate between #{startdate}
-            and #{enddate}
-          and if(#{productcategory} != 'null', p.productcategory = #{productcategory}, 1 = 1)
-        group by u.usergender
+        select sum(male) male, sum(female) female
+        from (select case when u.usergender = 'male' then count(u.usergender) end   as male,
+                     case when u.usergender = 'female' then count(u.usergender) end as female
+              from orders o,
+                   user u,
+                   product p
+              where o.userid = u.userid
+                and o.productid = p.productid
+                and o.orderdate between #{startdate}
+                  and #{enddate}
+                and if(#{productcategory} != 'null', p.productcategory = #{productcategory}, 1 = 1)
+              group by u.usergender) a
 
     </select>
     <!--
@@ -116,44 +117,45 @@
 -->
     <select id="agestatistics" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 
-        select case when u.userage = '10~19' then count(u.userage) end as ten,
-               case when u.userage = '20~29' then count(u.userage) end as twen,
-               case when u.userage = '30~39' then count(u.userage) end as thir,
-               case when u.userage = '40~49' then count(u.userage) end as four,
-               case when u.userage = '50~59' then count(u.userage) end as fifth,
-               case when u.userage = '60~69' then count(u.userage) end as sixth
-        from orders o,
-             user u,
-             product p
-        where o.userid = u.userid
-          and o.productid = p.productid
-          and o.orderdate between #{startdate} and #{enddate}
-          and if(#{productcategory} != 'null', p.productcategory = #{productcategory}, 1 = 1)
+        select sum(ten) ten, sum(twen) twen, sum(thir) this, sum(four) four, sum(fifth) fifth, sum(sixth) sixth
+        from (select case when u.userage = '10~19' then count(u.userage) end as ten,
+                     case when u.userage = '20~29' then count(u.userage) end as twen,
+                     case when u.userage = '30~39' then count(u.userage) end as thir,
+                     case when u.userage = '40~49' then count(u.userage) end as four,
+                     case when u.userage = '50~59' then count(u.userage) end as fifth,
+                     case when u.userage = '60~69' then count(u.userage) end as sixth
+              from orders o,
+                   user u,
+                   product p
+              where o.userid = u.userid
+                and o.productid = p.productid
+                and o.orderdate between #{startdate} and #{enddate}
+                and if(#{productcategory} != 'null', p.productcategory = #{productcategory}, 1 = 1)
+              group by u.userage) a
 
-        group by u.userage
     </select>
 
     <!--
     전체 주문 목록
     -->
     <select id="totalorders" parameterType="java.util.HashMap" resultType="lotte.com.lottket.dto.OrderDto">
-        select o.orderid as orderid,
-               o.userid as userid,
-               o.productid as productid,
-               o.orderamount as orderamount,
-               o.orderdate as orderdate,
-               o.orderaddress as orderaddress,
-               o.orderdetailaddress as orderdetailaddress,
-               o.ordertotalprice as ordertotalprice,
-               o.payment as payment,
-               o.valid as valid,
+        select o.orderid             as orderid,
+               o.userid              as userid,
+               o.productid           as productid,
+               o.orderamount         as orderamount,
+               o.orderdate           as orderdate,
+               o.orderaddress        as orderaddress,
+               o.orderdetailaddress  as orderdetailaddress,
+               o.ordertotalprice     as ordertotalprice,
+               o.payment             as payment,
+               o.valid               as valid,
                o.deliveryrequirement as deliveryrequirement
         from orders o,
              product p
-        where  o.productid = p.productid
+        where o.productid = p.productid
           and o.orderdate between #{startdate} and #{enddate}
           and if(#{productcategory} != 'null', p.productcategory = #{productcategory}, 1 = 1)
-        ORDER BY  orderdate desc;
+        ORDER BY orderdate desc;
 
     </select>
 </mapper>

@@ -6,10 +6,9 @@ footerContents +=
       <div class="upper">
         <h1></h1>
         <ul>
-          <li><a href="#">Policy</a></li>
-          <li><a href="#">Terms</a></li>
-          <li><a href="#">Family Site</a></li>
-          <li><a href="#">Sitemap</a></li>
+          <li><a href="admin.do">Admin</a></li>
+          <li><a href="https://github.com/LottKet/LottKet">Git</a></li>
+          <li><a href="https://www.notion.so/LottKet-2b9af26a3df1422a8aa93f33197d23ab">Notion</a></li>
         </ul>
       </div>
 
