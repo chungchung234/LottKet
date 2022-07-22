@@ -87,7 +87,7 @@
                                GROUP BY productid ORDER BY amount desc) b
         WHERE productimageidx = 1
         AND a.productid = b.productid
-        LIMIT 20;
+        LIMIT 7;
     </select>
 
     <!-- 주간 베스트 조회 -->
@@ -95,7 +95,7 @@
         SELECT DISTINCT a.productid, productimageurl
         FROM productimage a, (SELECT DISTINCT productid, SUM(orderamount) as amount, orderdate FROM orders
         WHERE orderdate BETWEEN DATE_SUB(NOW(), INTERVAL 100 DAY) AND NOW() GROUP BY productid ORDER BY amount desc) b
-        WHERE productimageidx = 1 AND a.productid = b.productid LIMIT 20;
+        WHERE productimageidx = 1 AND a.productid = b.productid LIMIT 7;
     </select>
 
     <!-- 신상품 조회 -->
@@ -104,7 +104,7 @@
         FROM product a, productimage b
         WHERE a.productid=b.productid AND productimageidx = 1
         ORDER BY productregdate DESC
-        LIMIT 20;
+        LIMIT 7;
     </select>
 
     <update id="updateProductStock" parameterType="map">

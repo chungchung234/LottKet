@@ -37,7 +37,7 @@ public class OrderController {
      * @param orderAmount
      * @return "orderSheet"
      */
-    @RequestMapping(value = "order/orderSheet.do" , method = RequestMethod.GET)
+    @RequestMapping(value = "orderSheet.do" , method = RequestMethod.GET)
     public String orderSheet(Model model,long productId, long userId, int orderAmount){
 
         UserDto user= userService.findByUserId(userId);
@@ -74,7 +74,7 @@ public class OrderController {
      * model userId
      * data :{ key : value , key: value}
      */
-    @RequestMapping(value = "order/makeOrder.do" , method = RequestMethod.POST)
+    @RequestMapping(value = "makeOrder.do" , method = RequestMethod.POST)
     public String saveOrder(Model model,OrderDto orderDto){
 
         System.out.println("OrderController.saveOrder");
@@ -86,8 +86,6 @@ public class OrderController {
         orderDto.setOrderDate(simpleDateFormat.format(nowDate));
         orderService.saveOrder(orderDto);
 
-        model.addAttribute("userId",orderDto.getUserId());
-
         int curStock=productService.findProductStock(orderDto.getProductId());
         int updateStock=curStock-orderDto.getOrderAmount();
 
@@ -97,7 +95,7 @@ public class OrderController {
 
         productService.updateProductStock(param);
 
-        return "mypage";
+        return "redirect:mypage.do?userId="+orderDto.getUserId();
 
     }
 }

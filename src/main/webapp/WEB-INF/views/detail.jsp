@@ -68,16 +68,34 @@
       </script>
 
       <script>
-        var userObj = [{recentProductImg: "<%=productImageDto.get(0).getProductImageUrl()%>", recentProductUrl: window.location.href}];
 
-        localStorage.setItem("recentProduct", JSON.stringify(userObj));
 
-        sessionProduct = JSON.parse(localStorage.getItem("recentProduct") || "[]"); //값 가져오기
+        let pathname = window.location.pathname;
+        let fit_pathname = pathname.split('/');
+        let file_name = fit_pathname[fit_pathname.length -1];
 
-        console.log(sessionProduct); //출력 확인
+        if(file_name == 'detail.do' & localStorage.getItem("recentProduct") != null) {
+          sessionProduct = JSON.parse(localStorage.getItem("recentProduct") || "[]"); //값 가져오기
+          sessionProduct.push({
+            recentProductImg: "<%=productImageDto.get(0).getProductImageUrl()%>",
+            recentProductUrl: window.location.href
+          })
+          console.log(sessionProduct);
+          localStorage.setItem("recentProduct", JSON.stringify(sessionProduct));
+
+        } else {
+          var productObj = [{recentProductImg: "<%=productImageDto.get(0).getProductImageUrl()%>", recentProductUrl: window.location.href}];
+          localStorage.setItem("recentProduct", JSON.stringify(productObj));
+        }
+
+        //
+        // sessionProduct = JSON.parse(localStorage.getItem("recentProduct") || "[]"); //값 가져오기
+        //
+        // console.log(sessionProduct); //출력 확인
       </script>
 
       <%--      <script> sessionStorage.clear()</script>--%>
+
     </div>
     <div class="detail_product_img3">
 
@@ -310,7 +328,7 @@
       alert("로그인 후 구매 가능합니다.");
       return;
     }
-    location.href="order/orderSheet.do?productId="+productid+"&userId="+sessionStorage.getItem("id")+"&orderAmount="+quantity;
+    location.href="orderSheet.do?productId="+productid+"&userId="+sessionStorage.getItem("id")+"&orderAmount="+quantity;
   }
 
   function cart(){

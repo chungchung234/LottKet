@@ -9,22 +9,15 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    List<ProductImageDto> bestProduct = (List<ProductImageDto>)request.getAttribute("bestProduct");
-    List<ProductImageDto> weeklyBestProduct = (List<ProductImageDto>)request.getAttribute("weeklyBestProduct");
-    List<ProductImageDto> newProduct = (List<ProductImageDto>)request.getAttribute("newProduct");
-    if(request.getAttribute("dto") != null) {
-        UserDto dto = (UserDto) request.getAttribute("dto");
+    List<ProductImageDto> bestProduct = (List<ProductImageDto>) request.getAttribute("bestProduct");
+    List<ProductImageDto> weeklyBestProduct = (List<ProductImageDto>) request.getAttribute("weeklyBestProduct");
+    List<ProductImageDto> newProduct = (List<ProductImageDto>) request.getAttribute("newProduct");
+    UserDto dto;
+    if (request.getAttribute("dto") != null) {
+        dto = (UserDto) request.getAttribute("dto");
         session.setAttribute("dto", dto);
-        //session.getAttribute("dto"); 이렇게 갖고와서 사용.
     }
 %>
-<script>
-    console.log(sessionStorage.getItem("id"));
-    console.log(sessionStorage.getItem("name"));
-    console.log(sessionStorage.getItem("email"));
-    console.log(sessionStorage.getItem("grade"));
-    console.log(sessionStorage.getItem("role"));
-</script>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -37,11 +30,9 @@
 
     <link rel="stylesheet" href="css/style.css">
 
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <%--파비콘 이러면 됨--%>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <link rel="icon" type="image/ico" href="img/logo.png">
 
-    <!-- Demo styles -->
     <style>
         html,
         body {
@@ -67,8 +58,6 @@
             text-align: center;
             font-size: 18px;
             background: #eee;
-
-            /* Center slide text vertically */
             display: -webkit-box;
             display: -ms-flexbox;
             display: -webkit-flex;
@@ -92,23 +81,25 @@
 
         .div_best li {
             float: left;
-            margin : 1%;
+            margin: 1%;
         }
 
-        .div_best ul>li>img {
+        .div_best ul > li > img {
             width: 100%;
         }
 
         .list {
-            width:100%;
-            height:100%;
+            width: 100%;
+            height: 100%;
         }
+
         .item {
-            width:70%;
-            height:70%;
+            width: 70%;
+            height: 70%;
         }
+
         .item-name {
-            width:70%;
+            width: 70%;
         }
     </style>
     <script>
@@ -127,9 +118,15 @@
     <!-- Swiper -->
     <div class="swiper mySwiper">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="https://contents.lotteon.com/display/dshoplnk/12905/2/M000009/258797/P15C8271F99E0BF4D45EABF434B908A83BF875DEFA442061EB58053F9660FAC7F/file/dims/optimize" onclick="moveDetail(31)"/></div>
-            <div class="swiper-slide"><img src="https://contents.lotteon.com/display/dshoplnk/12905/2/M000009/258763/PA5DC27C11C1B7E0B4504AE24437440095694024F418959A4D8573446CC5625FE/file/dims/optimize" onclick="moveDetail(16)"/></div>
-            <div class="swiper-slide"><img src="https://contents.lotteon.com/display/dshoplnk/20670/208/C001232/258835/P04FC563D89CB8B903058621490AB96E87E6A14BE1930C1AA6B955B738F2C9CC1/file" onclick="moveDetail(42)"/></div>
+            <div class="swiper-slide"><img
+                    src="https://contents.lotteon.com/display/dshoplnk/12905/2/M000009/258797/P15C8271F99E0BF4D45EABF434B908A83BF875DEFA442061EB58053F9660FAC7F/file/dims/optimize"
+                    onclick="moveDetail(31)"/></div>
+            <div class="swiper-slide"><img
+                    src="https://contents.lotteon.com/display/dshoplnk/12905/2/M000009/258763/PA5DC27C11C1B7E0B4504AE24437440095694024F418959A4D8573446CC5625FE/file/dims/optimize"
+                    onclick="moveDetail(16)"/></div>
+            <div class="swiper-slide"><img
+                    src="https://contents.lotteon.com/display/dshoplnk/20670/208/C001232/258835/P04FC563D89CB8B903058621490AB96E87E6A14BE1930C1AA6B955B738F2C9CC1/file"
+                    onclick="moveDetail(42)"/></div>
         </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
@@ -166,17 +163,18 @@
 
     <div class="div_best" style="height:270px; overflow: hidden;">
         <h2 style="margin-left: 43%;">베스트</h2>
-        <button type="button" onclick="moveadmin()">moveadmin</button>
         <ul>
             <%
-                for(ProductImageDto productImageDto : bestProduct) {
+                for (ProductImageDto productImageDto : bestProduct) {
             %>
-                    <li>
-                        <div class="list">
-                            <img src=<%=productImageDto.getProductImageUrl()%> class="item" onclick="moveDetail(<%=productImageDto.getProductId()%>)"><br>
-                            <p class="item-name"><%=productImageDto.getProductTitle()%></p>
-                        </div>
-                    </li>
+            <li>
+                <div class="list">
+                    <img src=<%=productImageDto.getProductImageUrl()%> class="item"
+                         onclick="moveDetail(<%=productImageDto.getProductId()%>)"><br>
+                    <p class="item-name"><%=productImageDto.getProductTitle()%>
+                    </p>
+                </div>
+            </li>
             <%
                 }
             %>
@@ -187,12 +185,14 @@
         <h2 style="margin-left: 43%;">주간 베스트</h2>
         <ul>
             <%
-                for(ProductImageDto productImageDto : weeklyBestProduct) {
+                for (ProductImageDto productImageDto : weeklyBestProduct) {
             %>
             <li>
                 <div class="list">
-                    <img src=<%=productImageDto.getProductImageUrl()%> class="item" onclick="moveDetail(<%=productImageDto.getProductId()%>)"><br>
-                    <p class="item-name"><%=productImageDto.getProductTitle()%></p>
+                    <img src=<%=productImageDto.getProductImageUrl()%> class="item"
+                         onclick="moveDetail(<%=productImageDto.getProductId()%>)"><br>
+                    <p class="item-name"><%=productImageDto.getProductTitle()%>
+                    </p>
                 </div>
             </li>
             <%
@@ -205,12 +205,14 @@
         <h2 style="margin-left: 43%;">신상품</h2>
         <ul>
             <%
-                for(ProductImageDto productImageDto : newProduct) {
+                for (ProductImageDto productImageDto : newProduct) {
             %>
             <li>
                 <div class="list">
-                    <img src=<%=productImageDto.getProductImageUrl()%> class="item" onclick="moveDetail(<%=productImageDto.getProductId()%>)"><br>
-                    <p class="item-name"><%=productImageDto.getProductTitle()%></p>
+                    <img src=<%=productImageDto.getProductImageUrl()%> class="item"
+                         onclick="moveDetail(<%=productImageDto.getProductId()%>)"><br>
+                    <p class="item-name"><%=productImageDto.getProductTitle()%>
+                    </p>
                 </div>
             </li>
             <%

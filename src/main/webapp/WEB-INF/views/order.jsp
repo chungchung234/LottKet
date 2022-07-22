@@ -30,7 +30,7 @@ public String priceToStr(long price){
 <link rel="icon" href="" type="image/x-icon">
 <script src="https://kit.fontawesome.com/a9c109155d.js"
 	crossorigin="anonymous"></script>
-<script src="js/jquery.js"></script>
+<script src="<%=request.getContextPath()%>/js/jquery.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/mypage.css">
@@ -400,10 +400,9 @@ border-radius : 8px;
 	<input type="hidden" id="payment_card" >
 
 	<footer id="footer">
-		<script src="js/footer.js"></script>
+		<script src="<%=request.getContextPath()%>/js/footer.js"></script>
 	</footer>
-<script
-      src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 	<script type="text/javascript">
 	    $('.button__total-price').on('click',function(){
@@ -431,7 +430,7 @@ border-radius : 8px;
             else{
 	        var form =document.createElement('form');
 	        form.setAttribute('method','post');
-	        form.setAttribute('action','<%=request.getContextPath()%>/order/makeOrder.do');
+	        form.setAttribute('action','<%=request.getContextPath()%>/makeOrder.do');
 	        document.charset="utf-8";
 
 	        let map = new Map();

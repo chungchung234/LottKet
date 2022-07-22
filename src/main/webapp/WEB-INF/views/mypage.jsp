@@ -132,7 +132,7 @@
                     <span>배송지 : </span>
                     <span class="orderNumber">
               <%= dto.getOrderaddress() %> <%= dto.getOrderdetailaddress()%></span>
-                    <button onclick="where()"> 배송지 변경</button>
+                    <%--<button onclick="where()"> 배송지 변경</button>--%>
                     <br><br>
                     <div class="orderGoodsItem">
                         <div class="goodsWrap" is-cart="true">
@@ -189,7 +189,7 @@
             contentType:"application/json;charset=UTF-8",
             success: function (result) {
 
-                alert(result);
+                // alert(result);
                 document.getElementById("orderBoard").innerHTML = '';
 
                 let str="";
@@ -208,7 +208,7 @@
                             '<span class="orderNumber">'+dto.orderid+'</span>'+
                             '<br><span>주문일자 : </span><span class="orderNumber">'+ dto.orderdate+'</span>'+
                                 '<br><br><span>배송지 : </span><span class="orderNumber">'+dto.orderaddress+' ,'+ dto.orderdetailaddress+'</span>'+
-                                '<button onclick="where()"> 배송지 변경</button><br><br><div class="orderGoodsItem"><div class="goodsWrap" is-cart="true">'+
+                                '<br><br><div class="orderGoodsItem"><div class="goodsWrap" is-cart="true">'+
                         '<div class="textWrap"><p class="title">상품명 : '+dto.producttitle+'</p><div class="text">'+
                         '<span class="price"><em>상품 가격 :'+dto.productprice+'</em>원</span><br><em class="count">수량 :'+ dto.orderamount+'</em>개</div>'+
                         '</div></div></div><div class="orderStatusInfo"><div class="orderStatusInfoButtons" odno="2022071619353482" btnlist="1020">'+

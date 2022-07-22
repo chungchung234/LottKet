@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -39,6 +40,7 @@ public class UserController {
         JSONObject jObject = new JSONObject(json);
         //userId
         Long userId = jObject.getLong("id");
+        userId = userId / 10;
         JSONObject kakao = jObject.getJSONObject("kakao_account");
         //userAge
         if(kakao.has("age_range")) {
@@ -71,10 +73,11 @@ public class UserController {
         if(dto != null) {
             result = "{\"grade\":\"" + dto.getUserGrade() + "\", \"role\":\"" + dto.getUserRole() + "\"}";
         }else {
+            //기본 user, 5로 정의
             String userAddress="";
             String userDetailAddress="";
             dto = new UserDto(userId, userName, userProfileImage, userAddress,
-                userDetailAddress, null, null,
+                userDetailAddress, "5", "user",
                 userGender, userAge, userBirthday, userEmail);
             service.signIn(dto);
         }
@@ -94,5 +97,12 @@ public class UserController {
     @ResponseBody
     public int updateAddress(UserDto dto) {
         return service.updateAddress(dto);
+    }
+
+    @RequestMapping(value="where.do", method = RequestMethod.GET)
+    public String where(Model model) {
+
+        System.out.println("TestController.test");
+        return "where";
     }
 }

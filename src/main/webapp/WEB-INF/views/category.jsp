@@ -45,6 +45,11 @@ public String priceToStr(long price){
 
 <!-- Demo styles -->
 <style>
+
+	body {
+		font-size:14px;
+	}
+
 </style>
 </head>
 
@@ -127,8 +132,8 @@ public String priceToStr(long price){
 
 						<li class="" style="margin-left: 250px">
 						    <div>
-                        		<input type="text" id="searchWord" style="font-size:16px; width: 325px; height : 30px; padding: 10px; border: 0px' outline: none; float:right; ">
-                        		<button id="btn_search" style="width: 50px; height: 30px; border: 0px; background:black; outline: none; float:right; color: #ffffff">검색</button>
+                        		<input type="text" id="searchWord" style="font-size:16px; width: 323px; height : 30px; padding: 10px; border: 1px solid #ff4769; outline: none; ">
+                        		<button id="btn_search" style="width: 50px; height: 30px; border: 0px; background:#ff4769; outline: none; float:right; color: white">검색</button>
                             </div>
                         </li>
 
@@ -149,7 +154,6 @@ public String priceToStr(long price){
 
 							<%
 							    for(ProductDto product : productList){
-
 							%>
 								<li class="cunit_t232" data-unittype="item" data-advertacctid=""
 									data-advertbidid="" data-adtgtid="0000007238370" data-adidx="1"
