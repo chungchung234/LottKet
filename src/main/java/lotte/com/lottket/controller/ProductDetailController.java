@@ -82,38 +82,45 @@ public class ProductDetailController {
     }
 
     @RequestMapping(value = "insertReview.do")
-    public String insertReview(int productId, String content, Model model) {
+    public String insertReview(int productId, String content, double rating, Model model) {
         int userId = 1;
-        double rating = 5;
 
         HashMap<String, Object> review = new HashMap<String, Object>();
         review.put("userId", userId);
         review.put("productId", productId);
         review.put("content", content);
         review.put("rating", rating);
-
+        System.out.println("rating : " +rating);
         int count = productDetailService.insertReview(review);
         int count1 = productDetailService.updateRate(productId);
 
         ProductDto productDto = productDetailService.productById(productId);
         List<ReviewJoinUser> reviewJoinUserDto = productDetailService.reviewById(productId);
+        List<ReviewJoinReply> reviewJoinReplyDto = productDetailService.replyById(productId);
 
         model.addAttribute("productDto",productDto);
         model.addAttribute("reviewJoinUserDto", reviewJoinUserDto);
+        model.addAttribute("reviewJoinReplyDto", reviewJoinReplyDto);
         return "reviewhtml";
     }
 
     @RequestMapping(value = "insertReply.do")
-    public String insertReply(Model model){
-        int replyId = 1;
-        String content = "고맙습니다";
-
+    public String insertReply(int productId, int reviewId, String content, Model model){
+        System.out.print("hihi");
+        System.out.println(productId+" "+reviewId+" "+content);
         HashMap<String, Object> reply = new HashMap<String, Object>();
-        reply.put("replyId",replyId);
+        reply.put("reviewId",reviewId);
         reply.put("content",content);
 
         int count = productDetailService.insertReply(reply);
 
-        return "hellohello";
+        ProductDto productDto = productDetailService.productById(productId);
+        List<ReviewJoinUser> reviewJoinUserDto = productDetailService.reviewById(productId);
+        List<ReviewJoinReply> reviewJoinReplyDto = productDetailService.replyById(productId);
+
+        model.addAttribute("productDto",productDto);
+        model.addAttribute("reviewJoinUserDto", reviewJoinUserDto);
+        model.addAttribute("reviewJoinReplyDto", reviewJoinReplyDto);
+        return "reviewhtml";
     }
 }

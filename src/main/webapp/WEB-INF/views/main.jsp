@@ -12,7 +12,19 @@
     List<ProductImageDto> bestProduct = (List<ProductImageDto>)request.getAttribute("bestProduct");
     List<ProductImageDto> weeklyBestProduct = (List<ProductImageDto>)request.getAttribute("weeklyBestProduct");
     List<ProductImageDto> newProduct = (List<ProductImageDto>)request.getAttribute("newProduct");
+    if(request.getAttribute("dto") != null) {
+        UserDto dto = (UserDto) request.getAttribute("dto");
+        session.setAttribute("dto", dto);
+        //session.getAttribute("dto"); 이렇게 갖고와서 사용.
+    }
 %>
+<script>
+    console.log(sessionStorage.getItem("id"));
+    console.log(sessionStorage.getItem("name"));
+    console.log(sessionStorage.getItem("email"));
+    console.log(sessionStorage.getItem("grade"));
+    console.log(sessionStorage.getItem("role"));
+</script>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -99,6 +111,11 @@
             width:70%;
         }
     </style>
+    <script>
+        function getUserDto() {
+
+        }
+    </script>
 </head>
 
 <body>
@@ -110,9 +127,9 @@
     <!-- Swiper -->
     <div class="swiper mySwiper">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="https://contents.lotteon.com/display/dshoplnk/12905/2/M000009/258797/P15C8271F99E0BF4D45EABF434B908A83BF875DEFA442061EB58053F9660FAC7F/file/dims/optimize" onclick="moveDetail(108)"/></div>
+            <div class="swiper-slide"><img src="https://contents.lotteon.com/display/dshoplnk/12905/2/M000009/258797/P15C8271F99E0BF4D45EABF434B908A83BF875DEFA442061EB58053F9660FAC7F/file/dims/optimize" onclick="moveDetail(31)"/></div>
             <div class="swiper-slide"><img src="https://contents.lotteon.com/display/dshoplnk/12905/2/M000009/258763/PA5DC27C11C1B7E0B4504AE24437440095694024F418959A4D8573446CC5625FE/file/dims/optimize" onclick="moveDetail(16)"/></div>
-            <div class="swiper-slide"><img src="https://contents.lotteon.com/display/dshoplnk/20670/208/C001232/258835/P04FC563D89CB8B903058621490AB96E87E6A14BE1930C1AA6B955B738F2C9CC1/file" onclick="moveDetail(113)"/></div>
+            <div class="swiper-slide"><img src="https://contents.lotteon.com/display/dshoplnk/20670/208/C001232/258835/P04FC563D89CB8B903058621490AB96E87E6A14BE1930C1AA6B955B738F2C9CC1/file" onclick="moveDetail(42)"/></div>
         </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
@@ -200,7 +217,7 @@
                 }
             %>
         </ul>
-    </div>--%>
+    </div>
 </div>
 
 <script>

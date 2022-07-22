@@ -57,7 +57,7 @@ public class OrderController {
         ,product.getProductImageUrl());
 
         order.setProductCategory(product.getProductCategory());
-        order.setDeliveryRequirement("문 앞에 놓아주세요");
+        order.setDeliveryRequirement("문앞에놓아주세요");
         order.changeSalePrice(salePrice);
         model.addAttribute("order",order);
 
@@ -97,7 +97,7 @@ public class OrderController {
 
         productService.updateProductStock(param);
 
-        return "myPage";
+        return "mypage";
 
     }
 }

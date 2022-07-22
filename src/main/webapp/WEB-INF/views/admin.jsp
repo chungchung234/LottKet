@@ -16,6 +16,13 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <link rel="favicon" href="img/logo.png">
     <script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        var role = sessionStorage.getItem('role');
+        if(role != 'admin'){
+            alert("잘못된 접근입니다!")
+            location.href = "main.do"
+        }
+    </script>
 
     <!-- Demo styles -->
     <style>
@@ -27,9 +34,8 @@
             list-style-type: none;
             margin: 0;
             padding: 0;
-            width: 15%;
+            width: 10%;
             /* position: fixed; */
-            height: 50%;
             overflow: auto;
         }
 
@@ -59,7 +65,8 @@
             border-collapse: collapse;
             width: 100%;
             vertical-align: center;
-            text-align: center
+            text-align: center;
+            overflow: auto;
         }
 
         #totalorder td, #totalorder th {
@@ -88,18 +95,82 @@
 
 <body>
 <header id="header">
-    <script src="js/header.js"></script>
+    <script>
+        function getContextPath(){
+            var hostIndex = location.href.indexOf(location.host) + location.host.length;
+            var contextPath = location.href.substring(hostIndex, location.href.indexOf('/',hostIndex+1));
+            return contextPath;
+        }
+
+        let headerContents = '';
+        headerContents +=
+            `
+    <div class="inner" style="background:#04AA6D">
+      <div class="headerWrapper">
+        <div class="util innerContent">
+          <ul class>
+            <li id ="welcom"><p style="color: black"> 안녕하세요 관리자님</p><li>
+            <li id="login_li"><a href="login.do" style="color: black">로그인</a></li>
+            <li id="logout_li" style="display:none"> <a href="logout.do">로그아웃</a></li> <!--<a href="logout.do"> onclick="kakaoLogout()"-->
+          </ul>
+        </div>
+
+        <div class="main innerContent">
+          <div class="div_logo">
+            <h1>
+              <a href="main.do" style="display: flex; align-items: center;">
+                <img src="./img/logo.png" style="width:15%;">
+                <span style="margin-left:3%; font-size:XX-LARGE;">롯켓마트</span>
+              </a>
+            </h1>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+`
+        document.getElementById('header').innerHTML = headerContents;
+        if (sessionStorage.getItem("id") != null) {
+            document.getElementById("logout_li").style.display = "";
+            document.getElementById("login_li").style.display = "none";
+        }
+
+        if (sessionStorage.getItem("id") == null) {
+            document.getElementById("logout_li").style.display = "none";
+            document.getElementById("login_li").style.display = "";
+        }
+
+
+        document.getElementById("recentImg1").src = recentProduct1.recentProductImg;
+        document.getElementById("recentImg2").src = recentProduct2.recentProductImg;
+        document.getElementById("recentImg3").src = recentProduct3.recentProductImg;
+        document.getElementById("recentImg4").src = recentProduct4.recentProductImg;
+        document.getElementById("recentImg5").src = recentProduct5.recentProductImg;
+    </script>
 </header>
 
 <div class="cls_admin">
     <div>
         <ul>
-            <li><a class="active" href="#home">상품 관리</a></li>
-            <li><a href="#news">매출현황</a></li>
-            <li><a href="#contact">주문 목록 조회</a></li>
+            <li><a href="#statistics" onclick="tab1()">매출 통계</a></li>
+            <li><a href="#orders" onclick="tab2()">주문 목록 조회</a></li>
         </ul>
     </div>
-    <div class="tabs">
+    <script type="text/javascript">
+
+        function tab1(){
+            $('.tab-statistics').show();
+            $('.tab-order').hide();
+        }
+        function tab2(){
+            $('.tab-statistics').hide();
+            $('.tab-order').show();
+        }
+    </script>
+
+
+    <div class="tabs" style="width:100%;   margin-left: 10%; margin-top: -80px">
         <div class="select_option">
             <%
                 Date date = new Date();
@@ -126,7 +197,7 @@
             <button type="button" id="btn">조회</button>
 
         </div>
-        <div class="statistics tab" style="width: 75%; height: 500px; display:block; background-color: #eee">
+        <div class="tab-statistics" style="width: 75%; height: 500px; display:block;">
             <select id="date" size="1" style="margin-left: 90%">
                 <option value="day">일별</option>
                 <option value="week">주간</option>
@@ -276,37 +347,37 @@
                     var d;
                     if (newdata == null) {
                         d = [
-                            ['남자', 110 , '남자'],
-                            ['여자', 100 , '여자']
+                            ['남자', 110, '남자'],
+                            ['여자', 100, '여자']
                         ]
                     } else {
-                        d = [['남자', newdata.male , '남자', '#f00'], ['여자', newdata.female , '남자', '#00f']];
+                        d = [['남자', newdata.male], ['여자', newdata.female]];
                     }
                     var data = new google.visualization.DataTable();
 
 
-                    data.addColumn('string', '성별');
+                    data.addColumn('string', '성별 주문량');
                     data.addColumn('number', '판매량');
-                    data.addColumn({ role: 'annotation' });
-                    data.addColumn({ role: 'style' })
                     data.addRows(d);
 
 
                     var options = {
-
-                        axes: {
-                            x: {
-                                0: {side: 'top'}
-                            }
-                        },
+                        title: "",
+                        chartArea: {width: '50%'},
                         animation: {
                             startup: true,
                             duration: 1000,
                             easing: 'out'
                         },
+                        axes: {
+                            x: {
+                                0: {side: 'top'}
+                            }
+                        },
 
-                        legend: { position: 'none' },
-                        bar: { groupWidth: "10%" }
+
+                        legend: {position: 'none'},
+                        bar: {groupWidth: "10%"}
                     };
 
                     var materialChart = new google.charts.Bar(document.getElementById('chart_gender'));
@@ -317,6 +388,7 @@
 
                 $(document).ready(function () {
                     init();
+                    tab1();
                 });
 
 
@@ -378,7 +450,7 @@
                     })
                 }
 
-                function selectGenderStatistics() {
+                function selectGenderStatistics() {1
                     $.ajax({
                         type: "POST",
                         url: "selectGenderStatistics.do",
@@ -414,7 +486,7 @@
             </script>
 
         </div>
-        <div class="ordertotal" style="margin-left:15%;padding:1px 16px;height:700px; display:none;">
+        <div class="tab-order" style="overflow: auto; display: block">
             <script>
                 function selectTotalOrders() {
                     $.ajax({
@@ -423,9 +495,10 @@
                         data: JSON.stringify(getJson()),
                         contentType: 'application/json',
                         success: function (data) {
+                            $('#totalorder > tbody').empty();
                             var tr = "";
                             $.each(data, function () {
-                                tr += '<tr><td>' + this.orderId +
+                                tr += '<tbody><tr><td>' + this.orderId +
                                     '</td><td>' + this.userId +
                                     '</td><td>' + this.productId +
                                     '</td><td>' + this.orderAmount +
@@ -436,7 +509,7 @@
                                     '</td><td>' + this.payment +
                                     '</td><td>' + this.valid +
                                     '</td><td>' + this.deliveryRequirement +
-                                    '</td></tr>';
+                                    '</td></tr></tbody>';
                             });
                             $("#totalorder").append(tr);	// 테이블에 추가
                         },
@@ -446,55 +519,56 @@
                     })
                 }
             </script>
-            <table id="totalorder">
-                <col width="5%">
-                <col width="5%">
-                <col width="5%">
-                <col width="5%">
-                <col width="10%">
-                <col width="15%">
-                <col width="15%">
-                <col width="10%">
-                <col width="5%">
-                <col width="5%">
-                <col width="10%">
-                <tr>
-                    <th>
-                        주문ID
-                    </th>
-                    <th>
-                        유저ID
-                    </th>
-                    <th>
-                        상품ID
-                    </th>
-                    <th>
-                        주문량
-                    </th>
-                    <th>
-                        주문일자
-                    </th>
-                    <th>
-                        주소
-                    </th>
-                    <th>
-                        상세주소
-                    </th>
-                    <th>
-                        총액
-                    </th>
-                    <th>
-                        결제방법
-                    </th>
-                    <th>
-                        유효성
-                    </th>
-                    <th>
-                        배송방법
-                    </th>
-                </tr>
-
-            </table>
+            <table id="totalorder" style="width: 90%; height : 800;">
+                <colgroup><col width="5%">
+                    <col width="5%">
+                    <col width="5%">
+                    <col width="5%">
+                    <col width="10%">
+                    <col width="15%">
+                    <col width="15%">
+                    <col width="10%">
+                    <col width="5%">
+                    <col width="5%">
+                    <col width="10%">
+                </colgroup><thead>
+            <tr>
+                <th>
+                    주문ID
+                </th>
+                <th>
+                    유저ID
+                </th>
+                <th>
+                    상품ID
+                </th>
+                <th>
+                    주문량
+                </th>
+                <th>
+                    주문일자
+                </th>
+                <th>
+                    주소
+                </th>
+                <th>
+                    상세주소
+                </th>
+                <th>
+                    총액
+                </th>
+                <th>
+                    결제방법
+                </th>
+                <th>
+                    유효성
+                </th>
+                <th>
+                    배송방법
+                </th>
+            </tr>
+            </thead>
+                <tbody><tr><td>1073</td><td>8</td><td>13</td><td>9</td><td>2022-04-20 10:54:47</td><td>강남구 신사로</td><td>비트빌라 203호</td><td>79900</td><td>비씨카드</td><td>undefined</td><td>문앞에놔주세요</td></tr></tbody><tbody><tr><td>1072</td><td>6</td><td>1</td><td>10</td><td>2022-04-20 10:54:47</td><td>강남구 신사로</td><td>비트빌라 203호</td><td>69900</td><td>NH농협카드</td><td>undefined</td><td>문앞에놔주세요</td></tr></tbody><tbody><tr><td>1071</td><td>5</td><td>36</td><td>20</td><td>2022-04-20 10:54:47</td><td>강남구 신사로</td><td>비트빌라 203호</td><td>100000</td><td>NH농협카드</td><td>undefined</td><td>문앞에놔주세요</td></tr></tbody><tbody><tr><td>1070</td><td>5</td><td>32</td><td>14</td><td>2022-04-17 10:54:47</td><td>강남구 신사로</td><td>비트빌라 203호</td><td>45000</td><td>하나카드</td><td>undefined</td><td>문앞에놔주세요</td></tr></tbody><tbody><tr><td>1069</td><td>5</td><td>34</td><td>14</td><td>2022-04-15 10:54:47</td><td>강남구 신사로</td><td>비트빌라 203호</td><td>45</td><td>현대카드</td><td>undefined</td><td>문앞에놔주세요</td></tr></tbody><tbody><tr><td>1068</td><td>7</td><td>45</td><td>15</td><td>2022-04-08 10:54:47</td><td>강남구 신사로</td><td>비트빌라 203호</td><td>134000</td><td>현대카드</td><td>undefined</td><td>문앞에놔주세요</td></tr></tbody><tbody><tr><td>1067</td><td>6</td><td>37</td><td>10</td><td>2022-04-04 10:54:47</td><td>강남구 신사로</td><td>비트빌라 203호</td><td>118000</td><td>현대카드</td><td>undefined</td><td>문앞에놔주세요</td></tr></tbody><tbody><tr><td>1066</td><td>5</td><td>40</td><td>10</td><td>2022-04-03 10:54:47</td><td>강남구 신사로</td><td>비트빌라 203호</td><td>94900</td><td>카카오페이</td><td>undefined</td><td>문앞에놔주세요</td></tr></tbody><tbody><tr><td>1065</td><td>1</td><td>48</td><td>30</td><td>2022-04-01 10:54:47</td><td>강남구 신사로</td><td>비트빌라 203호</td><td>2103000</td><td>카카오페이</td><td>undefined</td><td>문앞에놔주세요</td></tr></tbody><tbody><tr><td>1062</td><td>7</td><td>10</td><td>11</td><td>2022-03-16 10:54:47</td><td>강남구 신사로</td><td>비트빌라 203호</td><td>14900</td><td>카카오페이</td><td>undefined</td><td>문앞에놔주세요</td></tr></tbody><tbody><tr><td>1061</td><td>6</td><td>9</td><td>10</td><td>2022-03-16 10:54:47</td><td>강남구 신사로</td><td>비트빌라 203호</td><td>77800</td><td>롯데카드</td><td>undefined</td><td>문앞에놔주세요</td></tr></tbody><tbody><tr><td>1054</td><td>1</td><td>20</td><td>5</td><td>2022-03-14 10:54:47</td><td>강남구 신사로</td><td>비트빌라 203호</td><td>25000</td><td>씨티카드</td><td>undefined</td><td>문앞에놔주세요</td></tr></tbody><tbody><tr><td>1055</td><td>6</td><td>12</td><td>5</td><td>2022-03-14 10:54:47</td><td>강남구 신사로</td><td>비트빌라 203호</td><td>35000</td><td>씨티카드</td><td>undefined</td><td>문앞에놔주세요</td></tr></tbody><tbody><tr><td>1060</td><td>5</td><td>14</td><td>10</td><td>2022-03-13 10:54:47</td><td>강남구 신사로</td><td>비트빌라 203호</td><td>17800</td><td>롯데카드</td><td>undefined</td><td>문앞에놔주세요</td></tr></tbody><tbody><tr><td>1059</td><td>5</td><td>15</td><td>5</td><td>2022-03-10 10:54:47</td><td>강남구 신사로</td><td>비트빌라 203호</td><td>78800</td><td>롯데카드</td><td>undefined</td><td>문앞에놔주세요</td></tr></tbody><tbody><tr><td>1058</td><td>6</td><td>16</td><td>2</td><td>2022-03-10 10:54:47</td><td>강남구 신사로</td><td>비트빌라 203호</td><td>13990</td><td>하나카드</td><td>undefined</td><td>문앞에놔주세요</td></tr></tbody><tbody><tr><td>1057</td><td>0</td><td>16</td><td>10</td><td>2022-03-05 10:54:47</td><td>강남구 신사로</td><td>비트빌라 203호</td><td>139990</td><td>하나카드</td><td>undefined</td><td>문앞에놔주세요</td></tr></tbody><tbody><tr><td>1056</td><td>1</td><td>11</td><td>10</td><td>2022-03-03 10:54:47</td><td>강남구 신사로</td><td>비트빌라 203호</td><td>69990</td><td>씨티카드</td><td>undefined</td><td>문앞에놔주세요</td></tr></tbody><tbody><tr><td>1064</td><td>1</td><td>15</td><td>11</td><td>2022-02-28 10:54:47</td><td>강남구 신사로</td><td>비트빌라 203호</td><td>149000</td><td>카카오페이</td><td>undefined</td><td>문앞에놔주세요</td></tr></tbody><tbody><tr><td>1052</td><td>4</td><td>20</td><td>5</td><td>2022-02-22 10:54:47</td><td>강남구 신사로</td><td>비트빌라 203호</td><td>19800</td><td>씨티카드</td><td>undefined</td><td>문앞에놔주세요</td></tr></tbody><tbody><tr><td>1051</td><td>1</td><td>47</td><td>10</td><td>2022-02-22 10:54:47</td><td>강남구 신사로</td><td>비트빌라 203호</td><td>19800</td><td>씨티카드</td><td>undefined</td><td>문앞에놔주세요</td></tr></tbody><tbody><tr><td>1063</td><td>7</td><td>10</td><td>11</td><td>2022-02-16 10:54:47</td><td>강남구 신사로</td><td>비트빌라 203호</td><td>14900</td><td>카카오페이</td><td>undefined</td><td>문앞에놔주세요</td></tr></tbody><tbody><tr><td>1053</td><td>6</td><td>20</td><td>5</td><td>2022-02-12 10:54:47</td><td>강남구 신사로</td><td>비트빌라 203호</td><td>30000</td><td>씨티카드</td><td>undefined</td><td>문앞에놔주세요</td></tr></tbody><tbody><tr><td>1050</td><td>6</td><td>46</td><td>10</td><td>2022-01-22 10:54:47</td><td>강남구 신사로</td><td>비트빌라 203호</td><td>210900</td><td>신한카드</td><td>undefined</td><td>문앞에놔주세요</td></tr></tbody><tbody><tr><td>1049</td><td>5</td><td>35</td><td>5</td><td>2022-01-22 10:54:47</td><td>강남구 신사로</td><td>비트빌라 203호</td><td>200900</td><td>신한카드</td><td>undefined</td><td>문앞에놔주세요</td></tr></tbody><tbody><tr><td>1047</td><td>1</td><td>27</td><td>15</td><td>2022-01-15 10:54:47</td><td>강남구 신사로</td><td>비트빌라 203호</td><td>50000</td><td>KB카드</td><td>undefined</td><td>문앞에놔주세요</td></tr></tbody><tbody><tr><td>1046</td><td>0</td><td>5</td><td>6</td><td>2022-01-15 10:54:47</td><td>강남구 신사로</td><td>비트빌라 203호</td><td>30000</td><td>삼성카드</td><td>undefined</td><td>문앞에놔주세요</td></tr></tbody><tbody><tr><td>1048</td><td>2</td><td>30</td><td>10</td><td>2022-01-10 10:54:47</td><td>강남구 신사로</td><td>비트빌라 203호</td><td>29900</td><td>신한카드</td><td>undefined</td><td>문앞에놔주세요</td></tr></tbody><tbody><tr><td>1045</td><td>0</td><td>8</td><td>10</td><td>2022-01-03 10:54:47</td><td>강남구 신사로</td><td>비트빌라 203호</td><td>100000</td><td>삼성카드</td><td>undefined</td><td>문앞에놔주세요</td></tr></tbody></table>
         </div>
     </div>
 </div>

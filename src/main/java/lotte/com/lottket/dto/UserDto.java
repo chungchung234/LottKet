@@ -32,7 +32,15 @@ public class UserDto {
         String userPhoneNumber = "";
     }
 
-   public UserDto(long userId, String userName, String userProfileImage, String userAddress, String userDetailAddress, String userGrade, String userRole, String userGender, String userAge, String userBirthday, String userEmail) {
+    public UserDto(long userId, String userName, String userGrade, String userRole, String userEmail) {
+        this.userId = userId;
+        this.userName = userName;
+        this.userGrade = userGrade;
+        this.userRole = userRole;
+        this.userEmail = userEmail;
+    }
+
+    public UserDto(long userId, String userName, String userProfileImage, String userAddress, String userDetailAddress, String userGrade, String userRole, String userGender, String userAge, String userBirthday, String userEmail) {
         this.userId = userId;
         this.userName = userName;
         this.userProfileImage = userProfileImage;

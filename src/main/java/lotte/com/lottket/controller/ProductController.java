@@ -4,7 +4,6 @@ import lotte.com.lottket.dto.ProductDetailDto;
 import lotte.com.lottket.service.category.CategoryService;
 import com.google.gson.JsonParser;
 import lotte.com.lottket.dto.UserDto;
-import lotte.com.lottket.service.product.DBInitialize;
 import lotte.com.lottket.service.product.ProductService;
 import lotte.com.lottket.dto.ProductDto;
 import lotte.com.lottket.dto.ProductImageDto;
@@ -21,10 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class ProductController {
@@ -34,14 +30,23 @@ public class ProductController {
     @Autowired
     ProductService service;
 
+    @Autowired
+    UserService userService;
+
     @RequestMapping(value="main.do", method = RequestMethod.GET)
-    public String main(Model model) {
+    public String main(String id, Model model) {
         List<ProductImageDto> bestProduct = selectBestProduct();
         List<ProductImageDto> weeklyBestProduct = selectWeeklyBestProduct();
         List<ProductImageDto> newProduct = selectNewProduct();
         model.addAttribute("bestProduct", bestProduct);
         model.addAttribute("weeklyBestProduct", weeklyBestProduct);
         model.addAttribute("newProduct", newProduct);
+
+        if(id != null) {
+            UserDto dto = userService.getUser(Long.parseLong(id));
+            model.addAttribute("dto", dto);
+        }
+
         return "main";
     }
 
@@ -72,16 +77,16 @@ public class ProductController {
 
     @RequestMapping(value="updateProduct.do", method = RequestMethod.POST)
     @ResponseBody
-    public String updateProduct(@RequestBody JsonObject json) {
-//        String productId = json.get("productId");
-//        String productTitle = json.get("productTitle");
-//        String productCategory = json.get("productCategory");
-//        String productPrice = json.get("productPrice");
-//        String productStock = json.get("productStock");
-//        ProductDto dto = new ProductDto(Integer.parseInt(productId), productTitle, productCategory, Integer.parseInt(productPrice), Integer.parseInt(productStock), "now()", 0.0, null);
-//        int count = service.updateProduct(dto);
-//        return count>0?"YES":"NO";
-        return "";
+    public String updateProduct(@RequestBody String json) {
+        JSONObject jsonObject = new JSONObject(json);
+        String productId = jsonObject.getString("productId");
+        String productTitle = jsonObject.getString("productTitle");
+        String productCategory = jsonObject.getString("productCategory");
+        String productPrice = jsonObject.getString("productPrice");
+        String productStock = jsonObject.getString("productStock");
+        ProductDto dto = new ProductDto(Integer.parseInt(productId), productTitle, productCategory, Integer.parseInt(productPrice), Integer.parseInt(productStock), "now()", 0.0, null);
+        int count = service.updateProduct(dto);
+        return count>0?"YES":"NO";
     }
 
     @RequestMapping(value="deleteProduct.do", method = RequestMethod.POST)

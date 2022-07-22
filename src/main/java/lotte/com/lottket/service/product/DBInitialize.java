@@ -454,7 +454,7 @@ public class DBInitialize {
 
                 for(int k=0; k < imageList.length(); k++) {
                     String sideImg =(imageList.getJSONObject(k)).getString("origImgFileNm");
-                    productImageList.add(new ProductImageDto( k+1, pPK, sideImg));
+                    productImageList.add(new ProductImageDto( k+1, (int)pPK, sideImg));
                 }
 
                 List<String> detailImgList = map.get(pdSitm);

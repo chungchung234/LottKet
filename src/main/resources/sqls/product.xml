@@ -85,14 +85,16 @@
         SELECT DISTINCT productimageurl, a.productid
         FROM productimage a, (SELECT DISTINCT productid, SUM(orderamount) as amount FROM orders
                                GROUP BY productid ORDER BY amount desc) b
-        WHERE productimageidx = 1 LIMIT 20;
+        WHERE productimageidx = 1
+        AND a.productid = b.productid
+        LIMIT 20;
     </select>
 
     <!-- 주간 베스트 조회 -->
     <select id="selectWeeklyBestProduct" resultType="lotte.com.lottket.dto.ProductImageDto">
         SELECT DISTINCT a.productid, productimageurl
         FROM productimage a, (SELECT DISTINCT productid, SUM(orderamount) as amount, orderdate FROM orders
-        WHERE orderdate BETWEEN DATE_SUB(NOW(), INTERVAL 7 DAY) AND NOW() GROUP BY productid ORDER BY amount desc) b
+        WHERE orderdate BETWEEN DATE_SUB(NOW(), INTERVAL 100 DAY) AND NOW() GROUP BY productid ORDER BY amount desc) b
         WHERE productimageidx = 1 AND a.productid = b.productid LIMIT 20;
     </select>
 
@@ -118,7 +120,7 @@
     </select>
 
     <!--id로 title갖고오기-->
-    <select id="getTitle" parameterType="int" resultType="String">
+    <select id="getTitle" parameterType="Integer" resultType="String">
         SELECT producttitle
         FROM product
         WHERE productid=#{productId}
