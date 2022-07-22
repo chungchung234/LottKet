@@ -2,6 +2,7 @@ package lotte.com.lottket.dao.cart;
 
 import lotte.com.lottket.dto.CartDto;
 import lotte.com.lottket.dto.ProductDto;
+import lotte.com.lottket.dto.ShowcartDto;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,7 +19,7 @@ public class CartDaoImpl implements CartDao{
 
     /* 내 장바구니 전부 출력 */
     @Override
-    public List<CartDto> selectCartAll(Long userId) {
+    public List<ShowcartDto> selectCartAll(Long userId) {
         return session.selectList(ns + "selectCartAll", userId);
     }
 

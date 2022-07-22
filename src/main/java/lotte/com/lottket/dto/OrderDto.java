@@ -80,7 +80,11 @@ public class OrderDto
         this.productPrice = productPrice;
     }
 
-
+    public OrderDto(long orderId, String orderAddress, String orderDetailAddress) {
+        this.orderId = orderId;
+        this.orderAddress = orderAddress;
+        this.orderDetailAddress = orderDetailAddress;
+    }
 
     public long getOrderId() {
         return orderId;

@@ -1,17 +1,10 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: daeunchung
-  Date: 2022-07-20
-  Time: 오전 3:06
-  To change this template use File | Settings | File Templates.
---%>
-a<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
 <%@ page import="lotte.com.lottket.dto.*" %>
 <%
     // request 는 mypage.do 에서 return 한 model임
     request.setCharacterEncoding("utf-8");
-    List<HashMap> list=(List<HashMap>)request.getAttribute("list");
+    List<ShoworderDto> list=(List<ShoworderDto>)request.getAttribute("list");
     Long userId = (Long)request.getAttribute("userId");
 %>
 <!DOCTYPE html>
@@ -80,6 +73,7 @@ a<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="U
 
 <div class="contentWrap" style="width:80%; margin-left:10%; margin-bottom:10%">
     <div class="searchWrap">
+
         <div class="title lineBlack">
             <h2>나의 주문 내역</h2>
             <div class="onlySearchForm regularDate datePickerSearch">
@@ -87,52 +81,60 @@ a<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="U
                 </div>
             </div>
         </div>
+
         <div class="orderGroupWrap">
             <%
                 for(int i=0; i<list.size(); i++){
-                    HashMap param =  list.get(i);
+                    ShoworderDto dto =  list.get(i);
             %>
 
             <div class="topInformation grayBox" style="display:flex;">
                 <div class="imgWrap">
                     <img style="width:300px; height:200px;"
-                         src="https://contents.lotteon.com/itemimage/_v170000/LM/88/03/36/57/50/35/9_/00/1/LM8803365750359_001_M.jpg/dims/resize/128x128"
+                         src="<%= dto.getProductimageurl()%>"
                          class="loaded">
                 </div>
                 <div class="information" style="width:500px; margin-left:5%">
-                    <span>주문날짜</span>
-                    <span class="date"><%= param.get("o.orderdate")%></span>
-                    <br>
                     <span>주문번호</span>
-                    <span class="orderNumber">
-              <%= param.get("o.orderid")%>
-            </span>
+                    <span class="orderNumber"><%= dto.getOrderid()%></span>
+                    <br>
+                    <span>주문일자</span>
+                    <span class="orderNumber"><%= dto.getOrderdate()%></span>
                     <br><br>
                     <span>배송지</span>
                     <span class="orderNumber">
-              <%= param.get("o.orderaddress") %> <%= param.get("o.orderdetailaddress")%>
-            </span>
+              <%= dto.getOrderaddress() %> <%= dto.getOrderdetailaddress()%></span>
                     <button onclick="where()"> 배송지 변경</button>
                     <br><br>
                     <div class="orderGoodsItem">
                         <div class="goodsWrap" is-cart="true">
                             <div class="textWrap">
                                 <p class="title">
-                                    <%=param.get("o.orderamount")%> 이거 말고 getProductTitle 받아야함
+                                   상품명 : <%= dto.getProducttitle()%>
                                 </p>
-                                <div class="text"><span class="price"><em><%= param.get("p.producttitle")%>말고 productPrice</em>원
-                    </span>
-                                    <em class="count">수량 <%= param.get("o.orderamount")%></em></div>
+                                <div class="text">
+                                    <span class="price">
+                                         <em>상품 가격 :<%= dto.getProductprice()%></em>원
+                                    </span><br>
+                                    <em class="count">수량 <%= dto.getOrderamount()%></em>개</div>
                             </div>
                         </div>
                     </div>
                     <div class="orderStatusInfo">
-                        <div class="orderStatusInfoButtons" odno="2022071619353482" btnlist="1020"><button type="button"
-                                                                                                           class="btnAction">
-                            취소하기
-                        </button>
+
+       <%--                 <div class="orderStatusInfoButtons" odno="2022071619353482" btnlist="1020">
+                            <button type="button" class="updateAddress" value="<%=dto.getOrderid()%>">
+                                배송지 변경하기
+                            </button>
+                        </div>--%>
+                        <br>
+                        <div class="orderStatusInfoButtons" odno="2022071619353482" btnlist="1020">
+                            <button type="button" class="cancelOrder" value="<%=dto.getOrderid()%>">
+                                주문 취소하기
+                            </button>
                         </div>
                     </div>
+
                 </div>
             </div>
 
@@ -144,6 +146,54 @@ a<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="U
     </div>
 </div>
 
+
+<!--
+WAYS TO USE FORMDATA
+
+var formData = new FormData(document.getElementsByName('yourForm')[0]);// yourForm: form selector
+$.ajax({
+    type: "POST",
+    url: "yourURL",// where you wanna post
+    data: formData,
+    processData: false,
+    contentType: false,
+    error: function(jqXHR, textStatus, errorMessage) {
+        console.log(errorMessage); // Optional
+    },
+    success: function(data) {console.log(data)}
+});
+
+
+<form id="contactForm1" action="/your_url" method="post">
+    Form input fields here (do not forget your name attributes).
+</form>
+
+<script type="text/javascript">
+    var frm = $('#contactForm1');
+
+    frm.submit(function (e) {
+
+        e.preventDefault();
+
+        $.ajax({
+            type: frm.attr('method'),
+            url: frm.attr('action'),
+            data: frm.serialize(),
+            success: function (data) {
+                console.log('Submission was successful.');
+                console.log(data);
+            },
+            error: function (data) {
+                console.log('An error occurred.');
+                console.log(data);
+            },
+        });
+    });
+</script>
+
+-->
+
+
 <div id="map_wrap" class="map_wrap" style="display:none; height:800px; width:1500px; margin-left:5%; margin-top:5%;">
     <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
     <div class="hAddr">
@@ -151,6 +201,60 @@ a<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="U
         <span id="centerAddr"></span>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(function () {
+
+        $("updateAddress").click(function() {
+
+            // $("#demo").load("data.html");
+
+            // $("#demo").load("data.html #data1");
+
+            // $("#demo").load("data.jsp", "t1=abc&t2=123");
+
+            // $("#demo").load("data.jsp", { t1:"ABC", t2:"가나다" });
+
+            $("#demo").load(
+                "data.jsp",
+                { t1:"ABC", t2:"가나다" },
+                function(data, status, xhr){
+                    alert('success');
+                    alert(data);
+                    alert(status);
+                }
+            );
+
+        });
+
+
+
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $(".cancelOrder").click(function() {
+
+            $.ajax({
+                url:"deleteorder.do",		// file명, link(http://localhost:8090/)
+                type:'post',
+                data: { orderId : $(".cancelOrder").val },
+                datatype:'json',
+                success:function(msg){
+                    if(msg.data == "YES")
+                        location.reload();
+                },
+                error:function(){
+                    alert('error');
+                }
+            });
+
+        });
+    });
+</script>
+
 
 <script type="text/javascript"
         src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7a3a9cd4830c8f8ae415f16baa3d136f&libraries=services">

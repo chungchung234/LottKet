@@ -2,6 +2,7 @@ package lotte.com.lottket.service.cart;
 
 import lotte.com.lottket.dao.cart.CartDao;
 import lotte.com.lottket.dto.CartDto;
+import lotte.com.lottket.dto.ShowcartDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,7 @@ public class CartServiceImpl implements CartService{
     CartDao dao;
 
     @Override
-    public List<CartDto> findAllCart(Long userId) {
+    public List<ShowcartDto> findAllCart(Long userId) {
         return dao.selectCartAll(userId);
     }
 

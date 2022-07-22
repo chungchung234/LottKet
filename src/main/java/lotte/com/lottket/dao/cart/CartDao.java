@@ -2,12 +2,13 @@ package lotte.com.lottket.dao.cart;
 
 import lotte.com.lottket.dto.CartDto;
 import lotte.com.lottket.dto.ProductDto;
+import lotte.com.lottket.dto.ShowcartDto;
 
 import java.util.List;
 
 public interface CartDao {
 
-     List<CartDto> selectCartAll(Long userId);
+     List<ShowcartDto> selectCartAll(Long userId);
 
      int insertCart(CartDto dto);
 

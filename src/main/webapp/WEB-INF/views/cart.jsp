@@ -1,18 +1,22 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: daeunchung
-  Date: 2022-07-20
-  Time: 오전 3:06
-  To change this template use File | Settings | File Templates.
---%>
-a<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
 <%@ page import="lotte.com.lottket.dto.*" %>
+<%@ page import="java.text.DecimalFormat" %>
 <%
-    // request 는 mypage.do 에서 return 한 model임
     request.setCharacterEncoding("utf-8");
-    List<OrderDto> orderList=(List<OrderDto>)request.getAttribute("orderList");
-    Long userId = (Long)request.getAttribute("userId");
+    List<ShowcartDto> cartList=(List<ShowcartDto>)request.getAttribute("cartList");
+    long userId = cartList.get(0).getUserid();
+%>
+<%!
+    public String priceToStr(long price){
+
+        DecimalFormat decFormat = new DecimalFormat("###,###");
+
+        String str = decFormat.format(price);
+        System.out.println(str);
+
+        return str;
+    }
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -81,122 +85,169 @@ a<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="U
 <div class="contentWrap" style="width:80%; margin-left:10%; margin-bottom:10%">
     <div class="searchWrap">
         <div class="title lineBlack">
-            <h2>주문/배송 내역</h2>
+            <h2>나의 장바구니</h2>
             <div class="onlySearchForm regularDate datePickerSearch">
                 <div class="searchForm">
                 </div>
             </div>
         </div>
-        <div class="orderGroupWrap">
-            <%
-                for(int i=0; i<orderList.size(); i++){
-                    OrderDto dto =  orderList.get(i);
-                    Long productId = dto.getProductId();
 
+
+        <div class="orderGroupWrap" id="cartBoard">
+            <%
+                for(int i=0; i<cartList.size(); i++){
+                    ShowcartDto cartDto = cartList.get(i);
+            %>
+            <div class="topInformation grayBox" style="display:flex;">
+                <div class="imgWrap">
+                    <img style="width:300px; height:200px;" src="<%= cartDto.getImageurl()%>" class="loaded">
+                </div>
+                <div class="information" style="width:500px; margin-left:5%">
+                    <span>상품ID</span>
+                    <span class="date"><%= cartDto.getProducttitle()%></span>
+                    <br>
+                    <span>카트ID</span>
+                    <span class="orderNumber"> <%= (Long)cartDto.getCartid()%> </span>
+                    <br><br>
+                    <span>상품 수량</span>
+                    <span class="orderNumber"> <%= (Integer)cartDto.getAmount()%>개</span>
+                    <br><br>
+                    <div class="orderGoodsItem">
+                        <div class="goodsWrap" is-cart="true">
+                            <div class="textWrap">
+                                <p class="title">
+                                </p>
+                                    <em class="count">total <%= priceToStr(cartDto.getAmount() *cartDto.getProductprice())%> 원</em></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="orderStatusInfo">
+                        <div class="orderStatusInfoButtons" odno="2022071619353482" btnlist="1020">
+                            <button id="removeCart" onclick=" test(<%=cartDto.getCartid()%>)" >장바구니에서 제거</button>
+
+                        </div>
+                    </div>
+                </div>
+                <br><br><br><br>
+
+            <%
                 }
             %>
+            <div id="totalcartexpense" style="align-content: center">
+                <%
+                    int totalcost = 0;
+                    for(int i=0; i<cartList.size(); i++){
+                        totalcost += cartList.get(i).getProductprice() * cartList.get(i).getAmount();
 
-            <div class="topInformation grayBox" style="display:flex;">
-                <div class="imgWrap">
-                    <img style="width:300px; height:200px;"
-                         src="https://contents.lotteon.com/itemimage/_v170000/LM/88/03/36/57/50/35/9_/00/1/LM8803365750359_001_M.jpg/dims/resize/128x128"
-                         class="loaded">
-                </div>
-                <div class="information" style="width:500px; margin-left:5%">
-                    <span>날짜</span>
-                    <span class="date">2022.07.16</span>
-                    <br>
-                    <span>주문번호</span>
-                    <span class="orderNumber">
-              2022071619353482
-            </span>
-                    <br><br>
-                    <span>배송지</span>
-                    <span class="orderNumber">
-              서울시 강남구 비트교육센터
-            </span>
-                    <button onclick="where()"> 배송지 변경</button>
-                    <br><br>
-                    <div class="orderGoodsItem">
-                        <div class="goodsWrap" is-cart="true">
-                            <div class="textWrap">
-                                <p class="title">
-                                    행복생생란(대란, 30입) (1.56KG)
-                                </p>
-                                <div class="text"><span class="price"><em>6,990</em>원
-                    </span>
-                                    <em class="count">수량 1</em></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="orderStatusInfo">
-                        <div class="orderStatusInfoButtons" odno="2022071619353482" btnlist="1020"><button type="button"
-                                                                                                           class="btnAction">
-                            취소하기
-                        </button>
-                        </div>
-                    </div>
-                </div>
+                    }
+                %>
             </div>
+        </div>
 
-            <br><br><br><br>
-
-            <div class="topInformation grayBox" style="display:flex;">
-                <div class="imgWrap">
-                    <img style="width:300px; height:200px;"
-                         src="https://contents.lotteon.com/itemimage/_v170000/LM/88/03/36/57/50/35/9_/00/1/LM8803365750359_001_M.jpg/dims/resize/128x128"
-                         class="loaded">
-                </div>
-                <div class="information" style="width:500px; margin-left:5%">
-                    <span>날짜</span>
-                    <span class="date">2022.07.16</span>
-                    <br>
-                    <span>주문번호</span>
-                    <span class="orderNumber">
-              2022071619353482
-            </span>
-                    <br><br>
-                    <span>배송지</span>
-                    <span class="orderNumber">
-              서울시 강남구 비트교육센터
-            </span>
-                    <button> 배송지 변경</button>
-                    <br><br>
-                    <div class="orderGoodsItem">
-                        <div class="goodsWrap" is-cart="true">
-                            <div class="textWrap">
-                                <p class="title">
-                                    행복생생란(대란, 30입) (1.56KG)
-                                </p>
-                                <div class="text"><span class="price"><em>6,990</em>원
-                    </span>
-                                    <em class="count">수량 1</em></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="orderStatusInfo">
-                        <div class="orderStatusInfoButtons" odno="2022071619353482" btnlist="1020"><button type="button"
-                                                                                                           class="btnAction">
-                            취소하기
-                        </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
+            <form method="post">
+                <input type="hidden" id="cartUserId" value="<%= userId%>" >
+                <input type="submit" class="deleteAllCart">장바구니 전체 삭제</input>
+            </form>
 
         </div>
     </div>
 </div>
 
-<div id="map_wrap" class="map_wrap" style="display:none; height:800px; width:1500px; margin-left:5%; margin-top:5%;">
+<script type="text/javascript">
+    function test(cartId){
+
+        let cartUserId=document.getElementById('cartUserId').value;
+        $.ajax({
+            url: "deletecart.do",
+            type: "get",
+            data:{"cartId":cartId, "userId" : cartUserId},
+            dataType:'json',
+            contentType:"application/json;charset=UTF-8",
+            success: function (result) {
+                document.getElementById("cartBoard").innerHTML = '';
+
+                let str="";
+                for(let i=0;i<result.length;i++){
+                    let cartDto = result[i];
+
+                    let productPrice=cartDto.amount * cartDto.productprice;
+                    alert(cartDto.amount);
+                    alert(cartDto.productprice);
+                    let strPrice=productPrice.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+
+                    str+='<div class="topInformation grayBox" style="display:flex;">'+
+                        '<div class="imgWrap"><img style="width:300px; height:200px;" src="'+cartDto.imageurl+'" class="loaded">'+
+                        '</div> <div class="information" style="width:500px; margin-left:5%">'+
+                        '<span>상품ID</span><span class="date">'+cartDto.producttitle+'</span>'+
+                        '<br><span>카트ID</span><span class="orderNumber">'+cartDto.cartid+' </span><br><br>'+
+                        '<span>상품 수량</span><span class="orderNumber">'+ cartDto.amount+'</span>'+
+                        '<br><br><div class="orderGoodsItem"><div class="goodsWrap" is-cart="true">'+
+                        '<div class="textWrap"><p class="title"></p>'+
+                        '<em class="count">total '+ strPrice+' 원</em></div> </div>'+
+                        '</div> </div><div class="orderStatusInfo">'+
+                        '<div class="orderStatusInfoButtons" odno="2022071619353482" btnlist="1020">'+
+                        '<button id="removeCart" onclick="test('+ cartDto.cartid +')" >장바구니에서 제거</button></div></div></div>'+
+                        '<br><br><br><br>';
+                    document.getElementById("cartBoard").innerHTML = str;
+                }
+            }
+        });
+
+
+
+    }
+
+</script>
+
+<%--<div id="map_wrap" class="map_wrap" style="display:none; height:800px; width:1500px; margin-left:5%; margin-top:5%;">
     <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
     <div class="hAddr">
         <span class="title">지도중심기준 행정동 주소정보</span>
         <span id="centerAddr"></span>
     </div>
-</div>
+</div>--%>
+
+<%--<script type="application/javascript">
+    $(".deleteAllCart").click(function() {
+        var element = $("#deleteOneCart");
+
+        $.ajax({
+            type: 'post',
+            url: 'deleteallcart.do',
+            data: 'userId='+$('.userId').val(),
+            dataType: 'json',
+            success:function (data){
+                if(data.success == "YES" ){
+                    element.remove();
+                    alert('장바구니 전체 삭제되었습니다.');
+                } else {
+                    alert('false')
+                };
+            ;}
+        });
+    })
+
+
+    $(".deleteOneCart").click(function() {
+        var element = $(this);
+
+        $.ajax({
+            type: 'post',
+            url: 'deletecart.do',
+            data: 'cartId='+$('.cartId').val(),
+            dataType: 'json',
+            success:function (data){
+                if(data.success == "YES" ){
+                    element.remove();
+                } else {
+                    alert('해당 상품을 장바구니에서 제거할 수 없습니다.');
+                };
+            ;}
+        });
+    })
+</script>
+
+
 
 <script type="text/javascript"
         src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7a3a9cd4830c8f8ae415f16baa3d136f&libraries=services">
@@ -329,7 +380,7 @@ a<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="U
         }, 1000);
     }
 
-</script>
+</script>--%>
 
 
 

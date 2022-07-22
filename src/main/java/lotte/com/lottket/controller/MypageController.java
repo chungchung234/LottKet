@@ -2,11 +2,13 @@ package lotte.com.lottket.controller;
 
 import lotte.com.lottket.dto.OrderDto;
 import lotte.com.lottket.dto.OrdersDto;
+import lotte.com.lottket.dto.ShoworderDto;
 import lotte.com.lottket.dto.UserDto;
 import lotte.com.lottket.service.mypage.MypageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,18 +16,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Controller
 public class MypageController {
+    Logger logger = LoggerFactory.getLogger(MypageController.class);
 
     @Autowired
     MypageService service;
-    Logger logger = LoggerFactory.getLogger(MypageController.class);
 
     /**
      * 내 주문 전부 조회
      */
     @RequestMapping(value="mypage.do", method = RequestMethod.GET)
-    public String showAllMyOrders(@RequestParam("userId") Long userId, Model model) {
-        List<HashMap> list = service.showAllMyOrders(userId);
+    public String showAllMyOrders(Long userId, Model model) {
+        List<ShoworderDto> list = service.showAllMyOrders(userId);
 
         model.addAttribute("list", list);
         model.addAttribute("userId", userId);
@@ -35,13 +38,12 @@ public class MypageController {
 
     /**
      * 배송지 변경  with Ajax Button
-     * @param map (Long orderId, String newOrderAddress)
-     * @return String
      */
-    @RequestMapping(value="mypageupdateorderaddress.do", method = RequestMethod.POST)
+    @RequestMapping(value="updateorderaddress.do", method = RequestMethod.POST)
     @ResponseBody
-    public String changeOrderDestination(@RequestBody HashMap<String, Object> map) {
-        int count = service.changeOrderDestination(map);
+    public String changeOrderDestination(Long orderId, String newAddress, String newDetailAddress) {
+        OrderDto dto = new OrderDto(orderId, newAddress, newDetailAddress);
+        int count = service.changeOrderDestination(dto);
 
         return count>0?"YES":"NO";
     }
@@ -49,12 +51,12 @@ public class MypageController {
 
     /**
      * 주문 취소 Ajax Button
-     * @param Long orderId
+     * @param orderId
      * @return String
      */
-    @RequestMapping(value="mypagedeleteorder.do", method = RequestMethod.POST)
+    @RequestMapping(value="deleteorder.do", method = RequestMethod.POST)
     @ResponseBody
-    public String cancelOrder(@RequestBody Long orderId) {
+    public String cancelOrder( @RequestBody Long orderId) {
         int count = service.cancelOrder(orderId);
 
         return count>0?"YES":"NO";

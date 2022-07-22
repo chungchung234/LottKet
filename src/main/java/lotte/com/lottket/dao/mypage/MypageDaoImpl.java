@@ -1,6 +1,8 @@
 package lotte.com.lottket.dao.mypage;
 
 import lotte.com.lottket.dto.OrderDto;
+import lotte.com.lottket.dto.OrdersDto;
+import lotte.com.lottket.dto.ShoworderDto;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,13 +19,13 @@ public class MypageDaoImpl implements MypageDao{
     String ns = "Mypage.";
 
     @Override
-    public List<HashMap> showAllMyOrders(Long userId) {
+    public List<ShoworderDto> showAllMyOrders(Long userId) {
         return session.selectList(ns + "selectAllMyOrders", userId);
     }
 
     @Override
-    public int changeOrderDestination(HashMap<String, Object> map) {
-        return session.update(ns + "updateOrderDestination", map);
+    public int changeOrderDestination(OrderDto dto) {
+        return session.update(ns + "updateOrderAddress", dto);
     }
 
     @Override

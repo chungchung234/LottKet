@@ -38,10 +38,10 @@ headerContents +=
           <a href='category.do?productCategory=과일'>과일</a>
           <a href="category.do?productCategory=채소">채소</a>
           <a href="category.do?productCategory=잡곡견과">잡곡·견과</a>
-          <a href="category.do?productCategory=수산">수산</a>
+          <a href="category.do?productCategory=견과건과">견과·건과</a>
           <a href="category.do?productCategory=정육계란">정육계란<a/>
-          <a href="category.do?productCategory=유제품">유제품<a/>
-          <a href="category.do?productCategory=냉동냉장">냉동냉장<a/>
+          <a href="category.do?productCategory=수산">수산<a/>
+          <a href="category.do?productCategory=냉동냉장">냉동·냉장<a/>
           <hr>
         </div>
 `

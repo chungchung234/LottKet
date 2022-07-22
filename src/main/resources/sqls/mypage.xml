@@ -5,9 +5,15 @@
 
 <mapper namespace="Mypage">
     <!-- NOT ajax 내 주문 전부 조회 -->
-    <select id="selectAllMyOrders" parameterType="Long" resultType="HashMap">
-        select distinct o.orderdate, o.orderid, p.producttitle
-                        pi.productimageurl, p.productprice, o.orderamount
+    <select id="selectAllMyOrders" parameterType="Long" resultType="lotte.com.lottket.dto.ShoworderDto">
+        select distinct o.orderid as orderid,
+                        o.orderdate as orderdate,
+                        p.producttitle as producttitle,
+                        pi.productimageurl as productimageurl,
+                        p.productprice as productprice,
+                        o.orderamount as orderamount,
+                        o.orderaddress as orderaddress,
+                        o.orderdetailaddress as orderdetailaddress
         from orders o , product p, productimage pi, user u
         where pi.productid = p.productid and p.productid = o.productid
           AND pi.productimageidx = 1 and o.userid=#{userId};
@@ -17,9 +23,10 @@
     <!-- Ajax Button 처리로 배송지 변경
     내 주문 내역에서 배송지 변경 부분
     -->
-    <update id ="updateOrderDestination" parameterType="HashMap">
+    <update id ="updateOrderAddress" parameterType="lotte.com.lottket.dto.OrderDto">
         update orders
-        SET orderaddress = #{orderAddress}
+        SET orderaddress = #{orderAddress}, orderdetailaddress = #{orderDetailAddress}
+        from orders
         WHERE orderid = #{orderId};
     </update>
 

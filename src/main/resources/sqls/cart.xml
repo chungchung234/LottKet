@@ -5,10 +5,25 @@
 
 <mapper namespace="Cart">
 
+<!--
     <select id="selectCartAll" parameterType="java.lang.Long" resultType="lotte.com.lottket.dto.CartDto">
-        select p.producttitle, c.amount
+        select p.producttitle as cartproduct, c.amount as cartamount
         from cart c, product p, user u
         where u.userid = #{userId} AND c.userid = u.userid AND c.productid = p.productid
+    </select>
+-->
+    <select id="selectCartAll" parameterType="java.lang.Long" resultType="lotte.com.lottket.dto.ShowcartDto">
+        select c.cartid as cartid,
+               pi.productimageurl as imageurl,
+               p.producttitle as producttitle,
+               c.amount as amount,
+               p.productprice as productprice,
+               u.userid as userid
+
+        from cart c, product p, user u, productimage pi
+        where u.userid = #{userId} AND c.userid = u.userid AND c.productid = p.productid
+        AND pi.productid = c.productid AND pi.productimageidx = 1;
+
     </select>
 
 
@@ -20,7 +35,7 @@
 
     <!-- Ajax 버튼으로-->
     <delete id="deleteCart" parameterType="java.lang.Long">
-        delete from cart where cardid = #{cartId}
+        delete from cart where cartid = #{cartId}
     </delete>
 
     <!-- Ajax 버튼으로-->

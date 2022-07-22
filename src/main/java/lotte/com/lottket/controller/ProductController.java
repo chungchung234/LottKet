@@ -1,4 +1,5 @@
 package lotte.com.lottket.controller;
+import com.google.gson.JsonObject;
 import lotte.com.lottket.dto.ProductDetailDto;
 import lotte.com.lottket.service.category.CategoryService;
 import com.google.gson.JsonParser;
@@ -62,62 +63,6 @@ public class ProductController {
         return "main";
     }
 
-    /**
-     * 도메인 productlist.do 로 가야만 db값 insert하는거 이상하니 추후 수정할게요 insert xml도 이후에
-     */
-    @RequestMapping(value="productlist.do", method = RequestMethod.GET)
-    public String insertAllProducts(){
-//        String ret = "";
-        logger.info("ProductController insertAllProducts() ");
-
-        Map<String, Object> paramMap = new HashMap<>();
-        List<ProductDto> productList = new ArrayList<>();
-        List<ProductImageDto> productImageList = new ArrayList<>();
-        List<ProductDetailDto> productDetailList = new ArrayList<>();
-
-
-        if(service.checkIfEmptyDB()) {
-
-            try {
-                paramMap = DBInitialize.run();
-                productList = (List<ProductDto>) paramMap.get("productList");
-                productImageList = (List<ProductImageDto>) paramMap.get("productImageList");
-                productDetailList = (List<ProductDetailDto>) paramMap.get("productDetailList");
-
-
-                System.out.println(" =============== HEREHERE ================");
-                System.out.println("PRODUCT TABLE IS NULL");
-
-                System.out.println(productList.size());
-                System.out.println(productImageList.size());
-                System.out.println(productDetailList.size());
-
-//                /** product table insert data */
-//                for (int i = 0; i < productList.size(); i++) {
-//                    service.insertOneProduct(productList.get(i));
-//                    System.out.println(i+" : "+productList.get(i).toString());
-//                }
-//                /** productImage table insert data */
-//                for (int i = 0; i < productImageList.size(); i++) {
-//                    service.insertOneImage(productImageList.get(i));
-//                    System.out.println(i+" : "+productImageList.get(i).toString());
-//                }
-//                /** productDetail table insert data */
-//                for (int i = 0; i < productDetailList.size(); i++) {
-//                    service.insertOneDetailImage(productDetailList.get(i));
-//                    System.out.println(i+" : "+productDetailList.get(i).toString());
-//                }
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-//        model.addAttribute("productList", productList);
-            return "main";
-
-    }
-
     @RequestMapping(value="insertProduct.do", method = RequestMethod.GET)
     @ResponseBody
     public String insertProduct(@RequestBody ProductDto dto) {
@@ -127,23 +72,25 @@ public class ProductController {
 
     @RequestMapping(value="updateProduct.do", method = RequestMethod.POST)
     @ResponseBody
-    public String updateProduct(@RequestBody Map<String, String> json) {
-        String productId = json.get("productId");
-        String productTitle = json.get("productTitle");
-        String productCategory = json.get("productCategory");
-        String productPrice = json.get("productPrice");
-        String productStock = json.get("productStock");
-        ProductDto dto = new ProductDto(Integer.parseInt(productId), productTitle, productCategory, Integer.parseInt(productPrice), Integer.parseInt(productStock), "now()", 0.0, null);
-        int count = service.updateProduct(dto);
-        return count>0?"YES":"NO";
+    public String updateProduct(@RequestBody JsonObject json) {
+//        String productId = json.get("productId");
+//        String productTitle = json.get("productTitle");
+//        String productCategory = json.get("productCategory");
+//        String productPrice = json.get("productPrice");
+//        String productStock = json.get("productStock");
+//        ProductDto dto = new ProductDto(Integer.parseInt(productId), productTitle, productCategory, Integer.parseInt(productPrice), Integer.parseInt(productStock), "now()", 0.0, null);
+//        int count = service.updateProduct(dto);
+//        return count>0?"YES":"NO";
+        return "";
     }
 
     @RequestMapping(value="deleteProduct.do", method = RequestMethod.POST)
     @ResponseBody
     public String deleteProduct(@RequestBody String productTitle, @RequestBody String productCategory, @RequestBody String productPrice, @RequestBody String productStock) {
-        ProductDto dto = new ProductDto(productTitle, productCategory, Integer.parseInt(productPrice), Integer.parseInt(productStock), "now()", 0.0);
-        int count = service.deleteProduct(dto);
-        return count>0?"YES":"NO";
+//        ProductDto dto = new ProductDto(productTitle, productCategory, Integer.parseInt(productPrice), Integer.parseInt(productStock), "now()", 0.0);
+//        int count = service.deleteProduct(dto);
+//        return count>0?"YES":"NO";
+        return "";
     }
 
     @RequestMapping(value="selectProduct.do", method = RequestMethod.GET)

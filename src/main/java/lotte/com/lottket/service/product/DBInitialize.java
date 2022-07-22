@@ -174,8 +174,7 @@ public class DBInitialize {
         map.add("LM8801114102091_001", "https://simage.lottemart.com/lim/static_root/images/onlinedescr/images/001077/%EA%B3%B5%ED%86%B5%EB%B0%B0%EB%84%88_%EA%B5%AD%EC%82%B0%EC%BD%A9%EC%BD%A9%EB%82%98%EB%AC%BC_(2).jpg");
         map.add("LM8809597441188_001", "https://red.lotteon.com/_m2_/_rsc_/LM8809597441188/?sref=http://image.lottemart.com/lim/static_root/images/namoimg/images/000852/20181109160048336_F6HT4MSP.jpg");
 
-        /********************* 잡곡견과 Product & ProductImage *******************************/
-
+        /********************* 잡곡견과 Product & ProductImage **************************아니고 쌀 잡곡인듯?***/
         map.add("잡곡견과", "LM8804246045687_001"); // https://www.lotteon.com/p/product/LM8804246045687?sitmNo=LM8804246045687_001&mall_no=4&dp_infw_cd=CASLM10100011
         map.add("잡곡견과", "LM8804595000252_001"); // https://www.lotteon.com/p/product/LM8804595000252?sitmNo=LM8804595000252_001&mall_no=4&dp_infw_cd=CASLM10100011
         map.add("잡곡견과", "LM8808433100029_001"); // https://www.lotteon.com/p/product/LM8808433100029?sitmNo=LM8808433100029_001&mall_no=4&dp_infw_cd=CASLM10100011
@@ -196,7 +195,7 @@ public class DBInitialize {
         map.add("LM8804246045687_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001665/20220630145230976_2EV15Z0W.jpg");
         map.add("LM8804595000252_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001461/20211006110956560_FK0JCIFE.jpg");
         map.add("LM8804595000252_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001461/20211006111015802_LBF7URV5.jpg");
-      map.add(  "LM8804595000252_001",     "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001461/20211006111057542_4R37Q3DM.jpg");
+      map.add(  "LM8804595000252_001",  "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001461/20211006111057542_4R37Q3DM.jpg");
        map.add( "LM8808433100029_001", "https://red.lotteon.com/_m2_/_rsc_/LM8808433100029/?sref=http://image.lottemart.com/lim/static_root/images/namoimg/images/001259/20201125173511901_U5O64UBU.jpeg");
        map.add( "LM8808836975958_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001332/20210528135720269_65JEANFP.jpg");
        map.add( "LM8801619804254_001", "https://simage.lottemart.com/lim/static_root/images/edidescrimg/images/001680/Lipton_Zero_Sugar_30ST_%EC%83%81%EC%84%B8%ED%8E%98%EC%9D%B4%EC%A7%80_%EC%9D%B4%EB%AF%B8%EC%A7%80%EC%A1%B0%EC%A0%95_1.jpg");
@@ -218,76 +217,190 @@ public class DBInitialize {
      map.add(   "LM8801382149637_001", "https://simage.lottemart.com/lim/static_root/images/edidescrimg/images/001654/500_%ED%95%98%EB%8A%98%EB%B3%B4%EB%A6%AC_1.35%ED%91%9C%EC%8B%9C%EC%82%AC%ED%95%AD.jpg");
      map.add(   "LM8801500151467_001", "https://red.lotteon.com/_m2_/_rsc_/LM8801500151467/?sref=http://image.lottemart.com/lim/static_root/images/namoimg/images/001190/20200713155634544_ET59ET7B.jpeg");
 
-//        /********************* 수산 Product & ProductImage *******************************/
-//
-//        map.add("수산", "LM8801133009098_001"); // https://www.lotteon.com/p/product/LM8801133009098?sitmNo=LM8801133009098_001&mall_no=4&dp_infw_cd=CASLM90020000
-//        map.add("수산", "LM8801133009081_001"); // https://www.lotteon.com/p/product/LM8801133009081?sitmNo=LM8801133009081_001&mall_no=4&dp_infw_cd=CASLM90020000
-//        map.add("수산", "LM8809022209697_001"); // https://www.lotteon.com/p/product/LM8809022209697?sitmNo=LM8809022209697_001&mall_no=4&dp_infw_cd=CASLM90020000
-//        map.add("수산", "LM8809019708530_001"); // https://www.lotteon.com/p/product/LM8809019708530?sitmNo=LM8809019708530_001&mall_no=4&dp_infw_cd=CASLM90020000
-//        map.add("수산", "LM8801133008466_001"); // https://www.lotteon.com/p/product/LM8801133008466?sitmNo=LM8801133008466_001&mall_no=4&dp_infw_cd=CASLM90020000
-//        map.add("수산", "LM8809019711479_001"); // https://www.lotteon.com/p/product/LM8809019711479?sitmNo=LM8809019711479_001&mall_no=4&dp_infw_cd=CASLM90020000
-//        map.add("수산", "LM8809019708554_001"); // https://www.lotteon.com/p/product/LM8809019708554?sitmNo=LM8809019708554_001&mall_no=4&dp_infw_cd=CASLM90020000
-//        map.add("수산", "LM8809742173582_001"); // https://www.lotteon.com/p/product/LM8809742173582?sitmNo=LM8809742173582_001&mall_no=4&dp_infw_cd=CASLM90020000
-//        map.add("수산", "LM8809022201486_001"); // https://www.lotteon.com/p/product/LM8809022201486?sitmNo=LM8809022201486_001&mall_no=4&dp_infw_cd=CASLM90020000
-//        map.add("수산", "LM8809617942480_001"); // https://www.lotteon.com/p/product/LM8809617942480?sitmNo=LM8809617942480_001&mall_no=4&dp_infw_cd=CASLM90020000
-//        map.add("수산", "LM8809617944958_001"); // https://www.lotteon.com/p/product/LM8809617944958?sitmNo=LM8809617944958_001&mall_no=4&dp_infw_cd=CASLM90020000
-//        map.add("수산", "LM8809036729877_001"); // https://www.lotteon.com/p/product/LM8809036729877?sitmNo=LM8809036729877_001&mall_no=4&dp_infw_cd=CASLM90020000
-//        map.add("수산", "LM0430001073312_001"); // https://www.lotteon.com/p/product/LM0430001073312?sitmNo=LM0430001073312_001&mall_no=4&dp_infw_cd=CASLM90020000
-//        map.add("수산", "LM8936172871372_001"); // https://www.lotteon.com/p/product/LM8936172871372?sitmNo=LM8936172871372_001&mall_no=4&dp_infw_cd=CASLM90020000
-//        map.add("수산", "LM8801448335240_001"); // https://www.lotteon.com/p/product/LM8801448335240?sitmNo=LM8801448335240_001&mall_no=4&dp_infw_cd=CASLM90020000
-//        map.add("수산", "LM8809019711486_001"); // https://www.lotteon.com/p/product/LM8809019711486?sitmNo=LM8809019711486_001&mall_no=4&dp_infw_cd=CASLM90020000
-//
-//        map.add("정육계란", "LM8803365750359_001"); // https://www.lotteon.com/p/product/LM8803365750359?sitmNo=LM8803365750359_001&mall_no=4&dp_infw_cd=CASLM10100014
-//        map.add("정육계란", "LM2700000000533_001"); // https://www.lotteon.com/p/product/LM2700000000533?sitmNo=LM2700000000533_001&mall_no=4&dp_infw_cd=CASLM10100014
-//        map.add("정육계란", "LM2700000015360_001"); // https://www.lotteon.com/p/product/LM2700000015360?sitmNo=LM2700000015360_001&mall_no=4&dp_infw_cd=CASLM10100014
-//        map.add("정육계란", "LM2700000027653_001"); // https://www.lotteon.com/p/product/LM2700000027653?sitmNo=LM2700000027653_001&mall_no=4&dp_infw_cd=CASLM10100014
-//        map.add("정육계란", "LM2881230000002_001"); // https://www.lotteon.com/p/product/LM2881230000002?sitmNo=LM2881230000002_001&mall_no=4&dp_infw_cd=CASLM10100014
-//        map.add("정육계란", "LM2700000027943_001"); // https://www.lotteon.com/p/product/LM2700000027943?sitmNo=LM2700000027943_001&mall_no=4&dp_infw_cd=CASLM10100014
-//        map.add("정육계란", "LM2861900000006_001"); // https://www.lotteon.com/p/product/LM2861900000006?sitmNo=LM2861900000006_001&mall_no=4&dp_infw_cd=CASLM10100014
-//        map.add("정육계란", "LM2700000015551_001"); // https://www.lotteon.com/p/product/LM2700000015551?sitmNo=LM2700000015551_001&mall_no=4&dp_infw_cd=CASLM10100014
-//        map.add("정육계란", "LM2700000015315_001"); // https://www.lotteon.com/p/product/LM2700000015315?sitmNo=LM2700000015315_001&mall_no=4&dp_infw_cd=CASLM10100014
-//        map.add("정육계란", "LM8804030000038_001"); // https://www.lotteon.com/p/product/LM8804030000038?sitmNo=LM8804030000038_001&mall_no=4&dp_infw_cd=CASLM10100014
-//        map.add("정육계란", "LM8801114141069_001"); // https://www.lotteon.com/p/product/LM8801114141069?sitmNo=LM8801114141069_001&mall_no=4&dp_infw_cd=CASLM10100014
-//        map.add("정육계란", "LM2881590000001_001"); // https://www.lotteon.com/p/product/LM2881590000001?sitmNo=LM2881590000001_001&mall_no=4&dp_infw_cd=CASLM10100014
-//        map.add("정육계란", "LM8809032697415_001"); // https://www.lotteon.com/p/product/LM8809032697415?sitmNo=LM8809032697415_001&mall_no=4&dp_infw_cd=CASLM10100014
-//        map.add("정육계란", "LM2700000027660_001"); // https://www.lotteon.com/p/product/LM2700000027660?sitmNo=LM2700000027660_001&mall_no=4&dp_infw_cd=CASLM10100014
-//        map.add("정육계란", "LM8809055510982_001"); // https://www.lotteon.com/p/product/LM8809055510982?sitmNo=LM8809055510982_001&mall_no=4&dp_infw_cd=CASLM10100014
-//        map.add("정육계란", "LM8809385948738_001"); // https://www.lotteon.com/p/product/LM8809385948738?sitmNo=LM8809385948738_001&mall_no=4&dp_infw_cd=CASLM10100014
-//
-//        map.add("유제품", "LM2700000052310_001"); // https://www.lotteon.com/p/product/LM2700000052310?sitmNo=LM2700000052310_001&mall_no=4&dp_infw_cd=CASLM10100009
-//        map.add("유제품", "LM2614860000001_001"); // https://www.lotteon.com/p/product/LM2614860000001?sitmNo=LM2614860000001_001&mall_no=4&dp_infw_cd=CASLM10100009
-//        map.add("유제품", "LM2700000029770_001"); // https://www.lotteon.com/p/product/LM2700000029770?sitmNo=LM2700000029770_001&mall_no=4&dp_infw_cd=CASLM10100009
-//        map.add("유제품", "LM2529500000009_001"); // https://www.lotteon.com/p/product/LM2529500000009?sitmNo=LM2529500000009_001&mall_no=4&dp_infw_cd=CASLM10100009
-//        map.add("유제품", "LM2700000046951_001"); // https://www.lotteon.com/p/product/LM2700000046951?sitmNo=LM2700000046951_001&mall_no=4&dp_infw_cd=CASLM10100009
-//        map.add("유제품", "LM2700000058350_001"); // https://www.lotteon.com/p/product/LM2700000058350?sitmNo=LM2700000058350_001&mall_no=4&dp_infw_cd=CASLM10100009
-//        map.add("유제품", "LM2527680000000_001"); // https://www.lotteon.com/p/product/LM2527680000000?sitmNo=LM2527680000000_001&mall_no=4&dp_infw_cd=CASLM10100009
-//        map.add("유제품", "LM2534930000000_001"); // https://www.lotteon.com/p/product/LM2534930000000?sitmNo=LM2534930000000_001&mall_no=4&dp_infw_cd=CASLM10100009
-//        map.add("유제품", "LM8809433792962_001"); // https://www.lotteon.com/p/product/LM8809433792962?sitmNo=LM8809433792962_001&mall_no=4&dp_infw_cd=CASLM10100009
-//        map.add("유제품", "LM2700000029817_001"); // https://www.lotteon.com/p/product/LM2700000029817?sitmNo=LM2700000029817_001&mall_no=4&dp_infw_cd=CASLM10100009
-//        map.add("유제품", "LM2565790000008_001"); // https://www.lotteon.com/p/product/LM2565790000008?sitmNo=LM2565790000008_001&mall_no=4&dp_infw_cd=CASLM10100009
-//        map.add("유제품", "LM2830990000005_001"); // https://www.lotteon.com/p/product/LM2830990000005?sitmNo=LM2830990000005_001&mall_no=4&dp_infw_cd=CASLM10100009
-//        map.add("유제품", "LM2672790000003_001"); // https://www.lotteon.com/p/product/LM2672790000003?sitmNo=LM2672790000003_001&mall_no=4&dp_infw_cd=CASLM10100009
-//        map.add("유제품", "LM2893900000007_001"); // https://www.lotteon.com/p/product/LM2893900000007?sitmNo=LM2893900000007_001&mall_no=4&dp_infw_cd=CASLM10100009
-//        map.add("유제품", "LM2584440000007_001"); // https://www.lotteon.com/p/product/LM2584440000007?sitmNo=LM2584440000007_001&mall_no=4&dp_infw_cd=CASLM10100009
-//        map.add("유제품", "LM2894660000009_001"); // https://www.lotteon.com/p/product/LM2894660000009?sitmNo=LM2894660000009_001&mall_no=4&dp_infw_cd=CASLM10100009
-//
-//        map.add("냉장냉동", "LM8801123700653_001"); // https://www.lotteon.com/p/product/LM8801123700653?sitmNo=LM8801123700653_001&mall_no=4&dp_infw_cd=CASLM90040000
-//        map.add("냉장냉동", "LM8801123727391_001"); // https://www.lotteon.com/p/product/LM8801123727391?sitmNo=LM8801123727391_001&mall_no=4&dp_infw_cd=CASLM90040000
-//        map.add("냉장냉동", "LM8801007883304_001"); // https://www.lotteon.com/p/product/LM8801007883304?sitmNo=LM8801007883304_001&mall_no=4&dp_infw_cd=CASLM90040000
-//        map.add("냉장냉동", "LM8801123309856_001"); // https://www.lotteon.com/p/product/LM8801123309856?sitmNo=LM8801123309856_001&mall_no=4&dp_infw_cd=CASLM90040000
-//        map.add("냉장냉동", "LM8801007526492_001"); // https://www.lotteon.com/p/product/LM8801007526492?sitmNo=LM8801007526492_001&mall_no=4&dp_infw_cd=CASLM90040000
-//        map.add("냉장냉동", "LM8801242045635_001"); // https://www.lotteon.com/p/product/LM8801242045635?sitmNo=LM8801242045635_001&mall_no=4&dp_infw_cd=CASLM90040000
-//        map.add("냉장냉동", "LM8801007526225_001"); // https://www.lotteon.com/p/product/LM8801007526225?sitmNo=LM8801007526225_001&mall_no=4&dp_infw_cd=CASLM90040000
-//        map.add("냉장냉동", "LM8801007033686_001"); // https://www.lotteon.com/p/product/LM8801007033686?sitmNo=LM8801007033686_001&mall_no=4&dp_infw_cd=CASLM90040000
-//        map.add("냉장냉동", "LM8801242001716_001"); // https://www.lotteon.com/p/product/LM8801242001716?sitmNo=LM8801242001716_001&mall_no=4&dp_infw_cd=CASLM90040000
-//        map.add("냉장냉동", "LM8801007883281_001"); // https://www.lotteon.com/p/product/LM8801007883281?sitmNo=LM8801007883281_001&mall_no=4&dp_infw_cd=CASLM90040000
-//        map.add("냉장냉동", "LM8801007857206_001"); // https://www.lotteon.com/p/product/LM8801007857206?sitmNo=LM8801007857206_001&mall_no=4&dp_infw_cd=CASLM90040000
-//        map.add("냉장냉동", "LM8801114101834_001"); // https://www.lotteon.com/p/product/LM8801114101834?sitmNo=LM8801114101834_001&mall_no=4&dp_infw_cd=CASLM90040000
-//        map.add("냉장냉동", "LM8809265024712_001"); // https://www.lotteon.com/p/product/LM8809265024712?sitmNo=LM8809265024712_001&mall_no=4&dp_infw_cd=CASLM90040000
-//        map.add("냉장냉동", "LM8801007561677_001"); // https://www.lotteon.com/p/product/LM8801007561677?sitmNo=LM8801007561677_001&mall_no=4&dp_infw_cd=CASLM90040000
-//        map.add("냉장냉동", "LM8809265020158_001"); // https://www.lotteon.com/p/product/LM8809265020158?sitmNo=LM8809265020158_001&mall_no=4&dp_infw_cd=CASLM90040000
-//        map.add("냉장냉동", "LM8809146311528_001"); // https://www.lotteon.com/p/product/LM8809146311528?sitmNo=LM8809146311528_001&mall_no=4&dp_infw_cd=CASLM90040000
-//
+
+
+     /*************여기까지 넣었음 ************ 앞에 잡곡 견과 -> 쌀.잡곡으로 수정 필요  **/
+
+
+
+
+
+        /********************* 수산 Product & ProductImage ********** 아니고 견과 건과*********************/
+
+        map.add("견과건과", "LM8801133009098_001"); // https://www.lotteon.com/p/product/LM8801133009098?sitmNo=LM8801133009098_001&mall_no=4&dp_infw_cd=CASLM90020000
+        map.add("견과건과", "LM8801133009081_001"); // https://www.lotteon.com/p/product/LM8801133009081?sitmNo=LM8801133009081_001&mall_no=4&dp_infw_cd=CASLM90020000
+        map.add("견과건과", "LM8809022209697_001"); // https://www.lotteon.com/p/product/LM8809022209697?sitmNo=LM8809022209697_001&mall_no=4&dp_infw_cd=CASLM90020000
+        map.add("견과건과", "LM8809019708530_001"); // https://www.lotteon.com/p/product/LM8809019708530?sitmNo=LM8809019708530_001&mall_no=4&dp_infw_cd=CASLM90020000
+        map.add("견과건과", "LM8801133008466_001"); // https://www.lotteon.com/p/product/LM8801133008466?sitmNo=LM8801133008466_001&mall_no=4&dp_infw_cd=CASLM90020000
+        map.add("견과건과", "LM8809019711479_001"); // https://www.lotteon.com/p/product/LM8809019711479?sitmNo=LM8809019711479_001&mall_no=4&dp_infw_cd=CASLM90020000
+        map.add("견과건과", "LM8809019708554_001"); // https://www.lotteon.com/p/product/LM8809019708554?sitmNo=LM8809019708554_001&mall_no=4&dp_infw_cd=CASLM90020000
+        map.add("견과건과", "LM8809742173582_001"); // https://www.lotteon.com/p/product/LM8809742173582?sitmNo=LM8809742173582_001&mall_no=4&dp_infw_cd=CASLM90020000
+        map.add("견과건과", "LM8809022201486_001"); // https://www.lotteon.com/p/product/LM8809022201486?sitmNo=LM8809022201486_001&mall_no=4&dp_infw_cd=CASLM90020000
+        map.add("견과건과", "LM8809617942480_001"); // https://www.lotteon.com/p/product/LM8809617942480?sitmNo=LM8809617942480_001&mall_no=4&dp_infw_cd=CASLM90020000
+        map.add("견과건과", "LM8809617944958_001"); // https://www.lotteon.com/p/product/LM8809617944958?sitmNo=LM8809617944958_001&mall_no=4&dp_infw_cd=CASLM90020000
+        map.add("견과건과", "LM8809036729877_001"); // https://www.lotteon.com/p/product/LM8809036729877?sitmNo=LM8809036729877_001&mall_no=4&dp_infw_cd=CASLM90020000
+        map.add("견과건과", "LM0430001073312_001"); // https://www.lotteon.com/p/product/LM0430001073312?sitmNo=LM0430001073312_001&mall_no=4&dp_infw_cd=CASLM90020000
+        map.add("견과건과", "LM8936172871372_001"); // https://www.lotteon.com/p/product/LM8936172871372?sitmNo=LM8936172871372_001&mall_no=4&dp_infw_cd=CASLM90020000
+        map.add("견과건과", "LM8801448335240_001"); // https://www.lotteon.com/p/product/LM8801448335240?sitmNo=LM8801448335240_001&mall_no=4&dp_infw_cd=CASLM90020000
+        map.add("견과건과", "LM8809019711486_001"); // https://www.lotteon.com/p/product/LM8809019711486?sitmNo=LM8809019711486_001&mall_no=4&dp_infw_cd=CASLM90020000
+
+        map.add("LM8801133009098_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001615/20220427162103924_HP2VHE5F.jpg");
+        map.add("LM8801133009098_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001615/20220427162121517_RWZLVJIM.jpg");
+        map.add("LM8801133009098_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001615/20220427162133620_SZMN6PH8.jpg");
+        map.add("LM8801133009081_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001592/20220330134917345_4YEPIB44.jpg");
+        map.add("LM8809022209697_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001315/20210413143621266_019JI6ZR.jpg");
+        map.add("LM8809022209697_001", "https://simage.lottemart.com/lim/static_root/images/onlinedescr/images/000934/%ED%97%88%EB%B2%84%EC%83%81%EC%84%B8.jpg");
+        map.add("LM8809019708530_001", "https://red.lotteon.com/_m2_/_rsc_/LM8809019708530/?sref=http://image.lottemart.com/lim/static_root/images/namoimg/images/000830/20181004150800523_DLIR0X8L.jpg");
+        map.add("LM8801133008466_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001470/20211015142638292_PTSE3DNP.jpg");
+        map.add("LM8801133008466_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001470/20211015142650568_3IY5QRT2.jpg");
+        map.add("LM8801133008466_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001470/20211015142703255_RRAF660K.jpg");
+        map.add("LM8809019711479_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001592/20220330133335774_8I6EDIGW.jpg");
+        map.add("LM8809019711479_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001592/20220330133355969_0MIO49T9.jpg");
+        map.add("LM8809019708554_001", "https://red.lotteon.com/_m2_/_rsc_/LM8809019708554/?sref=http://image.lottemart.com/lim/static_root/images/namoimg/images/000830/20181004144212822_03XT7STB.jpeg");
+        map.add("LM8809742173582_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001593/20220330152908631_GVI3PQ4O.jpg");
+        map.add("LM8809742173582_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001593/20220330152920198_LE1GMGR1.jpg");
+        map.add("LM8809022201486_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001315/20210413144731452_5MLYQWBB.jpg");
+        map.add("LM8809617942480_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001315/20210413145143319_N7C5E9A3.jpg");
+        map.add("LM8809617944958_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001315/20210413150503547_EKRJOSYX.jpg");
+        map.add("LM8809036729877_001", "https://red.lotteon.com/_m2_/_rsc_/LM8809036729877/?sref=http://image.lottemart.com/lim/static_root/images/namoimg/images/001225/20200901143713371_Y4XSZ7S0.jpeg");
+        map.add("LM0430001073312_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001570/20220308102446750_O1W1COZV.jpg");
+        map.add("LM0430001073312_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001570/20220308102205864_DMS0ZQGP.jpg");
+        map.add("LM8936172871372_001", "https://simage.lottemart.com/lim/static_root/images/edidescrimg/images/001417/%EC%BD%94%EC%BD%94%EB%84%9B%EC%B9%A9%EC%83%81%EC%84%B81-min.jpg");
+        map.add("LM8936172871372_001", "https://simage.lottemart.com/lim/static_root/images/edidescrimg/images/001417/%EC%BD%94%EC%BD%94%EB%84%9B%EC%B9%A9%EC%83%81%EC%84%B83-min.jpg");
+        map.add("LM8936172871372_001", "https://simage.lottemart.com/lim/static_root/images/edidescrimg/images/001417/%EC%BD%94%EC%BD%94%EB%84%9B%EC%B9%A9%EC%83%81%EC%84%B82-min.jpg");
+        map.add("LM8936172871372_001", "https://simage.lottemart.com/lim/static_root/images/edidescrimg/images/001417/%EC%BD%94%EC%BD%94%EB%84%9B%EC%B9%A9%EC%83%81%EC%84%B84-min.jpg");
+        map.add("LM8936172871372_001", "https://simage.lottemart.com/lim/static_root/images/edidescrimg/images/001418/%EC%BD%94%EC%BD%94%EB%84%9B%EC%B9%A9%EC%83%81%EC%84%B85-min.jpg");
+        map.add("LM8801448335240_001", "https://red.lotteon.com/_m2_/_rsc_/LM8801448335240/?sref=http://image.lottemart.com/lim/static_root/images/namoimg/images/000971/20190529111639890_CDVU96CC.jpeg");
+        map.add("LM8809019711486_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001592/20220330133504365_WRLW46EA.jpg");
+
+
+
+
+
+        map.add("정육계란", "LM8803365750359_001"); // https://www.lotteon.com/p/product/LM8803365750359?sitmNo=LM8803365750359_001&mall_no=4&dp_infw_cd=CASLM10100014
+        map.add("정육계란", "LM2700000000533_001"); // https://www.lotteon.com/p/product/LM2700000000533?sitmNo=LM2700000000533_001&mall_no=4&dp_infw_cd=CASLM10100014
+        map.add("정육계란", "LM2700000015360_001"); // https://www.lotteon.com/p/product/LM2700000015360?sitmNo=LM2700000015360_001&mall_no=4&dp_infw_cd=CASLM10100014
+        map.add("정육계란", "LM2700000027653_001"); // https://www.lotteon.com/p/product/LM2700000027653?sitmNo=LM2700000027653_001&mall_no=4&dp_infw_cd=CASLM10100014
+        map.add("정육계란", "LM2881230000002_001"); // https://www.lotteon.com/p/product/LM2881230000002?sitmNo=LM2881230000002_001&mall_no=4&dp_infw_cd=CASLM10100014
+        map.add("정육계란", "LM2700000027943_001"); // https://www.lotteon.com/p/product/LM2700000027943?sitmNo=LM2700000027943_001&mall_no=4&dp_infw_cd=CASLM10100014
+        map.add("정육계란", "LM2861900000006_001"); // https://www.lotteon.com/p/product/LM2861900000006?sitmNo=LM2861900000006_001&mall_no=4&dp_infw_cd=CASLM10100014
+        map.add("정육계란", "LM2700000015551_001"); // https://www.lotteon.com/p/product/LM2700000015551?sitmNo=LM2700000015551_001&mall_no=4&dp_infw_cd=CASLM10100014
+        map.add("정육계란", "LM2700000015315_001"); // https://www.lotteon.com/p/product/LM2700000015315?sitmNo=LM2700000015315_001&mall_no=4&dp_infw_cd=CASLM10100014
+        map.add("정육계란", "LM8804030000038_001"); // https://www.lotteon.com/p/product/LM8804030000038?sitmNo=LM8804030000038_001&mall_no=4&dp_infw_cd=CASLM10100014
+        map.add("정육계란", "LM8801114141069_001"); // https://www.lotteon.com/p/product/LM8801114141069?sitmNo=LM8801114141069_001&mall_no=4&dp_infw_cd=CASLM10100014
+        map.add("정육계란", "LM2881590000001_001"); // https://www.lotteon.com/p/product/LM2881590000001?sitmNo=LM2881590000001_001&mall_no=4&dp_infw_cd=CASLM10100014
+        map.add("정육계란", "LM8809032697415_001"); // https://www.lotteon.com/p/product/LM8809032697415?sitmNo=LM8809032697415_001&mall_no=4&dp_infw_cd=CASLM10100014
+        map.add("정육계란", "LM2700000027660_001"); // https://www.lotteon.com/p/product/LM2700000027660?sitmNo=LM2700000027660_001&mall_no=4&dp_infw_cd=CASLM10100014
+        map.add("정육계란", "LM8809055510982_001"); // https://www.lotteon.com/p/product/LM8809055510982?sitmNo=LM8809055510982_001&mall_no=4&dp_infw_cd=CASLM10100014
+        map.add("정육계란", "LM8809385948738_001"); // https://www.lotteon.com/p/product/LM8809385948738?sitmNo=LM8809385948738_001&mall_no=4&dp_infw_cd=CASLM10100014
+
+        map.add("LM8803365750359_001", "https://red.lotteon.com/_m2_/_rsc_/LM8803365750359/?sref=http://image.lottemart.com/lim/static_root/images/namoimg/images/001291/20210127095048990_03IC2OG5.jpg");
+        map.add("LM2700000000533_001", "https://red.lotteon.com/_m2_/_rsc_/LM2700000000533/?sref=http://image.lottemart.com/lim/static_root/images/namoimg/images/000954/20190508165207867_2YRAOSCF.jpeg");
+        map.add("LM2700000015360_001", "https://red.lotteon.com/_m2_/_rsc_/LM2700000015360/?sref=http://image.lottemart.com/lim/static_root/images/namoimg/images/001041/20190924144854700_ZC51UB7E.jpeg");
+        map.add("LM2700000027653_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001555/20220211180218647_RTGF4FWZ.jpg");
+        map.add("LM2700000027653_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001555/20220211180230174_4ZYUWD91.jpg");
+        map.add("LM2700000027653_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001555/20220211180239980_HRXE0GEF.jpg");
+        map.add("LM2881230000002_001", "https://red.lotteon.com/_m2_/_rsc_/LM2881230000002/?sref=http://image.lottemart.com/lim/static_root/images/namoimg/images/000725/20180618114657339_2RDGVA75.jpg");
+        map.add("LM2700000027943_001", "https://red.lotteon.com/_m2_/_rsc_/LM2700000027943/?sref=http://image.lottemart.com/lim/static_root/images/namoimg/images/001175/20200617180104633_DPM7YQ5C.jpeg");
+        map.add("LM2861900000006_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/000598/20171229111421863_28RC4V2N.jpg");
+        map.add("LM2700000015551_001", "https://red.lotteon.com/_m2_/_rsc_/LM2700000015551/?sref=http://image.lottemart.com/lim/static_root/images/namoimg/images/001096/20200108141522371_FM0P8QMK.jpeg");
+        map.add("LM2700000015315_001", "https://red.lotteon.com/_m2_/_rsc_/LM2700000015315/?sref=http://image.lottemart.com/lim/static_root/images/namoimg/images/001048/20191014110113331_S1NOGXR9.jpeg");
+        map.add("LM8804030000038_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001449/20210917163732949_YM8RBFG3.jpg");
+        map.add("LM8804030000038_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001449/20210917163756370_4RTWCUQX.jpg");
+        map.add("LM8804030000038_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001449/20210917163807161_VWRZ95IF.jpg");
+        map.add("LM8801114141069_001", "https://simage.lottemart.com/lim/static_root/images/onlinedescr/images/001282/%EA%B3%B5%ED%86%B5%EB%B0%B0%EB%84%88_%EB%8F%99%EB%AC%BC%EB%B3%B5%EC%A7%80%EB%9E%80_3.jpg");
+        map.add("LM8801114141069_001", "https://simage.lottemart.com/lim/static_root/images/onlinedescr/images/001282/%EA%B3%B5%ED%86%B5%EB%B0%B0%EB%84%88_%EA%B3%84%EB%9E%80_%EB%9D%BC%EC%9D%B8%EC%97%85%EB%A6%AC%EB%89%B4%EC%96%BC_5.jpg");
+        map.add("LM2881590000001_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/000919/20190226143857372_MIXWNRPO.jpeg");
+        map.add("LM8809032697415_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001423/20210817173743150_N8RJOC4W.jpeg");
+        map.add("LM2700000027660_001", "https://red.lotteon.com/_m2_/_rsc_/LM2700000027660/?sref=http://image.lottemart.com/lim/static_root/images/namoimg/images/001153/20200506143101925_XONLBAOG.jpeg");
+        map.add("LM8809055510982_001", "https://red.lotteon.com/_m2_/_rsc_/LM8809055510982/?sref=http://image.lottemart.com/lim/static_root/images/namoimg/images/000686/20180502172741113_7W2HPYV6.jpg");
+        map.add("LM8809385948738_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001331/20210527104309321_Z4OYVY70.jpg");
+
+        map.add("수산", "LM2700000052310_001"); // https://www.lotteon.com/p/product/LM2700000052310?sitmNo=LM2700000052310_001&mall_no=4&dp_infw_cd=CASLM10100009
+        map.add("수산", "LM2614860000001_001"); // https://www.lotteon.com/p/product/LM2614860000001?sitmNo=LM2614860000001_001&mall_no=4&dp_infw_cd=CASLM10100009
+        map.add("수산", "LM2700000029770_001"); // https://www.lotteon.com/p/product/LM2700000029770?sitmNo=LM2700000029770_001&mall_no=4&dp_infw_cd=CASLM10100009
+        map.add("수산", "LM2529500000009_001"); // https://www.lotteon.com/p/product/LM2529500000009?sitmNo=LM2529500000009_001&mall_no=4&dp_infw_cd=CASLM10100009
+        map.add("수산", "LM2700000046951_001"); // https://www.lotteon.com/p/product/LM2700000046951?sitmNo=LM2700000046951_001&mall_no=4&dp_infw_cd=CASLM10100009
+        map.add("수산", "LM2700000058350_001"); // https://www.lotteon.com/p/product/LM2700000058350?sitmNo=LM2700000058350_001&mall_no=4&dp_infw_cd=CASLM10100009
+        map.add("수산", "LM2527680000000_001"); // https://www.lotteon.com/p/product/LM2527680000000?sitmNo=LM2527680000000_001&mall_no=4&dp_infw_cd=CASLM10100009
+        map.add("수산", "LM2534930000000_001"); // https://www.lotteon.com/p/product/LM2534930000000?sitmNo=LM2534930000000_001&mall_no=4&dp_infw_cd=CASLM10100009
+        map.add("수산", "LM8809433792962_001"); // https://www.lotteon.com/p/product/LM8809433792962?sitmNo=LM8809433792962_001&mall_no=4&dp_infw_cd=CASLM10100009
+        map.add("수산", "LM2700000029817_001"); // https://www.lotteon.com/p/product/LM2700000029817?sitmNo=LM2700000029817_001&mall_no=4&dp_infw_cd=CASLM10100009
+        map.add("수산", "LM2565790000008_001"); // https://www.lotteon.com/p/product/LM2565790000008?sitmNo=LM2565790000008_001&mall_no=4&dp_infw_cd=CASLM10100009
+        map.add("수산", "LM2830990000005_001"); // https://www.lotteon.com/p/product/LM2830990000005?sitmNo=LM2830990000005_001&mall_no=4&dp_infw_cd=CASLM10100009
+        map.add("수산", "LM2672790000003_001"); // https://www.lotteon.com/p/product/LM2672790000003?sitmNo=LM2672790000003_001&mall_no=4&dp_infw_cd=CASLM10100009
+        map.add("수산", "LM2893900000007_001"); // https://www.lotteon.com/p/product/LM2893900000007?sitmNo=LM2893900000007_001&mall_no=4&dp_infw_cd=CASLM10100009
+        map.add("수산", "LM2584440000007_001"); // https://www.lotteon.com/p/product/LM2584440000007?sitmNo=LM2584440000007_001&mall_no=4&dp_infw_cd=CASLM10100009
+        map.add("수산", "LM2894660000009_001"); // https://www.lotteon.com/p/product/LM2894660000009?sitmNo=LM2894660000009_001&mall_no=4&dp_infw_cd=CASLM10100009
+
+        // 수산
+       map.add("LM2700000052310_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001492/20211115110911326_4W2WQ5B1.jpeg");
+        map.add("LM2614860000001_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001317/20210419173510828_17UJJD0K.jpg");
+        map.add("LM2700000029770_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001240/20201006175901540_OFOXX5CG.jpeg");
+        map.add("LM2529500000009_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/000998/20190716174656673_R3I4PTR1.jpg");
+        map.add("LM2700000046951_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001321/20210503141247623_HTLHX6F3.jpeg");
+        map.add("LM2700000058350_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001643/20220602162519106_J3BQ4763.jpg");
+        map.add("LM2527680000000_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001316/20210415115920206_0L2L2HUE.jpeg");
+        map.add("LM2534930000000_001", "https://red.lotteon.com/_m2_/_rsc_/LM2534930000000/?sref=http://image.lottemart.com/lim/static_root/images/namoimg/images/001234/20200917152531791_IFGMUH2S.jpeg");
+        map.add("LM8809433792962_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001622/20220509180936549_L0F9YSHK.jpg");
+        map.add("LM8809433792962_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001622/20220509181026899_9UHQGSFB.jpg");
+        map.add("LM2700000029817_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001238/20200929105650679_POO02C16.jpeg");
+        map.add("LM2565790000008_001", "https://red.lotteon.com/_m2_/_rsc_/LM2565790000008/?sref=http://image.lottemart.com/lim/static_root/images/namoimg/images/001289/20210121135640851_YNBQ3Q20.jpg");
+        map.add("LM2565790000008_001", "https://red.lotteon.com/_m2_/_rsc_/LM2565790000008/?sref=http://image.lottemart.com/lim/static_root/images/namoimg/images/001289/20210121135618340_0NB4XW27.jpg");
+        map.add("LM2830990000005_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001679/20220715133714454_XDUQD5P2.jpg");
+        map.add("LM2672790000003_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001625/20220512150642739_XN2FC7KZ.jpg");
+        map.add("LM2893900000007_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001467/20211012111121700_GLU717L3.jpg");
+        map.add("LM2893900000007_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001467/20211012111214486_FHQDHNCO.jpg");
+        map.add("LM2584440000007_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/001375/20210707132025609_JN9XMRE5.jpg");
+        map.add("LM2584440000007_001", "https://simage.lottemart.com/lim/static_root/images/namoimg/images/000792/20180824100243683_T51JT3RY.jpg");
+        map.add("LM2894660000009_001", "https://red.lotteon.com/_m2_/_rsc_/LM2894660000009/?sref=http://image.lottemart.com/lim/static_root/images/namoimg/images/000820/20180919115027384_X0B1X891.jpg");
+        map.add("LM2894660000009_001", "https://red.lotteon.com/_m2_/_rsc_/LM2894660000009/?sref=http://image.lottemart.com/lim/static_root/images/namoimg/images/000820/20180919115040270_Z16GKD8X.jpg");
+
+        map.add("냉장냉동", "LM8801123700653_001"); // https://www.lotteon.com/p/product/LM8801123700653?sitmNo=LM8801123700653_001&mall_no=4&dp_infw_cd=CASLM90040000
+        map.add("냉장냉동", "LM8801123727391_001"); // https://www.lotteon.com/p/product/LM8801123727391?sitmNo=LM8801123727391_001&mall_no=4&dp_infw_cd=CASLM90040000
+        map.add("냉장냉동", "LM8801007883304_001"); // https://www.lotteon.com/p/product/LM8801007883304?sitmNo=LM8801007883304_001&mall_no=4&dp_infw_cd=CASLM90040000
+        map.add("냉장냉동", "LM8801123309856_001"); // https://www.lotteon.com/p/product/LM8801123309856?sitmNo=LM8801123309856_001&mall_no=4&dp_infw_cd=CASLM90040000
+        map.add("냉장냉동", "LM8801007526492_001"); // https://www.lotteon.com/p/product/LM8801007526492?sitmNo=LM8801007526492_001&mall_no=4&dp_infw_cd=CASLM90040000
+        map.add("냉장냉동", "LM8801242045635_001"); // https://www.lotteon.com/p/product/LM8801242045635?sitmNo=LM8801242045635_001&mall_no=4&dp_infw_cd=CASLM90040000
+        map.add("냉장냉동", "LM8801007526225_001"); // https://www.lotteon.com/p/product/LM8801007526225?sitmNo=LM8801007526225_001&mall_no=4&dp_infw_cd=CASLM90040000
+        map.add("냉장냉동", "LM8801007033686_001"); // https://www.lotteon.com/p/product/LM8801007033686?sitmNo=LM8801007033686_001&mall_no=4&dp_infw_cd=CASLM90040000
+        map.add("냉장냉동", "LM8801242001716_001"); // https://www.lotteon.com/p/product/LM8801242001716?sitmNo=LM8801242001716_001&mall_no=4&dp_infw_cd=CASLM90040000
+        map.add("냉장냉동", "LM8801007883281_001"); // https://www.lotteon.com/p/product/LM8801007883281?sitmNo=LM8801007883281_001&mall_no=4&dp_infw_cd=CASLM90040000
+        map.add("냉장냉동", "LM8801007857206_001"); // https://www.lotteon.com/p/product/LM8801007857206?sitmNo=LM8801007857206_001&mall_no=4&dp_infw_cd=CASLM90040000
+        map.add("냉장냉동", "LM8801114101834_001"); // https://www.lotteon.com/p/product/LM8801114101834?sitmNo=LM8801114101834_001&mall_no=4&dp_infw_cd=CASLM90040000
+        map.add("냉장냉동", "LM8809265024712_001"); // https://www.lotteon.com/p/product/LM8809265024712?sitmNo=LM8809265024712_001&mall_no=4&dp_infw_cd=CASLM90040000
+        map.add("냉장냉동", "LM8801007561677_001"); // https://www.lotteon.com/p/product/LM8801007561677?sitmNo=LM8801007561677_001&mall_no=4&dp_infw_cd=CASLM90040000
+        map.add("냉장냉동", "LM8809265020158_001"); // https://www.lotteon.com/p/product/LM8809265020158?sitmNo=LM8809265020158_001&mall_no=4&dp_infw_cd=CASLM90040000
+        map.add("냉장냉동", "LM8809146311528_001"); // https://www.lotteon.com/p/product/LM8809146311528?sitmNo=LM8809146311528_001&mall_no=4&dp_infw_cd=CASLM90040000
+
+        map.add("LM8801123700653_001", "https://simage.lottemart.com/lim/static_root/images/onlinedescr/images/001122/%EC%A0%84%EB%A9%B4_720_1.jpg");
+        map.add("LM8801123700653_001", "https://simage.lottemart.com/lim/static_root/images/onlinedescr/images/001122/%ED%9B%84%EB%A9%B4_720.jpg");
+        map.add("LM8801123727391_001", "https://red.lotteon.com/_m2_/_rsc_/LM8801123727391/?sref=http://image.lottemart.com/lim/static_root/images/namoimg/images/001138/20200408114300861_26SUIBEW.jpeg");
+        map.add("LM8801007883304_001", "https://www.cjthemarket.com/cjom/design/detail/prd_deatil_40063645_01.jpg");
+        map.add("LM8801007883304_001", "https://www.cjthemarket.com/cjom/design/detail/prd_deatil_40063645_02.jpg");
+        map.add("LM8801007883304_001", "https://www.cjthemarket.com/cjom/design/detail/prd_deatil_40063645_03.jpg");
+        map.add("LM8801007883304_001", "https://www.cjthemarket.com/cjom/design/detail/prd_deatil_40063645_07.jpg");
+        map.add("LM8801007883304_001", "https://www.cjthemarket.com/cjom/design/detail/prd_deatil_40063645_10.jpg");
+        map.add("LM8801123309856_001", "https://red.lotteon.com/_m2_/_rsc_/LM8801123309856/?sref=http://image.lottemart.com/lim/static_root/images/namoimg/images/001157/20200512151815120_UH8HZ5A9.jpeg");
+        map.add("LM8801007526492_001", "https://img.cjthemarket.com/images/file/product/851/20200421191347260.jpg");
+        map.add("LM8801242045635_001", "https://red.lotteon.com/_m2_/_rsc_/LM8801242045635/?sref=http://image.lottemart.com/lim/static_root/images/onlinedescr/images/000493/%EC%82%BC%ED%98%B8%EB%B6%80%EC%82%B0%EC%96%B4%EB%AC%B5_%EC%82%AC%EA%B0%81_315g_%EC%83%81%EC%84%B8.jpg");
+        map.add("LM8801242045635_001", "https://red.lotteon.com/_m2_/_rsc_/LM8801242045635/?sref=http://image.lottemart.com/lim/static_root/images/onlinedescr/images/000493/%EC%82%BC%ED%98%B8%EB%B6%80%EC%82%B0%EC%96%B4%EB%AC%B5_%EC%82%AC%EA%B0%81_315g_%ED%9B%84%EB%A9%B4_1.jpg");
+        map.add("LM8801007526225_001", "https://www.cjthemarket.com/images/file/product/054/20200221184806577.jpg");
+        map.add("LM8801007033686_001", "https://www.cjthemarket.com/images/file/updfiles/product/201807/CJON20180726173052_1.jpg");
+        map.add("LM8801242001716_001", "https://img.cjthemarket.com/images/file/product/995/20200414162148841.jpg");
+        map.add("LM8801007883281_001", "https://img.cjthemarket.com/images/file/product/554/20210112183612757.jpg");
+        map.add("LM8801007883281_001", "https://img.cjthemarket.com/images/file/product/832/20210112183606763.jpg");
+        map.add("LM8801007857206_001", "https://img.cjthemarket.com/images/file/product/615/20200624163124780.jpg?RS=780");
+        map.add("LM8801114101834_001", "https://red.lotteon.com/_m2_/_rsc_/LM8801114101834/?sref=http://image.lottemart.com/lim/static_root/images/onlinedescr/images/000714/%EA%B3%B5%ED%86%B5%EB%B0%B0%EB%84%88_%EC%9C%A0%EB%B6%80.jpg");
+        map.add("LM8809265024712_001", "https://red.lotteon.com/_m2_/_rsc_/LM8809265024712/?sref=http://image.lottemart.com/lim/static_root/images/edidescrimg/images/001214/KakaoTalk_20210521_125002644_01.jpg");
+        map.add("LM8809265024712_001", "https://red.lotteon.com/_m2_/_rsc_/LM8809265024712/?sref=http://image.lottemart.com/lim/static_root/images/edidescrimg/images/001214/KakaoTalk_20210521_125002644_2.jpg");
+        map.add("LM8809265024712_001", "https://red.lotteon.com/_m2_/_rsc_/LM8809265024712/?sref=http://image.lottemart.com/lim/static_root/images/edidescrimg/images/001214/KakaoTalk_20210521_142040185.jpg");
+        map.add("LM8801007561677_001", "https://img.cjthemarket.com/images/file/product/430/20200421190924214.jpg?RS=780");
+        map.add("LM8809265020158_001", "https://red.lotteon.com/_m2_/_rsc_/LM8809265020158/?sref=http://image.lottemart.com/lim/static_root/images/edidescrimg/images/001089/KakaoTalk_20210319_101545759_6.jpg");
+        map.add("LM8809265020158_001", "https://red.lotteon.com/_m2_/_rsc_/LM8809265020158/?sref=http://image.lottemart.com/lim/static_root/images/edidescrimg/images/001092/%EA%BC%AC%EC%B9%98%EC%96%B4%EB%AC%B5446g.jpg");
+        map.add("LM8809265020158_001", "https://red.lotteon.com/_m2_/_rsc_/LM8809265020158/?sref=http://image.lottemart.com/lim/static_root/images/edidescrimg/images/001089/KakaoTalk_20210323_122416442_01_4.jpg");
+        map.add("LM8809146311528_001", "https://simage.lottemart.com/lim/static_root/images/edidescrimg/images/001600/KakaoTalk_20220207_185531968.png");
+
 
 
         /** Table 별 empty List 생성 */
@@ -295,9 +408,10 @@ public class DBInitialize {
         List<ProductImageDto> productImageList = new ArrayList<>();
         List<ProductDetailDto> productDetailList = new ArrayList<>();
 
-        String categories[] = {"과일", "채소", "잡곡견과"};
+//        String categories[] = {"과일", "채소", "잡곡견과"};
 
-//        String categories[] = {"과일", "채소", "잡곡견과", "수산", "정육계란", "유제품", "냉장냉동"};
+        String categories[] = {"과일", "채소", " 잡곡견과", "견과건과", "정육계란", "수산", "냉장냉동"};
+
         String apiPrefix = "https://pbf.lotteon.com/product/v2/detail/search/base/sitm/";
 
         /**
@@ -307,9 +421,13 @@ public class DBInitialize {
          *  그럴 경우 alter table product auto_increment = 1; 한번씩 해주고 실행
          *
          */
-        long pPK = 1;
 
-        for(int i=0; i< categories.length; i++){
+//        long pPK = 1;
+        // 중도 data insert 를 위해
+          long pPK=49;
+
+//        for(int i=0; i< categories.length; i++){
+          for(int i=3; i< categories.length; i++){
 
             List<String> items = map.get(categories[i]);
 
@@ -332,6 +450,7 @@ public class DBInitialize {
                 double productTotalRate = 0.0;
 
                 productList.add(new ProductDto(pPK, pdSitm, pdName, categories[i], pdPrice, pdStock, regDate, productTotalRate));
+
 
                 for(int k=0; k < imageList.length(); k++) {
                     String sideImg =(imageList.getJSONObject(k)).getString("origImgFileNm");

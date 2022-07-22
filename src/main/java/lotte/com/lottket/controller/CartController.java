@@ -2,6 +2,7 @@ package lotte.com.lottket.controller;
 
 import lotte.com.lottket.dto.CartDto;
 import lotte.com.lottket.dto.ProductDto;
+import lotte.com.lottket.dto.ShowcartDto;
 import lotte.com.lottket.dto.UserDto;
 import lotte.com.lottket.service.cart.CartService;
 
@@ -18,6 +19,8 @@ import java.util.List;
 
 @Controller
 public class CartController {
+    Logger logger = LoggerFactory.getLogger(CartController.class);
+
     /**
      * 장바구니 페이지 내에서는 완전히 새로운 상품을 추가 불가능하다
      * 제품 상세페이지 -> ' 장바구니에 추가 ' 로만 새 상품 추가 가능
@@ -26,7 +29,6 @@ public class CartController {
      */
     @Autowired
     CartService cartService;
-    Logger logger = LoggerFactory.getLogger(CartController.class);
 
     /**
      * 내 장바구니 모든 물품 조회
@@ -35,10 +37,11 @@ public class CartController {
      * @return
      */
     @RequestMapping(value = "cart.do", method = RequestMethod.GET)
-    public String findAllCart(@RequestParam("userId") Long userId, Model model) {
+    public String findAllCart(Long userId, Model model) {
 
-        List<CartDto> mycartList = cartService.findAllCart(userId);
-        model.addAttribute("myCartList", mycartList);
+        List<ShowcartDto> cartList = cartService.findAllCart(userId);
+        model.addAttribute("cartList", cartList);
+
         return "cart";
     }
 
@@ -51,9 +54,6 @@ public class CartController {
     @ResponseBody // Ajax 처리시 필수
     public String addNewCart(Model model,
                              @RequestBody CartDto dto
-//                            ,@RequestParam("userId") Long userId,
-//                             @RequestParam("productId") Long productId,
-//                             @RequestParam("amount") int amount
     ) {
         CartDto cartDto = new CartDto(dto.getUserId(), dto.getProductId(), dto.getAmount());
         int count = cartService.addNewCart(cartDto);
@@ -62,15 +62,16 @@ public class CartController {
 
     /**
      * 카트 한개 삭제 Ajax 버튼으로 처리
-     * @param model,  Long cartId
+     * Long cartId
      * @return String
      */
-    @RequestMapping(value = "deletecart.do", method= RequestMethod.POST)
+    @RequestMapping(value = "deletecart.do", method= RequestMethod.GET)
     @ResponseBody
-    public String deleteOneCart(Model model, @RequestBody Long cartId) {
-        int count = cartService.deleteOneCart(cartId);
-//        model.addAttribute("cartId", cartId);
-        return count>0?"YES":"NO";
+    public List<ShowcartDto> deleteOneCart(Long cartId, long userId) {
+        System.out.println(cartId);
+        cartService.deleteOneCart(cartId);
+
+        return cartService.findAllCart(userId);
     }
 
     /**
