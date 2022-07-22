@@ -5,6 +5,11 @@ let recentProduct3 = sessionProduct[sessionProduct.length - 3]
 let recentProduct4 = sessionProduct[sessionProduct.length - 4]
 let recentProduct5 = sessionProduct[sessionProduct.length - 5]
 
+function getContextPath(){
+    var hostIndex = location.href.indexOf(location.host) + location.host.length;
+    var contextPath = location.href.substring(hostIndex, location.href.indexOf('/',hostIndex+1));
+    return contextPath;
+}
 
 let headerContents = '';
 headerContents +=
@@ -22,7 +27,7 @@ headerContents +=
         <div class="main innerContent">
           <div class="div_logo">
             <h1>
-              <a href="main.do" style="display: flex; align-items: center;">
+              <a href="`+getContextPath()+`main.do" style="display: flex; align-items: center;">
                 <img src="`+getContextPath()+`/img/logo.png" style="width:15%;">
                 <span style="margin-left:3%; font-size:XX-LARGE;">롯켓마트</span>
               </a>
@@ -39,13 +44,13 @@ headerContents +=
       </div>
     </div>
     <div class="nav_category">
-          <a class="category" href=`+getContextPath()+`/category.do?productCategory=과일>과일</a>
-          <a class="category" href=`+getContextPath()+`/category.do?productCategory=채소>채소</a>
-          <a class="category" href=`+getContextPath()+`/category.do?productCategory=잡곡견과>잡곡</a>
-          <a class="category" href=`+getContextPath()+`/category.do?productCategory=견과건과>견과·건과</a>
-          <a class="category" href=`+getContextPath()+`/category.do?productCategory=수산>수산</a>
-          <a class="category" href=`+getContextPath()+`/category.do?productCategory=정육계란>정육계란<a/>
-          <a class="category" href=`+getContextPath()+`/category.do?productCategory=냉장냉동>냉장냉동<a/>
+          <a href=`+getContextPath()+`/category.do?productCategory=과일>과일</a>
+          <a href=`+getContextPath()+`/category.do?productCategory=채소>채소</a>
+          <a href=`+getContextPath()+`/category.do?productCategory=잡곡견과>잡곡·견과</a>
+          <a href=`+getContextPath()+`/category.do?productCategory=수산>수산</a>
+          <a href=`+getContextPath()+`/category.do?productCategory=정육계란>정육계란</a>
+          <a href=`+getContextPath()+`/category.do?productCategory=유제품>유제품</a>>
+          <a href=`+getContextPath()+`/category.do?productCategory=냉동냉장>냉동냉장</a>
           <hr>
     </div>
     
