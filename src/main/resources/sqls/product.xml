@@ -22,6 +22,11 @@
         VALUES (#{productId}, #{productImageIdx}, #{productImageUrl})
     </insert>
 
+    <insert id="insertOneDetailImage" parameterType="lotte.com.lottket.dto.ProductDetailDto">
+        INSERT INTO productdetail (productid, productdetailimageurl)
+        VALUES (#{productId}, #{productDetailImageUrl})
+    </insert>
+
     <!-- productDto로 insert하기 -->
     <insert id="insertProduct" parameterType="lotte.com.lottket.dto.ProductDto" >
         INSERT INTO product
@@ -52,7 +57,7 @@
     </select>
 
     <!-- 모두 갖고오기 -->
-    <select id="selectProductAll">
+    <select id="selectProductAll" resultType="lotte.com.lottket.dto.ProductDto">
         SELECT * FROM product
     </select>
 
@@ -80,14 +85,16 @@
         SELECT DISTINCT productimageurl, a.productid
         FROM productimage a, (SELECT DISTINCT productid, SUM(orderamount) as amount FROM orders
                                GROUP BY productid ORDER BY amount desc) b
-        WHERE productimageidx = 1 LIMIT 20;
+        WHERE productimageidx = 1
+        AND a.productid = b.productid
+        LIMIT 20;
     </select>
 
     <!-- 주간 베스트 조회 -->
     <select id="selectWeeklyBestProduct" resultType="lotte.com.lottket.dto.ProductImageDto">
         SELECT DISTINCT a.productid, productimageurl
         FROM productimage a, (SELECT DISTINCT productid, SUM(orderamount) as amount, orderdate FROM orders
-        WHERE orderdate BETWEEN DATE_SUB(NOW(), INTERVAL 7 DAY) AND NOW() GROUP BY productid ORDER BY amount desc) b
+        WHERE orderdate BETWEEN DATE_SUB(NOW(), INTERVAL 100 DAY) AND NOW() GROUP BY productid ORDER BY amount desc) b
         WHERE productimageidx = 1 AND a.productid = b.productid LIMIT 20;
     </select>
 
@@ -110,5 +117,12 @@
         from product
         where productid=#{productId}
 
+    </select>
+
+    <!--id로 title갖고오기-->
+    <select id="getTitle" parameterType="Integer" resultType="String">
+        SELECT producttitle
+        FROM product
+        WHERE productid=#{productId}
     </select>
 </mapper>

@@ -6,9 +6,9 @@ let recentProduct4 = sessionProduct[sessionProduct.length -4]
 let recentProduct5 = sessionProduct[sessionProduct.length -5]
 
 function getContextPath(){
-  var hostIndex = location.href.indexOf(location.host) + location.host.length;
-  var contextPath = location.href.substring(hostIndex, location.href.indexOf('/',hostIndex+1));
-  return contextPath;
+    var hostIndex = location.href.indexOf(location.host) + location.host.length;
+    var contextPath = location.href.substring(hostIndex, location.href.indexOf('/',hostIndex+1));
+    return contextPath;
 }
 
 let headerContents = '';
@@ -47,7 +47,6 @@ headerContents +=
       </div>
     </div>
     <div class="nav_category">
-
           <a href=`+getContextPath()+`/category.do?productCategory=과일>과일</a>
           <a href=`+getContextPath()+`/category.do?productCategory=채소>채소</a>
           <a href=`+getContextPath()+`/category.do?productCategory=잡곡견과>잡곡·견과</a>
@@ -55,7 +54,6 @@ headerContents +=
           <a href=`+getContextPath()+`/category.do?productCategory=정육계란>정육계란<a/>
           <a href=`+getContextPath()+`/category.do?productCategory=유제품>유제품<a/>
           <a href=`+getContextPath()+`/category.do?productCategory=냉동냉장>냉동냉장<a/>
-
           <hr>
     </div>
     
@@ -74,21 +72,21 @@ headerContents +=
 `
 document.getElementById('header').innerHTML = headerContents;
 if (sessionStorage.getItem("id") != null) {
-  document.getElementById("logout_li").style.display = "";
-  document.getElementById("login_li").style.display = "none";
+    document.getElementById("logout_li").style.display = "";
+    document.getElementById("login_li").style.display = "none";
 }
 
 if (sessionStorage.getItem("id") == null) {
-  document.getElementById("logout_li").style.display = "none";
-  document.getElementById("login_li").style.display = "";
+    document.getElementById("logout_li").style.display = "none";
+    document.getElementById("login_li").style.display = "";
 }
 
 
 document.getElementById("recentImg1").src = recentProduct1.recentProductImg;
-// document.getElementById("recentImg2").src = recentProduct2.recentProductImg;
-// document.getElementById("recentImg3").src = recentProduct3.recentProductImg;
-// document.getElementById("recentImg4").src = recentProduct4.recentProductImg;
-// document.getElementById("recentImg5").src = recentProduct5.recentProductImg;
+document.getElementById("recentImg2").src = recentProduct2.recentProductImg;
+document.getElementById("recentImg3").src = recentProduct3.recentProductImg;
+document.getElementById("recentImg4").src = recentProduct4.recentProductImg;
+document.getElementById("recentImg5").src = recentProduct5.recentProductImg;
 
 //
 // let pathname = window.location.pathname;
@@ -106,5 +104,5 @@ document.getElementById("recentImg1").src = recentProduct1.recentProductImg;
 //
 // } else {
 //   var productObj = [{recentProductImg: "<%=productImageDto.get(0).getProductImageUrl()%>", recentProductUrl: window.location.href}];
-//
+
 // }

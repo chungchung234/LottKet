@@ -1,5 +1,6 @@
 package lotte.com.lottket.dao.product;
 
+import lotte.com.lottket.dto.ProductDetailDto;
 import lotte.com.lottket.dto.ProductDto;
 import lotte.com.lottket.dto.ProductImageDto;
 import org.apache.ibatis.session.SqlSession;
@@ -13,7 +14,7 @@ import java.util.Map;
 import java.util.List;
 import java.util.Map;
 
-@Service
+@Repository
 public class ProductDaoImpl implements ProductDao{
     @Autowired
     SqlSession session;
@@ -33,6 +34,11 @@ public class ProductDaoImpl implements ProductDao{
     }
 
     @Override
+    public void insertOneDetailImage(ProductDetailDto dto) {
+        session.insert(ns + "insertOneDetailImage", dto);
+    }
+
+    @Override
     public boolean checkIfEmptyDB() {
         if( session.selectList(ns + "checkIfEmptyDB").size()  > 0)
             return false;   // not empty
@@ -47,11 +53,15 @@ public class ProductDaoImpl implements ProductDao{
 
     @Override
     public int updateProduct(ProductDto dto) {
+        Long id = getId(dto);
+        dto.setProductId(id);
         return session.update(ns + "updateProduct", dto);
     }
 
     @Override
     public int deleteProduct(ProductDto dto) {
+        Long id = getId(dto);
+        dto.setProductId(id);
         return session.delete(ns + "deleteProduct", dto);
     }
 
@@ -77,17 +87,50 @@ public class ProductDaoImpl implements ProductDao{
 
     @Override
     public List<ProductImageDto> selectBestProduct() {
-        return session.selectList(ns + "selectBestProduct");
+        List<ProductImageDto> list = session.selectList(ns + "selectBestProduct") ;
+        /*
+        list.stream()
+                .forEach(i-> {
+                    i.setProductTitle(session.selectOne(ns + "getTitle", i.getProductId()));
+                });*/
+
+        for (int i = 0;i < list.size(); i++){
+            ProductImageDto dto = list.get(i);
+            String title = session.selectOne(ns + "getTitle", dto.getProductId());
+            dto.setProductTitle(title);
+        }
+
+        return list;
     }
 
     @Override
     public List<ProductImageDto> selectWeeklyBestProduct() {
-        return session.selectList(ns + "selectWeeklyBestProduct");
+        List<ProductImageDto> list =  session.selectList(ns + "selectWeeklyBestProduct");
+//        list.stream()
+//                .forEach(i-> {
+//                    i.setProductTitle(session.selectOne(ns + "getTitle", i.getProductId()));
+//                });
+        for (int i = 0;i < list.size(); i++){
+            ProductImageDto dto = list.get(i);
+            String title = session.selectOne(ns + "getTitle", dto.getProductId());
+            dto.setProductTitle(title);
+        }
+        return list;
     }
 
     @Override
     public List<ProductImageDto> selectNewProduct() {
-        return session.selectList(ns + "selectNewProduct");
+        List<ProductImageDto> list =  session.selectList(ns + "selectNewProduct");
+//        list.stream()
+//                .forEach(i-> {
+//                    i.setProductTitle(session.selectOne(ns + "getTitle", i.getProductId()));
+//                });
+        for (int i = 0;i < list.size(); i++){
+            ProductImageDto dto = list.get(i);
+            String title = session.selectOne(ns + "getTitle", dto.getProductId());
+            dto.setProductTitle(title);
+        }
+        return list;
     }
 
     @Override

@@ -1,11 +1,14 @@
 package lotte.com.lottket.controller;
+import com.google.gson.JsonObject;
+import lotte.com.lottket.dto.ProductDetailDto;
 import lotte.com.lottket.service.category.CategoryService;
-import lotte.com.lottket.service.product.DBInitialize;
+import com.google.gson.JsonParser;
+import lotte.com.lottket.dto.UserDto;
 import lotte.com.lottket.service.product.ProductService;
-import com.google.gson.Gson;
 import lotte.com.lottket.dto.ProductDto;
 import lotte.com.lottket.dto.ProductImageDto;
-import lotte.com.lottket.service.product.ProductService;
+import lotte.com.lottket.service.user.UserService;
+import org.apache.commons.collections.ArrayStack;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -13,19 +16,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.util.List;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class ProductController {
@@ -35,8 +30,35 @@ public class ProductController {
     @Autowired
     ProductService service;
 
+    @Autowired
+    UserService userService;
+
     @RequestMapping(value="main.do", method = RequestMethod.GET)
-    public String main(Model model) {
+    public String main(String id, Model model) {
+        List<ProductImageDto> bestProduct = selectBestProduct();
+        List<ProductImageDto> weeklyBestProduct = selectWeeklyBestProduct();
+        List<ProductImageDto> newProduct = selectNewProduct();
+        model.addAttribute("bestProduct", bestProduct);
+        model.addAttribute("weeklyBestProduct", weeklyBestProduct);
+        model.addAttribute("newProduct", newProduct);
+
+        if(id != null) {
+            UserDto dto = userService.getUser(Long.parseLong(id));
+            model.addAttribute("dto", dto);
+        }
+
+        return "main";
+    }
+
+    @RequestMapping(value="main.do", method = RequestMethod.POST)
+    @ResponseBody
+    public String mainPost(@RequestBody String ob, Model model) {
+        JSONObject obj = new JSONObject(ob);
+        String email = "";
+        if(obj.has("email")) {
+            email = obj.getString("email");
+        }
+
         List<ProductImageDto> bestProduct = selectBestProduct();
         List<ProductImageDto> weeklyBestProduct = selectWeeklyBestProduct();
         List<ProductImageDto> newProduct = selectNewProduct();
@@ -50,45 +72,58 @@ public class ProductController {
      * 도메인 productlist.do 로 가야만 db값 insert하는거 이상하니 추후 수정할게요 insert xml도 이후에
      */
     @RequestMapping(value="productlist.do", method = RequestMethod.GET)
-    public String insertAllProducts(Model model){
-
-        String ret = "";
+    public String insertAllProducts(){
+//        String ret = "";
         logger.info("ProductController insertAllProducts() ");
 
         Map<String, Object> paramMap = new HashMap<>();
         List<ProductDto> productList = new ArrayList<>();
         List<ProductImageDto> productImageList = new ArrayList<>();
+        List<ProductDetailDto> productDetailList = new ArrayList<>();
+
 
         if(service.checkIfEmptyDB()) {
-            try {
-                paramMap = DBInitialize.run();
+
+            //try {
+                //paramMap = DBInitialize.run();
                 productList = (List<ProductDto>) paramMap.get("productList");
                 productImageList = (List<ProductImageDto>) paramMap.get("productImageList");
+                productDetailList = (List<ProductDetailDto>) paramMap.get("productDetailList");
 
-                /**
-                 * product table 값 insert
-                 */
-                for (int i = 0; i < productList.size(); i++) {
-                    service.insertOneProduct(productList.get(i));
-                    System.out.println(i+" : "+productList.get(i).toString());
-                }
-                /**
-                 * productimage table 값 insert
-                 */
-                for (int i = 0; i < productImageList.size(); i++) {
-                    service.insertOneImage(productImageList.get(i));
-                    System.out.println(i+" : "+productImageList.get(i).toString());
-                }
 
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+                System.out.println(" =============== HEREHERE ================");
+                System.out.println("PRODUCT TABLE IS NULL");
+
+                System.out.println(productList.size());
+                System.out.println(productImageList.size());
+                System.out.println(productDetailList.size());
+
+//                /** product table insert data */
+//                for (int i = 0; i < productList.size(); i++) {
+//                    service.insertOneProduct(productList.get(i));
+//                    System.out.println(i+" : "+productList.get(i).toString());
+//                }
+//                /** productImage table insert data */
+//                for (int i = 0; i < productImageList.size(); i++) {
+//                    service.insertOneImage(productImageList.get(i));
+//                    System.out.println(i+" : "+productImageList.get(i).toString());
+//                }
+//                /** productDetail table insert data */
+//                for (int i = 0; i < productDetailList.size(); i++) {
+//                    service.insertOneDetailImage(productDetailList.get(i));
+//                    System.out.println(i+" : "+productDetailList.get(i).toString());
+//                }
+
+            //}
+//            catch (IOException e) {
+//                e.printStackTrace();
+//            }
         }
 
-        model.addAttribute("productList", productList);
-        return "main";
-    }
+//        model.addAttribute("productList", productList);
+            return "main";
 
+    }
 
     @RequestMapping(value="insertProduct.do", method = RequestMethod.GET)
     @ResponseBody
@@ -99,14 +134,22 @@ public class ProductController {
 
     @RequestMapping(value="updateProduct.do", method = RequestMethod.POST)
     @ResponseBody
-    public String updateProduct(@RequestBody ProductDto dto) {
+    public String updateProduct(@RequestBody String json) {
+        JSONObject jsonObject = new JSONObject(json);
+        String productId = jsonObject.getString("productId");
+        String productTitle = jsonObject.getString("productTitle");
+        String productCategory = jsonObject.getString("productCategory");
+        String productPrice = jsonObject.getString("productPrice");
+        String productStock = jsonObject.getString("productStock");
+        ProductDto dto = new ProductDto(Integer.parseInt(productId), productTitle, productCategory, Integer.parseInt(productPrice), Integer.parseInt(productStock), "now()", 0.0, null);
         int count = service.updateProduct(dto);
         return count>0?"YES":"NO";
     }
 
     @RequestMapping(value="deleteProduct.do", method = RequestMethod.POST)
     @ResponseBody
-    public String deleteProduct(@RequestBody ProductDto dto) {
+    public String deleteProduct(@RequestBody String productTitle, @RequestBody String productCategory, @RequestBody String productPrice, @RequestBody String productStock) {
+        ProductDto dto = new ProductDto(productTitle, productCategory, Integer.parseInt(productPrice), Integer.parseInt(productStock), "now()", 0.0);
         int count = service.deleteProduct(dto);
         return count>0?"YES":"NO";
     }
@@ -158,5 +201,12 @@ public class ProductController {
     public List<ProductImageDto> selectNewProduct() {
         List<ProductImageDto> dto = service.selectNewProduct();
         return dto;
+    }
+
+    @RequestMapping(value="moveadmin.do", method = RequestMethod.GET)
+    public String moveadmin(Model model) {
+        List<ProductDto> list = selectProductAll();
+        model.addAttribute("list", list);
+        return "admin_product_crud";
     }
 }
