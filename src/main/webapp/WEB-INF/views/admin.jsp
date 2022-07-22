@@ -241,7 +241,8 @@
                         },
                         hAxis: {
                             title: '시간',
-                            logScale: true
+                            logScale: true,
+                            showTextEvery : 2
                         },
                         vAxis: {
                             title: '매출',

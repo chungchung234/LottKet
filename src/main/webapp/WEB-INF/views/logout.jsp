@@ -66,6 +66,9 @@
 <body>
 </body>
 <script>
+    <%
+    session.invalidate();
+    %>
     sessionStorage.clear();
     window.onload = function () {
         kakaoLogout();

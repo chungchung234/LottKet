@@ -21,9 +21,9 @@
                     <%--            <img src="<%=reviewJoinUserDto.get(i).getUserProfileImage()%>"--%>
                     <%--                                  style="border-radius:1.5em; margin-right:10px;">--%>
                 <div class="identities">
-                    <div class="userNameWrap">
+                    <div class="userNameWrap" style="display:flex; align-items:center;">
                         <img src="${reviewJoinUser.userProfileImage}"
-                             style="border-radius:1.5em; margin-right:10px;">
+                             style="border-radius:0.5em; margin-right:10px; width:70px;">
                             <%--                    <script>console.log(typeof new Date(document.getElementById("regdate").innerText).getMonth())</script>--%>
                         <script>
                             <%--let date_reply = (new Date(document.getElementById("date${reviewJoinUser.reviewId}").innerText).getFullYear()+"-"+--%>
@@ -32,12 +32,13 @@
                             // Fri Jul 22 02:34:15 GMT+09:00 2022
                             // console.log(date_reply)
                         </script>
-                        <strong class="userName">&nbsp;&nbsp;<c:out value="${reviewJoinUser.userName}"/>&nbsp;&nbsp;</strong><span class="info">
-                      <br><br> <c:out value="${reviewJoinUser.userGrade}"/>등급 &nbsp;&nbsp;&nbsp;등록일 : <span id="date${reviewJoinUser.reviewId}"><c:out value="${reviewJoinUser.reviewDate}"/></span>
+                        <strong class="userName" style="height:30px;">&nbsp;&nbsp;<c:out value="${reviewJoinUser.userName}"/>&nbsp;&nbsp;</strong>
                         <script>document.getElementById("date${reviewJoinUser.reviewId}").innerText = (new Date(document.getElementById("date${reviewJoinUser.reviewId}").innerText).getFullYear()+"-"+
                             (new Date(document.getElementById("date${reviewJoinUser.reviewId}").innerText).getMonth()+1)+"-"+
                             new Date(document.getElementById("date${reviewJoinUser.reviewId}").innerText).getDate())</script>
-                    </span></div>
+                        </span></div>
+                    <span class="info">
+                      <br><br> <c:out value="${reviewJoinUser.userGrade}"/>등급 &nbsp;&nbsp;&nbsp;등록일 : <span id="date${reviewJoinUser.reviewId}"><c:out value="${reviewJoinUser.reviewDate}"/></span>
                     <div class="badges"></div>
                 </div>
             </div>
@@ -66,8 +67,9 @@
             </c:if>
         </c:forEach>
 
-        <button type="button" onclick='admin_reply("${reviewJoinUser.reviewId}")'>답글 작성</button>
-
+        <c:if test="${userRole eq 'admin'}">
+            <button type="button" onclick='admin_reply("${reviewJoinUser.reviewId}")'>답글 작성</button>
+        </c:if>
 
 
         <div id="replydiv${reviewJoinUser.reviewId}" style="margin-top:20px; display:none;" >

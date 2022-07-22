@@ -2,6 +2,7 @@ package lotte.com.lottket.controller;
 
 import lotte.com.lottket.dto.*;
 import lotte.com.lottket.service.productdetail.ProductDetailService;
+import lotte.com.lottket.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,9 @@ public class ProductDetailController {
     @Autowired
     ProductDetailService productDetailService;
     //Logger logger = LoggerFactory.getLogger(MainController.class);
+
+    @Autowired
+    UserService userService;
 
     @RequestMapping(value = "detail.do")
     public String detail(int productid, Model model){
@@ -82,15 +86,14 @@ public class ProductDetailController {
     }
 
     @RequestMapping(value = "insertReview.do")
-    public String insertReview(int productId, String content, double rating, Model model) {
-        int userId = 1;
+    public String insertReview(String userRole, int userId, int productId, String content, double rating, Model model) {
 
         HashMap<String, Object> review = new HashMap<String, Object>();
+
         review.put("userId", userId);
         review.put("productId", productId);
         review.put("content", content);
         review.put("rating", rating);
-        System.out.println("rating : " +rating);
         int count = productDetailService.insertReview(review);
         int count1 = productDetailService.updateRate(productId);
 
@@ -101,14 +104,17 @@ public class ProductDetailController {
         model.addAttribute("productDto",productDto);
         model.addAttribute("reviewJoinUserDto", reviewJoinUserDto);
         model.addAttribute("reviewJoinReplyDto", reviewJoinReplyDto);
+        model.addAttribute("userRole",userRole);
+
         return "reviewhtml";
     }
 
     @RequestMapping(value = "insertReply.do")
-    public String insertReply(int productId, int reviewId, String content, Model model){
+    public String insertReply(String userRole, int productId, int reviewId, String content, Model model){
         System.out.print("hihi");
-        System.out.println(productId+" "+reviewId+" "+content);
         HashMap<String, Object> reply = new HashMap<String, Object>();
+
+
         reply.put("reviewId",reviewId);
         reply.put("content",content);
 
@@ -121,6 +127,7 @@ public class ProductDetailController {
         model.addAttribute("productDto",productDto);
         model.addAttribute("reviewJoinUserDto", reviewJoinUserDto);
         model.addAttribute("reviewJoinReplyDto", reviewJoinReplyDto);
+        model.addAttribute("userRole",userRole);
         return "reviewhtml";
     }
 }

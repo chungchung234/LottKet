@@ -49,8 +49,8 @@ headerContents =
           <a href=`+getContextPath()+`/category.do?productCategory=잡곡견과>잡곡·견과</a>
           <a href=`+getContextPath()+`/category.do?productCategory=견과건과>견과·건과</a>
           <a href=`+getContextPath()+`/category.do?productCategory=수산>수산</a>
-          <a href=`+getContextPath()+`/category.do?productCategory=정육계란>정육계란<a/>
-          <a href=`+getContextPath()+`/category.do?productCategory=냉장냉동>냉장냉동<a/>
+          <a href=`+getContextPath()+`/category.do?productCategory=정육계란>정육계란</a>
+          <a href=`+getContextPath()+`/category.do?productCategory=냉장냉동>냉장냉동</a>
           <hr>
     </div>
     
