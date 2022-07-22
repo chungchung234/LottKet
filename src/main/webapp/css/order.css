@@ -18,6 +18,7 @@
 	background: rgba(255, 255, 255, 0.8);
 	z-index: 1;
 	padding: 5px;
+
 }
 
 #centerAddr {
@@ -345,6 +346,7 @@ body, table, input, textarea, select, button, th, td, input, select,
 	caret-color: #11d70d;
 	box-sizing: border-box;
 	border-radius: 8px;
+	margin-top : 10px;
 }
 
 body, table, input, textarea, select, button, th, td, input, select,
@@ -9739,4 +9741,238 @@ body, table, input, textarea, select, button, th, td, input, select, textarea, t
 user agent stylesheet
 li {
     text-align: -webkit-match-parent;
+}
+.checkout__wrap .box__contents .box__card .box__inner {
+    background: #fff;
+    padding: 30px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+body, table, input, textarea, select, button, th, td, input, select, textarea, th, td, p, dl, dt, dd, li, pre {
+    font-family: -apple-system, BlinkMacSystemFont, Apple SD Gothic Neo, Roboto, Noto Sans CJK KR, Tahoma, 'Noto Sans KR', 'Gmarket Sans', sans-serif;
+}
+.box__card-address .box__address-title .text__title-address.prev {
+    color: #222;
+}
+.box__card-address .box__address-title .text__title-address {
+    position: relative;
+    display: inline-block;
+    padding-left: 30px;
+    font-size: 18px;
+    font-family: Gmarket Sans,'Gmarket Sans',sans-serif;
+    font-weight: 500;
+    line-height: 24px;
+    color: #ff7638;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+user agent stylesheet
+h3 {
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+body, table, input, textarea, select, button, th, td, input, select, textarea, th, td, p, dl, dt, dd, li, pre {
+    font-family: -apple-system, BlinkMacSystemFont, Apple SD Gothic Neo, Roboto, Noto Sans CJK KR, Tahoma, 'Noto Sans KR', 'Gmarket Sans', sans-serif;
+}
+.box__card-address .box__address-title .text__title-address.prev:before {
+    background-position: -104px -26px;
+}
+.box__card-address .box__address-title .text__title-address:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    background-position: -52px -26px;
+    content: '';
+}
+.sprite__checkout, .sprite__checkout--before:before, .sprite__checkout--after:after {
+    overflow: hidden;
+    display: inline-block;
+    background: url(//pics.gmarket.co.kr/pc/sprite/kr/checkout/sprite__checkout.png) no-repeat;
+    font-size: 0;
+    background-size: 300px auto;
+    content: '';
+}
+.box__card-address .box__address-title .text__title-address.prev:before {
+    background-position: -104px -26px;
+}
+.box__card-address .box__address-title .text__title-address:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    background-position: -52px -26px;
+    content: '';
+}
+.sprite__checkout, .sprite__checkout--before:before, .sprite__checkout--after:after {
+    overflow: hidden;
+    display: inline-block;
+    background: url(//pics.gmarket.co.kr/pc/sprite/kr/checkout/sprite__checkout.png) no-repeat;
+    font-size: 0;
+    background-size: 300px auto;
+    content: '';
+}
+.box__card-address--new .text__address--new {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translate(-64%);
+    font-size: 16px;
+    line-height: 23px;
+    color: #9e9e9e;
+    letter-spacing: -0.16px;
+}
+body, table, input, textarea, select, button, th, td, input, select, textarea, th, td, p, dl, dt, dd, li, pre {
+    font-family: -apple-system, BlinkMacSystemFont, Apple SD Gothic Neo, Roboto, Noto Sans CJK KR, Tahoma, 'Noto Sans KR', 'Gmarket Sans', sans-serif;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+user agent stylesheet
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.box__card-address .box__button-group {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 0;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+body, table, input, textarea, select, button, th, td, input, select, textarea, th, td, p, dl, dt, dd, li, pre {
+    font-family: -apple-system, BlinkMacSystemFont, Apple SD Gothic Neo, Roboto, Noto Sans CJK KR, Tahoma, 'Noto Sans KR', 'Gmarket Sans', sans-serif;
+}
+.box__card-address .box__button-group .button__address-add {
+    width: 150px;
+}
+.box__card-address .box__button-group .button {
+    display: inline-block;
+    padding: 10px 15px;
+    line-height: 22px;
+    font-size: 14px;
+    font-family: Gmarket Sans,'Gmarket Sans',sans-serif;
+    background: #fff;
+    color: #2c2c2c;
+    border: 1px solid #bdbdbd;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+button {
+    padding: 0;
+    background-color: transparent;
+}
+body, table, input, textarea, select, button, th, td, input, select, textarea, th, td, p, dl, dt, dd, li, pre {
+    font-family: -apple-system, BlinkMacSystemFont, Apple SD Gothic Neo, Roboto, Noto Sans CJK KR, Tahoma, 'Noto Sans KR', 'Gmarket Sans', sans-serif;
+}
+button {
+    border: 0 none;
+    background-color: transparent;
+    cursor: pointer;
+}
+button {
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+user agent stylesheet
+button {
+    appearance: auto;
+    writing-mode: horizontal-tb !important;
+    font-style: ;
+    font-variant-ligatures: ;
+    font-variant-caps: ;
+    font-variant-numeric: ;
+    font-variant-east-asian: ;
+    font-weight: ;
+    font-stretch: ;
+    font-size: ;
+    font-family: ;
+    text-rendering: auto;
+    color: buttontext;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    box-sizing: border-box;
+    background-color: buttonface;
+    margin: 0em;
+    padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonborder;
+    border-image: initial;
+}
+.box__card-address .box__button-group {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 0;
+}
+.box__card-address .box__button-group .button__address-add:before {
+    width: 22px;
+    height: 22px;
+    background-position: -130px -27px;
+    vertical-align: top;
+    margin-left: -3px;
+}
+.sprite__checkout, .sprite__checkout--before:before, .sprite__checkout--after:after {
+    overflow: hidden;
+    display: inline-block;
+    background: url(//pics.gmarket.co.kr/pc/sprite/kr/checkout/sprite__checkout.png) no-repeat;
+    font-size: 0;
+    background-size: 300px auto;
+    content: '';
+}
+#xo_id_buyer_phone_number dr{
+    margin-top : 5px;
 }

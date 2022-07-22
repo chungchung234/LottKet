@@ -17,7 +17,6 @@ public String priceToStr(long price){
     System.out.println(str);
 
     return str;
-
 }
 %>
 <!DOCTYPE html>
@@ -33,10 +32,10 @@ public String priceToStr(long price){
 	crossorigin="anonymous"></script>
 <script src="js/jquery.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/mypage.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/order.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/orderTitle.css">
 
 <link rel="stylesheet"
 	href="https://unpkg.com/swiper/swiper-bundle.min.css" />
@@ -45,7 +44,18 @@ public String priceToStr(long price){
 
 <!-- Demo styles -->
 <style>
-
+#cardCl{
+background-color : #ECECEB;
+border-radius : 8px;
+}
+.card_change:hover{
+background-color : #F1F1F0;
+border-radius : 8px;
+}
+#orderTitle{
+    text-align: center;
+    margin-bottom: 30px;
+}
 </style>
 </head>
 
@@ -54,15 +64,16 @@ public String priceToStr(long price){
 		<script src="<%=request.getContextPath()%>/js/header.js"></script>
 	</header>
 
-	<h1> 주문 / 결제 </h1>
+
 
 	<div id="content" class="checkout__wrap">
+	<div id="orderTitle"><h1> 주문 / 결제 </h1></div>
 		<div class="box__contents">
 			<div class="section__left">
 				<div class="section__checkout-info section__person-info">
 					<div class="box__card box__card-person box__card-person--simple">
 						<div class="box__inner">
-							<div class="text__title">주문자정보</div>
+							<div class="text__title">주문자 정보</div>
 							<div class="box__form-control person-info__name">
 								<div class="box__label">
 									<label for="xo_id_buyer_name"
@@ -91,8 +102,7 @@ public String priceToStr(long price){
 								</div>
 							</div>
 
-							<p class="sprite__checkout--before text__message">연락처는 국내 휴대폰
-								번호만 입력 가능합니다.</p>
+
 						</div>
 					</div>
 				</div>
@@ -101,14 +111,43 @@ public String priceToStr(long price){
 						<div class="box__inner">
 							<div class="box__address-title">
 								<h3 class="sprite__checkout--before text__title-address prev">배송지</h3>
+
 							</div>
-							<p class="text__address--new">새로운 배송지를 추가해보세요!</p>
+							<p id="text__address--new1" class="text__address--new">새로운 배송지를 추가해보세요!</p>
 							<div class="box__button-group">
-								<button type="button"
-									class="sprite__checkout--before button button__address-add"
-									id="xo_id_add_new_address" data-montelena-acode="200007105">배송지
-									추가</button>
+							<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+								<button onclick="openDaum()" type="button"
+                                                           class="sprite__checkout--before button button__address-add"
+                                                           id="xo_id_add_new_address" data-montelena-acode="200007105">배송지
+                                                           추가</button>
+
+
+                              <script>
+                                  function openDaum() {
+                                    new daum.Postcode({
+                                      oncomplete: function(data) {
+                                        console.log(data);
+                                        document.getElementById("text__address--new1").innerText = data.address;
+                                      }
+                                    }).open();
+                                  }
+                                </script>
+
 							</div>
+							<div class="box__form-control person-info__tel">
+                            								<div class="box__label" style="margin-right: 40px;">
+                            									<label for="xo_id_buyer_phone_number"
+                            										class="sprite__checkout--after text__label"></label>
+                            								</div>
+                            								<div class="box__input " style="margin-top: 8px">
+                            									<input type="tel" id="detailAddress" style="width: 510px;"
+                            										class="input_txt input_tel" title="배송 요청사항"
+                            										placeholder="세부 주소를 입력해주세요" onchange='deliveryRequirement()'>
+                            								</div>
+                            							</div>
+
+
+
 						</div>
 					</div>
 				</div>
@@ -123,7 +162,7 @@ public String priceToStr(long price){
 										<input type="radio" name="payChk"
 											id="xo_id_radio_button_large_method_normal"
 											class="input__radio" data-montelena-acode="200007161"
-											value="Normal"><label
+											value="Normal" checked><label
 											for="xo_id_radio_button_large_method_normal"
 											class="text__pay-title">일반 결제</label>
 									</div>
@@ -141,62 +180,62 @@ public String priceToStr(long price){
 													class="input__rdo" data-montelena-acode="200007162"
 													data-montelena-medium_method="CreditCard"
 													value="VirtualAccount"><label
-													for="pay_chk_VirtualAccount">무통장 입금</label></li>
+													for="pay_chk_VirtualAccount"></label></li>
 											</ul>
 											<div class="pay_openbx box__method-creditcard"
 												style="display: block;">
 												<div class="pay_open">
 													<ul class="pay_lst_chk" role="tablist">
-														<li role="none presentation" class="" onclick= 'payment("현대카드")'>
+														<li role="none presentation" class="card_change" onclick= 'payment("현대카드", this)'>
 														    <a role="tab" aria-selected="false" data-montelena-acode="200007163" data-montelena-medium_method="Unknown" >
 														        <span class="sprite__payment ico_hd"></span>
 														        <strong>현대카드</strong>
 														    </a>
 														</li>
 
-														<li role="none presentation" class="" onclick= 'payment("KB국민카드")' >
+														<li role="none presentation" class="card_change" onclick= 'payment("KB국민카드", this)' >
 														    <a role="tab" aria-selected="false" data-montelena-acode="200007163" data-montelena-medium_method="Unknown" >
 															    <span class="sprite__payment ico_kb"></span>
 															    <strong>KB국민카드</strong>
 															</a>
 													    </li>
 
-														<li role="none presentation" class="" onclick= 'payment("신한카드")'>
+														<li role="none presentation" class="card_change" onclick= 'payment("신한카드", this)'>
 														    <a role="tab" aria-selected="false" data-montelena-acode="200007163" data-montelena-medium_method="Unknown" >
 														        <span class="sprite__payment ico_sh"></span>
 														        <strong>신한카드</strong>
 														    </a>
 														</li>
 
-														<li role="none presentation" class="" onclick= 'payment("삼성카드")'>
+														<li role="none presentation" class="card_change" onclick= 'payment("삼성카드" , this)'>
 														    <a role="tab" aria-selected="false" data-montelena-acode="200007163" data-montelena-medium_method="Unknown" >
 															    <span class="sprite__payment ico_ss"></span>
 															    <strong>삼성카드</strong>
 															</a>
 													    </li>
 
-														<li role="none presentation" class="" onclick= 'payment("롯데카드")'>
+														<li role="none presentation" class="card_change" onclick= 'payment("롯데카드", this)'>
 														    <a role="tab" aria-selected="false" data-montelena-acode="200007163" data-montelena-medium_method="Unknown" >
 															    <span class="sprite__payment ico_lotte"></span>
 															    <strong>롯데카드</strong>
 															</a>
 													    </li>
 
-														<li role="none presentation" class="" onclick='payment("우리카드")'>
+														<li role="none presentation" class="card_change" onclick='payment("우리카드", this)'>
 														    <a role="tab" aria-selected="false" data-montelena-acode="200007163" data-montelena-medium_method="Unknown" >
 														        <span class="sprite__payment ico_wrbank"></span>
 														        <strong>우리카드</strong>
 														    </a>
 														</li>
 
-														<li role="none presentation" class="" onclick= 'payment("하나카드")'>
+														<li role="none presentation" class="card_change" onclick= 'payment("하나카드", this)'>
 														    <a role="tab" aria-selected="false" data-montelena-acode="200007163" data-montelena-medium_method="Unknown" >
 															    <span class="sprite__payment ico_hana"></span>
 															    <strong>하나카드</strong>
 															</a>
 														</li>
 
-														<li role="none presentation" class="" onclick= 'payment("비씨카드")'>
+														<li role="none presentation" class="card_change" onclick= 'payment("비씨카드", this)'>
 														    <a role="tab"
 															aria-selected="false" data-montelena-acode="200007163"
 															data-montelena-medium_method="Unknown" >
@@ -205,7 +244,7 @@ public String priceToStr(long price){
 															</a>
 														</li>
 
-														<li role="none presentation" class="" onclick= 'payment("NH농협카드")'>
+														<li role="none presentation" class="card_change" onclick= 'payment("NH농협카드", this)'>
 														    <a role="tab"
 															    aria-selected="false" data-montelena-acode="200007163"
 															    data-montelena-medium_method="Unknown" >
@@ -215,7 +254,7 @@ public String priceToStr(long price){
 															</a>
 														</li>
 
-														<li role="none presentation" class="" onclick= 'payment("씨티카드")'>
+														<li role="none presentation" class="card_change" onclick= 'payment("씨티카드", this)'>
 														    <a role="tab"
 															    aria-selected="false" data-montelena-acode="200007163"
 															    data-montelena-medium_method="Unknown" >
@@ -225,7 +264,7 @@ public String priceToStr(long price){
 															</a>
 														</li>
 
-														<li role="none presentation" class="" onclick= 'payment("G+하나카드")'>
+														<li role="none presentation" class="card_change" onclick= 'payment("G+하나카드", this)'>
 														    <a role="tab"
 															aria-selected="false" data-montelena-acode="200007163"
 															data-montelena-medium_method="Unknown" >
@@ -235,7 +274,7 @@ public String priceToStr(long price){
 															</a>
 														</li>
 
-														<li role="none presentation" class="" onclick= 'payment("G+우리e카드")'>
+														<li role="none presentation" class="card_change" onclick= 'payment("G+우리e카드", this)'>
 														    <a role="tab"
 															    aria-selected="false" data-montelena-acode="200007163"
 															    data-montelena-medium_method="Unknown" >
@@ -244,7 +283,7 @@ public String priceToStr(long price){
 																<strong>G+우리e카드</strong>
 															</a>
 														</li>
-														<li role="none presentation" class="" onclick= 'payment("카카오뱅크")'>
+														<li role="none presentation" class="card_change" onclick= 'payment("카카오뱅크", this)'>
 														    <a role="tab"
 															aria-selected="false" data-montelena-acode="200007163"
 															data-montelena-medium_method="Unknown" >
@@ -353,107 +392,7 @@ public String priceToStr(long price){
 						</div>
 					</div>
 				</div>
-				<section class="section__checkout-info section__term-info"
-					style="margin-top: 0px;">
-					<div class="box__card box__term-info">
-						<div class="box__inner">
-							<ul class="list__term">
-								<li class="list-item list__term-allagree"><div
-										class="box__custom-form">
-										<input type="checkbox" id="agreeInfoAllTop"
-											name="agreeInfoAll" class="input__checkbox"
-											data-montelena-acode="200007079"
-											data-montelena-is_select="true"><label
-											for="agreeInfoAllTop" class="text__label"><em
-											class="text__deco">전체동의</em><span class="text__explain">만
-												14세 이상만 구매가능합니다.</span></label>
-									</div></li>
-							</ul>
-							<ul class="list__term">
-								<li
-									class="list-item sprite__checkout--after list__term-essential"><div
-										class="box__custom-form">
-										<input type="checkbox"
-											id="xo_id_agreements_collecting_personal_info"
-											name="agreeInfo" class="input__checkbox"
-											data-montelena-acode="200007080"
-											data-montelena-is_select="true"
-											data-montelena-agreement_type="CollectingPersonalInfo"><label
-											for="xo_id_agreements_collecting_personal_info"
-											class="text__label"><em class="text__deco">필수</em>
-											개인정보 수집 및 이용동의</label>
-									</div>
-									<button
-										class="button__term button__detail sprite__checkout--after"
-										aria-expanded="false">자세히</button>
-									<div class="box__detail-term">
-										<p class="text__detail-term">만 14세 이상만 구매가능합니다.</p>
-										<p class="text__detail-term">목적: 주문, 결제 및 배송서비스</p>
-										<p class="text__detail-term">항목: 구매자정보(이름, 연락처, 메일주소),
-											주문비밀번호, 상품 구매/취소/반품/교환/환불 정보, 수령인정보(이름, 주소, 연락처), 결제번호, 송장정보,
-											은행계좌정보, 휴대폰번호(휴대폰결제시), 해외카드번호(해외카드결제시), 현금영수증 정보</p>
-										<p class="text__detail-term">
-											보유기간: <strong class="text__highlight">관련 법률에 따라 5년간
-												보존</strong>
-										</p>
-										<p class="text__detail-term">이용동의: 지마켓글로벌 유한책임회사는 고객님께서
-											구매하신 서비스 및 상품의 원활한 제공을 위해 최소한의 범위 내에서 아래와 같이 개인정보를 수집·이용 합니다.
-											고객님께서는 수집 및 이용에 동의하지 않으실 수 있으며 동의하지 않으실 경우, 일부 구매가 제한될 수
-											있습니다.</p>
-									</div></li>
-								<li
-									class="list-item sprite__checkout--after list__term-essential"><div
-										class="box__custom-form">
-										<input type="checkbox"
-											id="xo_id_agreements_providing_personal_info"
-											name="agreeInfo" class="input__checkbox"
-											data-montelena-acode="200007080"
-											data-montelena-is_select="true"
-											data-montelena-agreement_type="ProvidingPersonalInfo"><label
-											for="xo_id_agreements_providing_personal_info"
-											class="text__label"><em class="text__deco">필수</em>
-											개인정보 제3자 제공동의</label>
-									</div>
-									<button
-										class="button__term button__detail sprite__checkout--after"
-										aria-expanded="false">자세히</button>
-									<div class="box__detail-term">
-										<p class="text__detail-term">
-											제공받는자: <strong class="text__highlight">굿트리1</strong>
-										</p>
-										<p class="text__detail-term">
-											목적: <strong class="text__highlight">판매자와 구매자의 거래의
-												원활한 진행, 본인 의사의 확인, 고객 상담 및 불만처리, 상품과 경품배송을 위한 배송지 확인 등</strong>
-										</p>
-										<p class="text__detail-term">항목: 구매자정보(이름, 연락처, 메일주소),
-											주문비밀번호, 상품 구매/취소/반품/교환/환불 정보, 수령인정보(이름, 주소, 연락처), 결제번호, 송장정보,
-											은행계좌정보, 휴대폰번호(휴대폰결제시), 해외카드번호(해외카드결제시), 현금영수증 정보</p>
-										<p class="text__detail-term">
-											보유기간: <strong class="text__highlight">구매 서비스 종료 후
-												1개월</strong>
-										</p>
-										<p class="text__detail-term">이용동의: 지마켓글로벌 유한책임회사는 고객님께서
-											구매하신 서비스 및 상품의 원활한 제공을 위해 최소한의 범위 내에서 아래와 같이 개인정보를 수집·이용 합니다.
-											고객님께서는 수집 및 이용에 동의하지 않으실 수 있으며 동의하지 않으실 경우, 일부 구매가 제한될 수
-											있습니다.</p>
-									</div></li>
-								<li class="list-item"><button
-										class="button__term text__term-title sprite__checkout--after"
-										aria-expanded="false">전자상거래 구매안전 서비스 안내</button>
-									<div class="box__detail-term">
-										<p class="text__detail-term">G마켓의 모든 판매자는 안전거래를 위해 구매금액,
-											결제수단에 상관없이 모든 거래에 대하여 지마켓글로벌 유한책임회사의 구매안전서비스(에스크로)를 제공하고
-											있습니다.</p>
-										<p class="text__detail-term">지마켓글로벌 유한책임회사의 전자금융거래법에 따른
-											결제대금예치업 등록번호는 02-006-00008입니다.</p>
-										<p class="text__detail-term">등록여부는 금융감독원
-											홈페이지(www.fss.or.kr)의 업무자료&gt;인허가업무안내&gt;전자금융업등록현황에서 확인하실 수
-											있습니다.</p>
-									</div></li>
-							</ul>
-						</div>
-					</div>
-				</section>
+
 			</div>
 		</div>
 	</div>
@@ -471,12 +410,25 @@ public String priceToStr(long price){
 	        let userid= document.getElementById('userid').value;
 	        let orderAmount= document.getElementById('get_amount').value;
 	        let productId= document.getElementById('get_productId').value;
-	        let orderAddress='orderAddress';
-	        let orderDetailAddress = 'orderDetailAddress';
+	        let orderAddress=document.getElementById('text__address--new1').innerText;
+	        let orderDetailAddress = document.getElementById('detailAddress').value;
 	        let orderTotalPrice = document.getElementById('get_totalPrice').value;
 	        let payment = document.getElementById('payment_card').value;
 	        let deliveryRequirement = document.getElementById('xo_id_buyer_phone_number dr').value;
 
+	        if(orderAddress == '새로운 배송지를 추가해보세요!') {
+	            alert('배송지를 입력해주세요');
+	            return;
+            }
+            else if( orderDetailAddress == ''){
+                alert('상세 주소를 입력해주세요');
+                return;
+            }
+            else if ( payment == ''){
+                alert('결제수단을 선택해주세요');
+                return;
+            }
+            else{
 	        var form =document.createElement('form');
 	        form.setAttribute('method','post');
 	        form.setAttribute('action','<%=request.getContextPath()%>/order/makeOrder.do');
@@ -503,16 +455,20 @@ public String priceToStr(long price){
 
 	        document.body.appendChild(form);
 	        form.submit();
-
+	        }
 	    });
 
-	    function payment(card){
+	    function payment(card, el){
+	        let arr = document.getElementsByClassName('card_change');
+
+            for(let i=0;i<arr.length;++i){
+                arr[i].removeAttribute('id');
+            }
+	        el.id='cardCl';
 	        $('#payment_card').val(card);
+
+
 	    }
-
-
-
-
 	</script>
 
 </body>

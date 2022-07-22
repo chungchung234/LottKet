@@ -78,7 +78,6 @@ public String priceToStr(long price){
 				</h2>
 
 				<div class="aside_txt notranslate" id="item_count">
-					<span class="tx_ko"><em>28,291</em> 개의 상품이 있습니다.</span>
 
 					<div class="alg_right">
 
@@ -98,10 +97,10 @@ public String priceToStr(long price){
 					<ul class="tmpl_check etc_multi_toggle_filter notranslate" id="top_shpp_filter">
 						<li class="productPrice">
 						    <span class="custom_rdo ">
-						        <input type="radio" id="emart_de" name="shppClsFilter" class="clickable" data-react-tarea="대카테고리|자주쓰는 배송필터|이마트 쓱배송"
+						        <input type="radio" id="emart_de" name="shppClsFilter" class="clickable current" data-react-tarea="대카테고리|자주쓰는 배송필터|이마트 쓱배송"
 								    data-ilparam-type="shpp" data-ilparam-value="ssgem">
 								    <label for="emart_de">
-								        <span class="brd_txt">낮은 가격 순 조회</span>
+								        <span class="brd_txt current">낮은 가격 순 조회</span>
 								    </label>
 						    </span>
 						</li>
@@ -125,6 +124,13 @@ public String priceToStr(long price){
 								data-ilparam-type="cls" data-ilparam-value="department">
 								<label for="sm_de">평점 높은 순</label>
 						</span></li>
+
+						<li class="" style="margin-left: 250px">
+						    <div>
+                        		<input type="text" id="searchWord" style="font-size:16px; width: 325px; height : 30px; padding: 10px; border: 0px' outline: none; float:right; ">
+                        		<button id="btn_search" style="width: 50px; height: 30px; border: 0px; background:black; outline: none; float:right; color: #ffffff">검색</button>
+                            </div>
+                        </li>
 
 
 					</ul>
@@ -165,89 +171,26 @@ public String priceToStr(long price){
                                             %>
 											<a href=<%=url%>
 												target="_self" class="clickable"
-												data-react-tarea="대카테고리|상품목록|상품_클릭|★3,360→1,980[7/15~7/27][크라운] 참크래커 280g_0000007238370"
 												data-info="0000007238370" data-index="1"
 												data-position="view" data-unit="img"
 												data-react-tarea-dtl-cd="t00001">
 												<img src=<%= product.getProductImageUrl() %>
-												onerror="this.onerror=null;this.src='https://simg.ssgcdn.com/trans.ssg?src=/ui/ssg/img/common/img_ready_500x500.jpg&amp;w=232&amp;h=232&amp;t=9ba4c0524addb9b9ec561d5523b3baf3f90ae796'"
-												class="i1" width="232" height="232"
-												alt="★3,360→1,980[7/15~7/27][크라운] 참크래커 280g" loading="lazy">
-												<img
-												src="//sitem.ssgcdn.com/70/83/23/item/0000007238370_i2_290.jpg"
-												onerror="this.onerror=null;this.src='https://simg.ssgcdn.com/trans.ssg?src=/ui/ssg/img/common/img_ready_500x500.jpg&amp;w=232&amp;h=232&amp;t=9ba4c0524addb9b9ec561d5523b3baf3f90ae796'"
-												class="i2" width="232" height="232"
-												alt="★3,360→1,980[7/15~7/27][크라운] 참크래커 280g"
-												aria-hidden="true" loading="lazy">
+												class="i1" width="232" height="232" loading="lazy">
 												<div class="deiv_bdg notranslate" aria-label="배송방법">
 													<span class="ssgdeliv"><span class="blind">쓱-배송</span></span>
 												</div>
 											</a>
-											<div class="exp_area notranslate">
-												<div class="util_bx">
-													<a
-														href="/item/itemView.ssg?itemId=0000007238370&amp;siteNo=6001&amp;salestrNo=2034"
-														class="blank clickable" target="_blank"
-														data-info="0000007238370" data-index="1"
-														data-position="pop" data-unit="img"
-														data-react-tarea="대카테고리|상품목록|상품_새창보기|★3,360→1,980[7/15~7/27][크라운] 참크래커 280g"><span
-														class="blind">새창보기</span></a> <a href="javascript:void(0)"
-														class="cart clickable" role="button"
-														onclick="frontCommCart.put(this, '');"
-														data-info="0000007238370" data-idx="1"
-														data-position="cart" data-unit="img"
-														data-react-tarea="대카테고리|상품목록|상품_장바구니|★3,360→1,980[7/15~7/27][크라운] 참크래커 280g"
-														data-react-tarea-dtl-cd="t00002"><span class="blind">장바구니</span></a>
-													<span style="display: none" class="disp_cart_data"
-														data-cart-type="10" data-cart-inflo-site-no="6005"
-														data-cart-ordqty="1">{"advertBidId":"","giftBtnShowType":"","giftBtnActType":"Y","itemChrctDivCd":"10","itemLnkd":"/item/itemView.ssg?itemId=0000007238370&amp;siteNo=6001&amp;salestrNo=2034","giftBtnMsg":"","bothSsgMorningShppYn":"N","goItemDetailYn":"N","drctPurchYn":"N","itemId":"0000007238370","dealItemYn":"N","advertExtensTeryDivCd":"","cleaningLabYn":"N","siteNo":"6001","useForcedSsg":"N","cartPsblType":"","uitemId":"00000","infloSiteNo":"6005","salestrNo":"2034","msgItemDetail":""}</span>
-													<span class="cmlike _js_cmlike interestIt"> <input
-														type="hidden" name="attnDivCd" value="10"> <input
-														type="hidden" name="attnDivDtlCd" value="10"> <input
-														type="hidden" name="siteNo" value="6001"> <input
-														type="hidden" name="attnTgtIdnfNo1" value="0000007238370">
-														<input type="hidden" name="attnTgtIdnfNo2" value="2034">
-														<input type="hidden" name="uitemId" value="00000">
-														<input type="hidden" name="notiTitle"
-														value="★3,360→1,980[7/15~7/27][크라운] 참크래커 280g"> <input
-														type="hidden" name="notiImgPath"
-														value="//sitem.ssgcdn.com/70/83/23/item/0000007238370_i1_290.jpg">
-														<input type="hidden" name="checked" value="N"> <input
-														type="hidden" name="useForcedSsgYn" value="N">
-														<button class="cmlike_btn _js_cmlike_btn clickable"
-															data-position="clip"
-															data-react-tarea="대카테고리|상품목록|상품_좋아요|_0000007238370"
-															data-react-tarea-dtl-cd="t00003">
-															<span class="cmlike_ico"> <i
-																class="cmlike_primary_s"></i> <span class="sr_off"><span
-																	class="blind">관심상품 취소</span></span> <span class="sr_on"><span
-																	class="blind">관심상품 등록</span></span>
-															</span>
-														</button>
-													</span>
-												</div>
-											</div>
 										</div>
 									</div>
 									<div class="cunit_info">
-
 										<div class="cunit_tp">
-											<span class="cm_mall_ic ty_rect_s notranslate">
-											    <i class="em"><span class="blind">이마트몰</span></i> <!-- ssg 푸드마켓  -->
-											</span>
 											<div class="dp_dv">
                                                 <img src="<%=request.getContextPath()%>/img/freeDel.png" alt="사진 없음" width="40px" height="18px;">
-												<!-- 신선보장 -->
-												<!-- SSG설치 -->
-												<!-- 오픈마켓  -->
 											</div>
-
-
 										</div>
 										<div class="cunit_md notranslate">
 											<div class="title">
-												<a
-													href="/item/itemView.ssg?itemId=0000007238370&amp;siteNo=6001&amp;salestrNo=2034"
+												<a href="/item/itemView.ssg?itemId=0000007238370&amp;siteNo=6001&amp;salestrNo=2034"
 													target="_self" class="clickable"
 													data-react-tarea="대카테고리|상품목록|상품_클릭|★3,360→1,980[7/15~7/27][크라운] 참크래커 280g"
 													data-info="0000007238370" data-index="1"
@@ -259,7 +202,6 @@ public String priceToStr(long price){
 											<div class="opt_price">
 												<span class="blind">할인적용가</span> <em class="ssg_price"><%= priceToStr(product.getProductPrice()) %></em>
 												<span class="ssg_tx">원</span>
-
 											</div>
 										</div>
 										<div class="cunit_app">
@@ -268,12 +210,9 @@ public String priceToStr(long price){
 													<img src="<%=request.getContextPath()%>/img/fullStar.png" style="width: 18px;height: 15px;">
 													<span class="rate_tx">(<em><%= product.getProductTotalRate()%> </em>점)
 												</div>
-												<span class="rate_tx">(<em>4.5</em>점)
 												</span>
 											</div>
 										</div>
-
-
 									</div>
 								</li>
 
@@ -292,13 +231,264 @@ public String priceToStr(long price){
 
 		</div>
 
-		<input type="text" id="category" value=<%= category %> >
+		<input type="hidden" id="category" value=<%= category %> >
 
 		<footer id="footer">
 			<script src="<%=request.getContextPath()%>/js/footer.js"></script>
 		</footer>
 		<script
-			src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+			src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+	    </script>
+
+	    <script type="text/javascript">
+                  $(".productPrice").on('click',function(){
+                             let category = document.getElementById('category').value;
+                             let search = document.getElementById('searchWord').value;
+
+                            $.ajax({
+                                  url: "<%=request.getContextPath()%>/category/productPrice.do",
+                                  type: "get",
+                                  data:{"productCategory":category, "search": search},
+                                  dataType:'json',
+                                  contentType:"application/json;charset=UTF-8",
+                                  success: function (result) {
+
+                                  document.getElementById("id_productList").innerHTML = '';
+
+                                    let str="";
+                                    for(let i=0;i<result.length;i++){
+                                        let product = result[i];
+
+                                        let url = "detail.do?productid="+product.productId;
+
+                                        let productPrice=product.productPrice;
+                                        let strPrice=productPrice.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+
+                                        str+= '<li class="cunit_t232" data-unittype="item" data-advertacctid=""data-advertbidid="" data-adtgtid="0000007238370" data-adidx="1"data-advertbilngtypecd="" data-advertkindcd="" '+
+                                                                                    'data-advertextensterydivcd=""><div class="cunit_prod " data-react-unit-type="item" data-react-unit-id="0000007238370" data-react-unit-inx="0" data-react-mdl-info="" data-react-advert-yn="N" '+
+                                                                                    'data-react-advert-bid-id="" data-react-advert-tgt-id="" data-react-advert-bilng-type-cd="" data-react-advert-kind-cd="" data-react-advert-extens-tery-div-cd="" data-react-advert-advert-acct-grp-id="" '+
+                                                                                    'data-react-unit-text=""><div class="prod_top"></div> <div class="thmb"> '+
+                                                                                    '<a href='+url+' '+'target="_self" class="clickable" data-react-tarea="대카테고리|상품목록|상품_클릭|★3,360→1,980[7/15~7/27][크라운] 참크래커 280g_0000007238370" data-info="0000007238370" data-index="1" '+
+                                                                                    'data-position="view" data-unit="img" data-react-tarea-dtl-cd="t00001"> '+
+                                                                                    '<img src="'+product.productImageUrl+'" '+'class="i1" width="232" height="232" alt="★3,360→1,980[7/15~7/27][크라운] 참크래커 280g" loading="lazy">'+
+                                                                                    '<img src="//sitem.ssgcdn.com/70/83/23/item/0000007238370_i2_290.jpg" class="i2" width="232" height="232" alt="★3,360→1,980[7/15~7/27][크라운] 참크래커 280g" aria-hidden="true" loading="lazy">'+
+                                                                                    '<div class="deiv_bdg notranslate" aria-label="배송방법"><span class="ssgdeliv"><span class="blind">쓱-배송</span></span></div></a>'+
+                                                                                    '<div class="exp_area notranslate"><div class="util_bx"> '+
+                                                                                    '<a href="/item/itemView.ssg?itemId=0000007238370&amp;siteNo=6001&amp;salestrNo=2034" class="blank clickable" target="_blank" data-info="0000007238370" data-index="1"'+
+                                                                                    ' data-position="pop" data-unit="img" data-react-tarea="대카테고리|상품목록|상품_새창보기|★3,360→1,980[7/15~7/27][크라운] 참크래커 280g"><span class="blind">새창보기</span></a> <a href="javascript:void(0)" '+
+                                                                                    ' class="cart clickable" role="button" data-info="0000007238370" data-idx="1" data-position="cart" data-unit="img" '+
+                                                                                    ' data-react-tarea="대카테고리|상품목록|상품_장바구니|★3,360→1,980[7/15~7/27][크라운] 참크래커 280g" data-react-tarea-dtl-cd="t00002"><span class="blind">장바구니</span></a>'+
+                                                                                    ' <span style="display: none" class="disp_cart_data" data-cart-type="10" data-cart-inflo-site-no="6005" data-cart-ordqty="1">{"advertBidId":"","giftBtnShowType":"","giftBtnActType":"Y","itemChrctDivCd":"10","itemLnkd":"/item/itemView.ssg?itemId=0000007238370&amp;siteNo=6001&amp;salestrNo=2034","giftBtnMsg":"","bothSsgMorningShppYn":"N","goItemDetailYn":"N","drctPurchYn":"N","itemId":"0000007238370","dealItemYn":"N","advertExtensTeryDivCd":"","cleaningLabYn":"N","siteNo":"6001","useForcedSsg":"N","cartPsblType":"","uitemId":"00000","infloSiteNo":"6005","salestrNo":"2034","msgItemDetail":""}</span>'+
+                                                                                    ' <span class="cmlike _js_cmlike interestIt"> <input type="hidden" name="attnDivCd" value="10"> <input type="hidden" name="attnDivDtlCd" value="10"> <input type="hidden" name="siteNo" value="6001"> '+
+                                                                                    ' <input type="hidden" name="attnTgtIdnfNo1" value="0000007238370"> <input type="hidden" name="attnTgtIdnfNo2" value="2034">'+
+                                                                                    '<input type="hidden" name="uitemId" value="00000"> <input type="hidden" name="notiTitle" value="★3,360→1,980[7/15~7/27][크라운] 참크래커 280g"> <input type="hidden" name="notiImgPath" '+
+                                                                                    ' value="//sitem.ssgcdn.com/70/83/23/item/0000007238370_i1_290.jpg"> <input type="hidden" name="checked" value="N"> <input type="hidden" name="useForcedSsgYn" value="N">'+
+                                                                                    ' <button class="cmlike_btn _js_cmlike_btn clickable" data-position="clip" data-react-tarea="대카테고리|상품목록|상품_좋아요|_0000007238370" data-react-tarea-dtl-cd="t00003"> <span class="cmlike_ico"> <i '+
+                                                                                    ' class="cmlike_primary_s"></i> <span class="sr_off"><span class="blind">관심상품 취소</span></span> <span class="sr_on"><span class="blind">관심상품 등록</span></span>'+
+                                                                                    ' </span></button></span></div></div></div></div><div class="cunit_info"> <div class="cunit_tp"> <span class="cm_mall_ic ty_rect_s notranslate">'+
+                                                                                    '<i class="em"><span class="blind">이마트몰</span></i></span><div class="dp_dv">'+
+                                                                                    '<img src="<%=request.getContextPath()%>/img/freeDel.png" alt="사진 없음" width="40px" height="18px;"></div></div>'+
+                                                                                    '<div class="cunit_md notranslate"><div class="title"><a href="/item/itemView.ssg?itemId=0000007238370&amp;siteNo=6001&amp;salestrNo=2034" '+
+                                                                                    'target="_self" class="clickable" data-react-tarea="대카테고리|상품목록|상품_클릭|★3,360→1,980[7/15~7/27][크라운] 참크래커 280g" data-info="0000007238370" data-index="1"'+
+                                                                                    'data-position="view" data-unit="img"> <em class="tx_ko"> '+product.productTitle+'</em></a></div></div>'+
+                                                                                    '<div class="cunit_price"><div class="opt_price"><span class="blind">할인적용가</span> <em class="ssg_price">'+strPrice+'</em> '+
+                                                                                    '<span class="ssg_tx">원</span></div></div><div class="cunit_app"><div class="rating"><div class="rate_bg">'+
+                                                                                    ' <img src="<%=request.getContextPath()%>/img/fullStar.png" style="width: 18px;height: 15px;"> <span class="rate_tx">(<em>'+product.productTotalRate+'</em>점) </div>'+
+                                                                                    '</div></div></div></li>';
+
+                                     document.getElementById("id_productList").innerHTML = str;
+                                    }
+                                  }
+                                });
+
+
+                        });
+
+                $(".regDate").on('click',function(){
+                            let category = document.getElementById('category').value;
+                            let search = document.getElementById('searchWord').value;
+
+                            $.ajax({
+                                  url: "<%=request.getContextPath()%>/category/regDate.do",
+                                  type: "get",
+                                  data:{"productCategory": category, "search": search},
+                                  dataType:'json',
+                                  contentType:"application/json;charset=UTF-8",
+                                  success: function (result) {
+                                  console.log('success');
+                                    document.getElementById("id_productList").innerHTML = '';
+
+                                    let str="";
+                                    for(let i=0;i<result.length;i++){
+                                        let product= result[i];
+
+                                        let url = "detail.do?productid="+product.productId;
+
+                                        let productPrice=product.productPrice;
+                                        let strPrice=productPrice.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+
+                                        str+= '<li class="cunit_t232" data-unittype="item" data-advertacctid=""data-advertbidid="" data-adtgtid="0000007238370" data-adidx="1"data-advertbilngtypecd="" data-advertkindcd="" '+
+                                            'data-advertextensterydivcd=""><div class="cunit_prod " data-react-unit-type="item" data-react-unit-id="0000007238370" data-react-unit-inx="0" data-react-mdl-info="" data-react-advert-yn="N" '+
+                                            'data-react-advert-bid-id="" data-react-advert-tgt-id="" data-react-advert-bilng-type-cd="" data-react-advert-kind-cd="" data-react-advert-extens-tery-div-cd="" data-react-advert-advert-acct-grp-id="" '+
+                                            'data-react-unit-text=""><div class="prod_top"></div> <div class="thmb"> '+
+                                            '<a href='+url+' '+'target="_self" class="clickable" data-react-tarea="대카테고리|상품목록|상품_클릭|★3,360→1,980[7/15~7/27][크라운] 참크래커 280g_0000007238370" data-info="0000007238370" data-index="1" '+
+                                            'data-position="view" data-unit="img" data-react-tarea-dtl-cd="t00001"> '+
+                                            '<img src="'+product.productImageUrl+'" '+'class="i1" width="232" height="232" alt="★3,360→1,980[7/15~7/27][크라운] 참크래커 280g" loading="lazy">'+
+                                            '<img src="//sitem.ssgcdn.com/70/83/23/item/0000007238370_i2_290.jpg" class="i2" width="232" height="232" alt="★3,360→1,980[7/15~7/27][크라운] 참크래커 280g" aria-hidden="true" loading="lazy">'+
+                                            '<div class="deiv_bdg notranslate" aria-label="배송방법"><span class="ssgdeliv"><span class="blind">쓱-배송</span></span></div></a>'+
+                                            '<div class="exp_area notranslate"><div class="util_bx"> '+
+                                            '<a href="/item/itemView.ssg?itemId=0000007238370&amp;siteNo=6001&amp;salestrNo=2034" class="blank clickable" target="_blank" data-info="0000007238370" data-index="1"'+
+                                            ' data-position="pop" data-unit="img" data-react-tarea="대카테고리|상품목록|상품_새창보기|★3,360→1,980[7/15~7/27][크라운] 참크래커 280g"><span class="blind">새창보기</span></a> <a href="javascript:void(0)" '+
+                                            ' class="cart clickable" role="button" data-info="0000007238370" data-idx="1" data-position="cart" data-unit="img" '+
+                                            ' data-react-tarea="대카테고리|상품목록|상품_장바구니|★3,360→1,980[7/15~7/27][크라운] 참크래커 280g" data-react-tarea-dtl-cd="t00002"><span class="blind">장바구니</span></a>'+
+                                            ' <span style="display: none" class="disp_cart_data" data-cart-type="10" data-cart-inflo-site-no="6005" data-cart-ordqty="1">{"advertBidId":"","giftBtnShowType":"","giftBtnActType":"Y","itemChrctDivCd":"10","itemLnkd":"/item/itemView.ssg?itemId=0000007238370&amp;siteNo=6001&amp;salestrNo=2034","giftBtnMsg":"","bothSsgMorningShppYn":"N","goItemDetailYn":"N","drctPurchYn":"N","itemId":"0000007238370","dealItemYn":"N","advertExtensTeryDivCd":"","cleaningLabYn":"N","siteNo":"6001","useForcedSsg":"N","cartPsblType":"","uitemId":"00000","infloSiteNo":"6005","salestrNo":"2034","msgItemDetail":""}</span>'+
+                                            ' <span class="cmlike _js_cmlike interestIt"> <input type="hidden" name="attnDivCd" value="10"> <input type="hidden" name="attnDivDtlCd" value="10"> <input type="hidden" name="siteNo" value="6001"> '+
+                                            ' <input type="hidden" name="attnTgtIdnfNo1" value="0000007238370"> <input type="hidden" name="attnTgtIdnfNo2" value="2034">'+
+                                            '<input type="hidden" name="uitemId" value="00000"> <input type="hidden" name="notiTitle" value="★3,360→1,980[7/15~7/27][크라운] 참크래커 280g"> <input type="hidden" name="notiImgPath" '+
+                                            ' value="//sitem.ssgcdn.com/70/83/23/item/0000007238370_i1_290.jpg"> <input type="hidden" name="checked" value="N"> <input type="hidden" name="useForcedSsgYn" value="N">'+
+                                            ' <button class="cmlike_btn _js_cmlike_btn clickable" data-position="clip" data-react-tarea="대카테고리|상품목록|상품_좋아요|_0000007238370" data-react-tarea-dtl-cd="t00003"> <span class="cmlike_ico"> <i '+
+                                            ' class="cmlike_primary_s"></i> <span class="sr_off"><span class="blind">관심상품 취소</span></span> <span class="sr_on"><span class="blind">관심상품 등록</span></span>'+
+                                            ' </span></button></span></div></div></div></div><div class="cunit_info"> <div class="cunit_tp"> <span class="cm_mall_ic ty_rect_s notranslate">'+
+                                            '<i class="em"><span class="blind">이마트몰</span></i></span><div class="dp_dv">'+
+                                            '<img src="<%=request.getContextPath()%>/img/freeDel.png" alt="사진 없음" width="40px" height="18px;"></div></div>'+
+                                            '<div class="cunit_md notranslate"><div class="title"><a href="/item/itemView.ssg?itemId=0000007238370&amp;siteNo=6001&amp;salestrNo=2034" '+
+                                            'target="_self" class="clickable" data-react-tarea="대카테고리|상품목록|상품_클릭|★3,360→1,980[7/15~7/27][크라운] 참크래커 280g" data-info="0000007238370" data-index="1"'+
+                                            'data-position="view" data-unit="img"> <em class="tx_ko"> '+product.productTitle+'</em></a></div></div>'+
+                                            '<div class="cunit_price"><div class="opt_price"><span class="blind">할인적용가</span> <em class="ssg_price">'+strPrice+'</em> '+
+                                            '<span class="ssg_tx">원</span></div></div><div class="cunit_app"><div class="rating"><div class="rate_bg">'+
+                                            ' <img src="<%=request.getContextPath()%>/img/fullStar.png" style="width: 18px;height: 15px;"> <span class="rate_tx">(<em>'+product.productTotalRate+'</em>점) </div>'+
+                                            ' </span></div></div></div></li>';
+
+                                     document.getElementById("id_productList").innerHTML = str;
+                                    }
+                                  },
+                                  error  : function(){
+                                    alert('fail');
+                                  }
+                                });
+
+
+                        });
+
+                        $(".totalRate").on('click',function(){
+                                let category = document.getElementById('category').value;
+                                let search = document.getElementById('searchWord').value;
+                                    $.ajax({
+                                          url: "<%=request.getContextPath()%>/category/totalRate.do",
+                                          type: "get",
+                                          data:{"productCategory":category, "search": search},
+                                          dataType:'json',
+                                          contentType:"application/json;charset=UTF-8",
+                                          success: function (result) {
+                                            document.getElementById("id_productList").innerHTML = '';
+
+                                            let str="";
+                                            for(let i=0;i<result.length;i++){
+                                                let product= result[i];
+
+                                                let url = "detail.do?productid="+product.productId;
+
+                                                let productPrice=product.productPrice;
+                                                let strPrice=productPrice.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+                                                str+= '<li class="cunit_t232" data-unittype="item" data-advertacctid=""data-advertbidid="" data-adtgtid="0000007238370" data-adidx="1"data-advertbilngtypecd="" data-advertkindcd="" '+
+                                                                                            'data-advertextensterydivcd=""><div class="cunit_prod " data-react-unit-type="item" data-react-unit-id="0000007238370" data-react-unit-inx="0" data-react-mdl-info="" data-react-advert-yn="N" '+
+                                                                                            'data-react-advert-bid-id="" data-react-advert-tgt-id="" data-react-advert-bilng-type-cd="" data-react-advert-kind-cd="" data-react-advert-extens-tery-div-cd="" data-react-advert-advert-acct-grp-id="" '+
+                                                                                            'data-react-unit-text=""><div class="prod_top"></div> <div class="thmb"> '+
+                                                                                            '<a href='+url+' '+'target="_self" class="clickable" data-react-tarea="대카테고리|상품목록|상품_클릭|★3,360→1,980[7/15~7/27][크라운] 참크래커 280g_0000007238370" data-info="0000007238370" data-index="1" '+
+                                                                                            'data-position="view" data-unit="img" data-react-tarea-dtl-cd="t00001"> '+
+                                                                                            '<img src="'+product.productImageUrl+'" '+'class="i1" width="232" height="232" alt="★3,360→1,980[7/15~7/27][크라운] 참크래커 280g" loading="lazy">'+
+                                                                                            '<img src="//sitem.ssgcdn.com/70/83/23/item/0000007238370_i2_290.jpg" class="i2" width="232" height="232" alt="★3,360→1,980[7/15~7/27][크라운] 참크래커 280g" aria-hidden="true" loading="lazy">'+
+                                                                                            '<div class="deiv_bdg notranslate" aria-label="배송방법"><span class="ssgdeliv"><span class="blind">쓱-배송</span></span></div></a>'+
+                                                                                            '<div class="exp_area notranslate"><div class="util_bx"> '+
+                                                                                            '<a href="/item/itemView.ssg?itemId=0000007238370&amp;siteNo=6001&amp;salestrNo=2034" class="blank clickable" target="_blank" data-info="0000007238370" data-index="1"'+
+                                                                                            ' data-position="pop" data-unit="img" data-react-tarea="대카테고리|상품목록|상품_새창보기|★3,360→1,980[7/15~7/27][크라운] 참크래커 280g"><span class="blind">새창보기</span></a> <a href="javascript:void(0)" '+
+                                                                                            ' class="cart clickable" role="button" data-info="0000007238370" data-idx="1" data-position="cart" data-unit="img" '+
+                                                                                            ' data-react-tarea="대카테고리|상품목록|상품_장바구니|★3,360→1,980[7/15~7/27][크라운] 참크래커 280g" data-react-tarea-dtl-cd="t00002"><span class="blind">장바구니</span></a>'+
+                                                                                            ' <span style="display: none" class="disp_cart_data" data-cart-type="10" data-cart-inflo-site-no="6005" data-cart-ordqty="1">{"advertBidId":"","giftBtnShowType":"","giftBtnActType":"Y","itemChrctDivCd":"10","itemLnkd":"/item/itemView.ssg?itemId=0000007238370&amp;siteNo=6001&amp;salestrNo=2034","giftBtnMsg":"","bothSsgMorningShppYn":"N","goItemDetailYn":"N","drctPurchYn":"N","itemId":"0000007238370","dealItemYn":"N","advertExtensTeryDivCd":"","cleaningLabYn":"N","siteNo":"6001","useForcedSsg":"N","cartPsblType":"","uitemId":"00000","infloSiteNo":"6005","salestrNo":"2034","msgItemDetail":""}</span>'+
+                                                                                            ' <span class="cmlike _js_cmlike interestIt"> <input type="hidden" name="attnDivCd" value="10"> <input type="hidden" name="attnDivDtlCd" value="10"> <input type="hidden" name="siteNo" value="6001"> '+
+                                                                                            ' <input type="hidden" name="attnTgtIdnfNo1" value="0000007238370"> <input type="hidden" name="attnTgtIdnfNo2" value="2034">'+
+                                                                                            '<input type="hidden" name="uitemId" value="00000"> <input type="hidden" name="notiTitle" value="★3,360→1,980[7/15~7/27][크라운] 참크래커 280g"> <input type="hidden" name="notiImgPath" '+
+                                                                                            ' value="//sitem.ssgcdn.com/70/83/23/item/0000007238370_i1_290.jpg"> <input type="hidden" name="checked" value="N"> <input type="hidden" name="useForcedSsgYn" value="N">'+
+                                                                                            ' <button class="cmlike_btn _js_cmlike_btn clickable" data-position="clip" data-react-tarea="대카테고리|상품목록|상품_좋아요|_0000007238370" data-react-tarea-dtl-cd="t00003"> <span class="cmlike_ico"> <i '+
+                                                                                            ' class="cmlike_primary_s"></i> <span class="sr_off"><span class="blind">관심상품 취소</span></span> <span class="sr_on"><span class="blind">관심상품 등록</span></span>'+
+                                                                                            ' </span></button></span></div></div></div></div><div class="cunit_info"> <div class="cunit_tp"> <span class="cm_mall_ic ty_rect_s notranslate">'+
+                                                                                            '<i class="em"><span class="blind">이마트몰</span></i></span><div class="dp_dv">'+
+                                                                                            '<img src="<%=request.getContextPath()%>/img/freeDel.png" alt="사진 없음" width="40px" height="18px;"></div></div>'+
+                                                                                            '<div class="cunit_md notranslate"><div class="title"><a href="/item/itemView.ssg?itemId=0000007238370&amp;siteNo=6001&amp;salestrNo=2034" '+
+                                                                                            'target="_self" class="clickable" data-react-tarea="대카테고리|상품목록|상품_클릭|★3,360→1,980[7/15~7/27][크라운] 참크래커 280g" data-info="0000007238370" data-index="1"'+
+                                                                                            'data-position="view" data-unit="img"> <em class="tx_ko"> '+product.productTitle+'</em></a></div></div>'+
+                                                                                            '<div class="cunit_price"><div class="opt_price"><span class="blind">할인적용가</span> <em class="ssg_price">'+strPrice+'</em> '+
+                                                                                            '<span class="ssg_tx">원</span></div></div><div class="cunit_app"><div class="rating"><div class="rate_bg">'+
+                                                                                            ' <img src="<%=request.getContextPath()%>/img/fullStar.png" style="width: 18px;height: 15px;"> <span class="rate_tx">(<em>'+product.productTotalRate+'</em>점) </div>'+
+                                                                                            ' </span></div></div></div></li>';
+
+                                                    document.getElementById("id_productList").innerHTML = str;
+                                                 }
+                                              }
+                                           });
+
+                                  });
+
+                $('#btn_search').on('click',function(){
+                    let search = document.getElementById('searchWord').value;
+                    let category = document.getElementById('category').value;
+                    $.ajax({
+                            url: "<%=request.getContextPath()%>/category/productPrice.do",
+                            type: "get",
+                            data:{"productCategory":category, "search": search},
+                            dataType:'json',
+                            contentType:"application/json;charset=UTF-8",
+                            success: function (result) {
+                            document.getElementById("id_productList").innerHTML = '';
+
+                            let str="";
+                            for(let i=0;i<result.length;i++){
+                                let product = result[i];
+
+                                let url = "detail.do?productid="+product.productId;
+
+                                let productPrice=product.productPrice;
+                                let strPrice=productPrice.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+
+                                str+= '<li class="cunit_t232" data-unittype="item" data-advertacctid=""data-advertbidid="" data-adtgtid="0000007238370" data-adidx="1"data-advertbilngtypecd="" data-advertkindcd="" '+
+                                       'data-advertextensterydivcd=""><div class="cunit_prod " data-react-unit-type="item" data-react-unit-id="0000007238370" data-react-unit-inx="0" data-react-mdl-info="" data-react-advert-yn="N" '+
+                                       'data-react-advert-bid-id="" data-react-advert-tgt-id="" data-react-advert-bilng-type-cd="" data-react-advert-kind-cd="" data-react-advert-extens-tery-div-cd="" data-react-advert-advert-acct-grp-id="" '+
+                                       'data-react-unit-text=""><div class="prod_top"></div> <div class="thmb"> '+
+                                                                                                        '<a href='+url+' '+'target="_self" class="clickable" data-react-tarea="대카테고리|상품목록|상품_클릭|★3,360→1,980[7/15~7/27][크라운] 참크래커 280g_0000007238370" data-info="0000007238370" data-index="1" '+
+                                                                                                        'data-position="view" data-unit="img" data-react-tarea-dtl-cd="t00001"> '+
+                                                                                                        '<img src="'+product.productImageUrl+'" '+'class="i1" width="232" height="232" alt="★3,360→1,980[7/15~7/27][크라운] 참크래커 280g" loading="lazy">'+
+                                                                                                        '<img src="//sitem.ssgcdn.com/70/83/23/item/0000007238370_i2_290.jpg" class="i2" width="232" height="232" alt="★3,360→1,980[7/15~7/27][크라운] 참크래커 280g" aria-hidden="true" loading="lazy">'+
+                                                                                                        '<div class="deiv_bdg notranslate" aria-label="배송방법"><span class="ssgdeliv"><span class="blind">쓱-배송</span></span></div></a>'+
+                                                                                                        '<div class="exp_area notranslate"><div class="util_bx"> '+
+                                                                                                        '<a href="/item/itemView.ssg?itemId=0000007238370&amp;siteNo=6001&amp;salestrNo=2034" class="blank clickable" target="_blank" data-info="0000007238370" data-index="1"'+
+                                                                                                        ' data-position="pop" data-unit="img" data-react-tarea="대카테고리|상품목록|상품_새창보기|★3,360→1,980[7/15~7/27][크라운] 참크래커 280g"><span class="blind">새창보기</span></a> <a href="javascript:void(0)" '+
+                                                                                                        ' class="cart clickable" role="button" data-info="0000007238370" data-idx="1" data-position="cart" data-unit="img" '+
+                                                                                                        ' data-react-tarea="대카테고리|상품목록|상품_장바구니|★3,360→1,980[7/15~7/27][크라운] 참크래커 280g" data-react-tarea-dtl-cd="t00002"><span class="blind">장바구니</span></a>'+
+                                                                                                        ' <span style="display: none" class="disp_cart_data" data-cart-type="10" data-cart-inflo-site-no="6005" data-cart-ordqty="1">{"advertBidId":"","giftBtnShowType":"","giftBtnActType":"Y","itemChrctDivCd":"10","itemLnkd":"/item/itemView.ssg?itemId=0000007238370&amp;siteNo=6001&amp;salestrNo=2034","giftBtnMsg":"","bothSsgMorningShppYn":"N","goItemDetailYn":"N","drctPurchYn":"N","itemId":"0000007238370","dealItemYn":"N","advertExtensTeryDivCd":"","cleaningLabYn":"N","siteNo":"6001","useForcedSsg":"N","cartPsblType":"","uitemId":"00000","infloSiteNo":"6005","salestrNo":"2034","msgItemDetail":""}</span>'+
+                                                                                                        ' <span class="cmlike _js_cmlike interestIt"> <input type="hidden" name="attnDivCd" value="10"> <input type="hidden" name="attnDivDtlCd" value="10"> <input type="hidden" name="siteNo" value="6001"> '+
+                                                                                                        ' <input type="hidden" name="attnTgtIdnfNo1" value="0000007238370"> <input type="hidden" name="attnTgtIdnfNo2" value="2034">'+
+                                                                                                        '<input type="hidden" name="uitemId" value="00000"> <input type="hidden" name="notiTitle" value="★3,360→1,980[7/15~7/27][크라운] 참크래커 280g"> <input type="hidden" name="notiImgPath" '+
+                                                                                                        ' value="//sitem.ssgcdn.com/70/83/23/item/0000007238370_i1_290.jpg"> <input type="hidden" name="checked" value="N"> <input type="hidden" name="useForcedSsgYn" value="N">'+
+                                                                                                        ' <button class="cmlike_btn _js_cmlike_btn clickable" data-position="clip" data-react-tarea="대카테고리|상품목록|상품_좋아요|_0000007238370" data-react-tarea-dtl-cd="t00003"> <span class="cmlike_ico"> <i '+
+                                                                                                        ' class="cmlike_primary_s"></i> <span class="sr_off"><span class="blind">관심상품 취소</span></span> <span class="sr_on"><span class="blind">관심상품 등록</span></span>'+
+                                                                                                        ' </span></button></span></div></div></div></div><div class="cunit_info"> <div class="cunit_tp"> <span class="cm_mall_ic ty_rect_s notranslate">'+
+                                                                                                        '<i class="em"><span class="blind">이마트몰</span></i></span><div class="dp_dv">'+
+                                                                                                        '<img src="<%=request.getContextPath()%>/img/freeDel.png" alt="사진 없음" width="40px" height="18px;"></div></div>'+
+                                                                                                        '<div class="cunit_md notranslate"><div class="title"><a href="/item/itemView.ssg?itemId=0000007238370&amp;siteNo=6001&amp;salestrNo=2034" '+
+                                                                                                        'target="_self" class="clickable" data-react-tarea="대카테고리|상품목록|상품_클릭|★3,360→1,980[7/15~7/27][크라운] 참크래커 280g" data-info="0000007238370" data-index="1"'+
+                                                                                                        'data-position="view" data-unit="img"> <em class="tx_ko"> '+product.productTitle+'</em></a></div></div>'+
+                                                                                                        '<div class="cunit_price"><div class="opt_price"><span class="blind">할인적용가</span> <em class="ssg_price">'+strPrice+'</em> '+
+                                                                                                        '<span class="ssg_tx">원</span></div></div><div class="cunit_app"><div class="rating"><div class="rate_bg">'+
+                                                                                                        ' <img src="<%=request.getContextPath()%>/img/fullStar.png" style="width: 18px;height: 15px;"> <span class="rate_tx">(<em>'+product.productTotalRate+'</em>점) </div>'+
+                                                                                                        '</div></div></div></li>';
+
+                                                         document.getElementById("id_productList").innerHTML = str;
+                                                        }
+                                                      }
+                                                    });
+                });
+
+              </script>
 
 
 

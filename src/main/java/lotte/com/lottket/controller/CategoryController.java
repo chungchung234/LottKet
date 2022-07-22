@@ -51,7 +51,6 @@ public class CategoryController {
     public List<ProductDto> findByCategoryOrderByProductPrice(String productCategory, String search) {
         logger.info("CategoryController findByCategoryOrderByProductPrice() ");
         List<ProductDto> list= categoryService.findByCategoryOrderByProductPrice(search, productCategory);
-
         return list;
     }
 
@@ -85,7 +84,8 @@ public class CategoryController {
     public List<ProductDto> findByCategoryOrderByProductTotalRate(String productCategory, String search){
         logger.info("CategoryController findByCategoryOrderByProductRegDate() ");
 
-        return categoryService.findByCategoryOrderByProductTotalRate(search,productCategory);
+        List<ProductDto> list= categoryService.findByCategoryOrderByProductTotalRate(search,productCategory);
 
+        return list;
     }
 }
