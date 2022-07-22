@@ -21,8 +21,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public UserDto getUser(String email) {
-        return dao.getUser(email);
+    public UserDto getUser(long id) {
+        return dao.getUser(id);
     }
 
     @Override

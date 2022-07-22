@@ -20,10 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class ProductController {
@@ -37,13 +34,18 @@ public class ProductController {
     UserService userService;
 
     @RequestMapping(value="main.do", method = RequestMethod.GET)
-    public String main(Model model) {
+    public String main(String id, Model model) {
         List<ProductImageDto> bestProduct = selectBestProduct();
         List<ProductImageDto> weeklyBestProduct = selectWeeklyBestProduct();
         List<ProductImageDto> newProduct = selectNewProduct();
         model.addAttribute("bestProduct", bestProduct);
         model.addAttribute("weeklyBestProduct", weeklyBestProduct);
         model.addAttribute("newProduct", newProduct);
+
+        if(id != null) {
+            UserDto dto = userService.getUser(Long.parseLong(id));
+            model.addAttribute("dto", dto);
+        }
 
         return "main";
     }

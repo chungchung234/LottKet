@@ -7,7 +7,7 @@ public interface UserService {
 
     int signUp(UserDto dto);
 
-    UserDto getUser(String email);
+    UserDto getUser(long id);
 
     UserDto findByUserId(long userId);
 

@@ -78,8 +78,8 @@ public class UserController {
 
     @RequestMapping(value="getUser.do", method = RequestMethod.GET)
     @ResponseBody
-    public UserDto getUser(String email) {
-        return service.getUser(email);
+    public UserDto getUser(int id) {
+        return service.getUser(id);
     }
 
     @RequestMapping(value="updateAddress.do", method = RequestMethod.POST)
