@@ -16,13 +16,13 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <link rel="favicon" href="img/logo.png">
     <script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
-<%--    <script>--%>
-<%--        var role = sessionStorage.getItem('role');--%>
-<%--        if(role != 'admin'){--%>
-<%--            alert("잘못된 접근입니다!")--%>
-<%--            location.href = "main.do"--%>
-<%--        }--%>
-<%--    </script>--%>
+    <script>
+        var role = sessionStorage.getItem('role');
+        if(role != 'admin'){
+            alert("잘못된 접근입니다!")
+            location.href = "main.do"
+        }
+    </script>
 
     <!-- Demo styles -->
     <style>

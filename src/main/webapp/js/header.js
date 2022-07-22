@@ -26,8 +26,8 @@ headerContents +=
         <div class="main innerContent">
           <div class="div_logo">
             <h1>
-              <a href="main.do" style="display: flex; align-items: center;">
-                <img src="./img/logo.png" style="width:15%;">
+              <a href="`+ getContextPath()+`/main.do" style="display: flex; align-items: center;">
+                <img src="`+ getContextPath()+`/img/logo.png" style="width:15%;">
                 <span style="margin-left:3%; font-size:XX-LARGE;">롯켓마트</span>
               </a>
             </h1>

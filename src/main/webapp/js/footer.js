@@ -1,7 +1,6 @@
 let footerContents = '';
 footerContents += 
 `
-
     <div class="inner">
       <div class="upper">
         <h1></h1>
