@@ -8,6 +8,10 @@
   List<ProductDetailDto> productDetailDto = (List<ProductDetailDto>)request.getAttribute("productDetailDto");
   List<ReviewJoinUser> reviewJoinUserDto = (List<ReviewJoinUser>)request.getAttribute("reviewJoinUserDto");
   List<ReviewJoinReply> reviewJoinReplyDto = (List<ReviewJoinReply>)request.getAttribute("reviewJoinReplyDto");
+
+  if(request.getAttribute("dto") != null) {
+    UserDto dto = (UserDto) request.getAttribute("dto");
+  }
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -118,7 +122,7 @@
         <div class="button_order">
           <button data-v-2292bccc="" data-v-3927112e=""
                   data-object="type=add_to_cart&amp;coupon=&amp;value=4800&amp;price=3420&amp;quantity=1&amp;cat_id=BC34050100&amp;tr_grp_cd=SR&amp;tr_no=LD476977&amp;lrtr_no=null"
-                  class="strokeRed util sizeLarge alignLeft" data-v-3351bf4b=""><span data-v-2292bccc="" class="inner">
+                  class="strokeRed util sizeLarge alignLeft" data-v-3351bf4b="" onclick="cart()"><span data-v-2292bccc="" class="inner">
                 <!----><span data-v-2292bccc="" class="">
                   장바구니 담기
                 </span>
@@ -128,7 +132,7 @@
           <button data-v-2292bccc="" data-v-3927112e=""
                   data-object="type=add_to_cart&amp;coupon=&amp;value=4800&amp;price=3420&amp;quantity=1&amp;cat_id=BC34050100&amp;tr_grp_cd=SR&amp;tr_no=LD476977&amp;lrtr_no=null"
                   class="strokeRed util sizeLarge alignLeft" data-v-3351bf4b="" onclick="purchase()"><span data-v-2292bccc=""
-                                                                                                 class="inner">
+                                                                                                           class="inner">
                 <!----><span data-v-2292bccc="" class="">
                   바로 구매하기
                 </span>
@@ -160,9 +164,9 @@
   <br><br>
   <div class="detail_review" style="width:1200px; background-color:rgb(255, 255, 255);">
     <div style="width:1000px;">
-      <div style="margin-bottom:50px;">
+      <div style="margin-bottom:50px; width:1200px;">
         <ul style="display:flex">
-          <li>
+          <li style="margin-left: 0;">
             <h1 style="font-size:xx-large; font-weight: bold">리뷰</h1>
             <br><br>
           </li>
@@ -171,36 +175,28 @@
         <hr>
         <script>
           function insert_review() {
+            /* if (sessionStorage.getItem("id") == null){
+               alert("로그인 후 댓글 작성 가능합니다.");
+               return;
+             }*/
             document.getElementById("div_insert_review").style.display = "";
           }
 
         </script>
         <br>
-        <h3 style="font-size:xx-large; font-weight: bold"><button onclick="insert_review()" style="background-color: #ff42c9; color:white; border-radius: 0.5em">댓글작성</button></h3>
+        <h3 style="font-size:xx-large;font-weight: bold"><button onclick="insert_review()" style="background-color: #ff42c9; color:white; border-radius: 0.5em">댓글작성</button></h3>
       </div>
       <div id="div_insert_review" style="margin-left:10px; display:none">
         <span>wnsgur753</span>
-        <img id="id_star1" style="width:20px;" src="<%=request.getContextPath()%>/img/fullStar.png" onclick="click_star(this.id)">
-        <img id="id_star2" style="width:20px;" src="<%=request.getContextPath()%>/img/fullStar.png" onclick="click_star(this.id)">
-        <img id="id_star3" style="width:20px;" src="<%=request.getContextPath()%>/img/fullStar.png" onclick="click_star(this.id)">
-        <img id="id_star4" style="width:20px;" src="<%=request.getContextPath()%>/img/fullStar.png" onclick="click_star(this.id)">
-        <img id="id_star5" style="width:20px;" src="<%=request.getContextPath()%>/img/fullStar.png" onclick="click_star(this.id)">
-        <script>
-
-
-          var myImage = document.querySelector('img');
-          myImage.onclick = function() {
-            var mySrc = myImage.getAttribute('src');
-            if(mySrc === 'http://static.tumblr.com/1bd1b615e6da70dd71dc84fd2f47c80d/zpmncfu/oxNng9hfv/tumblr_static_95p88l86si88ks4w4wws04wk8.png') {
-              myImage.setAttribute ('src','https://cdn-insomniac.s3.amazonaws.com/emoji_sexface.png');
-            } else {
-              myImage.setAttribute ('src','http://static.tumblr.com/1bd1b615e6da70dd71dc84fd2f47c80d/zpmncfu/oxNng9hfv/tumblr_static_95p88l86si88ks4w4wws04wk8.png');
-            }
-          };
-        </script>
+        <span id="send_star" style="display:none">0</span>
+        <img class="cls_star" id="id_star1" style="width:20px;" src="<%=request.getContextPath()%>/img/emptyStar.png" onmouseover="onmouse_star(this.id)">
+        <img class="cls_star" id="id_star2" style="width:20px;" src="<%=request.getContextPath()%>/img/emptyStar.png" onmouseover="onmouse_star(this.id)">
+        <img class="cls_star" id="id_star3" style="width:20px;" src="<%=request.getContextPath()%>/img/emptyStar.png" onmouseover="onmouse_star(this.id)">
+        <img class="cls_star" id="id_star4" style="width:20px;" src="<%=request.getContextPath()%>/img/emptyStar.png" onmouseover="onmouse_star(this.id)">
+        <img class="cls_star" id="id_star5" style="width:20px;" src="<%=request.getContextPath()%>/img/emptyStar.png" onmouseover="onmouse_star(this.id)">
 
         <form style="margin-top:10px;" action="javascript:insertReview()">
-          <p><textarea id="content" cols="50" rows="5" style="width:700px"></textarea></p>
+          <p><textarea id="content" cols="50" rows="5" style="width:700px; padding:10px; margin-bottom:10px;"></textarea></p>
           <p><input type="submit" value="Submit"></p>
         </form>
       </div>
@@ -211,7 +207,7 @@
             SimpleDateFormat sDate = new SimpleDateFormat("yyyy-MM-dd");
             String strDate = sDate.format(reviewJoinUserDto.get(i).getReviewDate());
         %>
-        <div class="reviewList">
+        <div class="reviewList" style="border:3px solid black; padding:20px; border-radius:30px">
           <div class="uswersAndMoremenu">
             <div class="users">
               <%--            <img src="<%=reviewJoinUserDto.get(i).getUserProfileImage()%>"--%>
@@ -228,28 +224,54 @@
             </div>
           </div>
           <br>
-          <span class="reviewList_avg">평점 : <%=reviewJoinUserDto.get(i).getRating()%></span>
+          <span class="reviewList_avg" id="rev<%=reviewJoinUserDto.get(i).getReviewId()%>" style="display:none;"><%=reviewJoinUserDto.get(i).getRating()%></span>
+          <div id="<%=reviewJoinUserDto.get(i).getReviewId()%>"><img style="width:20px;" src="<%=request.getContextPath()%>/img/fullStar.png"></div>
+          <script>
+            document.getElementById("<%=reviewJoinUserDto.get(i).getReviewId()%>").innerHTML = ``;
+            for (let i = 1; i <= Math.floor(document.getElementById("rev<%=reviewJoinUserDto.get(i).getReviewId()%>").innerText); i++) {
+              document.getElementById("<%=reviewJoinUserDto.get(i).getReviewId()%>").innerHTML += `
+                <img style="width:20px;" src="<%=request.getContextPath()%>/img/fullStar.png">
+              `
+            }
+          </script>
+
           <br><br>
 
           <span class="reviewList_text"><%=reviewJoinUserDto.get(i).getContent()%></span>
-          <button type="button" style="margin-left:50px;" onclick='admin_reply("<%=reviewJoinUserDto.get(i).getReviewId()%>")'>답글 작성</button>
+          <br><br><br><br>
 
-          <div id="replydiv<%=reviewJoinUserDto.get(i).getReviewId()%>" style="margin-left:80px; margin-top:20px; display:none;" >
-            <span>관리자아이디 넣어주세염</span>
-            <form style="margin-top:10px;">
-              <p><textarea cols="50" rows="5" style="width:700px"></textarea></p>
+          <% for (int j=0; j<reviewJoinReplyDto.size(); j++){
+            if (reviewJoinReplyDto.get(j).getReviewId() == reviewJoinUserDto.get(i).getReviewId()){
+          %>
+          <p style="margin-left:50px;">[ 관리자 ]</p>
+          <br>
+          <p><div style="border:1px solid black; width:700px; height:200px; padding:10px; margin-left:50px; margin-bottom:20px;"><%=reviewJoinReplyDto.get(j).getContent()%></div></p>
+          <%
+              }
+            }
+          %>
+
+          <button type="button" onclick='admin_reply("<%=reviewJoinUserDto.get(i).getReviewId()%>")'>답글 작성</button>
+
+
+
+          <div id="replydiv<%=reviewJoinUserDto.get(i).getReviewId()%>" style="margin-top:20px; display:none;" >
+            <span>[ 관리자 ]</span>
+            <form style="margin-top:10px;" action="javascript:insertReply('<%=reviewJoinUserDto.get(i).getReviewId()%>')">
+              <p><textarea id="replyContent<%=reviewJoinUserDto.get(i).getReviewId()%>" cols="50" rows="5" style="width:700px; padding:10px;"></textarea></p>
               <p style="padding-bottom: 15px;
                  padding-top: 10px"><input type="submit" value="Submit"></p>
             </form>
           </div>
         </div>
-        <hr style="color:gray; margin-top:15px;">
+
         <br><br>
 
-      </div>
+
         <%
           }
         %>
+      </div>
     </div>
   </div>
 
@@ -277,34 +299,77 @@
     document.getElementById('quantity').innerText = parseInt($("#quantity").text().toString()) + 1;
   }
 
-  function insertReview(){
-    let content = $("#content").val();
-    document.getElementById("div_insert_review").style.display = "none";
-    document.getElementById("content").value="";
-    $.ajax({
-      url:"<%=request.getContextPath()%>/insertReview.do",
-      data:{content:content, productId:<%=productDto.getProductId()%>},
-      method:"get",
-      success:function(data){
-        console.log(data);
-        $("#commentdiv").html(data);
-      }
-    });
-  }
-
   function admin_reply(index) {
     document.getElementById("replydiv"+index).style.display = "";
   }
 
   function purchase(){
-    if(sessionStorage.getItem("id") != null) {
-      let quantity = parseInt($("#quantity").text().toString());
-      let productid = <%=productDto.getProductId()%>;
-      console.log(quantity, productid,sessionStorage.getItem("id"));
-      location.href="order/orderSheet.do?productId="+productid+"&userId="+sessionStorage.getItem("id")+"&orderAmount="+quantity;
-    }else {
-      alert('로그인이 필요합니다.');
+    let quantity = parseInt($("#quantity").text().toString());
+    let productid = <%=productDto.getProductId()%>;
+    if (sessionStorage.getItem("id") == null){
+      alert("로그인 후 구매 가능합니다.");
+      return;
     }
+    location.href="order/orderSheet.do?productId="+productid+"&userId="+sessionStorage.getItem("id")+"&orderAmount="+quantity;
+  }
+
+  function cart(){
+    let quantity = parseInt($("#quantity").text().toString());
+    let productid = <%=productDto.getProductId()%>;
+    if (sessionStorage.getItem("id") == null){
+      alert("로그인 후 장바구니 이동 가능합니다.");
+      return;
+    }
+    location.href="newcart.do?productId="+productid+"&userId="+sessionStorage.getItem("id")+"&amount="+quantity;
+  }
+
+  function insertReview(){
+    let rating = parseFloat(document.getElementById("send_star").innerText);
+    let content = $("#content").val();
+    document.getElementById("div_insert_review").style.display = "none";
+    document.getElementById("content").value="";
+    $.ajax({
+      url:"<%=request.getContextPath()%>/insertReview.do",
+      data:{content:content, productId:parseInt("<%=productDto.getProductId()%>"), rating:rating},
+      method:"get",
+      success:function(data){
+        $("#commentdiv").html(data);
+      }
+    });
+  }
+
+  function insertReply(index){
+    let replyContent= $("#replyContent"+index).val();
+    document.getElementById("replydiv"+index).style.display = "none";
+    document.getElementById("replyContent"+index).value="";
+    console.log(<%=productDto.getProductId()%>,replyContent, index);
+
+    $.ajax({
+      url:"<%=request.getContextPath()%>/insertReply.do",
+      data:{reviewId:parseInt(index), content:replyContent, productId:parseInt("<%=productDto.getProductId()%>")},
+      method:"get",
+      success:function(data){
+        $("#commentdiv").html(data);
+      }
+    });
+  }
+
+  function onmouse_star(input) {
+    let at_star = input.at(-1);
+    for (let i = 1; i <= 5; i++) {
+      if(at_star == i) {
+        for (let j = 1; j <= i; j++) {
+          document.getElementById("id_star"+j).setAttribute('src',"<%=request.getContextPath()%>/img/fullStar.png");
+        }
+        if( i == 5) {
+          break;
+        }
+        for (let k = i + 1; k <= 5; k++) {
+          document.getElementById("id_star"+k).setAttribute('src',"<%=request.getContextPath()%>/img/emptyStar.png");
+        }
+      }
+    }
+    document.getElementById("send_star").innerText = at_star;
   }
 </script>
 
