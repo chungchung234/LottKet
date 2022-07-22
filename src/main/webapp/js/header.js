@@ -20,14 +20,13 @@ headerContents +=
           <ul class>
             <li id="login_li"><a href="login.do">로그인</a></li>
             <li id="logout_li" style="display:none"> <a href="logout.do">로그아웃</a></li>
-            <li><a href="admin.html">Admin</a></li>
           </ul>
         </div>
 
         <div class="main innerContent">
           <div class="div_logo">
             <h1>
-              <a href="`+getContextPath()+`main.do" style="display: flex; align-items: center;">
+              <a href="`+getContextPath()+`/main.do" style="display: flex; align-items: center;">
                 <img src="`+getContextPath()+`/img/logo.png" style="width:15%;">
                 <span style="margin-left:3%; font-size:XX-LARGE;">롯켓마트</span>
               </a>
@@ -49,7 +48,7 @@ headerContents +=
           <a href=`+getContextPath()+`/category.do?productCategory=잡곡견과>잡곡·견과</a>
           <a href=`+getContextPath()+`/category.do?productCategory=수산>수산</a>
           <a href=`+getContextPath()+`/category.do?productCategory=정육계란>정육계란</a>
-          <a href=`+getContextPath()+`/category.do?productCategory=유제품>유제품</a>>
+          <a href=`+getContextPath()+`/category.do?productCategory=유제품>유제품</a>
           <a href=`+getContextPath()+`/category.do?productCategory=냉동냉장>냉동냉장</a>
           <hr>
     </div>

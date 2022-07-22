@@ -127,7 +127,7 @@
 </div>
 
 <footer id="footer">
-  <script src="js/footer.js"></script>
+  <script src="../../js/footer.js"></script>
 </footer>
 </body>
 <script>
