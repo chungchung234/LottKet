@@ -27,7 +27,7 @@ headerContents +=
           <div class="div_logo">
             <h1>
               <a href="main.do" style="display: flex; align-items: center;">
-                <img src="./img/logo.png" style="width:15%;">
+                <img src="`+getContextPath()+`/img/logo.png" style="width:15%;">
                 <span style="margin-left:3%; font-size:XX-LARGE;">롯켓마트</span>
               </a>
             </h1>
@@ -40,9 +40,7 @@ headerContents +=
             </ul>
           </div>
 
-          <div class="searchArea on IMG">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </div>
+
         </div>
       </div>
     </div>
@@ -50,20 +48,20 @@ headerContents +=
 
           <a href=`+getContextPath()+`/category.do?productCategory=과일>과일</a>
           <a href=`+getContextPath()+`/category.do?productCategory=채소>채소</a>
-          <a href=`+getContextPath()+`/category.do?productCategory=잡곡견과>잡곡·견과</a>
+          <a href=`+getContextPath()+`/category.do?productCategory=잡곡견과>잡곡</a>
+          <a href=`+getContextPath()+`/category.do?productCategory=견과건과>견과·건과</a>
           <a href=`+getContextPath()+`/category.do?productCategory=수산>수산</a>
           <a href=`+getContextPath()+`/category.do?productCategory=정육계란>정육계란<a/>
-          <a href=`+getContextPath()+`/category.do?productCategory=유제품>유제품<a/>
-          <a href=`+getContextPath()+`/category.do?productCategory=냉동냉장>냉동냉장<a/>
+          <a href=`+getContextPath()+`/category.do?productCategory=냉장냉동>냉장냉동<a/>
 
           <hr>
     </div>
     
-    <div style="width:110px; height:590px; font-weight:bold; position:fixed; right:80px; background-color: #ff4769; z-index:99; border-radius: 2em; ">
+    <div style="width:110px; height:590px; font-weight:bold; position:fixed; right:80px; background-color: #ff4769; z-index:99; border-radius: 1em; ">
     <br>
-        <span style="margin-left:14px; color:white;">최근 본 상품</span>
+        <span style="margin-left:11px; color:white;">최근 본 상품</span>
         <br><br>
-        <ul style="margin-left:4px;">
+        <ul style="margin-left:5px;">
             <li><img id="recentImg1" style="width:100px; height:100px; background-color: white;" ></li>
             <li><img id="recentImg2" style="width:100px; height:100px; background-color: white;" ></li>
             <li><img id="recentImg3" style="width:100px; height:100px; background-color: white;" ></li>
