@@ -31,8 +31,8 @@ headerContents +=
 
           <div>
             <ul id="gnb">
-              <li><a href="mypage.do">My Page</a></li>
-              <li><a href="cart.do">장바구니</a></li>
+              <li><a onclick="moveMypage()">My Page</a></li>
+              <li><a onclick="moveCart()">장바구니</a></li>
             </ul>
           </div>
         </div>
@@ -101,5 +101,23 @@ if (recentProduct5 != null) {
     document.getElementById("recentImg5").src = recentProduct5.recentProductImg;
     document.getElementById("recentImg5").onclick = function () {
         window.location.href = recentProduct5.recentProductUrl
+    }
+}
+
+
+function moveMypage() {
+    if(sessionStorage.getItem("id") != null) {
+        location.href="mypage.do";
+    }else {
+        alert("로그인이 필요합니다.");
+        location.href="login.do";
+    }
+}
+function moveCart() {
+    if(sessionStorage.getItem("id") != null) {
+        location.href="cart.do";
+    }else {
+        alert("로그인이 필요합니다.");
+        location.href="login.do";
     }
 }
