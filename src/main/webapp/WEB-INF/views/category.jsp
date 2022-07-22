@@ -45,6 +45,11 @@ public String priceToStr(long price){
 
 <!-- Demo styles -->
 <style>
+
+	body {
+		font-size:14px;
+	}
+
 </style>
 </head>
 

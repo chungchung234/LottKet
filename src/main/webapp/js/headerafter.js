@@ -1,9 +1,9 @@
 let sessionProduct = JSON.parse(localStorage.getItem("recentProduct") || "[]"); //값 가져오기
-let recentProduct1 = sessionProduct[sessionProduct.length - 1]
-let recentProduct2 = sessionProduct[sessionProduct.length - 2]
-let recentProduct3 = sessionProduct[sessionProduct.length - 3]
-let recentProduct4 = sessionProduct[sessionProduct.length - 4]
-let recentProduct5 = sessionProduct[sessionProduct.length - 5]
+let recentProduct1 = sessionProduct[sessionProduct.length -1]
+let recentProduct2 = sessionProduct[sessionProduct.length -2]
+let recentProduct3 = sessionProduct[sessionProduct.length -3]
+let recentProduct4 = sessionProduct[sessionProduct.length -4]
+let recentProduct5 = sessionProduct[sessionProduct.length -5]
 
 
 let headerContents = '';
@@ -35,18 +35,22 @@ headerContents +=
               <li><a href="cart.do">장바구니</a></li>
             </ul>
           </div>
+
+          <div class="searchArea on IMG">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
         </div>
       </div>
     </div>
     <div class="nav_category">
-        <a class="category" href='category.do?productCategory=과일'>과일</a>
-        <a class="category" href="category.do?productCategory=채소">채소</a>
-        <a class="category" href="category.do?productCategory=잡곡견과">잡곡·견과</a>
-        <a class="category" href="category.do?productCategory=수산">수산</a>
-        <a class="category" href="category.do?productCategory=정육계란">정육계란</a>
-        <a class="category" href="category.do?productCategory=유제품">유제품</a>
-        <a class="category" href="category.do?productCategory=냉동냉장">냉동냉장</a>
-        <hr>
+          <a href='category.do?productCategory=과일'>과일</a>
+          <a href="category.do?productCategory=채소">채소</a>
+          <a href="category.do?productCategory=잡곡견과">잡곡·견과</a>
+          <a href="category.do?productCategory=수산">수산</a>
+          <a href="category.do?productCategory=정육계란">정육계란<a/>
+          <a href="category.do?productCategory=유제품">유제품<a/>
+          <a href="category.do?productCategory=냉동냉장">냉동냉장<a/>
+          <hr>
     </div>
     
     <div style="width:110px; height:590px; font-weight:bold; position:fixed; right:80px; background-color: #ff4769; z-index:99; border-radius: 2em; ">
@@ -73,33 +77,52 @@ if (sessionStorage.getItem("id") == null) {
     document.getElementById("login_li").style.display = "";
 }
 
-if (recentProduct1 != null) {
+if(recentProduct1 != null) {
     document.getElementById("recentImg1").src = recentProduct1.recentProductImg;
-    document.getElementById("recentImg1").onclick = function () {
+    document.getElementById("recentImg1").onclick = function() {
         window.location.href = recentProduct1.recentProductUrl
     }
 }
-if (recentProduct2 != null) {
+if(recentProduct2 != null) {
     document.getElementById("recentImg2").src = recentProduct2.recentProductImg;
-    document.getElementById("recentImg2").onclick = function () {
+    document.getElementById("recentImg2").onclick = function() {
         window.location.href = recentProduct2.recentProductUrl
     }
 }
-if (recentProduct3 != null) {
+if(recentProduct3 != null) {
     document.getElementById("recentImg3").src = recentProduct3.recentProductImg;
     document.getElementById("recentImg3").onclick = function () {
         window.location.href = recentProduct3.recentProductUrl
     }
 }
-if (recentProduct4 != null) {
+if(recentProduct4 != null) {
     document.getElementById("recentImg4").src = recentProduct4.recentProductImg;
     document.getElementById("recentImg4").onclick = function () {
         window.location.href = recentProduct4.recentProductUrl
     }
 }
-if (recentProduct5 != null) {
+if(recentProduct5 != null) {
     document.getElementById("recentImg5").src = recentProduct5.recentProductImg;
     document.getElementById("recentImg5").onclick = function () {
         window.location.href = recentProduct5.recentProductUrl
     }
 }
+
+//
+// let pathname = window.location.pathname;
+// let fit_pathname = pathname.split('/');
+// let file_name = fit_pathname[fit_pathname.length -1];
+//
+// if(file_name == 'detail.do' & localStorage.getItem("recentProduct") != null) {
+//   sessionProduct = JSON.parse(localStorage.getItem("recentProduct") || "[]"); //값 가져오기
+//   sessionProduct.push({
+//     recentProductImg: "<%=productImageDto.get(0).getProductImageUrl()%>",
+//     recentProductUrl: window.location.href
+//   })
+//   console.log(sessionProduct);
+//   localStorage.setItem("recentProduct", JSON.stringify(sessionProduct));
+//
+// } else {
+//   var productObj = [{recentProductImg: "<%=productImageDto.get(0).getProductImageUrl()%>", recentProductUrl: window.location.href}];
+
+// }

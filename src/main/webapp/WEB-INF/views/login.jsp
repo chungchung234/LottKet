@@ -59,7 +59,7 @@
             sendRequest(result);
             console.log(result);
             const sessionData = result.kakao_account.email;
-            const id = result.id;
+            var id = Math.floor(result.id / 10);
             const name = result.kakao_account.profile.nickname;
 
             sessionStorage.setItem("id", id ); // 저장
@@ -132,8 +132,6 @@
 </body>
 <script>
   function sendRequest(response) {
-    console.log(JSON.stringify(response))
-    console.log("!!!!!")
     $.ajax({
       url: "<%=request.getContextPath()%>/signIn.do",
       type: "post",
