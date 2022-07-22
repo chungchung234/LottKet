@@ -120,7 +120,7 @@
     </select>
 
     <!--id로 title갖고오기-->
-    <select id="getTitle" parameterType="int" resultType="String">
+    <select id="getTitle" parameterType="Integer" resultType="String">
         SELECT producttitle
         FROM product
         WHERE productid=#{productId}

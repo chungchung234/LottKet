@@ -2,14 +2,14 @@ package lotte.com.lottket.dto;
 
 public class ProductImageDto {
     private int productImageIdx;
-    private long productId;
+    private int productId;
     private String productImageUrl;
     private String productTitle;
     public ProductImageDto() {
 
     }
 
-    public ProductImageDto(int productImageIdx, long productId, String productImageUrl) {
+    public ProductImageDto(int productImageIdx, int productId, String productImageUrl) {
         this.productImageIdx = productImageIdx;
         this.productId = productId;
         this.productImageUrl = productImageUrl;
@@ -26,7 +26,7 @@ public class ProductImageDto {
         return productImageIdx;
     }
 
-    public long getProductId() {
+    public int getProductId() {
         return productId;
     }
 

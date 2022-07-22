@@ -18,7 +18,6 @@
     List<ProductImageDto> bestProduct = (List<ProductImageDto>)request.getAttribute("bestProduct");
     List<ProductImageDto> weeklyBestProduct = (List<ProductImageDto>)request.getAttribute("weeklyBestProduct");
     List<ProductImageDto> newProduct = (List<ProductImageDto>)request.getAttribute("newProduct");
-    }
 %>
 <script>
     console.log(sessionStorage.getItem("id"));

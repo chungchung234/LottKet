@@ -4,7 +4,6 @@ import lotte.com.lottket.dto.ProductDetailDto;
 import lotte.com.lottket.service.category.CategoryService;
 import com.google.gson.JsonParser;
 import lotte.com.lottket.dto.UserDto;
-import lotte.com.lottket.service.product.DBInitialize;
 import lotte.com.lottket.service.product.ProductService;
 import lotte.com.lottket.dto.ProductDto;
 import lotte.com.lottket.dto.ProductImageDto;
@@ -83,8 +82,8 @@ public class ProductController {
 
         if(service.checkIfEmptyDB()) {
 
-            try {
-                paramMap = DBInitialize.run();
+            //try {
+                //paramMap = DBInitialize.run();
                 productList = (List<ProductDto>) paramMap.get("productList");
                 productImageList = (List<ProductImageDto>) paramMap.get("productImageList");
                 productDetailList = (List<ProductDetailDto>) paramMap.get("productDetailList");
@@ -113,9 +112,10 @@ public class ProductController {
 //                    System.out.println(i+" : "+productDetailList.get(i).toString());
 //                }
 
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            //}
+//            catch (IOException e) {
+//                e.printStackTrace();
+//            }
         }
 
 //        model.addAttribute("productList", productList);

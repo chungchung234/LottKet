@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.List;
 import java.util.Map;
 
-@Service
+@Repository
 public class ProductDaoImpl implements ProductDao{
     @Autowired
     SqlSession session;
@@ -88,30 +88,48 @@ public class ProductDaoImpl implements ProductDao{
     @Override
     public List<ProductImageDto> selectBestProduct() {
         List<ProductImageDto> list = session.selectList(ns + "selectBestProduct") ;
+        /*
         list.stream()
                 .forEach(i-> {
                     i.setProductTitle(session.selectOne(ns + "getTitle", i.getProductId()));
-                });
+                });*/
+
+        for (int i = 0;i < list.size(); i++){
+            ProductImageDto dto = list.get(i);
+            String title = session.selectOne(ns + "getTitle", dto.getProductId());
+            dto.setProductTitle(title);
+        }
+
         return list;
     }
 
     @Override
     public List<ProductImageDto> selectWeeklyBestProduct() {
         List<ProductImageDto> list =  session.selectList(ns + "selectWeeklyBestProduct");
-        list.stream()
-                .forEach(i-> {
-                    i.setProductTitle(session.selectOne(ns + "getTitle", i.getProductId()));
-                });
+//        list.stream()
+//                .forEach(i-> {
+//                    i.setProductTitle(session.selectOne(ns + "getTitle", i.getProductId()));
+//                });
+        for (int i = 0;i < list.size(); i++){
+            ProductImageDto dto = list.get(i);
+            String title = session.selectOne(ns + "getTitle", dto.getProductId());
+            dto.setProductTitle(title);
+        }
         return list;
     }
 
     @Override
     public List<ProductImageDto> selectNewProduct() {
         List<ProductImageDto> list =  session.selectList(ns + "selectNewProduct");
-        list.stream()
-                .forEach(i-> {
-                    i.setProductTitle(session.selectOne(ns + "getTitle", i.getProductId()));
-                });
+//        list.stream()
+//                .forEach(i-> {
+//                    i.setProductTitle(session.selectOne(ns + "getTitle", i.getProductId()));
+//                });
+        for (int i = 0;i < list.size(); i++){
+            ProductImageDto dto = list.get(i);
+            String title = session.selectOne(ns + "getTitle", dto.getProductId());
+            dto.setProductTitle(title);
+        }
         return list;
     }
 
