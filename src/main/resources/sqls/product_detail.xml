@@ -42,7 +42,7 @@
 		values (#{userId},#{productId},#{content},now(),#{rating})
 	</insert>
 
-	<insert id="insertReply" parameterType="java.util.HashMap">
+	<insert id="insertReply" parameterType="java.util.HashMap"> 
 		insert into reply (reviewid, content, replydate)
 		values (#{reviewId},#{content},now())
 	</insert>
