@@ -6,6 +6,7 @@
     request.setCharacterEncoding("utf-8");
     List<ShoworderDto> list=(List<ShoworderDto>)request.getAttribute("list");
     Long userId = (Long)request.getAttribute("userId");
+    System.out.println(userId);
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -25,7 +26,29 @@
 
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="favicon" href="img/logo.png">
-
+<%--    <script>--%>
+<%--        let userId = sessionStorage.getItem('id');--%>
+<%--        $.ajax({--%>
+<%--            type : "post",--%>
+<%--            url : "mypage.do",--%>
+<%--            data : JSON.stringify({--%>
+<%--                'userId': userId--%>
+<%--            }),--%>
+<%--            dataType : 'json',--%>
+<%--            timeout : 100000,--%>
+<%--            contentType:'application/json',--%>
+<%--            success : function(data) {--%>
+<%--                return data;--%>
+<%--                console.log("move to mypage SUCCESS: ", data);--%>
+<%--            },--%>
+<%--            error : function(e) {--%>
+<%--                console.log("move to mypage ERROR: ", e);--%>
+<%--            },--%>
+<%--            done : function(e) {--%>
+<%--                console.log("move to mypage DONE");--%>
+<%--            }--%>
+<%--        });--%>
+<%--    </script>--%>
 
     <!-- Demo styles -->
     <style>
@@ -82,7 +105,12 @@
             </div>
         </div>
 
-        <div class="orderGroupWrap">
+        <%
+            if(!list.isEmpty()){
+
+        %>
+
+        <div class="orderGroupWrap" id="orderBoard">
             <%
                 for(int i=0; i<list.size(); i++){
                     ShoworderDto dto =  list.get(i);
@@ -95,13 +123,13 @@
                          class="loaded">
                 </div>
                 <div class="information" style="width:500px; margin-left:5%">
-                    <span>주문번호</span>
+                    <span>주문번호 : </span>
                     <span class="orderNumber"><%= dto.getOrderid()%></span>
                     <br>
-                    <span>주문일자</span>
+                    <span>주문일자 : </span>
                     <span class="orderNumber"><%= dto.getOrderdate()%></span>
                     <br><br>
-                    <span>배송지</span>
+                    <span>배송지 : </span>
                     <span class="orderNumber">
               <%= dto.getOrderaddress() %> <%= dto.getOrderdetailaddress()%></span>
                     <button onclick="where()"> 배송지 변경</button>
@@ -116,22 +144,14 @@
                                     <span class="price">
                                          <em>상품 가격 :<%= dto.getProductprice()%></em>원
                                     </span><br>
-                                    <em class="count">수량 <%= dto.getOrderamount()%></em>개</div>
+                                    <em class="count">수량 : <%= dto.getOrderamount()%></em>개</div>
                             </div>
                         </div>
                     </div>
                     <div class="orderStatusInfo">
-
-       <%--                 <div class="orderStatusInfoButtons" odno="2022071619353482" btnlist="1020">
-                            <button type="button" class="updateAddress" value="<%=dto.getOrderid()%>">
-                                배송지 변경하기
-                            </button>
-                        </div>--%>
-                        <br>
                         <div class="orderStatusInfoButtons" odno="2022071619353482" btnlist="1020">
-                            <button type="button" class="cancelOrder" value="<%=dto.getOrderid()%>">
-                                주문 취소하기
-                            </button>
+                            <button id="removeCart" onclick="test(<%= dto.getOrderid() %>)" >주문 취소</button>
+
                         </div>
                     </div>
 
@@ -143,56 +163,63 @@
                 }
             %>
         </div>
+        <%
+        }
+        else{
+        %>
+        <div>주문 내역이 없습니다. 우리 쇼핑몰에서 첫 구매를 해주세요 ~</div>
+        <%
+            }
+        %>
+
     </div>
 </div>
 
-
-<!--
-WAYS TO USE FORMDATA
-
-var formData = new FormData(document.getElementsByName('yourForm')[0]);// yourForm: form selector
-$.ajax({
-    type: "POST",
-    url: "yourURL",// where you wanna post
-    data: formData,
-    processData: false,
-    contentType: false,
-    error: function(jqXHR, textStatus, errorMessage) {
-        console.log(errorMessage); // Optional
-    },
-    success: function(data) {console.log(data)}
-});
-
-
-<form id="contactForm1" action="/your_url" method="post">
-    Form input fields here (do not forget your name attributes).
-</form>
-
+<input type="text" id="userId" value="<%= userId%>" >
+<!-- 나의 주문 삭제 -->
 <script type="text/javascript">
-    var frm = $('#contactForm1');
+    function test(orderId){
 
-    frm.submit(function (e) {
-
-        e.preventDefault();
-
+        let cartUserId=document.getElementById('userId').value;
         $.ajax({
-            type: frm.attr('method'),
-            url: frm.attr('action'),
-            data: frm.serialize(),
-            success: function (data) {
-                console.log('Submission was successful.');
-                console.log(data);
-            },
-            error: function (data) {
-                console.log('An error occurred.');
-                console.log(data);
-            },
+            url: "deleteorder.do",
+            type: "get",
+            data:{"orderId":orderId, "userId" : cartUserId},
+            dataType:'json',
+            contentType:"application/json;charset=UTF-8",
+            success: function (result) {
+
+                alert(result);
+                document.getElementById("orderBoard").innerHTML = '';
+
+                let str="";
+                for(let i=0;i<result.length;i++){
+                    let dto = result[i];
+
+                    /*let productPrice=dto.amount * dto.productprice;
+
+                    let strPrice=productPrice.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");*/
+
+                    str+='<div class="topInformation grayBox" style="display:flex;">'+
+                        '<div class="imgWrap">'+
+                            '<img style="width:300px; height:200px;" src="'+dto.productimageurl+'" class="loaded"></div>'+
+                        '<div class="information" style="width:500px; margin-left:5%">'+
+                            '<span>주문번호 : </span>'+
+                            '<span class="orderNumber">'+dto.orderid+'</span>'+
+                            '<br><span>주문일자 : </span><span class="orderNumber">'+ dto.orderdate+'</span>'+
+                                '<br><br><span>배송지 : </span><span class="orderNumber">'+dto.orderaddress+' ,'+ dto.orderdetailaddress+'</span>'+
+                                '<button onclick="where()"> 배송지 변경</button><br><br><div class="orderGoodsItem"><div class="goodsWrap" is-cart="true">'+
+                        '<div class="textWrap"><p class="title">상품명 : '+dto.producttitle+'</p><div class="text">'+
+                        '<span class="price"><em>상품 가격 :'+dto.productprice+'</em>원</span><br><em class="count">수량 :'+ dto.orderamount+'</em>개</div>'+
+                        '</div></div></div><div class="orderStatusInfo"><div class="orderStatusInfoButtons" odno="2022071619353482" btnlist="1020">'+
+                         '<button id="removeCart" onclick="test('+ dto.orderid+')" >주문 취소</button></div></div></div></div><br><br><br><br>';
+
+                    document.getElementById("orderBoard").innerHTML = str;
+                }
+            }
         });
-    });
+    }
 </script>
-
--->
-
 
 <div id="map_wrap" class="map_wrap" style="display:none; height:800px; width:1500px; margin-left:5%; margin-top:5%;">
     <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
@@ -201,36 +228,6 @@ $.ajax({
         <span id="centerAddr"></span>
     </div>
 </div>
-
-<script type="text/javascript">
-    $(function () {
-
-        $("updateAddress").click(function() {
-
-            // $("#demo").load("data.html");
-
-            // $("#demo").load("data.html #data1");
-
-            // $("#demo").load("data.jsp", "t1=abc&t2=123");
-
-            // $("#demo").load("data.jsp", { t1:"ABC", t2:"가나다" });
-
-            $("#demo").load(
-                "data.jsp",
-                { t1:"ABC", t2:"가나다" },
-                function(data, status, xhr){
-                    alert('success');
-                    alert(data);
-                    alert(status);
-                }
-            );
-
-        });
-
-
-
-    });
-</script>
 
 <script type="text/javascript">
     $(document).ready(function() {
@@ -244,6 +241,7 @@ $.ajax({
                 datatype:'json',
                 success:function(msg){
                     if(msg.data == "YES")
+
                         location.reload();
                 },
                 error:function(){

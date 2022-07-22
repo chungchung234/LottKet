@@ -4,6 +4,7 @@ let recentProduct2 = sessionProduct[sessionProduct.length -2]
 let recentProduct3 = sessionProduct[sessionProduct.length -3]
 let recentProduct4 = sessionProduct[sessionProduct.length -4]
 let recentProduct5 = sessionProduct[sessionProduct.length -5]
+let userId = sessionStorage.getItem('id');
 
 function getContextPath(){
   var hostIndex = location.href.indexOf(location.host) + location.host.length;
@@ -12,7 +13,7 @@ function getContextPath(){
 }
 
 let headerContents = '';
-headerContents +=
+headerContents =
     `
     <div class="inner" style="background:#eee">
       <div class="headerWrapper">
@@ -35,8 +36,16 @@ headerContents +=
 
           <div>
             <ul id="gnb">
-              <li><a href="mypage.do">My Page</a></li>
-              <li><a href="cart.do">장바구니</a></li>
+              <li><a href="`+ getContextPath()+`/mypage.do?userId=`
+
+                        + userId +
+
+               `">My Page</a></li>
+              <li><a href="`+ getContextPath()+`/cart.do?userId=`
+
+                        + userId +
+
+                `">장바구니</a></li>
             </ul>
           </div>
 
@@ -48,14 +57,13 @@ headerContents +=
     </div>
     <div class="nav_category">
 
-
           <a href=`+getContextPath()+`/category.do?productCategory=과일>과일</a>
           <a href=`+getContextPath()+`/category.do?productCategory=채소>채소</a>
           <a href=`+getContextPath()+`/category.do?productCategory=잡곡견과>잡곡·견과</a>
+          <a href=`+getContextPath()+`/category.do?productCategory=견과건과>견과·건과</a>
           <a href=`+getContextPath()+`/category.do?productCategory=수산>수산</a>
           <a href=`+getContextPath()+`/category.do?productCategory=정육계란>정육계란<a/>
-          <a href=`+getContextPath()+`/category.do?productCategory=유제품>유제품<a/>
-          <a href=`+getContextPath()+`/category.do?productCategory=냉동냉장>냉동냉장<a/>
+          <a href=`+getContextPath()+`/category.do?productCategory=냉장냉동>냉장냉동<a/>
 
           <hr>
     </div>
@@ -109,3 +117,4 @@ document.getElementById("recentImg1").src = recentProduct1.recentProductImg;
 //   var productObj = [{recentProductImg: "<%=productImageDto.get(0).getProductImageUrl()%>", recentProductUrl: window.location.href}];
 //
 // }
+

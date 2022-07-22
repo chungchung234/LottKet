@@ -13,9 +13,11 @@
                         p.productprice as productprice,
                         o.orderamount as orderamount,
                         o.orderaddress as orderaddress,
-                        o.orderdetailaddress as orderdetailaddress
+                        o.orderdetailaddress as orderdetailaddress,
+                        u.userid as userid,
+                        u.username as username
         from orders o , product p, productimage pi, user u
-        where pi.productid = p.productid and p.productid = o.productid
+        where pi.productid = p.productid and p.productid = o.productid AND u.userid=o.userid
           AND pi.productimageidx = 1 and o.userid=#{userId};
     </select>
 

@@ -38,32 +38,32 @@ public class CartController {
      */
     @RequestMapping(value = "cart.do", method = RequestMethod.GET)
     public String findAllCart(Long userId, Model model) {
-
-        List<ShowcartDto> cartList = cartService.findAllCart(userId);
-        model.addAttribute("cartList", cartList);
-
+        model.addAttribute("cartList", cartService.findAllCart(userId));
+        model.addAttribute("userId", userId);
         return "cart";
     }
 
     /**
      * 장바구니에 기존에 안담겨있던 새 물품 추가 ( 제품 상세에서 버튼으로 Ajax )
-     * @param model, Long userId, Long productId, int amount
+     * @param, Long userId, Long productId, int amount
      * @return String
      */
-    @RequestMapping(value = "newcart.do", method = RequestMethod.POST)
-    @ResponseBody // Ajax 처리시 필수
-    public String addNewCart(Model model,
-                             @RequestBody CartDto dto
-    ) {
-        CartDto cartDto = new CartDto(dto.getUserId(), dto.getProductId(), dto.getAmount());
-        int count = cartService.addNewCart(cartDto);
-        return count>0?"YES":"NO";
+    @RequestMapping(value = "newcart.do", method = RequestMethod.GET)
+    public String addNewCart(Model model, long productId,
+                             long userId,
+                             int amount) {
+        CartDto cartDto = new CartDto(userId, productId, amount);
+        cartService.addNewCart(cartDto);
+        model.addAttribute("cartList", cartService.findAllCart(userId));
+        model.addAttribute("userId", userId);
+        System.out.println(cartDto.toString());
+        return "cart";
     }
 
     /**
      * 카트 한개 삭제 Ajax 버튼으로 처리
      * Long cartId
-     * @return String
+     * @return
      */
     @RequestMapping(value = "deletecart.do", method= RequestMethod.GET)
     @ResponseBody

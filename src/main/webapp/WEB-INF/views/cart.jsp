@@ -5,7 +5,9 @@
 <%
     request.setCharacterEncoding("utf-8");
     List<ShowcartDto> cartList=(List<ShowcartDto>)request.getAttribute("cartList");
-    long userId = cartList.get(0).getUserid();
+    long userId = (Long) request.getAttribute("userId");
+    System.out.println( cartList.size());
+    // long userId = cartList.get(0).getUserid();
 %>
 <%!
     public String priceToStr(long price){
@@ -92,7 +94,10 @@
             </div>
         </div>
 
+<%
+    if(!cartList.isEmpty()){
 
+%>
         <div class="orderGroupWrap" id="cartBoard">
             <%
                 for(int i=0; i<cartList.size(); i++){
@@ -138,11 +143,19 @@
                     int totalcost = 0;
                     for(int i=0; i<cartList.size(); i++){
                         totalcost += cartList.get(i).getProductprice() * cartList.get(i).getAmount();
-
                     }
                 %>
             </div>
+            <div>장바구니에 담긴 총 물품 금액은 <%= totalcost%> 원입니다.</div>
         </div>
+        <%
+            }
+        else{
+        %>
+        <div>장바구니에 담긴 상품이 없습니다. 쇼핑을 마음껏 즐겨주세요 ~</div>
+        <%
+            }
+        %>
 
             <form method="post">
                 <input type="hidden" id="cartUserId" value="<%= userId%>" >
@@ -153,9 +166,9 @@
     </div>
 </div>
 
+<!-- 장바구니 속 상품을 하나씩 삭제하는 코드 -->
 <script type="text/javascript">
     function test(cartId){
-
         let cartUserId=document.getElementById('cartUserId').value;
         $.ajax({
             url: "deletecart.do",
@@ -171,8 +184,6 @@
                     let cartDto = result[i];
 
                     let productPrice=cartDto.amount * cartDto.productprice;
-                    alert(cartDto.amount);
-                    alert(cartDto.productprice);
                     let strPrice=productPrice.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 
                     str+='<div class="topInformation grayBox" style="display:flex;">'+
@@ -192,11 +203,7 @@
                 }
             }
         });
-
-
-
     }
-
 </script>
 
 <%--<div id="map_wrap" class="map_wrap" style="display:none; height:800px; width:1500px; margin-left:5%; margin-top:5%;">

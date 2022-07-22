@@ -1,9 +1,9 @@
 package lotte.com.lottket.controller;
 
+import com.google.gson.JsonObject;
 import lotte.com.lottket.dto.OrderDto;
-import lotte.com.lottket.dto.OrdersDto;
+import lotte.com.lottket.dto.ShowcartDto;
 import lotte.com.lottket.dto.ShoworderDto;
-import lotte.com.lottket.dto.UserDto;
 import lotte.com.lottket.service.mypage.MypageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,9 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class MypageController {
@@ -26,15 +24,22 @@ public class MypageController {
     /**
      * 내 주문 전부 조회
      */
-    @RequestMapping(value="mypage.do", method = RequestMethod.GET)
-    public String showAllMyOrders(Long userId, Model model) {
-        List<ShoworderDto> list = service.showAllMyOrders(userId);
+//    @RequestMapping(value="mypage.do")
+//    public String showAllMyOrders(@RequestBody Long userId, Model model) {
+//        List<ShoworderDto> list = service.showAllMyOrders(userId);
+//
+//        model.addAttribute("list", list);
+//        model.addAttribute("userId", userId);
+//        return "mypage";
+//    }
 
-        model.addAttribute("list", list);
+    // AJAX 용
+    @RequestMapping(value="mypage.do",  method=RequestMethod.GET)
+    public String showAllMyOrders(Long userId, Model model) {
         model.addAttribute("userId", userId);
+        model.addAttribute("list", service.showAllMyOrders(userId));
         return "mypage";
     }
-
 
     /**
      * 배송지 변경  with Ajax Button
@@ -54,12 +59,14 @@ public class MypageController {
      * @param orderId
      * @return String
      */
-    @RequestMapping(value="deleteorder.do", method = RequestMethod.POST)
+    @RequestMapping(value="deleteorder.do", method = RequestMethod.GET)
     @ResponseBody
-    public String cancelOrder( @RequestBody Long orderId) {
-        int count = service.cancelOrder(orderId);
+    public List<ShoworderDto> cancelOrder( long orderId, long userId) {
 
-        return count>0?"YES":"NO";
+        service.cancelOrder(orderId);
+        List<ShoworderDto> list=service.showAllMyOrders(userId);
+        System.out.println(list.size());
+        return list;
     }
 
 }

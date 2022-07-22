@@ -19,11 +19,13 @@ public class ShoworderDto {
     private int orderamount;
     private String orderaddress;
     private String orderdetailaddress;
+    private Long userid;
+    private String username;
 
     public ShoworderDto() {
     }
 
-    public ShoworderDto(Long orderid, String orderdate, String producttitle, String productimageurl, int productprice, int orderamount, String orderaddress, String orderdetailaddress) {
+    public ShoworderDto(Long orderid, String orderdate, String producttitle, String productimageurl, int productprice, int orderamount, String orderaddress, String orderdetailaddress, Long userid, String username) {
         this.orderid = orderid;
         this.orderdate = orderdate;
         this.producttitle = producttitle;
@@ -32,6 +34,8 @@ public class ShoworderDto {
         this.orderamount = orderamount;
         this.orderaddress = orderaddress;
         this.orderdetailaddress = orderdetailaddress;
+        this.userid = userid;
+        this.username = username;
     }
 
     public Long getOrderid() {
