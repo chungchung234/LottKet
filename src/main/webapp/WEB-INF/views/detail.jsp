@@ -9,9 +9,11 @@
   List<ReviewJoinUser> reviewJoinUserDto = (List<ReviewJoinUser>)request.getAttribute("reviewJoinUserDto");
   List<ReviewJoinReply> reviewJoinReplyDto = (List<ReviewJoinReply>)request.getAttribute("reviewJoinReplyDto");
 
-  if(request.getAttribute("dto") != null) {
-    UserDto dto = (UserDto) request.getAttribute("dto");
+  UserDto userdto = null;
+  if(session.getAttribute("dto") != null) {
+    userdto = (UserDto) session.getAttribute("dto");
   }
+  System.out.println(userdto.getUserRole());
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -95,7 +97,6 @@
       </script>
 
       <%--      <script> sessionStorage.clear()</script>--%>
-
     </div>
     <div class="detail_product_img3">
 
@@ -205,7 +206,7 @@
         <h3 style="font-size:xx-large;font-weight: bold"><button onclick="insert_review()" style="background-color: #ff42c9; color:white; border-radius: 0.5em">댓글작성</button></h3>
       </div>
       <div id="div_insert_review" style="margin-left:10px; display:none">
-        <span>wnsgur753</span>
+        <span style="font-weight: bold"><%=userdto.getUserName()%></span>
         <span id="send_star" style="display:none">0</span>
         <img class="cls_star" id="id_star1" style="width:20px;" src="<%=request.getContextPath()%>/img/emptyStar.png" onmouseover="onmouse_star(this.id)">
         <img class="cls_star" id="id_star2" style="width:20px;" src="<%=request.getContextPath()%>/img/emptyStar.png" onmouseover="onmouse_star(this.id)">
@@ -231,12 +232,13 @@
               <%--            <img src="<%=reviewJoinUserDto.get(i).getUserProfileImage()%>"--%>
               <%--                                  style="border-radius:1.5em; margin-right:10px;">--%>
               <div class="identities">
-                <div class="userNameWrap">
+                <div class="userNameWrap" style="display:flex; align-items:center;">
                   <img src="<%=reviewJoinUserDto.get(i).getUserProfileImage()%>"
-                       style="border-radius:1.5em; margin-right:10px;">
-                  <strong class="userName">&nbsp;&nbsp;<%=reviewJoinUserDto.get(i).getUserName()%>&nbsp;&nbsp;</strong><span class="info">
+                       style="border-radius:0.5em; margin-right:10px; width:70px;">
+                  <strong class="userName" style="height:30px;">&nbsp;&nbsp;<%=reviewJoinUserDto.get(i).getUserName()%>&nbsp;&nbsp;</strong><br><br></div>
+                <span class="info">
                       <br><br> <%=reviewJoinUserDto.get(i).getUserGrade()%>등급 &nbsp;&nbsp;&nbsp;등록일 :
-                      <%=strDate%></span></div>
+                      <%=strDate%></span>
                 <div class="badges"></div>
               </div>
             </div>
@@ -269,8 +271,14 @@
             }
           %>
 
-          <button type="button" onclick='admin_reply("<%=reviewJoinUserDto.get(i).getReviewId()%>")'>답글 작성</button>
+          <%
+            if ("admin".equals(userdto.getUserRole())){
+          %>
 
+          <button type="button" onclick='admin_reply("<%=reviewJoinUserDto.get(i).getReviewId()%>")'>답글 작성</button>
+          <%
+            }
+          %>
 
 
           <div id="replydiv<%=reviewJoinUserDto.get(i).getReviewId()%>" style="margin-top:20px; display:none;" >
@@ -344,14 +352,17 @@
   function insertReview(){
     let rating = parseFloat(document.getElementById("send_star").innerText);
     let content = $("#content").val();
+    console.log("<%=userdto.getUserId()%>");
+
     document.getElementById("div_insert_review").style.display = "none";
     document.getElementById("content").value="";
     $.ajax({
       url:"<%=request.getContextPath()%>/insertReview.do",
-      data:{content:content, productId:parseInt("<%=productDto.getProductId()%>"), rating:rating},
+      data:{content:content, productId:parseInt("<%=productDto.getProductId()%>"), rating:rating, userId:parseInt("<%=userdto.getUserId()%>"), userRole:"<%=userdto.getUserRole()%>"},
       method:"get",
       success:function(data){
         $("#commentdiv").html(data);
+      },error:function(data){
       }
     });
   }
@@ -364,7 +375,7 @@
 
     $.ajax({
       url:"<%=request.getContextPath()%>/insertReply.do",
-      data:{reviewId:parseInt(index), content:replyContent, productId:parseInt("<%=productDto.getProductId()%>")},
+      data:{reviewId:parseInt(index), content:replyContent, productId:parseInt("<%=productDto.getProductId()%>"),userRole:"<%=userdto.getUserRole()%>"},
       method:"get",
       success:function(data){
         $("#commentdiv").html(data);

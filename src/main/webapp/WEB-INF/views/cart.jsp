@@ -157,10 +157,10 @@
             }
         %>
 
-            <form method="post">
+<%--            <form method="post">
                 <input type="hidden" id="cartUserId" value="<%= userId%>" >
                 <input type="submit" class="deleteAllCart">장바구니 전체 삭제</input>
-            </form>
+            </form>--%>
 
         </div>
     </div>

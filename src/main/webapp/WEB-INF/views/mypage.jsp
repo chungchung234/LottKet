@@ -175,7 +175,9 @@
     </div>
 </div>
 
+<%--
 <input type="text" id="userId" value="<%= userId%>" >
+--%>
 <!-- 나의 주문 삭제 -->
 <script type="text/javascript">
     function test(orderId){
