@@ -97,7 +97,8 @@ public class OrderController {
 
         productService.updateProductStock(param);
 
-        return "mypage";
+
+        return "mypage?userId="+orderDto.getUserId();
 
     }
 }
